@@ -1,0 +1,28 @@
+
+{
+    "ducarmolocacoesApp": {
+        "locacaoProduto" : {
+            "home": {
+                "title": "Locacao Produtos",
+                "createLabel": "Create a new Locacao Produto",
+                "createOrEditLabel": "Create or edit a Locacao Produto",
+                "search": "Search for Locacao Produto"
+            },
+            "created": "A new Locacao Produto is created with identifier {{ param }}",
+            "updated": "A Locacao Produto is updated with identifier {{ param }}",
+            "deleted": "A Locacao Produto is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Locacao Produto {{ id }}?"
+            },
+            "detail": {
+                "title": "Locacao Produto"
+            },
+            "quantidade": "Quantidade",
+            "valorUnitario": "Valor Unitario",
+            "valorTotal": "Valor Total",
+            "produto": "Produto",
+            "locacao": "Locacao",
+            "cliente": "Cliente"
+        }
+    }
+}

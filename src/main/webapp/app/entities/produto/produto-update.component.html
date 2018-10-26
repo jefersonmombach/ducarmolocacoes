@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-produto-heading" jhiTranslate="ducarmolocacoesApp.produto.home.createOrEditLabel">Create or edit a Produto</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!produto.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="produto.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.produto.descricao" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                        [(ngModel)]="produto.descricao" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.produto.precoVenda" for="field_precoVenda">Preco Venda</label>
+                    <input type="number" class="form-control" name="precoVenda" id="field_precoVenda"
+                        [(ngModel)]="produto.precoVenda" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.produto.precoCompra" for="field_precoCompra">Preco Compra</label>
+                    <input type="number" class="form-control" name="precoCompra" id="field_precoCompra"
+                        [(ngModel)]="produto.precoCompra" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.produto.ativo" for="field_ativo">Ativo</label>
+                    <input type="checkbox" class="form-control" name="ativo" id="field_ativo"
+                        [(ngModel)]="produto.ativo" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

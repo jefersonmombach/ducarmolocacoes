@@ -1,0 +1,39 @@
+{
+    "name": "Produto",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "precoVenda",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "precoCompra",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "ativo",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "locacoes",
+            "otherEntityName": "locacaoProduto",
+            "otherEntityRelationshipName": "produto"
+        }
+    ],
+    "changelogDate": "20181026154425",
+    "entityTableName": "produto",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

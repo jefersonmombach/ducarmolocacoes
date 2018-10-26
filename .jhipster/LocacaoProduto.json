@@ -1,0 +1,46 @@
+{
+    "name": "LocacaoProduto",
+    "fields": [
+        {
+            "fieldName": "quantidade",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valorUnitario",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "valorTotal",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "produto",
+            "otherEntityName": "produto",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "locacao",
+            "otherEntityName": "locacao",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "cliente",
+            "otherEntityName": "cliente",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181026154428",
+    "entityTableName": "locacao_produto",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

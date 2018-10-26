@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Locacao.
+    -->
+    <changeSet id="20181026154427-1" author="jhipster">
+        <createTable tableName="locacao">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="valor_total" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valor_sinal" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valor_adiantado" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valor_saldo" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_contratacao" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_evento" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_dev_prev" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_dev_real" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_entr_prev" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data_entr_real" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="situacao" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="html_contrato" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cliente_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tipo_evento_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="locacao" columnName="data_contratacao" columnDataType="datetime"/>
+        <dropDefaultValue tableName="locacao" columnName="data_dev_real" columnDataType="datetime"/>
+        <dropDefaultValue tableName="locacao" columnName="data_entr_real" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="locacaoProduto">
+            <h2><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.detail.title">Locacao Produto</span> {{locacaoProduto.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.quantidade">Quantidade</span></dt>
+                <dd>
+                    <span>{{locacaoProduto.quantidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.valorUnitario">Valor Unitario</span></dt>
+                <dd>
+                    <span>{{locacaoProduto.valorUnitario}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.valorTotal">Valor Total</span></dt>
+                <dd>
+                    <span>{{locacaoProduto.valorTotal}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.produto">Produto</span></dt>
+                <dd>
+                    <div *ngIf="locacaoProduto.produtoId">
+                        <a [routerLink]="['/produto', locacaoProduto.produtoId, 'view']">{{locacaoProduto.produtoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.locacao">Locacao</span></dt>
+                <dd>
+                    <div *ngIf="locacaoProduto.locacaoId">
+                        <a [routerLink]="['/locacao', locacaoProduto.locacaoId, 'view']">{{locacaoProduto.locacaoId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.cliente">Cliente</span></dt>
+                <dd>
+                    <div *ngIf="locacaoProduto.clienteId">
+                        <a [routerLink]="['/cliente', locacaoProduto.clienteId, 'view']">{{locacaoProduto.clienteId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/locacao-produto', locacaoProduto.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

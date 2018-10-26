@@ -1,0 +1,27 @@
+{
+    "name": "TipoEvento",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "locacoes",
+            "otherEntityName": "locacao",
+            "otherEntityRelationshipName": "tipoEvento"
+        }
+    ],
+    "changelogDate": "20181026154424",
+    "entityTableName": "tipo_evento",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

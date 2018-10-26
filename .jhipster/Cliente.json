@@ -1,0 +1,61 @@
+{
+    "name": "Cliente",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nascimento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "cpf",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rg",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefoneResidencial",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefoneCelular",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefoneRecado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endereco",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "locacoes",
+            "otherEntityName": "locacao",
+            "otherEntityRelationshipName": "cliente"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "produtos",
+            "otherEntityName": "locacaoProduto",
+            "otherEntityRelationshipName": "cliente"
+        }
+    ],
+    "changelogDate": "20181026154426",
+    "entityTableName": "cliente",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}

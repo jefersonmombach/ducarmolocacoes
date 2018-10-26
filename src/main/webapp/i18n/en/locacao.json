@@ -1,0 +1,37 @@
+
+{
+    "ducarmolocacoesApp": {
+        "locacao" : {
+            "home": {
+                "title": "Locacaos",
+                "createLabel": "Create a new Locacao",
+                "createOrEditLabel": "Create or edit a Locacao",
+                "search": "Search for Locacao"
+            },
+            "created": "A new Locacao is created with identifier {{ param }}",
+            "updated": "A Locacao is updated with identifier {{ param }}",
+            "deleted": "A Locacao is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Locacao {{ id }}?"
+            },
+            "detail": {
+                "title": "Locacao"
+            },
+            "valorTotal": "Valor Total",
+            "valorSinal": "Valor Sinal",
+            "valorAdiantado": "Valor Adiantado",
+            "valorSaldo": "Valor Saldo",
+            "dataContratacao": "Data Contratacao",
+            "dataEvento": "Data Evento",
+            "dataDevPrev": "Data Dev Prev",
+            "dataDevReal": "Data Dev Real",
+            "dataEntrPrev": "Data Entr Prev",
+            "dataEntrReal": "Data Entr Real",
+            "situacao": "Situacao",
+            "htmlContrato": "Html Contrato",
+            "produtos": "Produtos",
+            "cliente": "Cliente",
+            "tipoEvento": "Tipo Evento"
+        }
+    }
+}

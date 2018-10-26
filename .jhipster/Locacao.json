@@ -1,0 +1,83 @@
+{
+    "name": "Locacao",
+    "fields": [
+        {
+            "fieldName": "valorTotal",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "valorSinal",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "valorAdiantado",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "valorSaldo",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "dataContratacao",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataEvento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dataDevPrev",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dataDevReal",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "dataEntrPrev",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dataEntrReal",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "situacao",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "htmlContrato",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "produtos",
+            "otherEntityName": "locacaoProduto",
+            "otherEntityRelationshipName": "locacao"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "cliente",
+            "otherEntityName": "cliente",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tipoEvento",
+            "otherEntityName": "tipoEvento",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181026154427",
+    "entityTableName": "locacao",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "searchEngine": "elasticsearch"
+}
