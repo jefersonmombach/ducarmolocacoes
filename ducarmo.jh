@@ -1,0 +1,60 @@
+entity TipoEvento {
+	id Long
+    descricao String
+}
+
+entity Produto {
+	id Long
+    descricao String
+    precoVenda BigDecimal
+    precoCompra BigDecimal
+    ativo Boolean
+}
+
+entity Cliente {
+	id Long
+    nome String
+    nascimento LocalDate
+    cpf String
+    rg String
+    telefoneResidencial String
+    telefoneCelular String
+    telefoneRecado String
+    endereco String
+}
+
+entity Locacao {
+	id Long
+    valorTotal BigDecimal
+	valorSinal BigDecimal
+    valorAdiantado BigDecimal
+    valorSaldo BigDecimal
+    dataContratacao ZonedDateTime
+    dataEvento LocalDate
+    dataDevPrev LocalDate
+    dataDevReal ZonedDateTime
+    dataEntrPrev LocalDate
+    dataEntrReal ZonedDateTime
+    situacao Integer
+    htmlContrato String
+}
+
+entity LocacaoProduto {
+	id Long
+    quantidade Integer
+    valorUnitario BigDecimal
+    valorTotal BigDecimal
+}
+
+relationship OneToMany {
+	Cliente{locacoes} to Locacao{cliente}
+	TipoEvento{locacoes} to Locacao{tipoEvento}
+	Produto{locacoes} to LocacaoProduto{produto}
+	Locacao{produtos} to LocacaoProduto{locacao}
+	Cliente{produtos} to LocacaoProduto{cliente}
+}
+
+paginate TipoEvento, Cliente, Locacao, Produto with infinite-scroll
+dto * with mapstruct
+search TipoEvento, Cliente, Locacao, Produto with elasticsearch
+service all with serviceImpl
