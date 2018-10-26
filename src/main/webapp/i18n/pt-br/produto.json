@@ -18,8 +18,8 @@
                 "title": "Produto"
             },
             "descricao": "Descrição",
-            "precoVenda": "Preco de Venda",
-            "precoCompra": "Preco de Compra",
+            "precoVenda": "Preço de Venda",
+            "precoCompra": "Preço de Compra",
             "ativo": "Ativo",
             "locacoes": "Locacoes"
         }
