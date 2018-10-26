@@ -31,8 +31,8 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="descricao"><span jhiTranslate="ducarmolocacoesApp.produto.descricao">Descricao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="precoVenda"><span jhiTranslate="ducarmolocacoesApp.produto.precoVenda">Preco Venda</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="precoCompra"><span jhiTranslate="ducarmolocacoesApp.produto.precoCompra">Preco Compra</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="precoVenda"><span jhiTranslate="ducarmolocacoesApp.produto.precoVenda">Preco Venda</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="ativo"><span jhiTranslate="ducarmolocacoesApp.produto.ativo">Ativo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -41,8 +41,8 @@
             <tr *ngFor="let produto of produtos ;trackBy: trackId">
                 <td><a [routerLink]="['/produto', produto.id, 'view' ]">{{produto.id}}</a></td>
                 <td>{{produto.descricao}}</td>
-                <td>{{produto.precoVenda}}</td>
-                <td>{{produto.precoCompra}}</td>
+                <td>{{produto.precoCompra | number: '6.2-2'}}</td>
+                <td>{{produto.precoVenda | number: '6.2-2'}}</td>
                 <td>{{produto.ativo}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
