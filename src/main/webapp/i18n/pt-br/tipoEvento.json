@@ -3,21 +3,21 @@
     "ducarmolocacoesApp": {
         "tipoEvento" : {
             "home": {
-                "title": "Tipo Eventos",
-                "createLabel": "Criar novo Tipo Evento",
-                "createOrEditLabel": "Criar ou editar Tipo Evento",
-                "search": "Pesquisar por Tipo Evento"
+                "title": "Tipos de Evento",
+                "createLabel": "Criar novo Tipo de Evento",
+                "createOrEditLabel": "Criar ou editar Tipo de Evento",
+                "search": "Pesquisar por Tipo de Evento"
             },
-            "created": "Um novo Tipo Evento foi criado com o identificador {{ param }}",
-            "updated": "Um Tipo Evento foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Tipo Evento foi deletado com o identificador {{ param }}",
+            "created": "Um novo Tipo de Evento foi criado com o identificador {{ param }}",
+            "updated": "Um Tipo de Evento foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tipo de Evento foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Tipo Evento {{ id }}?"
+                "question": "Tem certeza de que deseja excluir Tipo de Evento {{ id }}?"
             },
             "detail": {
-                "title": "Tipo Evento"
+                "title": "Tipo de Evento"
             },
-            "descricao": "Descricao",
+            "descricao": "Descrição",
             "locacoes": "Locacoes"
         }
     }

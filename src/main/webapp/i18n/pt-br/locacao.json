@@ -3,31 +3,31 @@
     "ducarmolocacoesApp": {
         "locacao" : {
             "home": {
-                "title": "Locacaos",
-                "createLabel": "Criar novo Locacao",
-                "createOrEditLabel": "Criar ou editar Locacao",
-                "search": "Pesquisar por Locacao"
+                "title": "Locações",
+                "createLabel": "Criar nova Locação",
+                "createOrEditLabel": "Criar ou editar Locação",
+                "search": "Pesquisar por Locações"
             },
-            "created": "Um novo Locacao foi criado com o identificador {{ param }}",
-            "updated": "Um Locacao foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Locacao foi deletado com o identificador {{ param }}",
+            "created": "Uma nova Locação foi criado com o identificador {{ param }}",
+            "updated": "Uma Locação foi atualizado com o identificador {{ param }}",
+            "deleted": "Uma Locação foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Locacao {{ id }}?"
+                "question": "Tem certeza de que deseja excluir a Locação {{ id }}?"
             },
             "detail": {
-                "title": "Locacao"
+                "title": "Locação"
             },
-            "valorTotal": "Valor Total",
-            "valorSinal": "Valor Sinal",
-            "valorAdiantado": "Valor Adiantado",
-            "valorSaldo": "Valor Saldo",
-            "dataContratacao": "Data Contratacao",
-            "dataEvento": "Data Evento",
-            "dataDevPrev": "Data Dev Prev",
-            "dataDevReal": "Data Dev Real",
-            "dataEntrPrev": "Data Entr Prev",
-            "dataEntrReal": "Data Entr Real",
-            "situacao": "Situacao",
+            "valorTotal": "Total",
+            "valorSinal": "Sinal",
+            "valorAdiantado": "Adiantado",
+            "valorSaldo": "Saldo",
+            "dataContratacao": "Data da Contratação",
+            "dataEvento": "Data do Evento",
+            "dataDevPrev": "Data de Prev. de Devolução",
+            "dataDevReal": "Data de Real. de Devolução",
+            "dataEntrPrev": "Data de Prev. de Entrega",
+            "dataEntrReal": "Data de Real. de Entrega",
+            "situacao": "Situação",
             "htmlContrato": "Html Contrato",
             "produtos": "Produtos",
             "cliente": "Cliente",

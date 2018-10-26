@@ -19,12 +19,12 @@
             },
             "nome": "Nome",
             "nascimento": "Nascimento",
-            "cpf": "Cpf",
-            "rg": "Rg",
-            "telefoneResidencial": "Telefone Residencial",
-            "telefoneCelular": "Telefone Celular",
-            "telefoneRecado": "Telefone Recado",
-            "endereco": "Endereco",
+            "cpf": "CPF",
+            "rg": "RG",
+            "telefoneResidencial": "Tel. Residencial",
+            "telefoneCelular": "Tel. Celular",
+            "telefoneRecado": "Tel. Recado",
+            "endereco": "Endereço",
             "locacoes": "Locacoes",
             "produtos": "Produtos"
         }

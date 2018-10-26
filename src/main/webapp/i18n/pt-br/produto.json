@@ -17,9 +17,9 @@
             "detail": {
                 "title": "Produto"
             },
-            "descricao": "Descricao",
-            "precoVenda": "Preco Venda",
-            "precoCompra": "Preco Compra",
+            "descricao": "Descrição",
+            "precoVenda": "Preco de Venda",
+            "precoCompra": "Preco de Compra",
             "ativo": "Ativo",
             "locacoes": "Locacoes"
         }

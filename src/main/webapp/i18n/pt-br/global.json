@@ -1,16 +1,16 @@
 {
     "global": {
-        "title": "Ducarmolocacoes",
+        "title": "Du Carmo Locações",
         "browsehappy": "Você está usando um navegador <strong>desatualizado</strong>. Favor <a href=\"http://browsehappy.com/?locale=pt_BR\">atualizar o seu navegador</a> para ter uma experiência melhor.",
         "menu": {
             "home": "Início",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Entidades",
-                "tipoEvento": "Tipo Evento",
-                "produto": "Produto",
-                "cliente": "Cliente",
-                "locacao": "Locacao",
+                "main": "Cadastros",
+                "tipoEvento": "Tipos de Evento",
+                "produto": "Produtos",
+                "cliente": "Clientes",
+                "locacao": "Locações",
                 "locacaoProduto": "Locacao Produto",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
@@ -53,9 +53,9 @@
         "messages": {
             "info": {
                 "authenticated": {
-                    "prefix": "Para ",
-                    "link": "entrar",
-                    "suffix": ", utilize as seguintes contas padrões:<br/>- Administrador (usuário=\"admin\" and senha=\"admin\") <br/>- Usuário (usuário=\"user\" and senha=\"user\")."
+                    "prefix": "Clique ",
+                    "link": "aqui",
+                    "suffix": " para entrar."
                 },
                 "register": {
                     "noaccount": "Não possui uma conta ainda?",
@@ -136,5 +136,5 @@
         "idexists": "Novo(a) {{entityName}} não pode ter uma ID",
         "idnull": "Invalid ID"
     },
-    "footer": "Este é o seu rodapé"
+    "footer": "Jeferson Mombach de Sousa, todos os direitos reservados."
 }
