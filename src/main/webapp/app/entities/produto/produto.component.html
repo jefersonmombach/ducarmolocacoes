@@ -41,8 +41,8 @@
             <tr *ngFor="let produto of produtos ;trackBy: trackId">
                 <td><a [routerLink]="['/produto', produto.id, 'view' ]">{{produto.id}}</a></td>
                 <td>{{produto.descricao}}</td>
-                <td>{{produto.precoCompra | number: '6.2-2'}}</td>
-                <td>{{produto.precoVenda | number: '6.2-2'}}</td>
+                <td>{{produto.precoCompra | currency : '$'}}</td>
+                <td>{{produto.precoVenda | currency : '$'}}</td>
                 <td>{{produto.ativo}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
