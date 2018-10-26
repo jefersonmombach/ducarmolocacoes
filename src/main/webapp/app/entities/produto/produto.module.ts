@@ -12,10 +12,12 @@ import {
     produtoPopupRoute
 } from './';
 
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+
 const ENTITY_STATES = [...produtoRoute, ...produtoPopupRoute];
 
 @NgModule({
-    imports: [DucarmolocacoesSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [DucarmolocacoesSharedModule, CurrencyMaskModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         ProdutoComponent,
         ProdutoDetailComponent,
