@@ -43,7 +43,7 @@
                 <td>{{produto.descricao}}</td>
                 <td>{{produto.precoCompra | currency : '$'}}</td>
                 <td>{{produto.precoVenda | currency : '$'}}</td>
-                <td>{{produto.ativo}}</td>
+                <td>{{produto.ativo | booleanStr}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
