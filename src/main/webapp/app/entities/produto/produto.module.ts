@@ -12,6 +12,8 @@ import {
     produtoPopupRoute
 } from './';
 
+import { BooleanStrPipe } from 'app/shared';
+
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 const ENTITY_STATES = [...produtoRoute, ...produtoPopupRoute];
@@ -23,7 +25,8 @@ const ENTITY_STATES = [...produtoRoute, ...produtoPopupRoute];
         ProdutoDetailComponent,
         ProdutoUpdateComponent,
         ProdutoDeleteDialogComponent,
-        ProdutoDeletePopupComponent
+        ProdutoDeletePopupComponent,
+        BooleanStrPipe
     ],
     entryComponents: [ProdutoComponent, ProdutoUpdateComponent, ProdutoDeleteDialogComponent, ProdutoDeletePopupComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
