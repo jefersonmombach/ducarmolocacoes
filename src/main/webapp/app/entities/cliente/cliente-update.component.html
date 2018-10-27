@@ -17,8 +17,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.cliente.nascimento" for="field_nascimento">Nascimento</label>
                     <div class="input-group">
-                        <input id="field_nascimento" type="text" class="form-control" name="nascimento" ngbDatepicker  #nascimentoDp="ngbDatepicker" [(ngModel)]="cliente.nascimento"
-                        />
+                        <input id="field_nascimento" type="text" class="form-control" name="nascimento" ngbDatepicker #nascimentoDp="ngbDatepicker" [(ngModel)]="cliente.nascimento"/>
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="nascimentoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
@@ -27,6 +26,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.cliente.cpf" for="field_cpf">Cpf</label>
                     <input type="text" class="form-control" name="cpf" id="field_cpf"
+                           mask="000.000.000-00"
                         [(ngModel)]="cliente.cpf" />
                 </div>
                 <div class="form-group">
@@ -37,17 +37,20 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.cliente.telefoneResidencial" for="field_telefoneResidencial">Telefone Residencial</label>
                     <input type="text" class="form-control" name="telefoneResidencial" id="field_telefoneResidencial"
-                        [(ngModel)]="cliente.telefoneResidencial" />
+                           mask="(00)0000-0000"
+                           [(ngModel)]="cliente.telefoneResidencial" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.cliente.telefoneCelular" for="field_telefoneCelular">Telefone Celular</label>
                     <input type="text" class="form-control" name="telefoneCelular" id="field_telefoneCelular"
+                           mask="(00)00000-0000"
                         [(ngModel)]="cliente.telefoneCelular" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.cliente.telefoneRecado" for="field_telefoneRecado">Telefone Recado</label>
                     <input type="text" class="form-control" name="telefoneRecado" id="field_telefoneRecado"
-                        [(ngModel)]="cliente.telefoneRecado" />
+                           mask="(00)00000-0000"
+                           [(ngModel)]="cliente.telefoneRecado" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.cliente.endereco" for="field_endereco">Endereco</label>

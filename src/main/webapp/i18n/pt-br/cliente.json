@@ -8,9 +8,9 @@
                 "createOrEditLabel": "Criar ou editar Cliente",
                 "search": "Pesquisar por Cliente"
             },
-            "created": "Um novo Cliente foi criado com o identificador {{ param }}",
-            "updated": "Um Cliente foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Cliente foi deletado com o identificador {{ param }}",
+            "created": "Cliente foi criado com o identificador {{ param }}",
+            "updated": "Cliente foi atualizado com o identificador {{ param }}",
+            "deleted": "Cliente foi deletado com o identificador {{ param }}",
             "delete": {
                 "question": "Tem certeza de que deseja excluir Cliente {{ id }}?"
             },
@@ -21,9 +21,9 @@
             "nascimento": "Nascimento",
             "cpf": "CPF",
             "rg": "RG",
-            "telefoneResidencial": "Tel. Residencial",
-            "telefoneCelular": "Tel. Celular",
-            "telefoneRecado": "Tel. Recado",
+            "telefoneResidencial": "Telefone Residencial",
+            "telefoneCelular": "Telefone Celular    ",
+            "telefoneRecado": "Telefone de Recado  ",
             "endereco": "Endereço",
             "locacoes": "Locacoes",
             "produtos": "Produtos"

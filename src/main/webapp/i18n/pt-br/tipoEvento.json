@@ -8,9 +8,9 @@
                 "createOrEditLabel": "Criar ou editar Tipo de Evento",
                 "search": "Pesquisar por Tipo de Evento"
             },
-            "created": "Um novo Tipo de Evento foi criado com o identificador {{ param }}",
-            "updated": "Um Tipo de Evento foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Tipo de Evento foi deletado com o identificador {{ param }}",
+            "created": "Tipo de Evento foi criado com o identificador {{ param }}",
+            "updated": "Tipo de Evento foi atualizado com o identificador {{ param }}",
+            "deleted": "Tipo de Evento foi deletado com o identificador {{ param }}",
             "delete": {
                 "question": "Tem certeza de que deseja excluir Tipo de Evento {{ id }}?"
             },

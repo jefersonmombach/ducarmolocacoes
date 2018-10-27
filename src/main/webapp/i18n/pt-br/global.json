@@ -6,7 +6,7 @@
             "home": "Início",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Cadastros",
+                "main": "Menu",
                 "tipoEvento": "Tipos de Evento",
                 "produto": "Produtos",
                 "cliente": "Clientes",

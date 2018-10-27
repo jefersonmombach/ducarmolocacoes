@@ -32,12 +32,8 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nome"><span jhiTranslate="ducarmolocacoesApp.cliente.nome">Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nascimento"><span jhiTranslate="ducarmolocacoesApp.cliente.nascimento">Nascimento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="cpf"><span jhiTranslate="ducarmolocacoesApp.cliente.cpf">Cpf</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="rg"><span jhiTranslate="ducarmolocacoesApp.cliente.rg">Rg</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="telefoneResidencial"><span jhiTranslate="ducarmolocacoesApp.cliente.telefoneResidencial">Telefone Residencial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="telefoneCelular"><span jhiTranslate="ducarmolocacoesApp.cliente.telefoneCelular">Telefone Celular</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="telefoneRecado"><span jhiTranslate="ducarmolocacoesApp.cliente.telefoneRecado">Telefone Recado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="endereco"><span jhiTranslate="ducarmolocacoesApp.cliente.endereco">Endereco</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -45,13 +41,9 @@
             <tr *ngFor="let cliente of clientes ;trackBy: trackId">
                 <td><a [routerLink]="['/cliente', cliente.id, 'view' ]">{{cliente.id}}</a></td>
                 <td>{{cliente.nome}}</td>
-                <td>{{cliente.nascimento | date:'mediumDate'}}</td>
-                <td>{{cliente.cpf}}</td>
-                <td>{{cliente.rg}}</td>
-                <td>{{cliente.telefoneResidencial}}</td>
-                <td>{{cliente.telefoneCelular}}</td>
-                <td>{{cliente.telefoneRecado}}</td>
-                <td>{{cliente.endereco}}</td>
+                <td>{{cliente.nascimento | date:'shortDate'}}</td>
+                <td>{{cliente.telefoneResidencial | mask: '(00)0000-0000'}}</td>
+                <td>{{cliente.telefoneCelular | mask: '(00)00000-0000'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

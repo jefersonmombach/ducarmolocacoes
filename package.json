@@ -26,6 +26,7 @@
     "ng2-currency-mask": "^5.3.1",
     "ngx-cookie": "2.0.1",
     "ngx-infinite-scroll": "6.0.1",
+    "ngx-mask": "^6.5.18",
     "ngx-webstorage": "2.0.1",
     "reflect-metadata": "0.1.12",
     "rxjs": "6.1.0",

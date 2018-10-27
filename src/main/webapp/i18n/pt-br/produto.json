@@ -8,9 +8,9 @@
                 "createOrEditLabel": "Criar ou editar Produto",
                 "search": "Pesquisar por Produto"
             },
-            "created": "Um novo Produto foi criado com o identificador {{ param }}",
-            "updated": "Um Produto foi atualizado com o identificador {{ param }}",
-            "deleted": "Um Produto foi deletado com o identificador {{ param }}",
+            "created": "Produto foi criado com o identificador {{ param }}",
+            "updated": "Produto foi atualizado com o identificador {{ param }}",
+            "deleted": "Produto foi deletado com o identificador {{ param }}",
             "delete": {
                 "question": "Tem certeza de que deseja excluir Produto {{ id }}?"
             },

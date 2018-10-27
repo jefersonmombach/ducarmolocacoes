@@ -11,11 +11,11 @@
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.cliente.nascimento">Nascimento</span></dt>
                 <dd>
-                    <span>{{cliente.nascimento}}</span>
+                    <span>{{cliente.nascimento | date:'shortDate'}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.cliente.cpf">Cpf</span></dt>
                 <dd>
-                    <span>{{cliente.cpf}}</span>
+                    <span>{{cliente.cpf | mask: "000.000.000-00"}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.cliente.rg">Rg</span></dt>
                 <dd>
@@ -23,15 +23,15 @@
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.cliente.telefoneResidencial">Telefone Residencial</span></dt>
                 <dd>
-                    <span>{{cliente.telefoneResidencial}}</span>
+                    <span>{{cliente.telefoneResidencial | mask: '(00)0000-0000'}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.cliente.telefoneCelular">Telefone Celular</span></dt>
                 <dd>
-                    <span>{{cliente.telefoneCelular}}</span>
+                    <span>{{cliente.telefoneCelular | mask: '(00)00000-0000'}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.cliente.telefoneRecado">Telefone Recado</span></dt>
                 <dd>
-                    <span>{{cliente.telefoneRecado}}</span>
+                    <span>{{cliente.telefoneRecado | mask: '(00)00000-0000'}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.cliente.endereco">Endereco</span></dt>
                 <dd>

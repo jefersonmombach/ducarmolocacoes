@@ -12,10 +12,12 @@ import {
     clientePopupRoute
 } from './';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 const ENTITY_STATES = [...clienteRoute, ...clientePopupRoute];
 
 @NgModule({
-    imports: [DucarmolocacoesSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [DucarmolocacoesSharedModule, RouterModule.forChild(ENTITY_STATES), NgxMaskModule.forRoot({})],
     declarations: [
         ClienteComponent,
         ClienteDetailComponent,

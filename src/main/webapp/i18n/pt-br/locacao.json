@@ -8,9 +8,9 @@
                 "createOrEditLabel": "Criar ou editar Locação",
                 "search": "Pesquisar por Locações"
             },
-            "created": "Uma nova Locação foi criado com o identificador {{ param }}",
-            "updated": "Uma Locação foi atualizado com o identificador {{ param }}",
-            "deleted": "Uma Locação foi deletado com o identificador {{ param }}",
+            "created": "Locação foi criado com o identificador {{ param }}",
+            "updated": "Locação foi atualizado com o identificador {{ param }}",
+            "deleted": "Locação foi deletado com o identificador {{ param }}",
             "delete": {
                 "question": "Tem certeza de que deseja excluir a Locação {{ id }}?"
             },
