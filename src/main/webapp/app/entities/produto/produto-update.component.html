@@ -4,11 +4,6 @@
             <h2 id="jhi-produto-heading" jhiTranslate="ducarmolocacoesApp.produto.home.createOrEditLabel">Create or edit a Produto</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!produto.id">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id"
-                        [(ngModel)]="produto.id" readonly />
-                </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.produto.descricao" for="field_descricao">Descricao</label>
                     <input type="text" class="form-control" name="descricao" id="field_descricao"

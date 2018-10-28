@@ -12,7 +12,7 @@
             "updated": "Tipo de Evento foi atualizado com o identificador {{ param }}",
             "deleted": "Tipo de Evento foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Tipo de Evento {{ id }}?"
+                "question": "Tem certeza de que deseja excluir este Tipo de Evento?"
             },
             "detail": {
                 "title": "Tipo de Evento"

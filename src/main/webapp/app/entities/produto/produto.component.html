@@ -29,7 +29,6 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="descricao"><span jhiTranslate="ducarmolocacoesApp.produto.descricao">Descricao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="precoCompra"><span jhiTranslate="ducarmolocacoesApp.produto.precoCompra">Preco Compra</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="precoVenda"><span jhiTranslate="ducarmolocacoesApp.produto.precoVenda">Preco Venda</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -39,7 +38,6 @@
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let produto of produtos ;trackBy: trackId">
-                <td><a [routerLink]="['/produto', produto.id, 'view' ]">{{produto.id}}</a></td>
                 <td>{{produto.descricao}}</td>
                 <td>{{produto.precoCompra | currency : '$'}}</td>
                 <td>{{produto.precoVenda | currency : '$'}}</td>

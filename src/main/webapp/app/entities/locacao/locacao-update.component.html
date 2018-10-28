@@ -10,100 +10,76 @@
                         [(ngModel)]="locacao.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorTotal" for="field_valorTotal">Valor Total</label>
-                    <input type="number" class="form-control" name="valorTotal" id="field_valorTotal"
-                        [(ngModel)]="locacao.valorTotal" />
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.cliente" for="field_cliente">Cliente</label>
+                    <div class="input-group">
+                        <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="locacao.clienteId" >
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="clienteOption.id" *ngFor="let clienteOption of clientes | orderBy:'nome'; trackBy: trackClienteById">{{clienteOption.nome}}</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorSinal" for="field_valorSinal">Valor Sinal</label>
-                    <input type="number" class="form-control" name="valorSinal" id="field_valorSinal"
-                        [(ngModel)]="locacao.valorSinal" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorAdiantado" for="field_valorAdiantado">Valor Adiantado</label>
-                    <input type="number" class="form-control" name="valorAdiantado" id="field_valorAdiantado"
-                        [(ngModel)]="locacao.valorAdiantado" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorSaldo" for="field_valorSaldo">Valor Saldo</label>
-                    <input type="number" class="form-control" name="valorSaldo" id="field_valorSaldo"
-                        [(ngModel)]="locacao.valorSaldo" />
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.dataContratacao" for="field_dataContratacao">Data Contratacao</label>
-                    <div class="d-flex">
-                        <input id="field_dataContratacao" type="datetime-local" class="form-control" name="dataContratacao" [(ngModel)]="dataContratacao"
-                        />
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.tipoEvento" for="field_tipoEvento">Tipo Evento</label>
+                    <div class="input-group">
+                        <select class="form-control" id="field_tipoEvento" name="tipoEvento" [(ngModel)]="locacao.tipoEventoId" >
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="tipoEventoOption.id" *ngFor="let tipoEventoOption of tipoeventos | orderBy:'descricao'; trackBy: trackTipoEventoById">{{tipoEventoOption.descricao}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.dataEvento" for="field_dataEvento">Data Evento</label>
                     <div class="input-group">
-                        <input id="field_dataEvento" type="text" class="form-control" name="dataEvento" ngbDatepicker  #dataEventoDp="ngbDatepicker" [(ngModel)]="locacao.dataEvento"
-                        />
+                        <input id="field_dataEvento" (ngModelChange)="fireDataEvento($event)" type="text" class="form-control" name="dataEvento" ngbDatepicker #dataEventoDp="ngbDatepicker"
+                               [(ngModel)]="locacao.dataEvento"/>
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="dataEventoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.dataDevPrev" for="field_dataDevPrev">Data Dev Prev</label>
-                    <div class="input-group">
-                        <input id="field_dataDevPrev" type="text" class="form-control" name="dataDevPrev" ngbDatepicker  #dataDevPrevDp="ngbDatepicker" [(ngModel)]="locacao.dataDevPrev"
-                        />
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="dataDevPrevDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.dataDevReal" for="field_dataDevReal">Data Dev Real</label>
-                    <div class="d-flex">
-                        <input id="field_dataDevReal" type="datetime-local" class="form-control" name="dataDevReal" [(ngModel)]="dataDevReal"
-                        />
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.dataEntrPrev" for="field_dataEntrPrev">Data Entr Prev</label>
                     <div class="input-group">
-                        <input id="field_dataEntrPrev" type="text" class="form-control" name="dataEntrPrev" ngbDatepicker  #dataEntrPrevDp="ngbDatepicker" [(ngModel)]="locacao.dataEntrPrev"
-                        />
+                        <input id="field_dataEntrPrev" type="text" class="form-control" name="dataEntrPrev" ngbDatepicker  #dataEntrPrevDp="ngbDatepicker"
+                               [(ngModel)]="locacao.dataEntrPrev"/>
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="dataEntrPrevDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.dataEntrReal" for="field_dataEntrReal">Data Entr Real</label>
-                    <div class="d-flex">
-                        <input id="field_dataEntrReal" type="datetime-local" class="form-control" name="dataEntrReal" [(ngModel)]="dataEntrReal"
-                        />
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.dataDevPrev" for="field_dataDevPrev">Data Dev Prev</label>
+                    <div class="input-group">
+                        <input id="field_dataDevPrev" type="text" class="form-control" name="dataDevPrev" ngbDatepicker  #dataDevPrevDp="ngbDatepicker"
+                               [(ngModel)]="locacao.dataDevPrev"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataDevPrevDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.situacao" for="field_situacao">Situacao</label>
-                    <input type="number" class="form-control" name="situacao" id="field_situacao"
-                        [(ngModel)]="locacao.situacao" />
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorTotal" for="field_valorTotal">Valor Total</label>
+                    <input type="text" class="form-control" name="valorTotal" id="field_valorTotal"
+                           currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', align: 'left' }"
+                        [(ngModel)]="locacao.valorTotal" disabled />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.htmlContrato" for="field_htmlContrato">Html Contrato</label>
-                    <input type="text" class="form-control" name="htmlContrato" id="field_htmlContrato"
-                        [(ngModel)]="locacao.htmlContrato" />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.cliente" for="field_cliente">Cliente</label>
-                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="locacao.clienteId" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="clienteOption.id" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.id}}</option>
-                    </select>
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorSinal" for="field_valorSinal">Valor Sinal</label>
+                    <input type="text" class="form-control" name="valorSinal" id="field_valorSinal"
+                           currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', align: 'left' }"
+                        [(ngModel)]="locacao.valorSinal" disabled />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.tipoEvento" for="field_tipoEvento">Tipo Evento</label>
-                    <select class="form-control" id="field_tipoEvento" name="tipoEvento" [(ngModel)]="locacao.tipoEventoId" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="tipoEventoOption.id" *ngFor="let tipoEventoOption of tipoeventos; trackBy: trackTipoEventoById">{{tipoEventoOption.id}}</option>
-                    </select>
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorAdiantado" for="field_valorAdiantado">Valor Adiantado</label>
+                    <input type="text" class="form-control" name="valorAdiantado" id="field_valorAdiantado"
+                           currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', align: 'left' }"
+                        [(ngModel)]="locacao.valorAdiantado" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorSaldo" for="field_valorSaldo">Valor Saldo</label>
+                    <input type="text" class="form-control" name="valorSaldo" id="field_valorSaldo"
+                           currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', align: 'left' }"
+                        [(ngModel)]="locacao.valorSaldo" disabled />
                 </div>
             </div>
             <div>

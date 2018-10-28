@@ -94,6 +94,7 @@
         "item-count": "Mostrando {{first}} - {{second}} de {{total}} resultados."
     },
     "entity": {
+        "actions": "Ações",
         "action": {
             "addblob": "Adicionar blob",
             "addimage": "Adicionar imagem",

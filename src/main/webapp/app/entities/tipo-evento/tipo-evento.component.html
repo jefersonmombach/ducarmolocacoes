@@ -29,14 +29,12 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="descricao"><span jhiTranslate="ducarmolocacoesApp.tipoEvento.descricao">Descricao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let tipoEvento of tipoEventos ;trackBy: trackId">
-                <td><a [routerLink]="['/tipo-evento', tipoEvento.id, 'view' ]">{{tipoEvento.id}}</a></td>
                 <td>{{tipoEvento.descricao}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

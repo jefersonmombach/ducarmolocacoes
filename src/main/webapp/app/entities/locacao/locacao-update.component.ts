@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -22,14 +22,11 @@ export class LocacaoUpdateComponent implements OnInit {
     isSaving: boolean;
 
     clientes: ICliente[];
-
     tipoeventos: ITipoEvento[];
-    dataContratacao: string;
+
     dataEventoDp: any;
     dataDevPrevDp: any;
-    dataDevReal: string;
     dataEntrPrevDp: any;
-    dataEntrReal: string;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -43,19 +40,24 @@ export class LocacaoUpdateComponent implements OnInit {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ locacao }) => {
             this.locacao = locacao;
-            this.dataContratacao = this.locacao.dataContratacao != null ? this.locacao.dataContratacao.format(DATE_TIME_FORMAT) : null;
-            this.dataDevReal = this.locacao.dataDevReal != null ? this.locacao.dataDevReal.format(DATE_TIME_FORMAT) : null;
-            this.dataEntrReal = this.locacao.dataEntrReal != null ? this.locacao.dataEntrReal.format(DATE_TIME_FORMAT) : null;
         });
-        this.clienteService.query().subscribe(
-            (res: HttpResponse<ICliente[]>) => {
-                this.clientes = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        this.loadClientes();
+        this.loadTiposEvento();
+    }
+
+    private loadTiposEvento() {
         this.tipoEventoService.query().subscribe(
             (res: HttpResponse<ITipoEvento[]>) => {
                 this.tipoeventos = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+    }
+
+    private loadClientes() {
+        this.clienteService.query().subscribe(
+            (res: HttpResponse<ICliente[]>) => {
+                this.clientes = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -67,9 +69,6 @@ export class LocacaoUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        this.locacao.dataContratacao = this.dataContratacao != null ? moment(this.dataContratacao, DATE_TIME_FORMAT) : null;
-        this.locacao.dataDevReal = this.dataDevReal != null ? moment(this.dataDevReal, DATE_TIME_FORMAT) : null;
-        this.locacao.dataEntrReal = this.dataEntrReal != null ? moment(this.dataEntrReal, DATE_TIME_FORMAT) : null;
         if (this.locacao.id !== undefined) {
             this.subscribeToSaveResponse(this.locacaoService.update(this.locacao));
         } else {
@@ -100,5 +99,14 @@ export class LocacaoUpdateComponent implements OnInit {
 
     trackTipoEventoById(index: number, item: ITipoEvento) {
         return item.id;
+    }
+
+    fireDataEvento(event: any) {
+        console.log(event);
+        if (this.locacao.dataEvento !== null && this.locacao.dataEvento !== undefined) {
+            this.locacao.dataEntrPrev = this.locacao.dataEvento.add(-1, 'days');
+            this.locacao.dataDevPrev = this.locacao.dataEvento.add(3, 'days');
+        }
+        console.log(this.locacao);
     }
 }

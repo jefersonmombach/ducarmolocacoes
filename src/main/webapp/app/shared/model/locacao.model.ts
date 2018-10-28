@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import * as moment from 'moment';
 import { ILocacaoProduto } from 'app/shared/model//locacao-produto.model';
 
 export interface ILocacao {
@@ -38,5 +39,12 @@ export class Locacao implements ILocacao {
         public produtos?: ILocacaoProduto[],
         public clienteId?: number,
         public tipoEventoId?: number
-    ) {}
+    ) {
+        this.dataContratacao = this.dataContratacao || moment();
+        this.situacao = this.situacao || 0;
+        this.valorTotal = this.valorTotal || 0;
+        this.valorSinal = this.valorSinal || 0;
+        this.valorAdiantado = this.valorAdiantado || 0;
+        this.valorSaldo = this.valorSaldo || 0;
+    }
 }

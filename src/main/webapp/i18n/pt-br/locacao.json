@@ -17,6 +17,12 @@
             "detail": {
                 "title": "Locação"
             },
+            "action": {
+                "issueContract": "Emitir Contrato",
+                "deliverTogs": "Entregar Trajes",
+                "returnTogs": "Devolver Trajes"
+            },
+            "id": "Contrato",
             "valorTotal": "Total",
             "valorSinal": "Sinal",
             "valorAdiantado": "Adiantado",

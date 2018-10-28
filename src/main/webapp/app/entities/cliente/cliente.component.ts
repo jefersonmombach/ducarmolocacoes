@@ -53,7 +53,7 @@ export class ClienteComponent implements OnInit, OnDestroy {
         if (this.currentSearch) {
             this.clienteService
                 .search({
-                    query: this.currentSearch,
+                    query: '*' + this.currentSearch + '*',
                     page: this.page,
                     size: this.itemsPerPage,
                     sort: this.sort()

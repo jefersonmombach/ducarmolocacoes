@@ -5,53 +5,13 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorTotal">Valor Total</span></dt>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.id">ID</span></dt>
                 <dd>
-                    <span>{{locacao.valorTotal}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorSinal">Valor Sinal</span></dt>
-                <dd>
-                    <span>{{locacao.valorSinal}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorAdiantado">Valor Adiantado</span></dt>
-                <dd>
-                    <span>{{locacao.valorAdiantado}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorSaldo">Valor Saldo</span></dt>
-                <dd>
-                    <span>{{locacao.valorSaldo}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataContratacao">Data Contratacao</span></dt>
-                <dd>
-                    <span>{{locacao.dataContratacao}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataEvento">Data Evento</span></dt>
-                <dd>
-                    <span>{{locacao.dataEvento}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataDevPrev">Data Dev Prev</span></dt>
-                <dd>
-                    <span>{{locacao.dataDevPrev}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataDevReal">Data Dev Real</span></dt>
-                <dd>
-                    <span>{{locacao.dataDevReal}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataEntrPrev">Data Entr Prev</span></dt>
-                <dd>
-                    <span>{{locacao.dataEntrPrev}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataEntrReal">Data Entr Real</span></dt>
-                <dd>
-                    <span>{{locacao.dataEntrReal}}</span>
+                    <span>{{locacao.id}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.locacao.situacao">Situacao</span></dt>
                 <dd>
                     <span>{{locacao.situacao}}</span>
-                </dd>
-                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.htmlContrato">Html Contrato</span></dt>
-                <dd>
-                    <span>{{locacao.htmlContrato}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.locacao.cliente">Cliente</span></dt>
                 <dd>
@@ -64,6 +24,46 @@
                     <div *ngIf="locacao.tipoEventoId">
                         <a [routerLink]="['/tipo-evento', locacao.tipoEventoId, 'view']">{{locacao.tipoEventoId}}</a>
                     </div>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataContratacao">Data Contratacao</span></dt>
+                <dd>
+                    <span>{{locacao.dataContratacao | date:'short'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataEvento">Data Evento</span></dt>
+                <dd>
+                    <span>{{locacao.dataEvento | date:'shortDate'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataEntrPrev">Data Entr Prev</span></dt>
+                <dd>
+                    <span>{{locacao.dataEntrPrev | date:'shortDate'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataEntrReal">Data Entr Real</span></dt>
+                <dd>
+                    <span>{{locacao.dataEntrReal | date:'short'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataDevPrev">Data Dev Prev</span></dt>
+                <dd>
+                    <span>{{locacao.dataDevPrev | date:'shortDate'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataDevReal">Data Dev Real</span></dt>
+                <dd>
+                    <span>{{locacao.dataDevReal | date:'short'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorTotal">Valor Total</span></dt>
+                <dd>
+                    <span>{{locacao.valorTotal | currency : '$'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorSinal">Valor Sinal</span></dt>
+                <dd>
+                    <span>{{locacao.valorSinal | currency : '$'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorAdiantado">Valor Adiantado</span></dt>
+                <dd>
+                    <span>{{locacao.valorAdiantado | currency : '$'}}</span>
+                </dd>
+                <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorSaldo">Valor Saldo</span></dt>
+                <dd>
+                    <span>{{locacao.valorSaldo | currency : '$'}}</span>
                 </dd>
             </dl>
 

@@ -12,7 +12,7 @@
             "updated": "Produto foi atualizado com o identificador {{ param }}",
             "deleted": "Produto foi deletado com o identificador {{ param }}",
             "delete": {
-                "question": "Tem certeza de que deseja excluir Produto {{ id }}?"
+                "question": "Tem certeza de que deseja excluir este Produto?"
             },
             "detail": {
                 "title": "Produto"

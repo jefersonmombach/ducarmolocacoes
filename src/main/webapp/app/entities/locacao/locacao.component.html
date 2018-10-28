@@ -28,52 +28,41 @@
     <div class="table-responsive" *ngIf="locacaos">
         <table class="table table-striped">
             <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="valorTotal"><span jhiTranslate="ducarmolocacoesApp.locacao.valorTotal">Valor Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="valorSinal"><span jhiTranslate="ducarmolocacoesApp.locacao.valorSinal">Valor Sinal</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="valorAdiantado"><span jhiTranslate="ducarmolocacoesApp.locacao.valorAdiantado">Valor Adiantado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="valorSaldo"><span jhiTranslate="ducarmolocacoesApp.locacao.valorSaldo">Valor Saldo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dataContratacao"><span jhiTranslate="ducarmolocacoesApp.locacao.dataContratacao">Data Contratacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dataEvento"><span jhiTranslate="ducarmolocacoesApp.locacao.dataEvento">Data Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dataDevPrev"><span jhiTranslate="ducarmolocacoesApp.locacao.dataDevPrev">Data Dev Prev</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dataDevReal"><span jhiTranslate="ducarmolocacoesApp.locacao.dataDevReal">Data Dev Real</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dataEntrPrev"><span jhiTranslate="ducarmolocacoesApp.locacao.dataEntrPrev">Data Entr Prev</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="dataEntrReal"><span jhiTranslate="ducarmolocacoesApp.locacao.dataEntrReal">Data Entr Real</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="situacao"><span jhiTranslate="ducarmolocacoesApp.locacao.situacao">Situacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="htmlContrato"><span jhiTranslate="ducarmolocacoesApp.locacao.htmlContrato">Html Contrato</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="clienteId"><span jhiTranslate="ducarmolocacoesApp.locacao.cliente">Cliente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tipoEventoId"><span jhiTranslate="ducarmolocacoesApp.locacao.tipoEvento">Tipo Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+                <th jhiSortBy="id"><span jhiTranslate="ducarmolocacoesApp.locacao.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="clienteId"><span jhiTranslate="ducarmolocacoesApp.locacao.cliente">Cliente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="dataEvento"><span jhiTranslate="ducarmolocacoesApp.locacao.dataEvento">Data Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="situacao"><span jhiTranslate="ducarmolocacoesApp.locacao.situacao">Situacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th><span jhiTranslate="entity.actions">Actions</span></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
-            <tr *ngFor="let locacao of locacaos ;trackBy: trackId">
+            <tr *ngFor="let locacao of locacaos | orderBy:'id';trackBy: trackId">
                 <td><a [routerLink]="['/locacao', locacao.id, 'view' ]">{{locacao.id}}</a></td>
-                <td>{{locacao.valorTotal}}</td>
-                <td>{{locacao.valorSinal}}</td>
-                <td>{{locacao.valorAdiantado}}</td>
-                <td>{{locacao.valorSaldo}}</td>
-                <td>{{locacao.dataContratacao | date:'medium'}}</td>
-                <td>{{locacao.dataEvento | date:'mediumDate'}}</td>
-                <td>{{locacao.dataDevPrev | date:'mediumDate'}}</td>
-                <td>{{locacao.dataDevReal | date:'medium'}}</td>
-                <td>{{locacao.dataEntrPrev | date:'mediumDate'}}</td>
-                <td>{{locacao.dataEntrReal | date:'medium'}}</td>
-                <td>{{locacao.situacao}}</td>
-                <td>{{locacao.htmlContrato}}</td>
                 <td>
                     <div *ngIf="locacao.clienteId">
                         <a [routerLink]="['../cliente', locacao.clienteId , 'view' ]" >{{locacao.clienteId}}</a>
                     </div>
                 </td>
-                <td>
-                    <div *ngIf="locacao.tipoEventoId">
-                        <a [routerLink]="['../tipo-evento', locacao.tipoEventoId , 'view' ]" >{{locacao.tipoEventoId}}</a>
-                    </div>
-                </td>
-                <td class="text-right">
+                <td>{{locacao.dataEvento | date:'shortDate'}}</td>
+                <td>{{locacao.situacao}}</td>
+                <td class="text-center">
                     <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                class="btn btn-default btn-sm">
+                            <fa-icon [icon]="'list-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.issueContract">issueContract</span>
+                        </button>
+                        <button type="submit"
+                                class="btn btn-default btn-sm">
+                            <fa-icon [icon]="'check'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.deliverTogs">deliverTogs</span>
+                        </button>
+                        <button type="submit"
+                                class="btn btn-default btn-sm">
+                            <fa-icon [icon]="'check-double'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.returnTogs">returnTogs</span>
+                        </button>
                         <button type="submit"
                                 [routerLink]="['/locacao', locacao.id, 'view' ]"
                                 class="btn btn-info btn-sm">
@@ -92,7 +81,7 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.cancel">Cancel</span>
                         </button>
                     </div>
                 </td>

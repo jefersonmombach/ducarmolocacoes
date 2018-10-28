@@ -12,6 +12,9 @@ import {
     faSortDown,
     faSync,
     faEye,
+    faListAlt,
+    faCheck,
+    faCheckDouble,
     faBan,
     faTimes,
     faArrowLeft,
@@ -49,6 +52,9 @@ library.add(faSortUp);
 library.add(faSortDown);
 library.add(faSync);
 library.add(faEye);
+library.add(faListAlt);
+library.add(faCheck);
+library.add(faCheckDouble);
 library.add(faBan);
 library.add(faTimes);
 library.add(faArrowLeft);
