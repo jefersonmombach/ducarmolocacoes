@@ -102,11 +102,9 @@ export class LocacaoUpdateComponent implements OnInit {
     }
 
     fireDataEvento(event: any) {
-        console.log(event);
-        if (this.locacao.dataEvento !== null && this.locacao.dataEvento !== undefined) {
-            this.locacao.dataEntrPrev = this.locacao.dataEvento.add(-1, 'days');
-            this.locacao.dataDevPrev = this.locacao.dataEvento.add(3, 'days');
+        if (event) {
+            this.locacao.dataEntrPrev = event.clone().add(-1, 'days');
+            this.locacao.dataDevPrev = event.clone().add(3, 'days');
         }
-        console.log(this.locacao);
     }
 }
