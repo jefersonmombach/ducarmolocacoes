@@ -17,7 +17,6 @@ export interface ILocacao {
     situacao?: number;
     htmlContrato?: string;
     produtos?: ILocacaoProduto[];
-    clienteId?: number;
     tipoEventoId?: number;
 }
 

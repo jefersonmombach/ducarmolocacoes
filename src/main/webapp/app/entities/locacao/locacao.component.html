@@ -9,6 +9,7 @@
         </button>
     </h2>
     <jhi-alert></jhi-alert>
+    <!--
     <div class="row">
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
@@ -24,6 +25,7 @@
             </form>
         </div>
     </div>
+    -->
     <br/>
     <div class="table-responsive" *ngIf="locacaos">
         <table class="table table-striped">
@@ -33,70 +35,88 @@
                 <th jhiSortBy="clienteId"><span jhiTranslate="ducarmolocacoesApp.locacao.cliente">Cliente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th jhiSortBy="dataEvento"><span jhiTranslate="ducarmolocacoesApp.locacao.dataEvento">Data Evento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
                 <th jhiSortBy="situacao"><span jhiTranslate="ducarmolocacoesApp.locacao.situacao">Situacao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-                <th><span jhiTranslate="entity.actions">Actions</span></th>
+                <th><span></span></th>
             </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let locacao of locacaos | orderBy:'id';trackBy: trackId">
                 <td><a [routerLink]="['/locacao', locacao.id, 'view' ]">{{locacao.id}}</a></td>
                 <td>
-                    <div *ngIf="locacao.clienteId">
-                        <a [routerLink]="['../cliente', locacao.clienteId , 'view' ]" >{{locacao.clienteId}}</a>
+                    <div *ngIf="locacao.cliente">
+                        <a [routerLink]="['../cliente', locacao.cliente.id , 'view' ]" >{{locacao.cliente.nome}}</a>
                     </div>
                 </td>
                 <td>{{locacao.dataEvento | date:'shortDate'}}</td>
                 <td>{{locacao.situacao | locacaoSituacaoStrPipe}}</td>
                 <td class="text-center">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/1'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-default btn-sm">
-                            <fa-icon [icon]="'list-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.issueContract">issueContract</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/2'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-default btn-sm">
-                            <fa-icon [icon]="'check'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.deliverTogs">deliverTogs</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/3'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-default btn-sm">
-                            <fa-icon [icon]="'check-double'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.returnTogs">returnTogs</span>
-                        </button>
-                        <button type="submit"
-                                class="btn btn-default btn-sm">
-                            <fa-icon [icon]="'print'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.print">print</span>
-                        </button>
+                        <div *ngIf="locacao.situacao == 0; then emitirContratoBlock;"></div>
+                        <ng-template #emitirContratoBlock>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/1'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-default btn-sm">
+                                <fa-icon [icon]="'list-alt'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.issueContract">issueContract</span>
+                            </button>
+                        </ng-template>
+                        <div *ngIf="locacao.situacao == 1; then entregarTrajesBlock;"></div>
+                        <ng-template #entregarTrajesBlock>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/2'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-default btn-sm">
+                                <fa-icon [icon]="'check'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.deliverTogs">deliverTogs</span>
+                            </button>
+                        </ng-template>
+                        <div *ngIf="locacao.situacao == 2; then devolverTrajesBlock;"></div>
+                        <ng-template #devolverTrajesBlock>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/3'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-default btn-sm">
+                                <fa-icon [icon]="'check-double'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.returnTogs">returnTogs</span>
+                            </button>
+                        </ng-template>
+                        <div *ngIf="(locacao.situacao >= 1 && locacao.situacao <= 3); then imprimirBlock;"></div>
+                        <ng-template #imprimirBlock>
+                            <button type="submit"
+                                    class="btn btn-default btn-sm">
+                                <fa-icon [icon]="'print'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.print">print</span>
+                            </button>
+                        </ng-template>
                         <button type="submit"
                                 [routerLink]="['/locacao', locacao.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <button type="submit"
-                                [routerLink]="['/locacao', locacao.id, 'edit']"
-                                class="btn btn-primary btn-sm">
-                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/9'} }]"
-                                replaceUrl="true"
-                                queryParamsHandling="merge"
-                                class="btn btn-danger btn-sm">
-                            <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.cancel">Cancel</span>
-                        </button>
+                        <div *ngIf="locacao.situacao == 0; then imprimirBlock;"></div>
+                        <ng-template #imprimirBlock>
+                            <button type="submit"
+                                    [routerLink]="['/locacao', locacao.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+                        </ng-template>
+                        <div *ngIf="locacao.situacao == 9; then cancelarBlock;"></div>
+                        <ng-template #cancelarBlock>
+                            <button type="submit"
+                                    [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/9'} }]"
+                                    replaceUrl="true"
+                                    queryParamsHandling="merge"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.cancel">Cancel</span>
+                            </button>
+                        </ng-template>
                     </div>
                 </td>
             </tr>

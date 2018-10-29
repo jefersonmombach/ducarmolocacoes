@@ -66,7 +66,8 @@ public class Locacao implements Serializable {
 
     @OneToMany(mappedBy = "locacao")
     private Set<LocacaoProduto> produtos = new HashSet<>();
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("locacoes")
     private Cliente cliente;
 
