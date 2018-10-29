@@ -11,6 +11,7 @@ import { LocacaoDetailComponent } from './locacao-detail.component';
 import { LocacaoUpdateComponent } from './locacao-update.component';
 import { LocacaoDeletePopupComponent } from './locacao-delete-dialog.component';
 import { ILocacao } from 'app/shared/model/locacao.model';
+import { LocacaoMudarSituacaoPopupComponent } from 'app/entities/locacao/locacao-mudar-situacao-dialog.component';
 
 @Injectable({ providedIn: 'root' })
 export class LocacaoResolve implements Resolve<ILocacao> {
@@ -22,6 +23,17 @@ export class LocacaoResolve implements Resolve<ILocacao> {
             return this.service.find(id).pipe(map((locacao: HttpResponse<Locacao>) => locacao.body));
         }
         return of(new Locacao());
+    }
+}
+
+@Injectable({ providedIn: 'root' })
+export class SituacaoNovaResolve implements Resolve<any> {
+    constructor() {}
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        const situacaoNova = route.params['situacaoNova'] ? route.params['situacaoNova'] : null;
+
+        return situacaoNova;
     }
 }
 
@@ -79,6 +91,20 @@ export const locacaoPopupRoute: Routes = [
         component: LocacaoDeletePopupComponent,
         resolve: {
             locacao: LocacaoResolve
+        },
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'ducarmolocacoesApp.locacao.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    },
+    {
+        path: 'locacao/:id/patch/:situacaoNova',
+        component: LocacaoMudarSituacaoPopupComponent,
+        resolve: {
+            locacao: LocacaoResolve,
+            situacaoNova: SituacaoNovaResolve
         },
         data: {
             authorities: ['ROLE_USER'],

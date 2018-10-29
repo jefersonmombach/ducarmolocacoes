@@ -1,5 +1,9 @@
 package tech.jefersonms.ducarmolocacoes.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ReflectionUtils;
 import tech.jefersonms.ducarmolocacoes.service.LocacaoService;
 import tech.jefersonms.ducarmolocacoes.domain.Locacao;
 import tech.jefersonms.ducarmolocacoes.repository.LocacaoRepository;
@@ -14,6 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Field;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -28,10 +34,11 @@ public class LocacaoServiceImpl implements LocacaoService {
     private final Logger log = LoggerFactory.getLogger(LocacaoServiceImpl.class);
 
     private LocacaoRepository locacaoRepository;
-
     private LocacaoMapper locacaoMapper;
-
     private LocacaoSearchRepository locacaoSearchRepository;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     public LocacaoServiceImpl(LocacaoRepository locacaoRepository, LocacaoMapper locacaoMapper, LocacaoSearchRepository locacaoSearchRepository) {
         this.locacaoRepository = locacaoRepository;
@@ -95,6 +102,31 @@ public class LocacaoServiceImpl implements LocacaoService {
         log.debug("Request to delete Locacao : {}", id);
         locacaoRepository.deleteById(id);
         locacaoSearchRepository.deleteById(id);
+    }
+
+    /**
+     * Patch the locacao by id.
+     *
+     * @param id the id of the entity
+     */
+    @Override
+    public LocacaoDTO patch(Long id, Map<String, String> fields) {
+        log.debug("Request to patch Locacao : {}", id);
+        Optional<Locacao> opt = locacaoRepository.findById(id);
+
+        if (!opt.isPresent()) {
+            return new LocacaoDTO();
+        }
+
+        LocacaoDTO locacaoDTO = locacaoMapper.toDto(opt.get());
+
+        fields.forEach((k, v) -> {
+            // use reflection to get field k on manager and set it to value k
+            Field field = ReflectionUtils.findField(LocacaoDTO.class, k);
+            ReflectionUtils.setField(field, locacaoDTO, v);
+        });
+
+        return this.save(locacaoDTO);
     }
 
     /**

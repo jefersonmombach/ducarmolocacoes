@@ -5,6 +5,7 @@ import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -43,6 +44,13 @@ public interface LocacaoService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * Patch the "id" locacao.
+     *
+     * @param id the id of the entity
+     */
+    LocacaoDTO patch(Long id, Map<String, String> fields);
 
     /**
      * Search for the locacao corresponding to the query.

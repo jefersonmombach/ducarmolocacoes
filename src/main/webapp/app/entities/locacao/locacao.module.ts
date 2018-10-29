@@ -13,6 +13,11 @@ import {
 } from './';
 
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import {
+    LocacaoMudarSituacaoDialogComponent,
+    LocacaoMudarSituacaoPopupComponent
+} from 'app/entities/locacao/locacao-mudar-situacao-dialog.component';
+import { LocacaoSituacaoStrPipe } from 'app/shared/util/locacao-situacao-str.pipe';
 
 const ENTITY_STATES = [...locacaoRoute, ...locacaoPopupRoute];
 
@@ -23,9 +28,19 @@ const ENTITY_STATES = [...locacaoRoute, ...locacaoPopupRoute];
         LocacaoDetailComponent,
         LocacaoUpdateComponent,
         LocacaoDeleteDialogComponent,
-        LocacaoDeletePopupComponent
+        LocacaoDeletePopupComponent,
+        LocacaoMudarSituacaoDialogComponent,
+        LocacaoMudarSituacaoPopupComponent,
+        LocacaoSituacaoStrPipe
     ],
-    entryComponents: [LocacaoComponent, LocacaoUpdateComponent, LocacaoDeleteDialogComponent, LocacaoDeletePopupComponent],
+    entryComponents: [
+        LocacaoComponent,
+        LocacaoUpdateComponent,
+        LocacaoDeleteDialogComponent,
+        LocacaoDeletePopupComponent,
+        LocacaoMudarSituacaoDialogComponent,
+        LocacaoMudarSituacaoPopupComponent
+    ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DucarmolocacoesLocacaoModule {}

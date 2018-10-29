@@ -104,7 +104,9 @@
             "edit": "Editar",
             "open": "Open",
             "save": "Salvar",
-            "view": "Visualizar"
+            "view": "Visualizar",
+            "print": "Imprimir",
+            "execute": "Executar"
         },
         "detail": {
             "field": "Campo",

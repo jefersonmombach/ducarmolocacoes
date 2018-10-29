@@ -1,6 +1,7 @@
 package tech.jefersonms.ducarmolocacoes.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import tech.jefersonms.ducarmolocacoes.domain.Locacao;
 import tech.jefersonms.ducarmolocacoes.service.LocacaoService;
 import tech.jefersonms.ducarmolocacoes.web.rest.errors.BadRequestAlertException;
 import tech.jefersonms.ducarmolocacoes.web.rest.util.HeaderUtil;
@@ -20,6 +21,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 

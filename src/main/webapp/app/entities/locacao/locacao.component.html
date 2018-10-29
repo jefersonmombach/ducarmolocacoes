@@ -45,23 +45,37 @@
                     </div>
                 </td>
                 <td>{{locacao.dataEvento | date:'shortDate'}}</td>
-                <td>{{locacao.situacao}}</td>
+                <td>{{locacao.situacao | locacaoSituacaoStrPipe}}</td>
                 <td class="text-center">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/1'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
                                 class="btn btn-default btn-sm">
                             <fa-icon [icon]="'list-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.issueContract">issueContract</span>
                         </button>
                         <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/2'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
                                 class="btn btn-default btn-sm">
                             <fa-icon [icon]="'check'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.deliverTogs">deliverTogs</span>
                         </button>
                         <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/3'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
                                 class="btn btn-default btn-sm">
                             <fa-icon [icon]="'check-double'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="ducarmolocacoesApp.locacao.action.returnTogs">returnTogs</span>
+                        </button>
+                        <button type="submit"
+                                class="btn btn-default btn-sm">
+                            <fa-icon [icon]="'print'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.print">print</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/locacao', locacao.id, 'view' ]"
@@ -76,7 +90,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/9'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

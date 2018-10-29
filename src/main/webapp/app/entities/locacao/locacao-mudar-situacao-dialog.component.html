@@ -1,0 +1,19 @@
+<form name="mudarSituacaoForm" (ngSubmit)="confirmMudarSituacao(locacao, situacaoNova)">
+    <div class="modal-header">
+        <h4 class="modal-title" jhiTranslate="ducarmolocacoesApp.locacao.mudarSituacao.title">confirm the action</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <p id="jhi-mudar-situacao-locacao-heading" jhiTranslate="ducarmolocacoesApp.locacao.mudarSituacao.question" translateValues="{actionDesc: '{{descricaoAcao}}'}">Are you sure you want to execute this action?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button id="jhi-confirm-mudar-situacao-locacao" type="submit" class="btn btn-primary">
+            <fa-icon [icon]="'check'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.execute">Execute</span>
+        </button>
+    </div>
+</form>
