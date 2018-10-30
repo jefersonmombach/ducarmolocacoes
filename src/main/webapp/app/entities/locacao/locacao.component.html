@@ -86,6 +86,7 @@
                         <div *ngIf="(locacao.situacao >= 1 && locacao.situacao <= 3); then imprimirBlock;"></div>
                         <ng-template #imprimirBlock>
                             <button type="submit"
+                                    (click)="printContrato(locacao.id)"
                                     class="btn btn-default btn-sm">
                                 <fa-icon [icon]="'print'"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.print">print</span>
@@ -97,8 +98,8 @@
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <div *ngIf="locacao.situacao == 0; then imprimirBlock;"></div>
-                        <ng-template #imprimirBlock>
+                        <div *ngIf="locacao.situacao == 0; then editBlock;"></div>
+                        <ng-template #editBlock>
                             <button type="submit"
                                     [routerLink]="['/locacao', locacao.id, 'edit']"
                                     class="btn btn-primary btn-sm">
@@ -106,7 +107,7 @@
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
                         </ng-template>
-                        <div *ngIf="locacao.situacao == 9; then cancelarBlock;"></div>
+                        <div *ngIf="locacao.situacao !== 9 && locacao.situacao < 3; then cancelarBlock;"></div>
                         <ng-template #cancelarBlock>
                             <button type="submit"
                                     [routerLink]="['/', { outlets: { popup: 'locacao/'+ locacao.id + '/patch/9'} }]"

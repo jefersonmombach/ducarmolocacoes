@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { ILocacao } from 'app/shared/model/locacao.model';
+import { IProduto } from 'app/shared/model/produto.model';
 
 type EntityResponseType = HttpResponse<ILocacao>;
 type EntityArrayResponseType = HttpResponse<ILocacao[]>;
@@ -44,6 +45,10 @@ export class LocacaoService {
         return this.http
             .get<ILocacao[]>(this.resourceUrl, { params: options, observe: 'response' })
             .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+    }
+
+    printContract(id: number): Observable<EntityResponseType> {
+        return this.http.get<any>(`${this.resourceUrl}/${id}/contrato`, { observe: 'response' });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {

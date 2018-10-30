@@ -19,6 +19,14 @@ public class LocacaoProduto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public LocacaoProduto() {
+
+    }
+
+    public LocacaoProduto(Produto produto) {
+        this.produto = produto;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

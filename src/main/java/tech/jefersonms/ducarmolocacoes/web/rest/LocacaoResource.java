@@ -1,6 +1,16 @@
 package tech.jefersonms.ducarmolocacoes.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.ElementList;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
 import tech.jefersonms.ducarmolocacoes.domain.Locacao;
 import tech.jefersonms.ducarmolocacoes.service.LocacaoService;
 import tech.jefersonms.ducarmolocacoes.web.rest.errors.BadRequestAlertException;
@@ -17,6 +27,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -113,6 +126,72 @@ public class LocacaoResource {
         log.debug("REST request to get Locacao : {}", id);
         Optional<LocacaoDTO> locacaoDTO = locacaoService.findOne(id);
         return ResponseUtil.wrapOrNotFound(locacaoDTO);
+    }
+
+    /**
+     * GET  /locacaos/:id : get the "id" locacao.
+     *
+     * @param id the id of the locacaoDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the locacaoDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/locacaos/{id}/contrato")
+    @Timed
+    public ResponseEntity<InputStreamResource> getContrato(@PathVariable Long id) {
+        log.debug("REST request to get Contrato of Locacao : {}", id);
+
+        Document document = null;
+        ByteArrayOutputStream out = null;
+
+        try {
+            LocacaoDTO loc = locacaoService.findOne(id).get();
+
+            log.debug(loc.toString());
+
+            out = new ByteArrayOutputStream();
+            document = new Document(PageSize.A4);
+            document.setMargins(20, 20, 20, 20);
+            PdfWriter.getInstance(document, out);
+            document.open();
+            document.addAuthor("Du Carmo Locações");
+            document.addCreator("Du Carmo Locações");
+            document.addSubject("Contrato");
+            document.addCreationDate();
+            document.addTitle("Contrato");
+
+            PdfPTable table = new PdfPTable(1);
+            PdfPCell cell = new PdfPCell();
+            ElementList list = XMLWorkerHelper.parseToElementList(loc.getHtmlContrato(), null);
+            for (Element element : list) {
+                cell.addElement(element);
+            }
+            table.addCell(cell);
+            document.add(table);
+            document.close();
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+            headers.add("Pragma", "no-cache");
+            headers.add("Expires", "0");
+
+            InputStream in = new ByteArrayInputStream(out.toByteArray());
+
+            return ResponseEntity
+                .ok()
+                .headers(headers)
+                .contentLength(in.available())
+                .contentType(
+                    MediaType.parseMediaType("application/octet-stream"))
+                .body(new InputStreamResource(in));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .headers(HeaderUtil.createAlert(ex.getMessage(), new String()))
+                .body(null);
+        } finally {
+            if (document != null) {
+                document.close();
+            }
+        }
     }
 
     /**

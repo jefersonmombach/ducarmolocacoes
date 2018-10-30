@@ -142,6 +142,15 @@ export class LocacaoComponent implements OnInit, OnDestroy {
         return result;
     }
 
+    printContrato(id: number) {
+        this.locacaoService
+            .printContract(id)
+            .subscribe(
+                (res: HttpResponse<any>) => this.paginateLocacaos(res.body, res.headers),
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
+    }
+
     private paginateLocacaos(data: ILocacao[], headers: HttpHeaders) {
         this.links = this.parseLinks.parse(headers.get('link'));
         this.totalItems = parseInt(headers.get('X-Total-Count'), 10);

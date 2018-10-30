@@ -29,7 +29,6 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nome"><span jhiTranslate="ducarmolocacoesApp.cliente.nome">Nome</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="nascimento"><span jhiTranslate="ducarmolocacoesApp.cliente.nascimento">Nascimento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="telefoneResidencial"><span jhiTranslate="ducarmolocacoesApp.cliente.telefoneResidencial">Telefone Residencial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -39,7 +38,6 @@
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
             <tr *ngFor="let cliente of clientes ;trackBy: trackId">
-                <td><a [routerLink]="['/cliente', cliente.id, 'view' ]">{{cliente.id}}</a></td>
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.nascimento | date:'shortDate'}}</td>
                 <td>{{cliente.telefoneResidencial | mask: '(00)0000-0000'}}</td>
