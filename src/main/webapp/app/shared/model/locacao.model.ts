@@ -1,6 +1,8 @@
 import { Moment } from 'moment';
 import * as moment from 'moment';
 import { ILocacaoProduto } from 'app/shared/model//locacao-produto.model';
+import { ICliente } from 'app/shared/model/cliente.model';
+import { ITipoEvento } from 'app/shared/model/tipo-evento.model';
 
 export interface ILocacao {
     id?: number;
@@ -18,6 +20,8 @@ export interface ILocacao {
     htmlContrato?: string;
     produtos?: ILocacaoProduto[];
     tipoEventoId?: number;
+    cliente?: ICliente;
+    tipoEvento?: ITipoEvento;
 }
 
 export class Locacao implements ILocacao {
@@ -37,7 +41,9 @@ export class Locacao implements ILocacao {
         public htmlContrato?: string,
         public produtos?: ILocacaoProduto[],
         public clienteId?: number,
-        public tipoEventoId?: number
+        public tipoEventoId?: number,
+        public cliente?: ICliente,
+        public tipoEvento?: ITipoEvento
     ) {
         this.dataContratacao = this.dataContratacao || moment();
         this.situacao = this.situacao || 0;

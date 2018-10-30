@@ -43,6 +43,8 @@ public class LocacaoDTO implements Serializable {
 
     private ClienteDTO cliente;
 
+    private TipoEventoDTO tipoEvento;
+
     public Long getId() {
         return id;
     }
@@ -211,5 +213,13 @@ public class LocacaoDTO implements Serializable {
 
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
+    }
+
+    public TipoEventoDTO getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public void setTipoEvento(TipoEventoDTO tipoEvento) {
+        this.tipoEvento = tipoEvento;
     }
 }

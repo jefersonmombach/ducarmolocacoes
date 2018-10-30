@@ -11,18 +11,18 @@
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.locacao.situacao">Situacao</span></dt>
                 <dd>
-                    <span>{{locacao.situacao}}</span>
+                    <span>{{locacao.situacao | locacaoSituacaoStrPipe}}</span>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.locacao.cliente">Cliente</span></dt>
                 <dd>
                     <div *ngIf="locacao.clienteId">
-                        <a [routerLink]="['/cliente', locacao.clienteId, 'view']">{{locacao.clienteId}}</a>
+                        <a [routerLink]="['/cliente', locacao.clienteId, 'view']">{{locacao.cliente.nome}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.locacao.tipoEvento">Tipo Evento</span></dt>
                 <dd>
                     <div *ngIf="locacao.tipoEventoId">
-                        <a [routerLink]="['/tipo-evento', locacao.tipoEventoId, 'view']">{{locacao.tipoEventoId}}</a>
+                        <a [routerLink]="['/tipo-evento', locacao.tipoEventoId, 'view']">{{locacao.tipoEvento.descricao}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="ducarmolocacoesApp.locacao.dataContratacao">Data Contratacao</span></dt>

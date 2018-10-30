@@ -71,7 +71,7 @@ public class Locacao implements Serializable {
     @JsonIgnoreProperties("locacoes")
     private Cliente cliente;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("locacoes")
     private TipoEvento tipoEvento;
 
