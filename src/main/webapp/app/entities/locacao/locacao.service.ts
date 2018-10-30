@@ -48,7 +48,11 @@ export class LocacaoService {
     }
 
     printContract(id: number): Observable<EntityResponseType> {
-        return this.http.get<any>(`${this.resourceUrl}/${id}/contrato`, { observe: 'response' });
+        return this.http
+            .get<any>(`${this.resourceUrl}/${id}/contrato`, { observe: 'response', responseType: 'application/pdf' })
+            .subscribe(res => {
+                console.log({ eu: 'jeferson', res: res });
+            });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {

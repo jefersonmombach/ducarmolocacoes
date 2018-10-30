@@ -143,12 +143,7 @@ export class LocacaoComponent implements OnInit, OnDestroy {
     }
 
     printContrato(id: number) {
-        this.locacaoService
-            .printContract(id)
-            .subscribe(
-                (res: HttpResponse<any>) => this.paginateLocacaos(res.body, res.headers),
-                (res: HttpErrorResponse) => this.onError(res.message)
-            );
+        this.locacaoService.printContract(id);
     }
 
     private paginateLocacaos(data: ILocacao[], headers: HttpHeaders) {
