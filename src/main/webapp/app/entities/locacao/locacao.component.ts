@@ -146,25 +146,7 @@ export class LocacaoComponent implements OnInit, OnDestroy {
     }
 
     printContrato(locacao: ILocacao) {
-        const div = document.createElement('div');
-        div.setAttribute('id', 'divContrato');
-        div.innerHTML = locacao.htmlContrato.trim();
-        // @ts-ignore
-        document.getElementsByTagName('body')[0].append(div);
-
-        html2canvas(div).then(canvas => {
-            // Few necessary setting options
-            const imgWidth = 190;
-            const imgHeight = 230;
-
-            const contentDataURL = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
-            const position = 10;
-            pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight);
-            pdf.save(`contrato-locacao-${locacao.id}.pdf`); // Generated PDF
-
-            document.getElementsByTagName('body')[0].removeChild(div);
-        });
+        this.locacaoService.printContrato(locacao);
     }
 
     private paginateLocacaos(data: ILocacao[], headers: HttpHeaders) {

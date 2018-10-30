@@ -25,6 +25,10 @@ export class LocacaoMudarSituacaoDialogComponent {
     confirmMudarSituacao(locacao: ILocacao) {
         this.locacao.situacao = this.situacaoNova;
         this.locacaoService.update(this.locacao).subscribe(response => {
+            // imprime quando for a situacao nova de contrato emitido
+            if (this.situacaoNova === '1') {
+                this.locacaoService.printContrato(response.body);
+            }
             this.eventManager.broadcast({
                 name: 'locacaoListModification',
                 content: 'Updated an locacao'
