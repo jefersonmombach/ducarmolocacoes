@@ -24,7 +24,8 @@
             "action": {
                 "issueContract": "Emitir Contrato",
                 "deliverTogs": "Entregar Trajes",
-                "returnTogs": "Devolver Trajes"
+                "returnTogs": "Devolver Trajes",
+                "addProduct": "Adicionar Produto"
             },
             "id": "Contrato",
             "valorTotal": "Total",

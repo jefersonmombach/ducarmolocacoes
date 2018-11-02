@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-locacao-produto-heading" jhiTranslate="ducarmolocacoesApp.locacaoProduto.home.createOrEditLabel">Create or edit a Locacao Produto</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!locacaoProduto.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="locacaoProduto.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.quantidade" for="field_quantidade">Quantidade</label>
+                    <input type="number" class="form-control" name="quantidade" id="field_quantidade"
+                        [(ngModel)]="locacaoProduto.quantidade" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.valorUnitario" for="field_valorUnitario">Valor Unitario</label>
+                    <input type="number" class="form-control" name="valorUnitario" id="field_valorUnitario"
+                        [(ngModel)]="locacaoProduto.valorUnitario" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.valorTotal" for="field_valorTotal">Valor Total</label>
+                    <input type="number" class="form-control" name="valorTotal" id="field_valorTotal"
+                        [(ngModel)]="locacaoProduto.valorTotal" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.produto" for="field_produto">Produto</label>
+                    <select class="form-control" id="field_produto" name="produto" [(ngModel)]="locacaoProduto.produtoId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="produtoOption.id" *ngFor="let produtoOption of produtos; trackBy: trackProdutoById">{{produtoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.locacao" for="field_locacao">Locacao</label>
+                    <select class="form-control" id="field_locacao" name="locacao" [(ngModel)]="locacaoProduto.locacaoId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="locacaoOption.id" *ngFor="let locacaoOption of locacaos; trackBy: trackLocacaoById">{{locacaoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.cliente" for="field_cliente">Cliente</label>
+                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="locacaoProduto.clienteId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clienteOption.id" *ngFor="let clienteOption of clientes; trackBy: trackClienteById">{{clienteOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
