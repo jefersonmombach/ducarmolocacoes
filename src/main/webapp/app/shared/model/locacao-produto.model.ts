@@ -7,6 +7,9 @@ export interface ILocacaoProduto {
     quantidade?: number;
     valorUnitario?: number;
     valorTotal?: number;
+    produto?: IProduto;
+    locacao?: ILocacao;
+    cliente?: ICliente;
     produtoId?: number;
     locacaoId?: number;
     clienteId?: number;
@@ -18,6 +21,9 @@ export class LocacaoProduto implements ILocacaoProduto {
         public quantidade?: number,
         public valorUnitario?: number,
         public valorTotal?: number,
+        public produto?: IProduto,
+        public locacao?: ILocacao,
+        public cliente?: ICliente,
         public produtoId?: number,
         public locacaoId?: number,
         public clienteId?: number

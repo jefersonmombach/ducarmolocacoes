@@ -99,13 +99,17 @@ export class LocacaoAddProdutoComponent implements AfterViewInit {
     }
 
     fireProduto(event) {
+        this.locacaoProduto.produtoId = this.locacaoProduto.produto.id;
         this.locacaoProduto.quantidade = 1;
-        const produto: IProduto = this.produtos.find((e, i, a) => e.id === this.locacaoProduto.produtoId);
-        this.locacaoProduto.valorUnitario = produto.precoVenda;
+        this.locacaoProduto.valorUnitario = this.locacaoProduto.produto.precoVenda;
         this.locacaoProduto.valorTotal = this.locacaoProduto.valorUnitario * this.locacaoProduto.quantidade;
     }
 
     addProduto(event) {
         this.activeModal.close(this.locacaoProduto);
+    }
+
+    fireCliente($event) {
+        this.locacaoProduto.clienteId = this.locacaoProduto.cliente.id;
     }
 }

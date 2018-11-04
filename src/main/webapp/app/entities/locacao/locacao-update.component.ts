@@ -11,8 +11,8 @@ import { ClienteService } from 'app/entities/cliente';
 import { ITipoEvento } from 'app/shared/model/tipo-evento.model';
 import { TipoEventoService } from 'app/entities/tipo-evento';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLoginModalComponent } from 'app/shared';
 import { LocacaoAddProdutoComponent } from 'app/entities/locacao/locacao-add-produto.component';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'jhi-locacao-update',
@@ -47,6 +47,7 @@ export class LocacaoUpdateComponent implements OnInit {
         });
         this.loadClientes();
         this.loadTiposEvento();
+        this.locacao.produtos = [];
     }
 
     private loadTiposEvento() {
@@ -113,15 +114,20 @@ export class LocacaoUpdateComponent implements OnInit {
     }
 
     openAddProduto() {
-        const modalRef = this.modalService.open(LocacaoAddProdutoComponent);
-        modalRef.componentInstance.locacao = this.locacao;
-        modalRef.result.then(
-            result => {
-                this.locacao.produtos.push(result);
-            },
-            reason => {
-                console.log(reason);
-            }
-        );
+        if (!_.isNil(this.locacao.dataEvento)) {
+            const modalRef = this.modalService.open(LocacaoAddProdutoComponent);
+            modalRef.componentInstance.locacao = this.locacao;
+            modalRef.result.then(
+                result => {
+                    this.locacao.produtos.push(result);
+                },
+                reason => {
+                    console.log(reason);
+                }
+            );
+        } else {
+            alert('É necessário informar a data do evento.');
+            return;
+        }
     }
 }

@@ -6,22 +6,23 @@
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.produto" for="field_produto">Produto</label>
-                    <select class="form-control" id="field_produto" name="produto" [(ngModel)]="locacaoProduto.produtoId" (change)="fireProduto($event)">
+                    <select class="form-control" id="field_produto" name="produto" [(ngModel)]="locacaoProduto.produto" (change)="fireProduto($event)" required>
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="produtoOption.id" *ngFor="let produtoOption of produtos | orderBy:'descricao'; trackBy: trackProdutoById">{{produtoOption.descricao}}</option>
+                        <option [ngValue]="produtoOption" *ngFor="let produtoOption of produtos | orderBy:'descricao'; trackBy: trackProdutoById">{{produtoOption.descricao}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.valorUnitario" for="field_valorUnitario">Valor Unitario</label>
                     <input type="text" class="form-control" name="valorUnitario" id="field_valorUnitario"
                            currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', align: 'left' }"
-                            [(ngModel)]="locacaoProduto.valorUnitario" />
+                            [(ngModel)]="locacaoProduto.valorUnitario"
+                           required/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.cliente" for="field_cliente">Cliente</label>
-                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="locacaoProduto.clienteId" >
+                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="locacaoProduto.cliente" (change)="fireCliente($event)" required>
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="clienteOption.id" *ngFor="let clienteOption of clientes | orderBy:'nome'; trackBy: trackClienteById">{{clienteOption.nome}}</option>
+                        <option [ngValue]="clienteOption" *ngFor="let clienteOption of clientes | orderBy:'nome'; trackBy: trackClienteById">{{clienteOption.nome}}</option>
                     </select>
                 </div>
             </div>
