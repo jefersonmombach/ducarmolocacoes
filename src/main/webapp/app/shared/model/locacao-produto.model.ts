@@ -1,3 +1,7 @@
+import { IProduto } from 'app/shared/model/produto.model';
+import { ILocacao } from 'app/shared/model/locacao.model';
+import { ICliente } from 'app/shared/model/cliente.model';
+
 export interface ILocacaoProduto {
     id?: number;
     quantidade?: number;

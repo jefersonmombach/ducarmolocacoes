@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JhiAlertService } from 'ng-jhipster';
 
-import { ILocacaoProduto } from 'app/shared/model/locacao-produto.model';
+import { ILocacaoProduto, LocacaoProduto } from 'app/shared/model/locacao-produto.model';
 import { IProduto } from 'app/shared/model/produto.model';
 import { ProdutoService } from 'app/entities/produto';
 import { ILocacao } from 'app/shared/model/locacao.model';
@@ -12,20 +11,22 @@ import { LocacaoService } from 'app/entities/locacao';
 import { ICliente } from 'app/shared/model/cliente.model';
 import { ClienteService } from 'app/entities/cliente';
 import { LocacaoProdutoService } from 'app/entities/locacao-produto';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'jhi-locacao-add-produto',
     templateUrl: './locacao-add-produto.component.html'
 })
-export class LocacaoAddProdutoComponent implements OnInit {
-    locacaoProduto: ILocacaoProduto;
+export class LocacaoAddProdutoComponent implements AfterViewInit {
+    locacaoProduto: ILocacaoProduto = new LocacaoProduto();
+
     isSaving: boolean;
 
     produtos: IProduto[];
-
     locacaos: ILocacao[];
-
     clientes: ICliente[];
+
+    @Input() locacao: ILocacao;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -33,14 +34,12 @@ export class LocacaoAddProdutoComponent implements OnInit {
         private produtoService: ProdutoService,
         private locacaoService: LocacaoService,
         private clienteService: ClienteService,
-        private activatedRoute: ActivatedRoute
+        private activeModal: NgbActiveModal
     ) {}
 
-    ngOnInit() {
+    ngAfterViewInit() {
         this.isSaving = false;
-        this.activatedRoute.data.subscribe(({ locacaoProduto }) => {
-            this.locacaoProduto = locacaoProduto;
-        });
+        this.locacaoProduto.locacaoId = this.locacao.id;
         this.produtoService.query().subscribe(
             (res: HttpResponse<IProduto[]>) => {
                 this.produtos = res.body;
@@ -61,10 +60,6 @@ export class LocacaoAddProdutoComponent implements OnInit {
         );
     }
 
-    previousState() {
-        window.history.back();
-    }
-
     save() {
         this.isSaving = true;
         if (this.locacaoProduto.id !== undefined) {
@@ -80,7 +75,7 @@ export class LocacaoAddProdutoComponent implements OnInit {
 
     private onSaveSuccess() {
         this.isSaving = false;
-        this.previousState();
+        this.close(null);
     }
 
     private onSaveError() {
@@ -95,11 +90,22 @@ export class LocacaoAddProdutoComponent implements OnInit {
         return item.id;
     }
 
-    trackLocacaoById(index: number, item: ILocacao) {
+    trackClienteById(index: number, item: ICliente) {
         return item.id;
     }
 
-    trackClienteById(index: number, item: ICliente) {
-        return item.id;
+    close(event) {
+        this.activeModal.dismiss('');
+    }
+
+    fireProduto(event) {
+        this.locacaoProduto.quantidade = 1;
+        const produto: IProduto = this.produtos.find((e, i, a) => e.id === this.locacaoProduto.produtoId);
+        this.locacaoProduto.valorUnitario = produto.precoVenda;
+        this.locacaoProduto.valorTotal = this.locacaoProduto.valorUnitario * this.locacaoProduto.quantidade;
+    }
+
+    addProduto(event) {
+        this.activeModal.close(this.locacaoProduto);
     }
 }

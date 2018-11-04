@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="button" id="add-produto-btn" class="btn btn-primary">
+                    <button type="button" id="add-produto-btn" class="btn btn-primary" (click)="openAddProduto()">
                         <fa-icon [icon]="'tshirt'"></fa-icon>&nbsp;<span jhiTranslate="ducarmolocacoesApp.locacao.action.addProduct">addProduct</span>
                     </button>
                 </div>
@@ -96,6 +96,5 @@
                 </button>
             </div>
         </form>
-        <jhi-locacao-add-produto></jhi-locacao-add-produto>
     </div>
 </div>

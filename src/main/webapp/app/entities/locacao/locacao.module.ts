@@ -18,6 +18,7 @@ import {
     LocacaoMudarSituacaoPopupComponent
 } from 'app/entities/locacao/locacao-mudar-situacao-dialog.component';
 import { LocacaoSituacaoStrPipe } from 'app/shared/util/locacao-situacao-str.pipe';
+import { LocacaoAddProdutoComponent } from 'app/entities/locacao/locacao-add-produto.component';
 
 const ENTITY_STATES = [...locacaoRoute, ...locacaoPopupRoute];
 
@@ -31,7 +32,8 @@ const ENTITY_STATES = [...locacaoRoute, ...locacaoPopupRoute];
         LocacaoDeletePopupComponent,
         LocacaoMudarSituacaoDialogComponent,
         LocacaoMudarSituacaoPopupComponent,
-        LocacaoSituacaoStrPipe
+        LocacaoSituacaoStrPipe,
+        LocacaoAddProdutoComponent
     ],
     entryComponents: [
         LocacaoComponent,
@@ -39,7 +41,8 @@ const ENTITY_STATES = [...locacaoRoute, ...locacaoPopupRoute];
         LocacaoDeleteDialogComponent,
         LocacaoDeletePopupComponent,
         LocacaoMudarSituacaoDialogComponent,
-        LocacaoMudarSituacaoPopupComponent
+        LocacaoMudarSituacaoPopupComponent,
+        LocacaoAddProdutoComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

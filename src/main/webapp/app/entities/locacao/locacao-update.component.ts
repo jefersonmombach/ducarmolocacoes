@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,6 +10,9 @@ import { ICliente } from 'app/shared/model/cliente.model';
 import { ClienteService } from 'app/entities/cliente';
 import { ITipoEvento } from 'app/shared/model/tipo-evento.model';
 import { TipoEventoService } from 'app/entities/tipo-evento';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { JhiLoginModalComponent } from 'app/shared';
+import { LocacaoAddProdutoComponent } from 'app/entities/locacao/locacao-add-produto.component';
 
 @Component({
     selector: 'jhi-locacao-update',
@@ -26,12 +29,15 @@ export class LocacaoUpdateComponent implements OnInit {
     dataDevPrevDp: any;
     dataEntrPrevDp: any;
 
+    modalRef: NgbModalRef;
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private locacaoService: LocacaoService,
         private clienteService: ClienteService,
         private tipoEventoService: TipoEventoService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private modalService: NgbModal
     ) {}
 
     ngOnInit() {
@@ -104,5 +110,18 @@ export class LocacaoUpdateComponent implements OnInit {
             this.locacao.dataEntrPrev = event.clone().add(-1, 'days');
             this.locacao.dataDevPrev = event.clone().add(3, 'days');
         }
+    }
+
+    openAddProduto() {
+        const modalRef = this.modalService.open(LocacaoAddProdutoComponent);
+        modalRef.componentInstance.locacao = this.locacao;
+        modalRef.result.then(
+            result => {
+                this.locacao.produtos.push(result);
+            },
+            reason => {
+                console.log(reason);
+            }
+        );
     }
 }

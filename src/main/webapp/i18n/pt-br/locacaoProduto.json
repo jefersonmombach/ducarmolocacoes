@@ -5,7 +5,7 @@
             "home": {
                 "title": "Locacao Produtos",
                 "createLabel": "Criar novo Locacao Produto",
-                "createOrEditLabel": "Criar ou editar Locacao Produto",
+                "createOrEditLabel": "",
                 "search": "Pesquisar por Locacao Produto"
             },
             "created": "Um novo Locacao Produto foi criado com o identificador {{ param }}",
