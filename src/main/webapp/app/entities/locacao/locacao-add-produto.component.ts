@@ -102,10 +102,14 @@ export class LocacaoAddProdutoComponent implements AfterViewInit {
         this.locacaoProduto.produtoId = this.locacaoProduto.produto.id;
         this.locacaoProduto.quantidade = 1;
         this.locacaoProduto.valorUnitario = this.locacaoProduto.produto.precoVenda;
+    }
+
+    calcularTotal() {
         this.locacaoProduto.valorTotal = this.locacaoProduto.valorUnitario * this.locacaoProduto.quantidade;
     }
 
     addProduto(event) {
+        this.calcularTotal();
         this.activeModal.close(this.locacaoProduto);
     }
 

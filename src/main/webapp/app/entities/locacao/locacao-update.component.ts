@@ -74,6 +74,7 @@ export class LocacaoUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.calcularSaldo();
         if (this.locacao.id !== undefined) {
             this.subscribeToSaveResponse(this.locacaoService.update(this.locacao));
         } else {
@@ -120,6 +121,7 @@ export class LocacaoUpdateComponent implements OnInit {
             modalRef.result.then(
                 result => {
                     this.locacao.produtos.push(result);
+                    this.calcular();
                 },
                 reason => {
                     console.log(reason);
@@ -129,5 +131,16 @@ export class LocacaoUpdateComponent implements OnInit {
             alert('É necessário informar a data do evento.');
             return;
         }
+    }
+
+    calcular() {
+        let total = 0;
+        this.locacao.produtos.forEach(item => (total += item.valorTotal));
+        this.locacao.valorTotal = total;
+        this.locacao.valorSinal = total * 20 / 100;
+    }
+
+    calcularSaldo() {
+        this.locacao.valorSaldo = this.locacao.valorTotal - this.locacao.valorAdiantado;
     }
 }

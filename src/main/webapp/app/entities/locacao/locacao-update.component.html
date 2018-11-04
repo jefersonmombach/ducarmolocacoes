@@ -80,7 +80,7 @@
                                     {{locacaoProduto.produto.descricao}}
                                 </div>
                             </td>
-                            <td>{{locacaoProduto.valorTotal}}</td>
+                            <td>{{locacaoProduto.valorTotal | currency : '$'}}</td>
                             <td>
                                 <div *ngIf="locacaoProduto.clienteId">
                                     {{locacaoProduto.cliente.nome}}
@@ -118,12 +118,14 @@
                            currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', align: 'left' }"
                         [(ngModel)]="locacao.valorAdiantado" required/>
                 </div>
+                <!--
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacao.valorSaldo" for="field_valorSaldo">Valor Saldo</label>
                     <input type="text" class="form-control" name="valorSaldo" id="field_valorSaldo"
                            currencyMask [options]="{ prefix: '$ ', thousands: '.', decimal: ',', align: 'left' }"
                         [(ngModel)]="locacao.valorSaldo" disabled />
                 </div>
+                -->
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
