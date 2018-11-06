@@ -49,10 +49,6 @@ public class Cliente implements Serializable {
     @Column(name = "endereco")
     private String endereco;
 
-    @OneToMany(mappedBy = "cliente")
-    private Set<Locacao> locacoes = new HashSet<>();
-    @OneToMany(mappedBy = "cliente")
-    private Set<LocacaoProduto> produtos = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -164,56 +160,6 @@ public class Cliente implements Serializable {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public Set<Locacao> getLocacoes() {
-        return locacoes;
-    }
-
-    public Cliente locacoes(Set<Locacao> locacaos) {
-        this.locacoes = locacaos;
-        return this;
-    }
-
-    public Cliente addLocacoes(Locacao locacao) {
-        this.locacoes.add(locacao);
-        locacao.setCliente(this);
-        return this;
-    }
-
-    public Cliente removeLocacoes(Locacao locacao) {
-        this.locacoes.remove(locacao);
-        locacao.setCliente(null);
-        return this;
-    }
-
-    public void setLocacoes(Set<Locacao> locacaos) {
-        this.locacoes = locacaos;
-    }
-
-    public Set<LocacaoProduto> getProdutos() {
-        return produtos;
-    }
-
-    public Cliente produtos(Set<LocacaoProduto> locacaoProdutos) {
-        this.produtos = locacaoProdutos;
-        return this;
-    }
-
-    public Cliente addProdutos(LocacaoProduto locacaoProduto) {
-        this.produtos.add(locacaoProduto);
-        locacaoProduto.setCliente(this);
-        return this;
-    }
-
-    public Cliente removeProdutos(LocacaoProduto locacaoProduto) {
-        this.produtos.remove(locacaoProduto);
-        locacaoProduto.setCliente(null);
-        return this;
-    }
-
-    public void setProdutos(Set<LocacaoProduto> locacaoProdutos) {
-        this.produtos = locacaoProdutos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

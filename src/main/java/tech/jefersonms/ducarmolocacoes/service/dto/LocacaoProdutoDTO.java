@@ -17,6 +17,12 @@ public class LocacaoProdutoDTO implements Serializable {
 
     private BigDecimal valorTotal;
 
+    private ProdutoDTO produto;
+
+    private LocacaoDTO locacao;
+
+    private ClienteDTO cliente;
+
     private Long produtoId;
 
     private Long locacaoId;
@@ -111,5 +117,29 @@ public class LocacaoProdutoDTO implements Serializable {
             ", locacao=" + getLocacaoId() +
             ", cliente=" + getClienteId() +
             "}";
+    }
+
+    public ProdutoDTO getProduto() {
+        return produto;
+    }
+
+    public void setProduto(ProdutoDTO produto) {
+        this.produto = produto;
+    }
+
+    public LocacaoDTO getLocacao() {
+        return locacao;
+    }
+
+    public void setLocacao(LocacaoDTO locacao) {
+        this.locacao = locacao;
+    }
+
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
     }
 }

@@ -22,11 +22,10 @@ public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public Produto() {
-
     }
 
-    public Produto(String descricao) {
-        this.descricao = descricao;
+    public Produto(Long id) {
+        this.id = id;
     }
 
     @Id
@@ -45,8 +44,6 @@ public class Produto implements Serializable {
     @Column(name = "ativo")
     private Boolean ativo;
 
-    @OneToMany(mappedBy = "produto")
-    private Set<LocacaoProduto> locacoes = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -108,30 +105,6 @@ public class Produto implements Serializable {
         this.ativo = ativo;
     }
 
-    public Set<LocacaoProduto> getLocacoes() {
-        return locacoes;
-    }
-
-    public Produto locacoes(Set<LocacaoProduto> locacaoProdutos) {
-        this.locacoes = locacaoProdutos;
-        return this;
-    }
-
-    public Produto addLocacoes(LocacaoProduto locacaoProduto) {
-        this.locacoes.add(locacaoProduto);
-        locacaoProduto.setProduto(this);
-        return this;
-    }
-
-    public Produto removeLocacoes(LocacaoProduto locacaoProduto) {
-        this.locacoes.remove(locacaoProduto);
-        locacaoProduto.setProduto(null);
-        return this;
-    }
-
-    public void setLocacoes(Set<LocacaoProduto> locacaoProdutos) {
-        this.locacoes = locacaoProdutos;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

@@ -4,6 +4,7 @@ import tech.jefersonms.ducarmolocacoes.service.LocacaoProdutoService;
 import tech.jefersonms.ducarmolocacoes.domain.LocacaoProduto;
 import tech.jefersonms.ducarmolocacoes.repository.LocacaoProdutoRepository;
 import tech.jefersonms.ducarmolocacoes.repository.search.LocacaoProdutoSearchRepository;
+import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoProdutoDTO;
 import tech.jefersonms.ducarmolocacoes.service.mapper.LocacaoProdutoMapper;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -55,6 +57,19 @@ public class LocacaoProdutoServiceImpl implements LocacaoProdutoService {
         locacaoProduto = locacaoProdutoRepository.save(locacaoProduto);
         LocacaoProdutoDTO result = locacaoProdutoMapper.toDto(locacaoProduto);
         locacaoProdutoSearchRepository.save(locacaoProduto);
+        return result;
+    }
+
+    @Override
+    public List<LocacaoProdutoDTO> save(LocacaoDTO locacaoDTO, List<LocacaoProdutoDTO> locacaoProdutoDTO) {
+        List<LocacaoProdutoDTO> result = new ArrayList<>();
+
+        for (LocacaoProdutoDTO lpDTO : locacaoProdutoDTO) {
+            lpDTO.setLocacao(locacaoDTO);
+            lpDTO.setLocacaoId(locacaoDTO.getId());
+            result.add(this.save(lpDTO));
+        }
+
         return result;
     }
 

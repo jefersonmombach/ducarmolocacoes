@@ -11,8 +11,6 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {})
 public interface ProdutoMapper extends EntityMapper<ProdutoDTO, Produto> {
 
-
-    @Mapping(target = "locacoes", ignore = true)
     Produto toEntity(ProdutoDTO produtoDTO);
 
     default Produto fromId(Long id) {

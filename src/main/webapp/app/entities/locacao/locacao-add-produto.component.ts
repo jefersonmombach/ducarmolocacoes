@@ -98,22 +98,25 @@ export class LocacaoAddProdutoComponent implements AfterViewInit {
         this.activeModal.dismiss('');
     }
 
+    calcularTotal() {
+        this.locacaoProduto.valorTotal = this.locacaoProduto.valorUnitario * this.locacaoProduto.quantidade;
+    }
+
     fireProduto(event) {
         this.locacaoProduto.produtoId = this.locacaoProduto.produto.id;
         this.locacaoProduto.quantidade = 1;
         this.locacaoProduto.valorUnitario = this.locacaoProduto.produto.precoVenda;
     }
 
-    calcularTotal() {
-        this.locacaoProduto.valorTotal = this.locacaoProduto.valorUnitario * this.locacaoProduto.quantidade;
+    fireCliente($event) {
+        this.locacaoProduto.clienteId = this.locacaoProduto.cliente.id;
     }
 
     addProduto(event) {
         this.calcularTotal();
-        this.activeModal.close(this.locacaoProduto);
-    }
-
-    fireCliente($event) {
         this.locacaoProduto.clienteId = this.locacaoProduto.cliente.id;
+        this.locacaoProduto.produtoId = this.locacaoProduto.produto.id;
+        this.locacaoProduto.locacaoId = this.locacao.id;
+        this.activeModal.close(this.locacaoProduto);
     }
 }

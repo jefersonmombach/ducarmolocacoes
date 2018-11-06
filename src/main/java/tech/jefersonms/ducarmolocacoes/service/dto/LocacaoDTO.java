@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -44,6 +45,8 @@ public class LocacaoDTO implements Serializable {
     private ClienteDTO cliente;
 
     private TipoEventoDTO tipoEvento;
+
+    private List<LocacaoProdutoDTO> produtos;
 
     public Long getId() {
         return id;
@@ -204,6 +207,7 @@ public class LocacaoDTO implements Serializable {
             ", htmlContrato='" + getHtmlContrato() + "'" +
             ", cliente=" + getClienteId() +
             ", tipoEvento=" + getTipoEventoId() +
+            ", produtos=" + (getProdutos() != null ? " " + getProdutos().size() : "null") +
             "}";
     }
 
@@ -221,5 +225,13 @@ public class LocacaoDTO implements Serializable {
 
     public void setTipoEvento(TipoEventoDTO tipoEvento) {
         this.tipoEvento = tipoEvento;
+    }
+
+    public List<LocacaoProdutoDTO> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<LocacaoProdutoDTO> produtos) {
+        this.produtos = produtos;
     }
 }

@@ -18,7 +18,11 @@ public class TagLocacaoItemEmTabela extends Tag {
 			itens.addAll(locacao.getProdutos());
 			// adiciono 1 sempre que for impar para que a tabela sempre fique certa
 			if (itens.size() % 2 != 0) {
-				itens.add(new LocacaoProduto(new Produto(" ")));
+			    Produto p = new Produto();
+			    p.setDescricao(" ");
+                LocacaoProduto lp = new LocacaoProduto();
+                lp.setProduto(p);
+				itens.add(lp);
 			}
 			for (int i = 0 ; i < itens.size() ; i++) {
 				LocacaoProduto lp = itens.get(i);

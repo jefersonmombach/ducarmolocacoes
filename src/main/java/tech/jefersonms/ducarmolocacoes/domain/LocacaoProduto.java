@@ -20,7 +20,6 @@ public class LocacaoProduto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public LocacaoProduto() {
-
     }
 
     public LocacaoProduto(Produto produto) {
@@ -41,15 +40,13 @@ public class LocacaoProduto implements Serializable {
     private BigDecimal valorTotal;
 
     @ManyToOne
-    @JsonIgnoreProperties("locacoes")
-    private Produto produto;
-
-    @ManyToOne
     @JsonIgnoreProperties("produtos")
     private Locacao locacao;
 
     @ManyToOne
-    @JsonIgnoreProperties("produtos")
+    private Produto produto;
+
+    @ManyToOne
     private Cliente cliente;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

@@ -65,7 +65,9 @@ public class LocacaoResource {
         if (locacaoDTO.getId() != null) {
             throw new BadRequestAlertException("A new locacao cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         LocacaoDTO result = locacaoService.save(locacaoDTO);
+
         return ResponseEntity.created(new URI("/api/locacaos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

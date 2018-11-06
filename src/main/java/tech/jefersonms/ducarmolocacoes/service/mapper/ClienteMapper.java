@@ -11,9 +11,6 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {})
 public interface ClienteMapper extends EntityMapper<ClienteDTO, Cliente> {
 
-
-    @Mapping(target = "locacoes", ignore = true)
-    @Mapping(target = "produtos", ignore = true)
     Cliente toEntity(ClienteDTO clienteDTO);
 
     default Cliente fromId(Long id) {

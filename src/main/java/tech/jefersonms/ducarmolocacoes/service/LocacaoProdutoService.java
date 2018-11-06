@@ -1,5 +1,6 @@
 package tech.jefersonms.ducarmolocacoes.service;
 
+import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoProdutoDTO;
 
 import java.util.List;
@@ -17,6 +18,15 @@ public interface LocacaoProdutoService {
      * @return the persisted entity
      */
     LocacaoProdutoDTO save(LocacaoProdutoDTO locacaoProdutoDTO);
+
+    /**
+     * Save a set of locacaoProduto.
+     *
+     * @param locacaoDTO the parent
+     * @param locacaoProdutoDTO the entitys to save
+     * @return the persisted entity
+     */
+    List<LocacaoProdutoDTO> save(LocacaoDTO locacaoDTO, List<LocacaoProdutoDTO> locacaoProdutoDTO);
 
     /**
      * Get all the locacaoProdutos.
