@@ -8,11 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity LocacaoProduto and its DTO LocacaoProdutoDTO.
  */
-@Mapper(componentModel = "spring", uses = {ProdutoMapper.class, LocacaoMapper.class, ClienteMapper.class})
+@Mapper(
+    componentModel = "spring",
+    uses = {ProdutoMapper.class, LocacaoMapper.class, ClienteMapper.class}
+    )
 public interface LocacaoProdutoMapper extends EntityMapper<LocacaoProdutoDTO, LocacaoProduto> {
 
     @Mapping(source = "produto.id", target = "produtoId")
-    @Mapping(source = "locacao.id", target = "locacaoId")
     @Mapping(source = "cliente.id", target = "clienteId")
     LocacaoProdutoDTO toDto(LocacaoProduto locacaoProduto);
 

@@ -133,6 +133,10 @@ export class LocacaoUpdateComponent implements OnInit {
         }
     }
 
+    removerProduto(locacaoProduto) {
+        _.remove(this.locacao.produtos, e => e === locacaoProduto);
+    }
+
     calcular() {
         let total = 0;
         this.locacao.produtos.forEach(item => (total += item.valorTotal));

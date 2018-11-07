@@ -13,6 +13,7 @@ public interface LocacaoMapper extends EntityMapper<LocacaoDTO, Locacao> {
 
     @Mapping(source = "cliente.id", target = "clienteId")
     @Mapping(source = "tipoEvento.id", target = "tipoEventoId")
+    @Mapping(target = "produtos", ignore = true)
     LocacaoDTO toDto(Locacao locacao);
 
     @Mapping(source = "produtos", target = "produtos")
