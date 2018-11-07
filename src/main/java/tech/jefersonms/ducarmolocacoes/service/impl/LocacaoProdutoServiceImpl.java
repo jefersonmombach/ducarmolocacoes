@@ -6,6 +6,7 @@ import tech.jefersonms.ducarmolocacoes.repository.LocacaoProdutoRepository;
 import tech.jefersonms.ducarmolocacoes.repository.search.LocacaoProdutoSearchRepository;
 import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoProdutoDTO;
+import tech.jefersonms.ducarmolocacoes.service.mapper.LocacaoMapper;
 import tech.jefersonms.ducarmolocacoes.service.mapper.LocacaoProdutoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,15 +33,18 @@ public class LocacaoProdutoServiceImpl implements LocacaoProdutoService {
     private final Logger log = LoggerFactory.getLogger(LocacaoProdutoServiceImpl.class);
 
     private LocacaoProdutoRepository locacaoProdutoRepository;
-
     private LocacaoProdutoMapper locacaoProdutoMapper;
-
     private LocacaoProdutoSearchRepository locacaoProdutoSearchRepository;
+    private LocacaoMapper locacaoMapper;
 
-    public LocacaoProdutoServiceImpl(LocacaoProdutoRepository locacaoProdutoRepository, LocacaoProdutoMapper locacaoProdutoMapper, LocacaoProdutoSearchRepository locacaoProdutoSearchRepository) {
+    public LocacaoProdutoServiceImpl(LocacaoProdutoRepository locacaoProdutoRepository,
+                                     LocacaoProdutoMapper locacaoProdutoMapper,
+                                     LocacaoProdutoSearchRepository locacaoProdutoSearchRepository,
+                                     LocacaoMapper locacaoMapper) {
         this.locacaoProdutoRepository = locacaoProdutoRepository;
         this.locacaoProdutoMapper = locacaoProdutoMapper;
         this.locacaoProdutoSearchRepository = locacaoProdutoSearchRepository;
+        this.locacaoMapper = locacaoMapper;
     }
 
     /**
@@ -83,6 +87,15 @@ public class LocacaoProdutoServiceImpl implements LocacaoProdutoService {
     public List<LocacaoProdutoDTO> findAll() {
         log.debug("Request to get all LocacaoProdutos");
         return locacaoProdutoRepository.findAll().stream()
+            .map(locacaoProdutoMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Override
+    public List<LocacaoProdutoDTO> findBy(LocacaoDTO locacao) {
+        log.debug("Request to get all LocacaoProdutos of locacao id: {}", locacao);
+
+        return locacaoProdutoRepository.findByLocacao(locacaoMapper.toEntity(locacao)).stream()
             .map(locacaoProdutoMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

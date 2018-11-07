@@ -10,6 +10,7 @@ import { createRequestOption } from 'app/shared';
 import { ILocacao } from 'app/shared/model/locacao.model';
 import * as html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf';
+import { ILocacaoProduto } from 'app/shared/model/locacao-produto.model';
 
 type EntityResponseType = HttpResponse<ILocacao>;
 type EntityArrayResponseType = HttpResponse<ILocacao[]>;

@@ -134,7 +134,13 @@ public class LocacaoServiceImpl implements LocacaoService {
     public Optional<LocacaoDTO> findOne(Long id) {
         log.debug("Request to get Locacao : {}", id);
         return locacaoRepository.findById(id)
-            .map(locacaoMapper::toDto);
+            .map(locacaoMapper::toDto)
+            .map(this::getProdutos);
+    }
+
+    private <U extends LocacaoDTO> U getProdutos(LocacaoDTO locacaoDTO) {
+        locacaoDTO.setProdutos(this.locacaoProdutoService.findBy(locacaoDTO));
+        return (U) locacaoDTO;
     }
 
     /**

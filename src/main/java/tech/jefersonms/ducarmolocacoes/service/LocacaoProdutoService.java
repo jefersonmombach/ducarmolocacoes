@@ -1,5 +1,6 @@
 package tech.jefersonms.ducarmolocacoes.service;
 
+import tech.jefersonms.ducarmolocacoes.domain.Locacao;
 import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoProdutoDTO;
 
@@ -34,6 +35,14 @@ public interface LocacaoProdutoService {
      * @return the list of entities
      */
     List<LocacaoProdutoDTO> findAll();
+
+    /**
+     * Get all the locacaoProdutos of Locacao.
+     *
+     * @param locacao
+     * @return the list of entities
+     */
+    List<LocacaoProdutoDTO> findBy(LocacaoDTO locacao);
 
 
     /**

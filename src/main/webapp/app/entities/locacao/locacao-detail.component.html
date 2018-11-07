@@ -49,6 +49,34 @@
                 <dd>
                     <span>{{locacao.dataDevReal | date:'short'}}</span>
                 </dd>
+
+                <div class="table-responsive" *ngIf="locacao.produtos">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.produto">Produto</span></th>
+                            <th><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.valorTotal">Valor Total</span></th>
+                            <th><span jhiTranslate="ducarmolocacoesApp.locacaoProduto.cliente">Cliente</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let locacaoProduto of locacao.produtos | orderBy: 'produto.descricao';trackBy: trackId">
+                            <td>
+                                <div *ngIf="locacaoProduto.produtoId">
+                                    {{locacaoProduto.produto.descricao}}
+                                </div>
+                            </td>
+                            <td>{{locacaoProduto.valorTotal | currency : '$'}}</td>
+                            <td>
+                                <div *ngIf="locacaoProduto.clienteId">
+                                    {{locacaoProduto.cliente.nome}}
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <dt><span jhiTranslate="ducarmolocacoesApp.locacao.valorTotal">Valor Total</span></dt>
                 <dd>
                     <span>{{locacao.valorTotal | currency : '$'}}</span>
