@@ -47,7 +47,9 @@ export class LocacaoUpdateComponent implements OnInit {
         });
         this.loadClientes();
         this.loadTiposEvento();
-        this.locacao.produtos = [];
+        if (_.isNil(this.locacao.produtos)) {
+            this.locacao.produtos = [];
+        }
     }
 
     private loadTiposEvento() {
@@ -135,6 +137,7 @@ export class LocacaoUpdateComponent implements OnInit {
 
     removerProduto(locacaoProduto) {
         _.remove(this.locacao.produtos, e => e === locacaoProduto);
+        this.calcular();
     }
 
     calcular() {
@@ -142,6 +145,7 @@ export class LocacaoUpdateComponent implements OnInit {
         this.locacao.produtos.forEach(item => (total += item.valorTotal));
         this.locacao.valorTotal = total;
         this.locacao.valorSinal = total * 20 / 100;
+        this.calcularSaldo();
     }
 
     calcularSaldo() {

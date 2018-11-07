@@ -91,7 +91,7 @@
                                     <button type="button"
                                             class="btn btn-danger btn-sm"
                                             (click)="removerProduto(locacaoProduto)"
-                                            [disabled]="locacao.id != null">
+                                            [disabled]="locacaoProduto.id != null">
                                         <fa-icon [icon]="'times'"></fa-icon>
                                         <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                                     </button>
