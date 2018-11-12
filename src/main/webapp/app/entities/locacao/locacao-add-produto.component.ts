@@ -19,6 +19,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LocacaoAddProdutoComponent implements AfterViewInit {
     locacaoProduto: ILocacaoProduto = new LocacaoProduto();
+    locacoesNoPeriodo: ILocacao[] = [];
 
     isSaving: boolean;
 
@@ -109,7 +110,7 @@ export class LocacaoAddProdutoComponent implements AfterViewInit {
 
         this.produtoService
             .getLocacoesByDataEvento(this.locacaoProduto.produtoId, this.locacao.dataEvento)
-            .subscribe(result => console.log(result));
+            .subscribe(result => (this.locacoesNoPeriodo = result.body));
     }
 
     fireCliente($event) {

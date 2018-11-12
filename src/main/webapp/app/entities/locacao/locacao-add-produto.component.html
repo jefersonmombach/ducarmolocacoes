@@ -10,6 +10,9 @@
                         <option [ngValue]="null"></option>
                         <option [ngValue]="produtoOption" *ngFor="let produtoOption of produtos | orderBy:'descricao'; trackBy: trackProdutoById">{{produtoOption.descricao}}</option>
                     </select>
+                    <ngb-alert [dismissible]="false" *ngIf="locacoesNoPeriodo.length > 0">
+                        <strong>Atenção!</strong>Produto já locado no período desta locação.
+                    </ngb-alert>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="ducarmolocacoesApp.locacaoProduto.valorUnitario" for="field_valorUnitario">Valor Unitario</label>
