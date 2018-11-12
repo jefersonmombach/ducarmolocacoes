@@ -1,10 +1,13 @@
 package tech.jefersonms.ducarmolocacoes.service;
 
+import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import tech.jefersonms.ducarmolocacoes.service.dto.ProdutoDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -53,4 +56,13 @@ public interface ProdutoService {
      * @return the list of entities
      */
     Page<ProdutoDTO> search(String query, Pageable pageable);
+
+    /**
+     *
+     *
+     * @param id
+     * @param dataEvento
+     * @return
+     */
+    List<LocacaoDTO> getLocacoesByDataEvento(Long id, LocalDate dataEvento);
 }

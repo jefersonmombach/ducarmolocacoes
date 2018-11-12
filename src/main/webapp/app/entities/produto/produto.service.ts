@@ -3,8 +3,9 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
-import { createRequestOption } from 'app/shared';
+import { createRequestOption, DATE_FORMAT } from 'app/shared';
 import { IProduto } from 'app/shared/model/produto.model';
+import { ILocacao } from 'app/shared/model/locacao.model';
 
 type EntityResponseType = HttpResponse<IProduto>;
 type EntityArrayResponseType = HttpResponse<IProduto[]>;
@@ -26,6 +27,13 @@ export class ProdutoService {
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<IProduto>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    getLocacoesByDataEvento(id: number, dataEvento: any): Observable<EntityArrayResponseType> {
+        return this.http.get<ILocacao[]>(
+            `${this.resourceUrl}/${id}/locacaos/${dataEvento != null && dataEvento.isValid() ? dataEvento.format(DATE_FORMAT) : null}`,
+            { observe: 'response' }
+        );
     }
 
     query(req?: any): Observable<EntityArrayResponseType> {

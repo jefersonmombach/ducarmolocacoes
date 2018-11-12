@@ -106,6 +106,10 @@ export class LocacaoAddProdutoComponent implements AfterViewInit {
         this.locacaoProduto.produtoId = this.locacaoProduto.produto.id;
         this.locacaoProduto.quantidade = 1;
         this.locacaoProduto.valorUnitario = this.locacaoProduto.produto.precoVenda;
+
+        this.produtoService
+            .getLocacoesByDataEvento(this.locacaoProduto.produtoId, this.locacao.dataEvento)
+            .subscribe(result => console.log(result));
     }
 
     fireCliente($event) {

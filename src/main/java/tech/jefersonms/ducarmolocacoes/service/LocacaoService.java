@@ -1,10 +1,14 @@
 package tech.jefersonms.ducarmolocacoes.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import tech.jefersonms.ducarmolocacoes.service.dto.ProdutoDTO;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -37,6 +41,9 @@ public interface LocacaoService {
      * @return the entity
      */
     Optional<LocacaoDTO> findOne(Long id);
+
+    @Transactional(readOnly = true)
+    List<LocacaoDTO> listLocacoesProdutoByDataEvento(ProdutoDTO produto, LocalDate dataEvento);
 
     /**
      * Delete the "id" locacao.

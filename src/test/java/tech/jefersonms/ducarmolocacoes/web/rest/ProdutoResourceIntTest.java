@@ -5,6 +5,7 @@ import tech.jefersonms.ducarmolocacoes.DucarmolocacoesApp;
 import tech.jefersonms.ducarmolocacoes.domain.Produto;
 import tech.jefersonms.ducarmolocacoes.repository.ProdutoRepository;
 import tech.jefersonms.ducarmolocacoes.repository.search.ProdutoSearchRepository;
+import tech.jefersonms.ducarmolocacoes.service.LocacaoService;
 import tech.jefersonms.ducarmolocacoes.service.ProdutoService;
 import tech.jefersonms.ducarmolocacoes.service.dto.ProdutoDTO;
 import tech.jefersonms.ducarmolocacoes.service.mapper.ProdutoMapper;

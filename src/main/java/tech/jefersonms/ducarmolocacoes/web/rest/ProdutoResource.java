@@ -1,7 +1,9 @@
 package tech.jefersonms.ducarmolocacoes.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import tech.jefersonms.ducarmolocacoes.service.LocacaoService;
 import tech.jefersonms.ducarmolocacoes.service.ProdutoService;
+import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import tech.jefersonms.ducarmolocacoes.web.rest.errors.BadRequestAlertException;
 import tech.jefersonms.ducarmolocacoes.web.rest.util.HeaderUtil;
 import tech.jefersonms.ducarmolocacoes.web.rest.util.PaginationUtil;
@@ -16,9 +18,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -111,6 +116,23 @@ public class ProdutoResource {
         log.debug("REST request to get Produto : {}", id);
         Optional<ProdutoDTO> produtoDTO = produtoService.findOne(id);
         return ResponseUtil.wrapOrNotFound(produtoDTO);
+    }
+
+    /**
+     * GET  /produtos/:id/locacoes/:dataEvento : get the locações of the "id" produto.
+     *
+     * @param id the id of the produtoDTO to retrieve
+     * @param dataEvento date of event
+     * @return the ResponseEntity with status 200 (OK) and with body the List<LocacaoDTO>
+     */
+    @GetMapping("/produtos/{id}/locacaos/{dataEvento}")
+    @Timed
+    public ResponseEntity<List<LocacaoDTO>> getLocacoesOfProdutoByDataEvento(@PathVariable Long id,
+                                                                             @PathVariable LocalDate dataEvento) {
+        log.debug("REST request to get Produto : {}", id);
+        List<LocacaoDTO> result = produtoService.getLocacoesByDataEvento(id, dataEvento);
+
+        return new ResponseEntity<>(result, null, HttpStatus.OK);
     }
 
     /**

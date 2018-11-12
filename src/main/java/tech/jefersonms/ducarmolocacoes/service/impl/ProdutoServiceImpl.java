@@ -1,9 +1,11 @@
 package tech.jefersonms.ducarmolocacoes.service.impl;
 
+import tech.jefersonms.ducarmolocacoes.service.LocacaoService;
 import tech.jefersonms.ducarmolocacoes.service.ProdutoService;
 import tech.jefersonms.ducarmolocacoes.domain.Produto;
 import tech.jefersonms.ducarmolocacoes.repository.ProdutoRepository;
 import tech.jefersonms.ducarmolocacoes.repository.search.ProdutoSearchRepository;
+import tech.jefersonms.ducarmolocacoes.service.dto.LocacaoDTO;
 import tech.jefersonms.ducarmolocacoes.service.dto.ProdutoDTO;
 import tech.jefersonms.ducarmolocacoes.service.mapper.ProdutoMapper;
 import org.slf4j.Logger;
@@ -14,6 +16,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -28,15 +33,18 @@ public class ProdutoServiceImpl implements ProdutoService {
     private final Logger log = LoggerFactory.getLogger(ProdutoServiceImpl.class);
 
     private ProdutoRepository produtoRepository;
-
     private ProdutoMapper produtoMapper;
-
     private ProdutoSearchRepository produtoSearchRepository;
+    private LocacaoService locacaoService;
 
-    public ProdutoServiceImpl(ProdutoRepository produtoRepository, ProdutoMapper produtoMapper, ProdutoSearchRepository produtoSearchRepository) {
+    public ProdutoServiceImpl(ProdutoRepository produtoRepository,
+                              ProdutoMapper produtoMapper,
+                              ProdutoSearchRepository produtoSearchRepository,
+                              LocacaoService locacaoService) {
         this.produtoRepository = produtoRepository;
         this.produtoMapper = produtoMapper;
         this.produtoSearchRepository = produtoSearchRepository;
+        this.locacaoService = locacaoService;
     }
 
     /**
@@ -110,5 +118,24 @@ public class ProdutoServiceImpl implements ProdutoService {
         log.debug("Request to search for a page of Produtos for query {}", query);
         return produtoSearchRepository.search(queryStringQuery(query), pageable)
             .map(produtoMapper::toDto);
+    }
+
+    /**
+     *
+     *
+     * @param id
+     * @param dataEvento
+     * @return
+     */
+    @Override
+    public List<LocacaoDTO> getLocacoesByDataEvento(Long id, LocalDate dataEvento) {
+        Optional<ProdutoDTO> produtoDTO = this.findOne(id);
+        List<LocacaoDTO> result = new ArrayList<>();
+
+        if (produtoDTO.isPresent()) {
+            result = this.locacaoService.listLocacoesProdutoByDataEvento(produtoDTO.get(), dataEvento);
+        }
+
+        return result;
     }
 }
