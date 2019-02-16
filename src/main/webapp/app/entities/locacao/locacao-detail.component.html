@@ -60,7 +60,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let locacaoProduto of locacao.produtos | orderBy: 'produto.descricao';trackBy: trackId">
+                        <tr *ngFor="let locacaoProduto of locacao.produtos | orderBy: 'produto.descricao'">
                             <td>
                                 <div *ngIf="locacaoProduto.produtoId">
                                     {{locacaoProduto.produto.descricao}}

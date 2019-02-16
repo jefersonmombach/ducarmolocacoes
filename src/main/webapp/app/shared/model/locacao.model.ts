@@ -21,6 +21,7 @@ export interface ILocacao {
     produtos?: ILocacaoProduto[];
     tipoEventoId?: number;
     cliente?: ICliente;
+    clienteId?: number;
     tipoEvento?: ITipoEvento;
 }
 

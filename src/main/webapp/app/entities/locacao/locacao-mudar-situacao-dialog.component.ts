@@ -22,7 +22,7 @@ export class LocacaoMudarSituacaoDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmMudarSituacao(locacao: ILocacao) {
+    confirmMudarSituacao() {
         this.locacao.situacao = this.situacaoNova;
         this.locacaoService.update(this.locacao).subscribe(response => {
             // imprime quando for a situacao nova de contrato emitido
