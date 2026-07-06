@@ -1,0 +1,31 @@
+{
+  "name": "ducarmolocacoes (Java 8 + Angular 6)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "forwardPorts": [8080, 9060],
+  "mounts": [
+    "source=ducarmolocacoes-m2,target=/home/vscode/.m2,type=volume",
+    "source=ducarmolocacoes-npm,target=/home/vscode/.npm,type=volume"
+  ],
+  "postCreateCommand": "npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "redhat.vscode-xml",
+        "ms-vscode.vscode-typescript-next",
+        "angular.ng-template",
+        "dbaeumer.vscode-eslint",
+        "Angular.ng-template",
+        "vscjava.vscode-java-debug",
+        "redhat.java",
+        "vscjava.vscode-maven",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-java-test"
+      ]
+    }
+  }
+}
