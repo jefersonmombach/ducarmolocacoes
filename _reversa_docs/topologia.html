@@ -229,50 +229,50 @@
     };
 
     const TOPOLOGY_TARGET = {
-      title: "Topologia Alvo Recomendada: Cloud Native Desacoplado",
+      title: "Topologia Alvo Implementada: Desktop Go Autônomo (Gio UI + SQLite)",
       boxes: [
         {
-          id: "cdn_spa",
-          name: "Frontend SPA (Vercel / Nginx)",
-          tech: "Angular 18+ / React / Tailwind",
-          port: "443 (HTTPS)",
-          role: "Frontend desacoplado servido via CDN edge, com alta performance e cache estático.",
+          id: "gui_desktop",
+          name: "Interface Gráfica Desktop (Gio UI)",
+          tech: "Go 1.22 + Gio UI (Cryptopower Pattern)",
+          port: "Nativa (Win32 / Direct3D / X11 / Wayland)",
+          role: "GUI nativa acelerada por GPU, sem Chromium/Electron, consumo < 100MB RAM.",
           status: "healthy",
           color: "#38bdf8"
         },
         {
-          id: "api_gateway",
-          name: "API Gateway / BFF",
-          tech: "Spring Cloud Gateway / Kong",
-          port: "8080 / 443",
-          role: "Roteamento inteligente, rate-limiting, SSL termination e CORS centralizado.",
-          status: "healthy",
-          color: "#06b6d4"
-        },
-        {
           id: "backend_core",
-          name: "Core API Backend",
-          tech: "Java 21 LTS + Spring Boot 3.3+",
-          port: "8081 (Docker Container)",
-          role: "Regras de negócio, transações de locação com Lock Otimista e contratos em PDF.",
+          name: "Motor de Domínio & Regras (internal/core)",
+          tech: "Go Idiomático (locacao, agenda, contrato)",
+          port: "Memória Interna (In-Process)",
+          role: "Invariante de 20% sinal, cálculo forçado de saldo, colisão de 7 dias e emissão PDF.",
           status: "healthy",
           color: "#10b981"
         },
         {
-          id: "postgres",
-          name: "PostgreSQL 16 Database",
-          tech: "PostgreSQL 16 (RDS / Cloud SQL)",
-          port: "5432 (Postgres Wire)",
-          role: "Banco relacional robusto com JSONB nativo, ACID estrito e backup contínuo.",
+          id: "sqlite_db",
+          name: "Banco Relacional Local (ducarmolocacoes.db)",
+          tech: "SQLite 3 (modernc.org/sqlite - Zero CGO)",
+          port: "Arquivo Local (WAL Mode)",
+          role: "Transações ACID locais com suporte nativo a compilação cruzada para 32 bits e 64 bits.",
           status: "healthy",
           color: "#f59e0b"
         },
         {
-          id: "opensearch",
-          name: "OpenSearch 2.x Cluster",
-          tech: "OpenSearch / Elasticsearch 8.x",
-          port: "9200 (HTTPS REST)",
-          role: "Motor moderno de busca e indexação com sincronização via CDC (Debezium/Kafka).",
+          id: "fts5",
+          name: "Índice FTS5 Full-Text",
+          tech: "SQLite FTS5 Virtual Table",
+          port: "Memória / WAL Index",
+          role: "Busca textual instantânea de clientes e trajes (< 5ms), substituindo Elasticsearch.",
+          status: "healthy",
+          color: "#06b6d4"
+        },
+        {
+          id: "pdf_writer",
+          name: "Compilador de Contratos PDF",
+          tech: "GoFPDF (Zero JVM)",
+          port: "Saída de Impressão Direta",
+          role: "Geração de minutas jurídicas completas prontas para impressão e assinatura.",
           status: "healthy",
           color: "#a855f7"
         }

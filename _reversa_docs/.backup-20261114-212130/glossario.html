@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="diagram">
+  <meta name="reversa-producer-agent" content="reversa-docs-storyteller">
+  <meta name="reversa-template" content="glossario">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Glossário Ubíquo do Domínio — ducarmolocacoes</title>
+  <link rel="stylesheet" href="assets/css/docs.css">
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <style>
+    .glossary-viewport {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      padding: 2rem;
+      background: #0a0f1d;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .glossary-header-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .search-filter-bar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+    }
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .concept-card {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .concept-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .concept-term {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .concept-def {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+  <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+</svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Glossário Ubíquo</span>
+    </a>
+    <nav class="reversa-doc-nav">
+            <a href="index.html" data-page-id="index">Visão geral</a>
+      <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div class="glossary-viewport">
+      <div class="glossary-header-box">
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 700; color: #fff;">Linguagem Ubíqua do Domínio</h2>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem;">
+            Dicionário formal de termos de negócio, regras contratuais e entidades do sistema de locação de trajes.
+          </p>
+        </div>
+
+        <div class="search-filter-bar">
+          <input type="text" id="glossary-search" placeholder="Buscar conceito, termo ou regra..." style="flex: 2;">
+          <select id="category-filter" style="flex: 1;">
+            <option value="ALL">Todas as Categorias</option>
+            <option value="Papel & Ator">Papel & Ator</option>
+            <option value="Entidade Central">Entidade Central</option>
+            <option value="Financeiro & Regra">Financeiro & Regra</option>
+            <option value="Cronograma">Cronograma</option>
+            <option value="Regra de Agenda">Regra de Agenda</option>
+            <option value="Mecanismo Técnico">Mecanismo Técnico</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cards-container" id="glossary-cards">
+        <!-- Cards de conceitos gerados dinamicamente via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DEFAULT_CONCEPTS = [
+      {"term": "Locadora", "category": "Papel & Ator", "definition": "Empresa responsável pela locação dos trajes ('Du Carmo Locações', proprietária Maria do Carmo Poli, situada em Bocaiúva do Sul - PR)."},
+      {"term": "Locatário", "category": "Papel & Ator", "definition": "Cliente cadastrado no sistema que celebra o contrato de aluguel e assume responsabilidade cível e financeira pela conservação e devolução das peças."},
+      {"term": "Traje / Produto", "category": "Entidade Central", "definition": "Vestimenta festiva (terno, vestido de gala, fraque, smoking, vestido de 15 anos) ou acessório disponibilizado para locação com controle de valor unitário e agenda."},
+      {"term": "Tipo de Evento", "category": "Entidade Central", "definition": "Natureza social ou cerimonial da ocasião em que os trajes serão utilizados (Casamento, Formatura, 15 Anos, Bodas)."},
+      {"term": "Locação", "category": "Entidade Central", "definition": "Contrato de prestação de serviços de locação de trajes, contendo valores, datas de cronograma de entrega e devolução e itens vinculados."},
+      {"term": "Item de Locação", "category": "Entidade Central", "definition": "Associação individual de um traje a uma locação, com quantidade, preço unitário e total da linha."},
+      {"term": "Sinal (20%)", "category": "Financeiro & Regra", "definition": "Pagamento inicial antecipado obrigatório correspondente a 20% do valor total da locação para efetivar e bloquear a reserva do traje."},
+      {"term": "Valor Adiantado", "category": "Financeiro & Regra", "definition": "Amortização intermediária realizada pelo locatário entre a reserva e a data de retirada das roupas."},
+      {"term": "Saldo Devedor", "category": "Financeiro & Regra", "definition": "Valor remanescente (valorTotal - valorSinal - valorAdiantado) que deve obrigatoriamente ser quitado no momento da retirada física do traje na loja (após as 16h)."},
+      {"term": "Data da Retirada Prevista", "category": "Cronograma", "definition": "Data estipulada em contrato para o locatário retirar as vestimentas na loja. Liberada a partir das 16:00h."},
+      {"term": "Data da Devolução Prevista", "category": "Cronograma", "definition": "Data estipulada em contrato para o locatário devolver todas as peças à loja em perfeito estado de conservação."},
+      {"term": "Janela de Proteção Temporal", "category": "Regra de Agenda", "definition": "Bloqueio de locações concomitantes de um mesmo produto em um raio de 3 dias antes e 4 dias depois da data do evento ([dataEvento - 3, dataEvento + 4])."},
+      {"term": "Multa por Atraso", "category": "Financeiro & Regra", "definition": "Cobrança de multa diária de 20% do valor total da locação por dia corrido de atraso na devolução dos trajes."},
+      {"term": "Indenização por Avaria", "category": "Financeiro & Regra", "definition": "Obrigação legal do locatário indenizar a locadora no valor de 4 (quatro) vezes o valor do aluguel em caso de avaria irreparável ou perda das peças."},
+      {"term": "Motor de Minutas / Tags", "category": "Mecanismo Técnico", "definition": "Padrão Chain of Responsibility que processa o texto base do contrato substituindo tags dinâmicas como [LOCATARIO], [TRAJES] e valores calculados."}
+    ];
+
+    let conceptsList = DEFAULT_CONCEPTS;
+    if (window.RV_DATA && window.RV_DATA.glossary && Array.isArray(window.RV_DATA.glossary.concepts)) {
+      conceptsList = window.RV_DATA.glossary.concepts;
+    }
+
+    const container = document.getElementById("glossary-cards");
+    const searchInput = document.getElementById("glossary-search");
+    const categoryFilter = document.getElementById("category-filter");
+
+    function renderCards(list) {
+      container.innerHTML = "";
+      if (list.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; color: var(--text-muted); padding: 2rem; text-align: center;">Nenhum termo encontrado para os critérios informados.</div>`;
+        return;
+      }
+
+      list.forEach(c => {
+        const slug = c.term.toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
+        const card = document.createElement("div");
+        card.className = "concept-card";
+        card.id = `concept-${slug}`;
+
+        let badgeClass = "badge-web";
+        if (c.category.includes("Financeiro")) badgeClass = "badge-repository";
+        if (c.category.includes("Central")) badgeClass = "badge-domain";
+        if (c.category.includes("Agenda")) badgeClass = "badge-cycle";
+        if (c.category.includes("Técnico")) badgeClass = "badge-service";
+
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;">
+            <div class="concept-term">${c.term}</div>
+            <span class="badge ${badgeClass}">${c.category}</span>
+          </div>
+          <div class="concept-def">${c.definition}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterCards() {
+      const q = searchInput.value.toLowerCase().trim();
+      const cat = categoryFilter.value;
+
+      const filtered = conceptsList.filter(c => {
+        const matchCategory = (cat === "ALL" || c.category === cat);
+        const matchText = (!q || c.term.toLowerCase().includes(q) || c.definition.toLowerCase().includes(q));
+        return matchCategory && matchText;
+      });
+
+      renderCards(filtered);
+    }
+
+    searchInput.addEventListener("input", filterCards);
+    categoryFilter.addEventListener("change", filterCards);
+
+    renderCards(conceptsList);
+  </script>
+</body>
+</html>

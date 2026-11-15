@@ -1,958 +1,164 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-14T22:57:59.831231+00:00",
+  "generatedAt": "2026-11-15T00:24:32.984726+00:00",
   "summary": {
-    "totalModules": 513,
-    "totalLoc": 25394,
-    "avgComplexity": 3.06,
-    "maxComplexity": 29,
-    "totalDependencies": 295,
-    "totalCycles": 7
+    "totalModules": 27,
+    "totalLoc": 3531,
+    "avgComplexity": 11.74,
+    "maxComplexity": 43,
+    "totalDependencies": 104,
+    "totalCycles": 0
   },
   "treemap_loc_by_folder": [
     {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
-      "value": 2608,
-      "modules": 10,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest"
-    },
-    {
-      "name": "frontend/entities/locacao",
-      "value": 1254,
-      "modules": 16,
-      "folder": "src/main/webapp/app/entities/locacao"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
-      "value": 1087,
-      "modules": 11,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
-      "value": 777,
-      "modules": 10,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
-      "value": 767,
-      "modules": 17,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config"
-    },
-    {
-      "name": "src/main/webapp/i18n/pt-br",
-      "value": 668,
-      "modules": 21,
-      "folder": "src/main/webapp/i18n/pt-br"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
-      "value": 666,
-      "modules": 8,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto"
-    },
-    {
-      "name": "src/main/webapp/i18n/en",
-      "value": 662,
-      "modules": 21,
-      "folder": "src/main/webapp/i18n/en"
-    },
-    {
-      "name": "frontend/entities/cliente",
-      "value": 658,
-      "modules": 12,
-      "folder": "src/main/webapp/app/entities/cliente"
-    },
-    {
-      "name": "frontend/entities/locacao-produto",
-      "value": 627,
-      "modules": 12,
-      "folder": "src/main/webapp/app/entities/locacao-produto"
-    },
-    {
-      "name": "frontend/entities/produto",
-      "value": 585,
-      "modules": 12,
-      "folder": "src/main/webapp/app/entities/produto"
-    },
-    {
-      "name": "frontend/entities/tipo-evento",
-      "value": 547,
-      "modules": 12,
-      "folder": "src/main/webapp/app/entities/tipo-evento"
-    },
-    {
-      "name": "frontend/admin/user-management",
-      "value": 530,
-      "modules": 9,
-      "folder": "src/main/webapp/app/admin/user-management"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
-      "value": 433,
-      "modules": 23,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
-      "value": 403,
-      "modules": 8,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service"
-    },
-    {
-      "name": "src/main/resources/config/liquibase/changelog",
-      "value": 402,
-      "modules": 8,
-      "folder": "src/main/resources/config/liquibase/changelog"
-    },
-    {
-      "name": "frontend/admin/metrics",
-      "value": 397,
-      "modules": 6,
-      "folder": "src/main/webapp/app/admin/metrics"
-    },
-    {
-      "name": "src/test/javascript/spec/app/entities/locacao",
-      "value": 397,
+      "name": "internal/ui/page",
+      "value": 1339,
       "modules": 5,
-      "folder": "src/test/javascript/spec/app/entities/locacao"
+      "folder": "internal/ui/page"
     },
     {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl",
-      "value": 376,
-      "modules": 4,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl"
+      "name": "internal/storage/sqlite",
+      "value": 846,
+      "modules": 7,
+      "folder": "internal/storage/sqlite"
     },
     {
-      "name": "src/main/resources/config",
-      "value": 375,
-      "modules": 4,
-      "folder": "src/main/resources/config"
-    },
-    {
-      "name": "src/test/javascript/spec/app/entities/cliente",
-      "value": 350,
-      "modules": 5,
-      "folder": "src/test/javascript/spec/app/entities/cliente"
-    },
-    {
-      "name": "frontend/layouts/navbar",
-      "value": 342,
-      "modules": 5,
-      "folder": "src/main/webapp/app/layouts/navbar"
-    },
-    {
-      "name": "src/main/webapp/content/css",
-      "value": 331,
-      "modules": 4,
-      "folder": "src/main/webapp/content/css"
-    },
-    {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/service",
-      "value": 331,
-      "modules": 2,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/service"
-    },
-    {
-      "name": "src/test/javascript/spec/app/entities/produto",
-      "value": 317,
-      "modules": 5,
-      "folder": "src/test/javascript/spec/app/entities/produto"
-    },
-    {
-      "name": "src/test/javascript/spec/app/entities/tipo-evento",
-      "value": 311,
-      "modules": 5,
-      "folder": "src/test/javascript/spec/app/entities/tipo-evento"
-    },
-    {
-      "name": "src/test/javascript/spec/app/admin/health",
-      "value": 296,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/admin/health"
-    },
-    {
-      "name": "frontend/admin/health",
-      "value": 277,
-      "modules": 6,
-      "folder": "src/main/webapp/app/admin/health"
-    },
-    {
-      "name": "src/test/javascript/spec/app/entities/locacao-produto",
-      "value": 259,
-      "modules": 5,
-      "folder": "src/test/javascript/spec/app/entities/locacao-produto"
-    },
-    {
-      "name": "src/test/javascript/spec/app/admin/user-management",
-      "value": 250,
-      "modules": 4,
-      "folder": "src/test/javascript/spec/app/admin/user-management"
-    },
-    {
-      "name": "frontend/core/auth",
-      "value": 249,
-      "modules": 6,
-      "folder": "src/main/webapp/app/core/auth"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
-      "value": 231,
-      "modules": 11,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors"
-    },
-    {
-      "name": "src/main/resources/templates",
-      "value": 223,
-      "modules": 2,
-      "folder": "src/main/resources/templates"
-    },
-    {
-      "name": "frontend/account/password",
-      "value": 222,
-      "modules": 6,
-      "folder": "src/main/webapp/app/account/password"
-    },
-    {
-      "name": "src/test/javascript/spec/helpers",
-      "value": 211,
-      "modules": 10,
-      "folder": "src/test/javascript/spec/helpers"
-    },
-    {
-      "name": "frontend/account/register",
-      "value": 206,
-      "modules": 4,
-      "folder": "src/main/webapp/app/account/register"
-    },
-    {
-      "name": "frontend/admin/audits",
-      "value": 203,
-      "modules": 6,
-      "folder": "src/main/webapp/app/admin/audits"
-    },
-    {
-      "name": "src/main/webapp/app",
-      "value": 201,
-      "modules": 6,
-      "folder": "src/main/webapp/app"
-    },
-    {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
-      "value": 192,
-      "modules": 2,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/errors"
-    },
-    {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/security/jwt",
-      "value": 186,
-      "modules": 2,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/security/jwt"
-    },
-    {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/config",
-      "value": 175,
-      "modules": 2,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/config"
-    },
-    {
-      "name": "src/test/javascript/spec/app/admin/metrics",
-      "value": 170,
+      "name": "internal/ui/widget",
+      "value": 270,
       "modules": 3,
-      "folder": "src/test/javascript/spec/app/admin/metrics"
+      "folder": "internal/ui/widget"
     },
     {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
-      "value": 166,
-      "modules": 8,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
-      "value": 161,
-      "modules": 10,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository"
-    },
-    {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/security",
-      "value": 160,
+      "name": "internal/core/contrato",
+      "value": 235,
       "modules": 2,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/security"
+      "folder": "internal/core/contrato"
     },
     {
-      "name": "src/main/webapp",
-      "value": 151,
+      "name": "internal/core/locacao",
+      "value": 227,
       "modules": 2,
-      "folder": "src/main/webapp"
+      "folder": "internal/core/locacao"
     },
     {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt",
-      "value": 151,
-      "modules": 3,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt"
-    },
-    {
-      "name": "src/test/javascript/spec/app/admin/audits",
-      "value": 151,
+      "name": "internal/core/domain",
+      "value": 219,
       "modules": 2,
-      "folder": "src/test/javascript/spec/app/admin/audits"
+      "folder": "internal/core/domain"
     },
     {
-      "name": "src/main/webapp/swagger-ui",
-      "value": 145,
-      "modules": 1,
-      "folder": "src/main/webapp/swagger-ui"
-    },
-    {
-      "name": "frontend/admin/configuration",
-      "value": 145,
-      "modules": 4,
-      "folder": "src/main/webapp/app/admin/configuration"
-    },
-    {
-      "name": "frontend/shared/model",
-      "value": 144,
-      "modules": 5,
-      "folder": "src/main/webapp/app/shared/model"
-    },
-    {
-      "name": "frontend/account/password-reset/finish",
-      "value": 142,
-      "modules": 4,
-      "folder": "src/main/webapp/app/account/password-reset/finish"
-    },
-    {
-      "name": "frontend/account/settings",
-      "value": 141,
-      "modules": 3,
-      "folder": "src/main/webapp/app/account/settings"
-    },
-    {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository",
+      "name": "internal/ui",
       "value": 139,
       "modules": 1,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository"
+      "folder": "internal/ui"
     },
     {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/util",
-      "value": 137,
-      "modules": 1,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/util"
-    },
-    {
-      "name": "frontend/shared/alert",
-      "value": 134,
-      "modules": 2,
-      "folder": "src/main/webapp/app/shared/alert"
-    },
-    {
-      "name": "src/test/javascript/spec/app/shared/login",
-      "value": 125,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/shared/login"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
-      "value": 122,
-      "modules": 6,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security"
-    },
-    {
-      "name": "src/test/javascript/spec/app/shared/alert",
-      "value": 116,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/shared/alert"
-    },
-    {
-      "name": "frontend/shared/login",
-      "value": 114,
-      "modules": 2,
-      "folder": "src/main/webapp/app/shared/login"
-    },
-    {
-      "name": "src/test/javascript/spec/app/admin/configuration",
-      "value": 111,
-      "modules": 2,
-      "folder": "src/test/javascript/spec/app/admin/configuration"
-    },
-    {
-      "name": "frontend/home",
-      "value": 109,
-      "modules": 6,
-      "folder": "src/main/webapp/app/home"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm",
-      "value": 108,
-      "modules": 5,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm"
-    },
-    {
-      "name": "src/test/javascript/spec/app/admin/logs",
-      "value": 107,
-      "modules": 2,
-      "folder": "src/test/javascript/spec/app/admin/logs"
-    },
-    {
-      "name": "frontend/blocks/interceptor",
+      "name": "internal/core/agenda",
       "value": 106,
-      "modules": 4,
-      "folder": "src/main/webapp/app/blocks/interceptor"
-    },
-    {
-      "name": "src/test/resources/config",
-      "value": 104,
-      "modules": 1,
-      "folder": "src/test/resources/config"
-    },
-    {
-      "name": "frontend/shared/util",
-      "value": 103,
-      "modules": 4,
-      "folder": "src/main/webapp/app/shared/util"
-    },
-    {
-      "name": "src/test/javascript/spec/app/account/password",
-      "value": 103,
       "modules": 2,
-      "folder": "src/test/javascript/spec/app/account/password"
+      "folder": "internal/core/agenda"
     },
     {
-      "name": "src/test/javascript/spec/app/account/register",
-      "value": 102,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/account/register"
-    },
-    {
-      "name": "src/test/javascript/spec/app/account/password-reset/finish",
-      "value": 98,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/account/password-reset/finish"
-    },
-    {
-      "name": "frontend/account/password-reset/init",
-      "value": 96,
-      "modules": 4,
-      "folder": "src/main/webapp/app/account/password-reset/init"
-    },
-    {
-      "name": "frontend/admin",
-      "value": 93,
-      "modules": 3,
-      "folder": "src/main/webapp/app/admin"
-    },
-    {
-      "name": "src/test/javascript/spec/app/account/password-reset/init",
-      "value": 93,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/account/password-reset/init"
-    },
-    {
-      "name": "frontend/layouts/profiles",
-      "value": 91,
-      "modules": 4,
-      "folder": "src/main/webapp/app/layouts/profiles"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/util",
-      "value": 89,
-      "modules": 2,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/util"
-    },
-    {
-      "name": "frontend/core/user",
-      "value": 88,
-      "modules": 3,
-      "folder": "src/main/webapp/app/core/user"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes",
-      "value": 86,
-      "modules": 2,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes"
-    },
-    {
-      "name": "frontend/admin/logs",
-      "value": 78,
-      "modules": 5,
-      "folder": "src/main/webapp/app/admin/logs"
-    },
-    {
-      "name": "src/main/resources/templates/mail",
-      "value": 75,
-      "modules": 3,
-      "folder": "src/main/resources/templates/mail"
-    },
-    {
-      "name": "src/test/javascript/spec",
+      "name": "cmd/migrator",
       "value": 75,
       "modules": 1,
-      "folder": "src/test/javascript/spec"
+      "folder": "cmd/migrator"
     },
     {
-      "name": "frontend/account/activate",
-      "value": 71,
-      "modules": 4,
-      "folder": "src/main/webapp/app/account/activate"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util",
-      "value": 65,
-      "modules": 2,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util"
-    },
-    {
-      "name": "frontend/shared",
-      "value": 62,
-      "modules": 4,
-      "folder": "src/main/webapp/app/shared"
-    },
-    {
-      "name": "src/main/resources",
-      "value": 60,
+      "name": "cmd/ducarmolocacoes",
+      "value": 38,
       "modules": 1,
-      "folder": "src/main/resources"
+      "folder": "cmd/ducarmolocacoes"
     },
     {
-      "name": "src/test/javascript/spec/app/account/settings",
-      "value": 60,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/account/settings"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/aop/logging",
-      "value": 59,
-      "modules": 1,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/aop/logging"
-    },
-    {
-      "name": "src/test/javascript/spec/app/account/activate",
-      "value": 59,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/account/activate"
-    },
-    {
-      "name": "frontend/layouts/error",
-      "value": 58,
-      "modules": 3,
-      "folder": "src/main/webapp/app/layouts/error"
-    },
-    {
-      "name": "frontend/core/login",
-      "value": 56,
-      "modules": 2,
-      "folder": "src/main/webapp/app/core/login"
-    },
-    {
-      "name": "frontend/account",
-      "value": 55,
-      "modules": 3,
-      "folder": "src/main/webapp/app/account"
-    },
-    {
-      "name": "frontend/core/language",
-      "value": 55,
-      "modules": 2,
-      "folder": "src/main/webapp/app/core/language"
-    },
-    {
-      "name": "src/test/javascript/spec/app/core/user",
-      "value": 54,
-      "modules": 1,
-      "folder": "src/test/javascript/spec/app/core/user"
-    },
-    {
-      "name": "src/main/docker",
-      "value": 52,
-      "modules": 4,
-      "folder": "src/main/docker"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit",
-      "value": 51,
-      "modules": 2,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit"
-    },
-    {
-      "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search",
-      "value": 48,
-      "modules": 6,
-      "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search"
-    },
-    {
-      "name": "src/test/javascript",
-      "value": 39,
-      "modules": 3,
-      "folder": "src/test/javascript"
-    },
-    {
-      "name": "src/test/resources",
-      "value": 39,
-      "modules": 1,
-      "folder": "src/test/resources"
-    },
-    {
-      "name": "frontend/core",
+      "name": "internal/ui/theme",
       "value": 37,
-      "modules": 2,
-      "folder": "src/main/webapp/app/core"
-    },
-    {
-      "name": "frontend/layouts/main",
-      "value": 35,
-      "modules": 2,
-      "folder": "src/main/webapp/app/layouts/main"
-    },
-    {
-      "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
-      "value": 33,
-      "modules": 7,
-      "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search"
-    },
-    {
-      "name": "frontend/shared/auth",
-      "value": 23,
       "modules": 1,
-      "folder": "src/main/webapp/app/shared/auth"
-    },
-    {
-      "name": "frontend/entities",
-      "value": 20,
-      "modules": 1,
-      "folder": "src/main/webapp/app/entities"
-    },
-    {
-      "name": "frontend/blocks/config",
-      "value": 19,
-      "modules": 2,
-      "folder": "src/main/webapp/app/blocks/config"
-    },
-    {
-      "name": "frontend/admin/docs",
-      "value": 19,
-      "modules": 3,
-      "folder": "src/main/webapp/app/admin/docs"
-    },
-    {
-      "name": "src/main/resources/config/liquibase",
-      "value": 16,
-      "modules": 1,
-      "folder": "src/main/resources/config/liquibase"
-    },
-    {
-      "name": "frontend/shared/language",
-      "value": 11,
-      "modules": 1,
-      "folder": "src/main/webapp/app/shared/language"
-    },
-    {
-      "name": "frontend/layouts",
-      "value": 10,
-      "modules": 1,
-      "folder": "src/main/webapp/app/layouts"
-    },
-    {
-      "name": "frontend/layouts/footer",
-      "value": 9,
-      "modules": 2,
-      "folder": "src/main/webapp/app/layouts/footer"
-    },
-    {
-      "name": "frontend/shared/constants",
-      "value": 7,
-      "modules": 3,
-      "folder": "src/main/webapp/app/shared/constants"
-    },
-    {
-      "name": "src/test/resources/templates/mail",
-      "value": 1,
-      "modules": 1,
-      "folder": "src/test/resources/templates/mail"
+      "folder": "internal/ui/theme"
     }
   ],
-  "top_complexity": [
+  "top_complex_modules": [
     {
-      "id": "src/main/webapp/app/admin/health/health.service.ts",
-      "name": "health.service.ts",
-      "complexity": 29,
-      "loc": 112,
-      "layer": "service"
+      "name": "internal/ui/page/locacao_list.go",
+      "complexity": 43,
+      "loc": 380,
+      "folder": "internal/ui/page"
     },
     {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/AccountResource.java",
-      "name": "AccountResource.java",
-      "complexity": 28,
-      "loc": 112,
-      "layer": "web"
+      "name": "internal/storage/sqlite/locacao_repo.go",
+      "complexity": 35,
+      "loc": 357,
+      "folder": "internal/storage/sqlite"
     },
     {
-      "id": "src/main/webapp/app/entities/locacao/locacao.service.ts",
-      "name": "locacao.service.ts",
-      "complexity": 25,
-      "loc": 99,
-      "layer": "service"
+      "name": "internal/ui/page/locacao_form.go",
+      "complexity": 33,
+      "loc": 480,
+      "folder": "internal/ui/page"
     },
     {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/UserResource.java",
-      "name": "UserResource.java",
-      "complexity": 25,
-      "loc": 119,
-      "layer": "web"
+      "name": "internal/core/domain/domain.go",
+      "complexity": 23,
+      "loc": 155,
+      "folder": "internal/core/domain"
     },
     {
-      "id": "src/main/webapp/app/shared/alert/alert-error.component.ts",
-      "name": "alert-error.component.ts",
-      "complexity": 20,
-      "loc": 105,
-      "layer": "frontend"
+      "name": "internal/core/locacao/service_test.go",
+      "complexity": 17,
+      "loc": 120,
+      "folder": "internal/core/locacao"
     },
     {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/service/UserService.java",
-      "name": "UserService.java",
-      "complexity": 19,
-      "loc": 228,
-      "layer": "service"
-    },
-    {
-      "id": "src/main/webapp/app/shared/util/datepicker-adapter.ts",
-      "name": "datepicker-adapter.ts",
-      "complexity": 18,
-      "loc": 54,
-      "layer": "frontend"
-    },
-    {
-      "id": "src/main/webapp/app/core/auth/principal.service.ts",
-      "name": "principal.service.ts",
+      "name": "internal/ui/app.go",
       "complexity": 16,
-      "loc": 91,
-      "layer": "service"
+      "loc": 139,
+      "folder": "internal/ui"
     },
     {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/aop/logging/LoggingAspect.java",
-      "name": "LoggingAspect.java",
+      "name": "internal/core/locacao/service.go",
       "complexity": 16,
-      "loc": 59,
-      "layer": "other"
+      "loc": 107,
+      "folder": "internal/core/locacao"
     },
     {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResource.java",
-      "name": "LocacaoResource.java",
-      "complexity": 16,
-      "loc": 149,
-      "layer": "web"
-    },
-    {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/config/WebConfigurer.java",
-      "name": "WebConfigurer.java",
-      "complexity": 16,
-      "loc": 143,
-      "layer": "config"
-    },
-    {
-      "id": "src/main/webapp/app/account/password/password-strength-bar.component.ts",
-      "name": "password-strength-bar.component.ts",
-      "complexity": 15,
-      "loc": 72,
-      "layer": "frontend"
-    },
-    {
-      "id": "src/main/webapp/app/core/user/user.model.ts",
-      "name": "user.model.ts",
+      "name": "internal/storage/sqlite/sqlite_test.go",
       "complexity": 14,
-      "loc": 46,
-      "layer": "frontend"
+      "loc": 94,
+      "folder": "internal/storage/sqlite"
     },
     {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/TipoEventoResource.java",
-      "name": "TipoEventoResource.java",
+      "name": "internal/core/contrato/generator.go",
+      "complexity": 14,
+      "loc": 161,
+      "folder": "internal/core/contrato"
+    },
+    {
+      "name": "internal/storage/sqlite/produto_repo.go",
       "complexity": 13,
-      "loc": 86,
-      "layer": "web"
-    },
-    {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ClienteResource.java",
-      "name": "ClienteResource.java",
-      "complexity": 13,
-      "loc": 86,
-      "layer": "web"
-    },
-    {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ProdutoResource.java",
-      "name": "ProdutoResource.java",
-      "complexity": 13,
-      "loc": 99,
-      "layer": "web"
-    },
-    {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/DateUtil.java",
-      "name": "DateUtil.java",
-      "complexity": 13,
-      "loc": 49,
-      "layer": "service"
-    },
-    {
-      "id": "src/main/webapp/app/entities/locacao/locacao-update.component.html",
-      "name": "locacao-update.component.html",
-      "complexity": 12,
-      "loc": 141,
-      "layer": "frontend"
-    },
-    {
-      "id": "src/main/webapp/app/admin/configuration/configuration.service.ts",
-      "name": "configuration.service.ts",
-      "complexity": 12,
-      "loc": 55,
-      "layer": "service"
-    },
-    {
-      "id": "src/main/webapp/app/entities/cliente/cliente-update.component.html",
-      "name": "cliente-update.component.html",
-      "complexity": 11,
-      "loc": 71,
-      "layer": "frontend"
-    },
-    {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/ExceptionTranslator.java",
-      "name": "ExceptionTranslator.java",
-      "complexity": 11,
-      "loc": 89,
-      "layer": "web"
-    },
-    {
-      "id": "src/main/webapp/swagger-ui/index.html",
-      "name": "index.html",
-      "complexity": 10,
-      "loc": 145,
-      "layer": "frontend"
-    },
-    {
-      "id": "src/main/webapp/app/account/register/register.component.html",
-      "name": "register.component.html",
-      "complexity": 10,
-      "loc": 118,
-      "layer": "frontend"
-    },
-    {
-      "id": "src/main/webapp/app/account/settings/settings.component.html",
-      "name": "settings.component.html",
-      "complexity": 10,
-      "loc": 71,
-      "layer": "frontend"
-    },
-    {
-      "id": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java",
-      "name": "LocacaoServiceImpl.java",
-      "complexity": 10,
-      "loc": 165,
-      "layer": "service"
+      "loc": 113,
+      "folder": "internal/storage/sqlite"
     }
   ],
-  "loc_histogram": {
-    "bins": [
-      "1-50",
-      "51-100",
-      "101-200",
-      "201-500",
-      "501-1000",
-      ">1000"
-    ],
-    "counts": [
-      337,
-      106,
-      60,
-      9,
-      1,
-      0
-    ]
-  },
-  "dependency_sankey": {
-    "nodes": [
-      {
-        "id": "Config",
-        "name": "Config"
-      },
-      {
-        "id": "Frontend",
-        "name": "Frontend"
-      },
-      {
-        "id": "Other",
-        "name": "Other"
-      },
-      {
-        "id": "Service",
-        "name": "Service"
-      }
-    ],
-    "links": [
-      {
-        "from": "Frontend",
-        "to": "Service",
-        "weight": 58
-      },
-      {
-        "from": "Other",
-        "to": "Service",
-        "weight": 12
-      },
-      {
-        "from": "Service",
-        "to": "Other",
-        "weight": 9
-      },
-      {
-        "from": "Service",
-        "to": "Frontend",
-        "weight": 5
-      },
-      {
-        "from": "Frontend",
-        "to": "Config",
-        "weight": 3
-      },
-      {
-        "from": "Config",
-        "to": "Service",
-        "weight": 1
-      },
-      {
-        "from": "Config",
-        "to": "Other",
-        "weight": 1
-      }
-    ]
-  },
-  "language_distribution": [
+  "distribution_by_layer": [
     {
-      "language": "Java",
-      "modules": 168,
-      "loc": 9807
+      "layer": "cli",
+      "loc": 113,
+      "modules": 2
     },
     {
-      "language": "TypeScript",
-      "modules": 219,
-      "loc": 9565
+      "layer": "presentation",
+      "loc": 1785,
+      "modules": 10
     },
     {
-      "language": "HTML",
-      "modules": 55,
-      "loc": 3148
+      "layer": "storage",
+      "loc": 846,
+      "modules": 7
     },
     {
-      "language": "Config/YAML",
-      "modules": 62,
-      "loc": 2378
-    },
-    {
-      "language": "SCSS/CSS",
-      "modules": 8,
-      "loc": 473
-    },
-    {
-      "language": "JavaScript",
-      "modules": 1,
-      "loc": 23
+      "layer": "domain",
+      "loc": 787,
+      "modules": 8
     }
   ]
 }
