@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="diagram">
+  <meta name="reversa-producer-agent" content="reversa-docs-analyst">
+  <meta name="reversa-template" content="metricas">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Dashboard de Métricas & Qualidade — ducarmolocacoes</title>
+  <link rel="stylesheet" href="assets/css/docs.css">
+  <script src="assets/vendor/highcharts.js"></script>
+  <script src="assets/vendor/highcharts-accessibility.js"></script>
+  <script src="assets/vendor/highcharts-exporting.js"></script>
+  <script src="assets/vendor/highcharts-treemap.js"></script>
+  <script src="assets/vendor/highcharts-sankey.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <style>
+    .metrics-dashboard {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: #0a0f1d;
+    }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .kpi-card {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .kpi-val {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .kpi-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 1024px) {
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .chart-box {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chart-box-header {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chart-container {
+      flex: 1;
+      width: 100%;
+      height: 320px;
+    }
+  </style>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+  <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+</svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Dashboard de Métricas</span>
+    </a>
+    <nav class="reversa-doc-nav">
+            <a href="index.html" data-page-id="index">Visão geral</a>
+      <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div class="metrics-dashboard">
+      <div>
+        <h2 style="font-size: 1.4rem; font-weight: 700; color: #fff;">Visão Quantitativa do Código</h2>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">Análise estatística de volume, complexidade ciclomática, acoplamento entre camadas e linguagens.</p>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="kpi-row">
+        <div class="kpi-card" style="border-left: 4px solid #38bdf8;">
+          <span class="kpi-label">Total de Módulos</span>
+          <span class="kpi-val" id="kpi-modules">0</span>
+        </div>
+        <div class="kpi-card" style="border-left: 4px solid #10b981;">
+          <span class="kpi-label">Linhas de Código (LOC)</span>
+          <span class="kpi-val" id="kpi-loc">0</span>
+        </div>
+        <div class="kpi-card" style="border-left: 4px solid #f59e0b;">
+          <span class="kpi-label">Complexidade Média</span>
+          <span class="kpi-val" id="kpi-avg-comp">0</span>
+        </div>
+        <div class="kpi-card" style="border-left: 4px solid #ef4444;">
+          <span class="kpi-label">Complexidade Máxima</span>
+          <span class="kpi-val" id="kpi-max-comp">0</span>
+        </div>
+        <div class="kpi-card" style="border-left: 4px solid #a855f7;">
+          <span class="kpi-label">Arestas de Acoplamento</span>
+          <span class="kpi-val" id="kpi-deps">0</span>
+        </div>
+      </div>
+
+      <!-- Charts 2x2 Grid -->
+      <div class="charts-grid">
+        <!-- Chart 1: Treemap -->
+        <div class="chart-box">
+          <div class="chart-box-header">
+            <span>Distribuição de LOC por Diretório</span>
+            <span class="badge badge-web">Treemap</span>
+          </div>
+          <div id="chart-treemap" class="chart-container"></div>
+        </div>
+
+        <!-- Chart 2: Top Complexidade -->
+        <div class="chart-box">
+          <div class="chart-box-header">
+            <span>Top 15 Classes com Maior Complexidade</span>
+            <span class="badge badge-repository">Complexidade Ciclomática</span>
+          </div>
+          <div id="chart-complexity" class="chart-container"></div>
+        </div>
+
+        <!-- Chart 3: Histograma LOC -->
+        <div class="chart-box">
+          <div class="chart-box-header">
+            <span>Histograma de Tamanho de Arquivos</span>
+            <span class="badge badge-service">Distribuição LOC</span>
+          </div>
+          <div id="chart-histogram" class="chart-container"></div>
+        </div>
+
+        <!-- Chart 4: Sankey Camadas -->
+        <div class="chart-box">
+          <div class="chart-box-header">
+            <span>Fluxo de Dependências entre Camadas</span>
+            <span class="badge badge-frontend">Sankey Fluxo</span>
+          </div>
+          <div id="chart-sankey" class="chart-container"></div>
+        </div>
+      </div>
+
+      <!-- Chart 5: Linguagens -->
+      <div class="chart-box" style="min-height: 280px;">
+        <div class="chart-box-header">
+          <span>Composição Tecnológica do Repositório</span>
+          <span class="badge">Linguagens & Config</span>
+        </div>
+        <div id="chart-languages" class="chart-container" style="height: 240px;"></div>
+      </div>
+    </div>
+
+    <!-- Sidebar Lateral de Hotspots -->
+    <aside class="sidebar-panel">
+      <div class="panel-section">
+        <h3 class="panel-title">Diagnóstico do Analista</h3>
+        <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; display: flex; flex-direction: column; gap: 0.75rem;">
+          <div style="background: #1e293b; border-left: 3px solid #ef4444; padding: 0.6rem; border-radius: 4px;">
+            <strong style="color: #ef4444;">Hotspot Crítico:</strong><br>
+            A classe <code>LocacaoServiceImpl.java</code> concentra o maior índice de complexidade ciclomática do sistema, combinando validação de regras de reserva, cálculo de saldo, minutas HTML de contrato e dual-write com Elasticsearch.
+          </div>
+          <div style="background: #1e293b; border-left: 3px solid #f59e0b; padding: 0.6rem; border-radius: 4px;">
+            <strong style="color: #f59e0b;">Acoplamento Vertical Estrito:</strong><br>
+            O fluxo de dependências segue o padrão Controller ➔ Service ➔ Repository, mas apresenta 7 ciclos pontuais de referência circular entre mappers e DTOs.
+          </div>
+          <div style="background: #1e293b; border-left: 3px solid #38bdf8; padding: 0.6rem; border-radius: 4px;">
+            <strong style="color: #38bdf8;">Distribuição de Esforço:</strong><br>
+            Mais de 65% do LOC reside no backend Java (Spring Boot), enquanto o frontend Angular 6 concentra componentes de listagem e formulários de cadastro.
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Métricas de Coesão</h3>
+        <div class="stats-summary">
+          <div class="stat-item">
+            <span class="stat-num" style="color: #10b981;">89.4%</span>
+            <span class="stat-label">Camadas Bem Isoladas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" style="color: #f59e0b;">7</span>
+            <span class="stat-label">Ciclos Bidirecionais</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Configuração Tema Sóbrio Dark para Highcharts
+    Highcharts.setOptions({
+      chart: {
+        backgroundColor: 'transparent',
+        style: {
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        }
+      },
+      title: { text: null },
+      credits: { enabled: false },
+      legend: {
+        itemStyle: { color: '#94a3b8' },
+        itemHoverStyle: { color: '#f8fafc' }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+        borderColor: '#38bdf8',
+        style: { color: '#f8fafc' },
+        borderRadius: 6
+      },
+      xAxis: {
+        gridLineColor: '#334155',
+        labels: { style: { color: '#94a3b8' } },
+        lineColor: '#334155',
+        tickColor: '#334155'
+      },
+      yAxis: {
+        gridLineColor: '#334155',
+        labels: { style: { color: '#94a3b8' } },
+        lineColor: '#334155',
+        title: { style: { color: '#94a3b8' } }
+      }
+    });
+
+    let metricsData = null;
+    if (window.RV_DATA && window.RV_DATA.metrics) {
+      metricsData = window.RV_DATA.metrics;
+    }
+
+    function renderDashboard(data) {
+      if (!data) return;
+
+      const sum = data.summary || {};
+      document.getElementById("kpi-modules").textContent = sum.totalModules || 0;
+      document.getElementById("kpi-loc").textContent = (sum.totalLoc || 0).toLocaleString("pt-BR");
+      document.getElementById("kpi-avg-comp").textContent = sum.avgComplexity || 0;
+      document.getElementById("kpi-max-comp").textContent = sum.maxComplexity || 0;
+      document.getElementById("kpi-deps").textContent = sum.totalDependencies || 0;
+
+      // 1. Treemap Chart
+      const treemapSeries = (data.treemap_loc_by_folder || []).slice(0, 15).map(f => ({
+        name: f.name,
+        value: f.value,
+        colorValue: f.value
+      }));
+
+      Highcharts.chart('chart-treemap', {
+        colorAxis: {
+          minColor: '#1e3a8a',
+          maxColor: '#38bdf8'
+        },
+        series: [{
+          type: 'treemap',
+          layoutAlgorithm: 'squarified',
+          data: treemapSeries
+        }]
+      });
+
+      // 2. Top Complexidade (Bar Horizontal)
+      const topComp = (data.top_complexity || []).slice(0, 15);
+      Highcharts.chart('chart-complexity', {
+        chart: { type: 'bar' },
+        xAxis: {
+          categories: topComp.map(c => c.name.replace(".java", "").replace(".ts", "")),
+          labels: { style: { fontSize: '10px' } }
+        },
+        yAxis: {
+          title: { text: 'Complexidade Ciclomática' }
+        },
+        legend: { enabled: false },
+        series: [{
+          name: 'Complexidade',
+          data: topComp.map(c => ({
+            y: c.complexity,
+            color: c.complexity > 25 ? '#ef4444' : (c.complexity > 15 ? '#f59e0b' : '#38bdf8')
+          }))
+        }]
+      });
+
+      // 3. Histograma LOC
+      const hist = data.loc_histogram || { bins: [], counts: [] };
+      Highcharts.chart('chart-histogram', {
+        chart: { type: 'column' },
+        xAxis: {
+          categories: hist.bins,
+          title: { text: 'Faixa de Linhas de Código (LOC)' }
+        },
+        yAxis: {
+          title: { text: 'Número de Módulos' }
+        },
+        legend: { enabled: false },
+        series: [{
+          name: 'Quantidade de Módulos',
+          data: hist.counts,
+          color: '#10b981'
+        }]
+      });
+
+      // 4. Sankey Camadas
+      const sankey = data.dependency_sankey || { nodes: [], links: [] };
+      Highcharts.chart('chart-sankey', {
+        series: [{
+          type: 'sankey',
+          name: 'Dependências',
+          data: sankey.links.map(l => [l.from, l.to, l.weight])
+        }]
+      });
+
+      // 5. Distribuição de Linguagens (Pie / Donut)
+      const langs = data.language_distribution || [];
+      Highcharts.chart('chart-languages', {
+        chart: { type: 'pie' },
+        plotOptions: {
+          pie: {
+            innerSize: '55%',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: { color: '#cbd5e1' }
+            }
+          }
+        },
+        series: [{
+          name: 'LOC',
+          data: langs.map(l => ({
+            name: l.language,
+            y: l.loc
+          }))
+        }]
+      });
+    }
+
+    if (metricsData) {
+      renderDashboard(metricsData);
+    } else {
+      window.addEventListener("DOMContentLoaded", () => {
+        if (window.RV_DATA && window.RV_DATA.metrics) {
+          renderDashboard(window.RV_DATA.metrics);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

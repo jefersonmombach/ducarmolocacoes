@@ -142,3 +142,7 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
+
+# Reversa
+.reversa/config.user.toml
+_reversa_sdd/

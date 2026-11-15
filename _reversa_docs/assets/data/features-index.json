@@ -1,0 +1,60 @@
+{
+  "specs": [
+    {
+      "slug": "autenticacao",
+      "title": "Autentica\u00e7\u00e3o & Seguran\u00e7a JWT",
+      "category": "Seguran\u00e7a",
+      "summary": "Mecanismo stateless de autentica\u00e7\u00e3o com tokens JWT HMAC-SHA512, perfis ROLE_USER e ROLE_ADMIN, renova\u00e7\u00e3o de senhas e prote\u00e7\u00e3o de endpoints REST.",
+      "rfCount": 5,
+      "specPath": "_reversa_sdd/autenticacao"
+    },
+    {
+      "slug": "clientes",
+      "title": "Gest\u00e3o de Clientes & Locat\u00e1rios",
+      "category": "Cadastro",
+      "summary": "Manuten\u00e7\u00e3o cadastral de clientes (CPF, RG, telefones, endere\u00e7o completo) e hist\u00f3rico consolidado de contratos com busca full-text.",
+      "rfCount": 6,
+      "specPath": "_reversa_sdd/clientes"
+    },
+    {
+      "slug": "produtos",
+      "title": "Cat\u00e1logo de Trajes & Vestu\u00e1rio",
+      "category": "Estoque & Cat\u00e1logo",
+      "summary": "Gest\u00e3o de trajes finos, vestidos, smokings e acess\u00f3rios, com pre\u00e7o unit\u00e1rio de loca\u00e7\u00e3o, descri\u00e7\u00f5es detalhadas e espelhamento em \u00edndice Elasticsearch.",
+      "rfCount": 5,
+      "specPath": "_reversa_sdd/produtos"
+    },
+    {
+      "slug": "tipo-eventos",
+      "title": "Tipos de Eventos Sociais",
+      "category": "Configura\u00e7\u00e3o",
+      "summary": "Classifica\u00e7\u00e3o da natureza do evento (Casamento, Formatura, 15 Anos, Bodas) para contextualiza\u00e7\u00e3o da agenda e relat\u00f3rios anal\u00edticos.",
+      "rfCount": 4,
+      "specPath": "_reversa_sdd/tipo-eventos"
+    },
+    {
+      "slug": "locacoes",
+      "title": "Ciclo de Vida das Loca\u00e7\u00f5es",
+      "category": "Opera\u00e7\u00e3o Core",
+      "summary": "M\u00f3dulo transacional central: reserva de trajes, c\u00e1lculo cont\u00e1bil de sinal (20%) e saldo, bloqueio de agenda de 7 dias [evento-3, evento+4] e transi\u00e7\u00e3o de estados.",
+      "rfCount": 8,
+      "specPath": "_reversa_sdd/locacoes"
+    },
+    {
+      "slug": "contrato",
+      "title": "Emiss\u00e3o de Contratos & PDF",
+      "category": "Jur\u00eddico & Documentos",
+      "summary": "Motor de processamento de minutas baseado em Chain of Responsibility (TagProcessor) e renderiza\u00e7\u00e3o direta em documento PDF para assinatura via iText.",
+      "rfCount": 6,
+      "specPath": "_reversa_sdd/contrato"
+    },
+    {
+      "slug": "administracao",
+      "title": "Administra\u00e7\u00e3o & Opera\u00e7\u00f5es",
+      "category": "Governan\u00e7a",
+      "summary": "M\u00e9tricas da JVM, visualiza\u00e7\u00e3o de logs, auditoria Spring Boot Actuator e gerenciamento administrativo de usu\u00e1rios e permiss\u00f5es.",
+      "rfCount": 5,
+      "specPath": "_reversa_sdd/administracao"
+    }
+  ]
+}

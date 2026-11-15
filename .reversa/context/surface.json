@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-11-14T19:02:00Z",
+  "project_root": "/home/jeferson/Documentos/GitHub/ducarmolocacoes",
+  "languages": [
+    { "name": "TypeScript", "extensions": [".ts"], "file_count": 219 },
+    { "name": "Java", "extensions": [".java"], "file_count": 168 },
+    { "name": "HTML", "extensions": [".html"], "file_count": 55 },
+    { "name": "JSON", "extensions": [".json"], "file_count": 49 },
+    { "name": "XML", "extensions": [".xml"], "file_count": 12 },
+    { "name": "YAML", "extensions": [".yml"], "file_count": 9 },
+    { "name": "CSS", "extensions": [".css"], "file_count": 8 },
+    { "name": "JavaScript", "extensions": [".js"], "file_count": 6 }
+  ],
+  "primary_language": "TypeScript / Java",
+  "frameworks": [
+    { "name": "Spring Boot", "version": "2.0.5.RELEASE", "source": "pom.xml" },
+    { "name": "Angular", "version": "6.1.0", "source": "package.json" },
+    { "name": "JHipster", "version": "5.5.0", "source": ".yo-rc.json" },
+    { "name": "Hibernate", "version": "5.2.17.Final", "source": "pom.xml" },
+    { "name": "Liquibase", "version": "3.5.5", "source": "pom.xml" },
+    { "name": "Elasticsearch", "version": "5.x", "source": "pom.xml" }
+  ],
+  "package_manager": "npm / maven",
+  "entry_points": [
+    { "path": "src/main/java/tech/jefersonms/ducarmolocacoes/DucarmolocacoesApp.java", "type": "backend_entry" },
+    { "path": "src/main/webapp/app/app.main.ts", "type": "frontend_entry" }
+  ],
+  "config_files": [
+    "pom.xml",
+    "package.json",
+    "angular.json",
+    "tsconfig.json",
+    "src/main/resources/config/application.yml",
+    "src/main/resources/config/application-dev.yml",
+    "src/main/resources/config/application-prod.yml",
+    ".yo-rc.json"
+  ],
+  "ci_cd": [],
+  "docker": {
+    "dockerfile": "src/main/docker/Dockerfile",
+    "compose": "src/main/docker/app.yml"
+  },
+  "database_hints": [
+    { "path": "src/main/resources/config/liquibase/master.xml", "type": "liquibase_master" },
+    { "path": "src/main/resources/config/liquibase/changelog/", "type": "liquibase_changelogs" },
+    { "path": "ducarmo.jh", "type": "jdl_schema" },
+    { "path": ".jhipster/", "type": "jhipster_entities" }
+  ],
+  "test_framework": "Jest (frontend) / JUnit & Spring Boot Test (backend)",
+  "test_file_count": 68,
+  "modules": [
+    "auth",
+    "cliente",
+    "produto",
+    "tipo-evento",
+    "locacao",
+    "contrato",
+    "admin"
+  ],
+  "total_files": 557,
+  "organization_suggestion": {
+    "granularity": "endpoint",
+    "rationale": "A arquitetura possui roteamento centralizado com controladores @RestController em web/rest/ definindo os recursos da API.",
+    "signals": [
+      {
+        "type": "centralized_rest_controllers",
+        "evidence": [
+          "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ClienteResource.java",
+          "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResource.java",
+          "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ProdutoResource.java",
+          "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/TipoEventoResource.java",
+          "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/UserResource.java",
+          "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/AccountResource.java"
+        ]
+      }
+    ],
+    "features": []
+  }
+}

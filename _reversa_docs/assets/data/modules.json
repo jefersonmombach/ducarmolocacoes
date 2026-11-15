@@ -1,0 +1,4106 @@
+[
+  {
+    "name": "src/main/docker/sonar.yml",
+    "folder": "src/main/docker",
+    "loc": 7,
+    "complexity": 1,
+    "type": "config",
+    "layer": "other"
+  },
+  {
+    "name": "src/main/docker/mysql.yml",
+    "folder": "src/main/docker",
+    "loc": 13,
+    "complexity": 1,
+    "type": "config",
+    "layer": "other"
+  },
+  {
+    "name": "src/main/docker/elasticsearch.yml",
+    "folder": "src/main/docker",
+    "loc": 12,
+    "complexity": 1,
+    "type": "config",
+    "layer": "other"
+  },
+  {
+    "name": "src/main/docker/app.yml",
+    "folder": "src/main/docker",
+    "loc": 20,
+    "complexity": 3,
+    "type": "config",
+    "layer": "other"
+  },
+  {
+    "name": "src/main/resources/logback-spring.xml",
+    "folder": "src/main/resources",
+    "loc": 60,
+    "complexity": 3,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/application-prod.yml",
+    "folder": "src/main/resources/config",
+    "loc": 131,
+    "complexity": 5,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/application-dev.yml",
+    "folder": "src/main/resources/config",
+    "loc": 122,
+    "complexity": 7,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/application-tls.yml",
+    "folder": "src/main/resources/config",
+    "loc": 18,
+    "complexity": 1,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/application.yml",
+    "folder": "src/main/resources/config",
+    "loc": 104,
+    "complexity": 4,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/master.xml",
+    "folder": "src/main/resources/config/liquibase",
+    "loc": 16,
+    "complexity": 2,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/20181026154425_added_entity_Produto.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 37,
+    "complexity": 2,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/00000000000000_initial_schema.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 128,
+    "complexity": 3,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/20181026154427_added_entity_constraints_Locacao.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 21,
+    "complexity": 3,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/20181026154424_added_entity_TipoEvento.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 28,
+    "complexity": 2,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/20181026154428_added_entity_constraints_LocacaoProduto.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 26,
+    "complexity": 3,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/20181026154426_added_entity_Cliente.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 49,
+    "complexity": 2,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/20181026154428_added_entity_LocacaoProduto.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 43,
+    "complexity": 2,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/config/liquibase/changelog/20181026154427_added_entity_Locacao.xml",
+    "folder": "src/main/resources/config/liquibase/changelog",
+    "loc": 70,
+    "complexity": 2,
+    "type": "config",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/templates/error.html",
+    "folder": "src/main/resources/templates",
+    "loc": 135,
+    "complexity": 2,
+    "type": "template",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/templates/contrato.html",
+    "folder": "src/main/resources/templates",
+    "loc": 88,
+    "complexity": 1,
+    "type": "template",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/templates/mail/creationEmail.html",
+    "folder": "src/main/resources/templates/mail",
+    "loc": 25,
+    "complexity": 2,
+    "type": "template",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/templates/mail/activationEmail.html",
+    "folder": "src/main/resources/templates/mail",
+    "loc": 25,
+    "complexity": 2,
+    "type": "template",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/resources/templates/mail/passwordResetEmail.html",
+    "folder": "src/main/resources/templates/mail",
+    "loc": 25,
+    "complexity": 2,
+    "type": "template",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/webapp/index.html",
+    "folder": "src/main/webapp",
+    "loc": 101,
+    "complexity": 9,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/404.html",
+    "folder": "src/main/webapp",
+    "loc": 50,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/swagger-ui/index.html",
+    "folder": "src/main/webapp/swagger-ui",
+    "loc": 145,
+    "complexity": 10,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/health.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 29,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/global.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 141,
+    "complexity": 4,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/user-management.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 30,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/register.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 24,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/reset.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 27,
+    "complexity": 3,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/audits.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 27,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/cliente.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 31,
+    "complexity": 3,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/locacaoProduto.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 27,
+    "complexity": 3,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/produto.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 26,
+    "complexity": 3,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/home.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 19,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/locacao.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 36,
+    "complexity": 3,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/metrics.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 101,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/tipoEvento.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 23,
+    "complexity": 3,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/password.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 12,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/activate.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 9,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/error.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 13,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/settings.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 32,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/configuration.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 10,
+    "complexity": 1,
+    "type": "config",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/login.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 19,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/logs.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 11,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/en/sessions.json",
+    "folder": "src/main/webapp/i18n/en",
+    "loc": 15,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/health.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 29,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/global.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 144,
+    "complexity": 3,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/user-management.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 30,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/register.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 24,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/reset.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 27,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/audits.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 27,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/cliente.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 31,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/locacaoProduto.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 27,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/produto.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 26,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/home.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 19,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/locacao.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 47,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/metrics.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 93,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/tipoEvento.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 23,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/password.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 12,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/activate.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 9,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/error.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 13,
+    "complexity": 2,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/settings.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 32,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/configuration.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 10,
+    "complexity": 1,
+    "type": "config",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/login.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 19,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/logs.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 11,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/i18n/pt-br/sessions.json",
+    "folder": "src/main/webapp/i18n/pt-br",
+    "loc": 15,
+    "complexity": 1,
+    "type": "config",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/content/css/documentation.css",
+    "folder": "src/main/webapp/content/css",
+    "loc": 1,
+    "complexity": 1,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/content/css/global.css",
+    "folder": "src/main/webapp/content/css",
+    "loc": 176,
+    "complexity": 3,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/content/css/loading.css",
+    "folder": "src/main/webapp/content/css",
+    "loc": 153,
+    "complexity": 1,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/content/css/vendor.css",
+    "folder": "src/main/webapp/content/css",
+    "loc": 1,
+    "complexity": 1,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/vendor.ts",
+    "folder": "src/main/webapp/app",
+    "loc": 82,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/app.constants.ts",
+    "folder": "src/main/webapp/app",
+    "loc": 4,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/app.module.ts",
+    "folder": "src/main/webapp/app",
+    "loc": 64,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/app.main.ts",
+    "folder": "src/main/webapp/app",
+    "loc": 11,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/app-routing.module.ts",
+    "folder": "src/main/webapp/app",
+    "loc": 21,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/polyfills.ts",
+    "folder": "src/main/webapp/app",
+    "loc": 19,
+    "complexity": 5,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/shared-libs.module.ts",
+    "folder": "src/main/webapp/app/shared",
+    "loc": 24,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/index.ts",
+    "folder": "src/main/webapp/app/shared",
+    "loc": 14,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/shared.module.ts",
+    "folder": "src/main/webapp/app/shared",
+    "loc": 16,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/shared-common.module.ts",
+    "folder": "src/main/webapp/app/shared",
+    "loc": 8,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/login/login.component.html",
+    "folder": "src/main/webapp/app/shared/login",
+    "loc": 39,
+    "complexity": 4,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/login/login.component.ts",
+    "folder": "src/main/webapp/app/shared/login",
+    "loc": 75,
+    "complexity": 6,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/auth/has-any-authority.directive.ts",
+    "folder": "src/main/webapp/app/shared/auth",
+    "loc": 23,
+    "complexity": 4,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/language/find-language-from-key.pipe.ts",
+    "folder": "src/main/webapp/app/shared/language",
+    "loc": 11,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/alert/alert.component.ts",
+    "folder": "src/main/webapp/app/shared/alert",
+    "loc": 29,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/alert/alert-error.component.ts",
+    "folder": "src/main/webapp/app/shared/alert",
+    "loc": 105,
+    "complexity": 20,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/constants/input.constants.ts",
+    "folder": "src/main/webapp/app/shared/constants",
+    "loc": 2,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/constants/pagination.constants.ts",
+    "folder": "src/main/webapp/app/shared/constants",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/constants/error.constants.ts",
+    "folder": "src/main/webapp/app/shared/constants",
+    "loc": 4,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/model/tipo-evento.model.ts",
+    "folder": "src/main/webapp/app/shared/model",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/model/locacao.model.ts",
+    "folder": "src/main/webapp/app/shared/model",
+    "loc": 54,
+    "complexity": 7,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/model/cliente.model.ts",
+    "folder": "src/main/webapp/app/shared/model",
+    "loc": 31,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/model/locacao-produto.model.ts",
+    "folder": "src/main/webapp/app/shared/model",
+    "loc": 29,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/model/produto.model.ts",
+    "folder": "src/main/webapp/app/shared/model",
+    "loc": 21,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/util/request-util.ts",
+    "folder": "src/main/webapp/app/shared/util",
+    "loc": 17,
+    "complexity": 4,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/util/boolean-str.pipe.ts",
+    "folder": "src/main/webapp/app/shared/util",
+    "loc": 7,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/util/datepicker-adapter.ts",
+    "folder": "src/main/webapp/app/shared/util",
+    "loc": 54,
+    "complexity": 18,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/shared/util/locacao-situacao-str.pipe.ts",
+    "folder": "src/main/webapp/app/shared/util",
+    "loc": 25,
+    "complexity": 6,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/entity.module.ts",
+    "folder": "src/main/webapp/app/entities",
+    "loc": 20,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento.component.html",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 67,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento.module.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 26,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/index.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento-update.component.html",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 28,
+    "complexity": 4,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento.route.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 86,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento-delete-dialog.component.html",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 19,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento.service.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 34,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento-delete-dialog.component.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 55,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento.component.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 140,
+    "complexity": 8,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento-update.component.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 42,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento-detail.component.ts",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 19,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/tipo-evento/tipo-evento-detail.component.html",
+    "folder": "src/main/webapp/app/entities/tipo-evento",
+    "loc": 25,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao.service.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 99,
+    "complexity": 25,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-update.component.html",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 141,
+    "complexity": 12,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-update.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 132,
+    "complexity": 5,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao.component.html",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 127,
+    "complexity": 3,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao.route.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 109,
+    "complexity": 4,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-mudar-situacao-dialog.component.html",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 19,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-detail.component.html",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 107,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-detail.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 19,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao.module.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 45,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/index.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 145,
+    "complexity": 8,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-delete-dialog.component.html",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 19,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-mudar-situacao-dialog.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 81,
+    "complexity": 6,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-add-produto.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 107,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-delete-dialog.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 55,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao/locacao-add-produto.component.html",
+    "folder": "src/main/webapp/app/entities/locacao",
+    "loc": 43,
+    "complexity": 5,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente.component.html",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 73,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente.component.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 140,
+    "complexity": 8,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente-delete-dialog.component.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 55,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente-delete-dialog.component.html",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 19,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente-detail.component.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 19,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente.route.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 86,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/index.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente-detail.component.html",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 53,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente-update.component.html",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 71,
+    "complexity": 11,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente.module.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 27,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente-update.component.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 44,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/cliente/cliente.service.ts",
+    "folder": "src/main/webapp/app/entities/cliente",
+    "loc": 65,
+    "complexity": 5,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto-delete-dialog.component.html",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 19,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto.module.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 31,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 80,
+    "complexity": 5,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/index.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto-detail.component.html",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 51,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto.component.html",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 91,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto-update.component.html",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 59,
+    "complexity": 9,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto-detail.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 19,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto-delete-dialog.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 62,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto-update.component.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 89,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto.service.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 34,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/entities/locacao-produto/locacao-produto.route.ts",
+    "folder": "src/main/webapp/app/entities/locacao-produto",
+    "loc": 86,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto-detail.component.html",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 37,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto-delete-dialog.component.html",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 19,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto-update.component.html",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 38,
+    "complexity": 6,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto-update.component.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 42,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto-detail.component.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 19,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto.service.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 41,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/index.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto.route.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 86,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto.component.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 140,
+    "complexity": 8,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto-delete-dialog.component.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 55,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto.component.html",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 73,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/entities/produto/produto.module.ts",
+    "folder": "src/main/webapp/app/entities/produto",
+    "loc": 29,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/home/home.component.html",
+    "folder": "src/main/webapp/app/home",
+    "loc": 34,
+    "complexity": 2,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/home/index.ts",
+    "folder": "src/main/webapp/app/home",
+    "loc": 3,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/home/home.css",
+    "folder": "src/main/webapp/app/home",
+    "loc": 19,
+    "complexity": 1,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/home/home.component.ts",
+    "folder": "src/main/webapp/app/home",
+    "loc": 33,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/home/home.module.ts",
+    "folder": "src/main/webapp/app/home",
+    "loc": 10,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/home/home.route.ts",
+    "folder": "src/main/webapp/app/home",
+    "loc": 10,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/blocks/interceptor/auth-expired.interceptor.ts",
+    "folder": "src/main/webapp/app/blocks/interceptor",
+    "loc": 23,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/blocks/interceptor/errorhandler.interceptor.ts",
+    "folder": "src/main/webapp/app/blocks/interceptor",
+    "loc": 23,
+    "complexity": 7,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/blocks/interceptor/notification.interceptor.ts",
+    "folder": "src/main/webapp/app/blocks/interceptor",
+    "loc": 39,
+    "complexity": 7,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/blocks/interceptor/auth.interceptor.ts",
+    "folder": "src/main/webapp/app/blocks/interceptor",
+    "loc": 21,
+    "complexity": 8,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/blocks/config/uib-pagination.config.ts",
+    "folder": "src/main/webapp/app/blocks/config",
+    "loc": 12,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/webapp/app/blocks/config/prod.config.ts",
+    "folder": "src/main/webapp/app/blocks/config",
+    "loc": 7,
+    "complexity": 2,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/webapp/app/account/account.module.ts",
+    "folder": "src/main/webapp/app/account",
+    "loc": 27,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/account.route.ts",
+    "folder": "src/main/webapp/app/account",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/index.ts",
+    "folder": "src/main/webapp/app/account",
+    "loc": 19,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/register/register.component.ts",
+    "folder": "src/main/webapp/app/account/register",
+    "loc": 67,
+    "complexity": 6,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/register/register.component.html",
+    "folder": "src/main/webapp/app/account/register",
+    "loc": 118,
+    "complexity": 10,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/register/register.route.ts",
+    "folder": "src/main/webapp/app/account/register",
+    "loc": 10,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/register/register.service.ts",
+    "folder": "src/main/webapp/app/account/register",
+    "loc": 11,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/account/password/password-strength-bar.component.ts",
+    "folder": "src/main/webapp/app/account/password",
+    "loc": 72,
+    "complexity": 15,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password/password.component.ts",
+    "folder": "src/main/webapp/app/account/password",
+    "loc": 41,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password/password.component.html",
+    "folder": "src/main/webapp/app/account/password",
+    "loc": 65,
+    "complexity": 8,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password/password.service.ts",
+    "folder": "src/main/webapp/app/account/password",
+    "loc": 11,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/account/password/password-strength-bar.css",
+    "folder": "src/main/webapp/app/account/password",
+    "loc": 21,
+    "complexity": 1,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password/password.route.ts",
+    "folder": "src/main/webapp/app/account/password",
+    "loc": 12,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/activate/activate.component.ts",
+    "folder": "src/main/webapp/app/account/activate",
+    "loc": 32,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/activate/activate.route.ts",
+    "folder": "src/main/webapp/app/account/activate",
+    "loc": 12,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/activate/activate.component.html",
+    "folder": "src/main/webapp/app/account/activate",
+    "loc": 14,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/activate/activate.service.ts",
+    "folder": "src/main/webapp/app/account/activate",
+    "loc": 13,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/account/settings/settings.component.html",
+    "folder": "src/main/webapp/app/account/settings",
+    "loc": 71,
+    "complexity": 10,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/settings/settings.component.ts",
+    "folder": "src/main/webapp/app/account/settings",
+    "loc": 58,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/settings/settings.route.ts",
+    "folder": "src/main/webapp/app/account/settings",
+    "loc": 12,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/init/password-reset-init.service.ts",
+    "folder": "src/main/webapp/app/account/password-reset/init",
+    "loc": 11,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/init/password-reset-init.route.ts",
+    "folder": "src/main/webapp/app/account/password-reset/init",
+    "loc": 10,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/init/password-reset-init.component.ts",
+    "folder": "src/main/webapp/app/account/password-reset/init",
+    "loc": 37,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/init/password-reset-init.component.html",
+    "folder": "src/main/webapp/app/account/password-reset/init",
+    "loc": 38,
+    "complexity": 4,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/finish/password-reset-finish.component.html",
+    "folder": "src/main/webapp/app/account/password-reset/finish",
+    "loc": 63,
+    "complexity": 7,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/finish/password-reset-finish.route.ts",
+    "folder": "src/main/webapp/app/account/password-reset/finish",
+    "loc": 10,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/finish/password-reset-finish.service.ts",
+    "folder": "src/main/webapp/app/account/password-reset/finish",
+    "loc": 11,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/account/password-reset/finish/password-reset-finish.component.ts",
+    "folder": "src/main/webapp/app/account/password-reset/finish",
+    "loc": 58,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/index.ts",
+    "folder": "src/main/webapp/app/layouts",
+    "loc": 10,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/error/error.component.ts",
+    "folder": "src/main/webapp/app/layouts/error",
+    "loc": 21,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/error/error.component.html",
+    "folder": "src/main/webapp/app/layouts/error",
+    "loc": 16,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/error/error.route.ts",
+    "folder": "src/main/webapp/app/layouts/error",
+    "loc": 21,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/main/main.component.ts",
+    "folder": "src/main/webapp/app/layouts/main",
+    "loc": 24,
+    "complexity": 6,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/main/main.component.html",
+    "folder": "src/main/webapp/app/layouts/main",
+    "loc": 11,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/navbar/navbar.route.ts",
+    "folder": "src/main/webapp/app/layouts/navbar",
+    "loc": 7,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/navbar/navbar.component.html",
+    "folder": "src/main/webapp/app/layouts/navbar",
+    "loc": 174,
+    "complexity": 2,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/navbar/active-menu.directive.ts",
+    "folder": "src/main/webapp/app/layouts/navbar",
+    "loc": 22,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/navbar/navbar.component.ts",
+    "folder": "src/main/webapp/app/layouts/navbar",
+    "loc": 67,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/navbar/navbar.css",
+    "folder": "src/main/webapp/app/layouts/navbar",
+    "loc": 72,
+    "complexity": 1,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/footer/footer.component.html",
+    "folder": "src/main/webapp/app/layouts/footer",
+    "loc": 3,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/footer/footer.component.ts",
+    "folder": "src/main/webapp/app/layouts/footer",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/profiles/profile.service.ts",
+    "folder": "src/main/webapp/app/layouts/profiles",
+    "loc": 36,
+    "complexity": 4,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/profiles/page-ribbon.component.ts",
+    "folder": "src/main/webapp/app/layouts/profiles",
+    "loc": 19,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/profiles/profile-info.model.ts",
+    "folder": "src/main/webapp/app/layouts/profiles",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/layouts/profiles/page-ribbon.css",
+    "folder": "src/main/webapp/app/layouts/profiles",
+    "loc": 30,
+    "complexity": 1,
+    "type": "style",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/index.ts",
+    "folder": "src/main/webapp/app/admin",
+    "loc": 28,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/admin.module.ts",
+    "folder": "src/main/webapp/app/admin",
+    "loc": 51,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/admin.route.ts",
+    "folder": "src/main/webapp/app/admin",
+    "loc": 14,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/logs/log.model.ts",
+    "folder": "src/main/webapp/app/admin/logs",
+    "loc": 3,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/logs/logs.route.ts",
+    "folder": "src/main/webapp/app/admin/logs",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/logs/logs.component.html",
+    "folder": "src/main/webapp/app/admin/logs",
+    "loc": 24,
+    "complexity": 7,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/logs/logs.component.ts",
+    "folder": "src/main/webapp/app/admin/logs",
+    "loc": 27,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/logs/logs.service.ts",
+    "folder": "src/main/webapp/app/admin/logs",
+    "loc": 15,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management-delete-dialog.component.html",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 19,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management-delete-dialog.component.ts",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 24,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management-detail.component.html",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 49,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management.component.html",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 79,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management.component.ts",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 127,
+    "complexity": 6,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management-update.component.html",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 104,
+    "complexity": 8,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management-update.component.ts",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 50,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management-detail.component.ts",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 16,
+    "complexity": 2,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/user-management/user-management.route.ts",
+    "folder": "src/main/webapp/app/admin/user-management",
+    "loc": 62,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/metrics/metrics.service.ts",
+    "folder": "src/main/webapp/app/admin/metrics",
+    "loc": 14,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/admin/metrics/metrics.component.ts",
+    "folder": "src/main/webapp/app/admin/metrics",
+    "loc": 65,
+    "complexity": 5,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/metrics/metrics-modal.component.ts",
+    "folder": "src/main/webapp/app/admin/metrics",
+    "loc": 41,
+    "complexity": 9,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/metrics/metrics.component.html",
+    "folder": "src/main/webapp/app/admin/metrics",
+    "loc": 213,
+    "complexity": 6,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/metrics/metrics.route.ts",
+    "folder": "src/main/webapp/app/admin/metrics",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/metrics/metrics-modal.component.html",
+    "folder": "src/main/webapp/app/admin/metrics",
+    "loc": 55,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/health/health.component.html",
+    "folder": "src/main/webapp/app/admin/health",
+    "loc": 34,
+    "complexity": 2,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/health/health.component.ts",
+    "folder": "src/main/webapp/app/admin/health",
+    "loc": 54,
+    "complexity": 3,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/health/health.service.ts",
+    "folder": "src/main/webapp/app/admin/health",
+    "loc": 112,
+    "complexity": 29,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/admin/health/health.route.ts",
+    "folder": "src/main/webapp/app/admin/health",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/health/health-modal.component.ts",
+    "folder": "src/main/webapp/app/admin/health",
+    "loc": 32,
+    "complexity": 4,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/health/health-modal.component.html",
+    "folder": "src/main/webapp/app/admin/health",
+    "loc": 36,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/audits/audits.component.html",
+    "folder": "src/main/webapp/app/admin/audits",
+    "loc": 49,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/audits/audit-data.model.ts",
+    "folder": "src/main/webapp/app/admin/audits",
+    "loc": 3,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/audits/audits.component.ts",
+    "folder": "src/main/webapp/app/admin/audits",
+    "loc": 112,
+    "complexity": 7,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/audits/audits.service.ts",
+    "folder": "src/main/webapp/app/admin/audits",
+    "loc": 20,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/admin/audits/audit.model.ts",
+    "folder": "src/main/webapp/app/admin/audits",
+    "loc": 4,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/audits/audits.route.ts",
+    "folder": "src/main/webapp/app/admin/audits",
+    "loc": 15,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/configuration/configuration.component.html",
+    "folder": "src/main/webapp/app/admin/configuration",
+    "loc": 45,
+    "complexity": 2,
+    "type": "template",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/webapp/app/admin/configuration/configuration.service.ts",
+    "folder": "src/main/webapp/app/admin/configuration",
+    "loc": 55,
+    "complexity": 12,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/admin/configuration/configuration.route.ts",
+    "folder": "src/main/webapp/app/admin/configuration",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/webapp/app/admin/configuration/configuration.component.ts",
+    "folder": "src/main/webapp/app/admin/configuration",
+    "loc": 36,
+    "complexity": 4,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/webapp/app/admin/docs/docs.component.ts",
+    "folder": "src/main/webapp/app/admin/docs",
+    "loc": 8,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/docs/docs.component.html",
+    "folder": "src/main/webapp/app/admin/docs",
+    "loc": 2,
+    "complexity": 1,
+    "type": "template",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/admin/docs/docs.route.ts",
+    "folder": "src/main/webapp/app/admin/docs",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/core/index.ts",
+    "folder": "src/main/webapp/app/core",
+    "loc": 14,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/core/core.module.ts",
+    "folder": "src/main/webapp/app/core",
+    "loc": 23,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/core/login/login.service.ts",
+    "folder": "src/main/webapp/app/core/login",
+    "loc": 32,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/login/login-modal.service.ts",
+    "folder": "src/main/webapp/app/core/login",
+    "loc": 24,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/auth/auth-jwt.service.ts",
+    "folder": "src/main/webapp/app/core/auth",
+    "loc": 51,
+    "complexity": 6,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/auth/user-route-access-service.ts",
+    "folder": "src/main/webapp/app/core/auth",
+    "loc": 46,
+    "complexity": 9,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/auth/account.service.ts",
+    "folder": "src/main/webapp/app/core/auth",
+    "loc": 14,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/auth/state-storage.service.ts",
+    "folder": "src/main/webapp/app/core/auth",
+    "loc": 38,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/auth/csrf.service.ts",
+    "folder": "src/main/webapp/app/core/auth",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/auth/principal.service.ts",
+    "folder": "src/main/webapp/app/core/auth",
+    "loc": 91,
+    "complexity": 16,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/webapp/app/core/language/language.constants.ts",
+    "folder": "src/main/webapp/app/core/language",
+    "loc": 6,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/core/language/language.helper.ts",
+    "folder": "src/main/webapp/app/core/language",
+    "loc": 49,
+    "complexity": 6,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/core/user/account.model.ts",
+    "folder": "src/main/webapp/app/core/user",
+    "loc": 12,
+    "complexity": 1,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/core/user/user.model.ts",
+    "folder": "src/main/webapp/app/core/user",
+    "loc": 46,
+    "complexity": 14,
+    "type": "code",
+    "layer": "frontend"
+  },
+  {
+    "name": "src/main/webapp/app/core/user/user.service.ts",
+    "folder": "src/main/webapp/app/core/user",
+    "loc": 30,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/ApplicationWebXml.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes",
+    "loc": 11,
+    "complexity": 1,
+    "type": "code",
+    "layer": "other"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/DucarmolocacoesApp.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes",
+    "loc": 75,
+    "complexity": 8,
+    "type": "code",
+    "layer": "other"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/aop/logging/LoggingAspect.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/aop/logging",
+    "loc": 59,
+    "complexity": 16,
+    "type": "code",
+    "layer": "other"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/UserResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 119,
+    "complexity": 25,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/TipoEventoResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 86,
+    "complexity": 13,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/AuditResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 44,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/AccountResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 112,
+    "complexity": 28,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LogsResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 30,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 149,
+    "complexity": 16,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ClienteResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 86,
+    "complexity": 13,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/UserJWTController.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 51,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ProdutoResource.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 99,
+    "complexity": 13,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm/ManagedUserVM.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm",
+    "loc": 22,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm/KeyAndPasswordVM.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm",
+    "loc": 17,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm/LoginVM.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm",
+    "loc": 37,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm/LoggerVM.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/vm",
+    "loc": 31,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/LoginAlreadyUsedException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 7,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/FieldErrorVM.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 22,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/EmailAlreadyUsedException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 7,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/InternalServerErrorException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/EmailNotFoundException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/BadRequestAlertException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 31,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/CustomParameterizedException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 30,
+    "complexity": 4,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/ExceptionTranslator.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 89,
+    "complexity": 11,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/InvalidPasswordException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 9,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/ErrorConstants.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 17,
+    "complexity": 1,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/util/PaginationUtil.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/util",
+    "loc": 57,
+    "complexity": 9,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/util/HeaderUtil.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/util",
+    "loc": 32,
+    "complexity": 2,
+    "type": "code",
+    "layer": "web"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/User.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 178,
+    "complexity": 6,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Produto.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 105,
+    "complexity": 6,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/AbstractAuditingEntity.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 59,
+    "complexity": 3,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/EnumSituacaoLocacao.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 25,
+    "complexity": 1,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Cliente.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 152,
+    "complexity": 6,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/TipoEvento.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 82,
+    "complexity": 6,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Authority.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 45,
+    "complexity": 6,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/LocacaoProduto.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 127,
+    "complexity": 6,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Locacao.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 255,
+    "complexity": 6,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/PersistentAuditEvent.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/domain",
+    "loc": 58,
+    "complexity": 1,
+    "type": "code",
+    "layer": "domain"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/UserNotActivatedException.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 11,
+    "complexity": 2,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/DomainUserDetailsService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 48,
+    "complexity": 3,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/SecurityUtils.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 42,
+    "complexity": 7,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/AuthoritiesConstants.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 8,
+    "complexity": 2,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/SpringSecurityAuditorAware.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 12,
+    "complexity": 1,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/TokenProvider.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt",
+    "loc": 99,
+    "complexity": 9,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/JWTFilter.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt",
+    "loc": 36,
+    "complexity": 6,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/JWTConfigurer.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt",
+    "loc": 16,
+    "complexity": 1,
+    "type": "code",
+    "layer": "security"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/MailService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 78,
+    "complexity": 4,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/ProdutoService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 16,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/TipoEventoService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 12,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/ClienteService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 12,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/AuditEventService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 36,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/UserService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 228,
+    "complexity": 19,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/LocacaoService.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 20,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ClienteServiceImpl.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl",
+    "loc": 64,
+    "complexity": 5,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ProdutoServiceImpl.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl",
+    "loc": 83,
+    "complexity": 6,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/TipoEventoServiceImpl.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl",
+    "loc": 64,
+    "complexity": 5,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl",
+    "loc": 165,
+    "complexity": 10,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/LocacaoProdutoMapper.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 25,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/ProdutoMapper.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 16,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/LocacaoMapper.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 23,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 1,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/TipoEventoMapper.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 17,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/UserMapper.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 60,
+    "complexity": 5,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/ClienteMapper.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 16,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper/EntityMapper.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/mapper",
+    "loc": 8,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/LocacaoDTO.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 174,
+    "complexity": 8,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/TipoEventoDTO.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 44,
+    "complexity": 7,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/ClienteDTO.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 101,
+    "complexity": 7,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/LocacaoProdutoDTO.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 106,
+    "complexity": 7,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/UserDTO.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 148,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/ProdutoDTO.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 69,
+    "complexity": 7,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/PasswordChangeDTO.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/dto",
+    "loc": 23,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/DateUtil.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util",
+    "loc": 49,
+    "complexity": 13,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/RandomUtil.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util",
+    "loc": 16,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagProcessor.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 52,
+    "complexity": 8,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteFoneRecado.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/Tag.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 54,
+    "complexity": 4,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoDataEntregaPrevista.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 14,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteFoneComercial.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoDataContratacao.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 14,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoItemEmTabela.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 34,
+    "complexity": 6,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteEndereco.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoValorSinal.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteCPF.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 15,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoItemEmLinha.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 8,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteRG.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 15,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoValorAdiantado.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagTipoEvento.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 14,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoNumero.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 8,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteNome.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 24,
+    "complexity": 4,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoValorTotal.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoDataDevolucaoPrevista.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 14,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoValorSaldo.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteFoneResidencial.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 12,
+    "complexity": 3,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagClienteNascimento.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 16,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoDataEvento.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 16,
+    "complexity": 2,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/EnumModeloContratoTag.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+    "loc": 39,
+    "complexity": 1,
+    "type": "code",
+    "layer": "service"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/UserRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 25,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/ProdutoRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 8,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/TipoEventoRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 8,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/ClienteRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 8,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/CustomAuditEventRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 64,
+    "complexity": 8,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/LocacaoProdutoRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 20,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/PersistenceAuditEventRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 14,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/AuthorityRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 5,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/LocacaoRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 8,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/LocacaoProdutoSearchRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 5,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/ProdutoSearchRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 5,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/LocacaoSearchRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 7,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/ClienteSearchRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 5,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/TipoEventoSearchRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 5,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/UserSearchRepository.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 5,
+    "complexity": 2,
+    "type": "code",
+    "layer": "repository"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/LoggingConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 115,
+    "complexity": 7,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/ApplicationProperties.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 5,
+    "complexity": 2,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/Constants.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 9,
+    "complexity": 2,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/DefaultProfileUtil.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 22,
+    "complexity": 2,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/WebConfigurer.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 143,
+    "complexity": 16,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/LoggingAspectConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 14,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/JacksonConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 36,
+    "complexity": 5,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/DateTimeFormatConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 14,
+    "complexity": 2,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/SecurityConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 103,
+    "complexity": 2,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/ElasticsearchConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 59,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/LocaleConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 22,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/DatabaseConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 18,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/AsyncConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 48,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/LiquibaseConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 39,
+    "complexity": 3,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/MetricsConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 99,
+    "complexity": 5,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/CloudDatabaseConfiguration.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 20,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit/package-info.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit",
+    "loc": 1,
+    "complexity": 1,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit/AuditEventConverter.java",
+    "folder": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit",
+    "loc": 50,
+    "complexity": 9,
+    "type": "code",
+    "layer": "config"
+  },
+  {
+    "name": "src/test/javascript/jest.ts",
+    "folder": "src/test/javascript",
+    "loc": 2,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/jest.conf.js",
+    "folder": "src/test/javascript",
+    "loc": 23,
+    "complexity": 2,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/jest-global-mocks.ts",
+    "folder": "src/test/javascript",
+    "loc": 14,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/test.module.ts",
+    "folder": "src/test/javascript/spec",
+    "loc": 75,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-route.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 26,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/spyobject.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 52,
+    "complexity": 9,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-state-storage.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 18,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-language.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 25,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-alert.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 10,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-account.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 20,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-active-modal.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 10,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-principal.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 16,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-login.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 24,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/helpers/mock-event-manager.service.ts",
+    "folder": "src/test/javascript/spec/helpers",
+    "loc": 10,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/shared/login/login.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/shared/login",
+    "loc": 125,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/shared/alert/alert-error.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/shared/alert",
+    "loc": 116,
+    "complexity": 5,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/tipo-evento/tipo-evento.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/tipo-evento",
+    "loc": 92,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/tipo-evento/tipo-evento-detail.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/tipo-evento",
+    "loc": 30,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/tipo-evento/tipo-evento-delete-dialog.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/tipo-evento",
+    "loc": 42,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/tipo-evento/tipo-evento-update.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/tipo-evento",
+    "loc": 51,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/tipo-evento/tipo-evento.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/tipo-evento",
+    "loc": 96,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao/locacao.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao",
+    "loc": 178,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao/locacao-detail.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao",
+    "loc": 30,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao/locacao.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao",
+    "loc": 96,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao/locacao-update.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao",
+    "loc": 51,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao/locacao-delete-dialog.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao",
+    "loc": 42,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/cliente/cliente-update.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/cliente",
+    "loc": 51,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/cliente/cliente-detail.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/cliente",
+    "loc": 30,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/cliente/cliente.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/cliente",
+    "loc": 96,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/cliente/cliente-delete-dialog.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/cliente",
+    "loc": 42,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/cliente/cliente.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/cliente",
+    "loc": 131,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao-produto/locacao-produto-delete-dialog.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao-produto",
+    "loc": 42,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao-produto/locacao-produto-detail.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao-produto",
+    "loc": 30,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao-produto/locacao-produto-update.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao-produto",
+    "loc": 51,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao-produto/locacao-produto.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao-produto",
+    "loc": 40,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/locacao-produto/locacao-produto.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/locacao-produto",
+    "loc": 96,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/produto/produto-delete-dialog.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/produto",
+    "loc": 42,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/produto/produto-update.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/produto",
+    "loc": 51,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/produto/produto.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/produto",
+    "loc": 98,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/produto/produto-detail.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/produto",
+    "loc": 30,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/entities/produto/produto.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/entities/produto",
+    "loc": 96,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/account/register/register.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/account/register",
+    "loc": 102,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/account/password/password-strength-bar.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/account/password",
+    "loc": 41,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/account/password/password.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/account/password",
+    "loc": 62,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/account/activate/activate.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/account/activate",
+    "loc": 59,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/account/settings/settings.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/account/settings",
+    "loc": 60,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/account/password-reset/init/password-reset-init.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/account/password-reset/init",
+    "loc": 93,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/account/password-reset/finish/password-reset-finish.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/account/password-reset/finish",
+    "loc": 98,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/logs/logs.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/logs",
+    "loc": 62,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/logs/logs.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/logs",
+    "loc": 45,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/user-management/user-management-update.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/user-management",
+    "loc": 82,
+    "complexity": 3,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/user-management/user-management-delete-dialog.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/user-management",
+    "loc": 44,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/user-management/user-management.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/user-management",
+    "loc": 69,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/user-management/user-management-detail.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/user-management",
+    "loc": 55,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/metrics/metrics-modal.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/metrics",
+    "loc": 73,
+    "complexity": 10,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/metrics/metrics.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/metrics",
+    "loc": 44,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/metrics/metrics.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/metrics",
+    "loc": 53,
+    "complexity": 2,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/health/health.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/health",
+    "loc": 296,
+    "complexity": 1,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/audits/audits.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/audits",
+    "loc": 104,
+    "complexity": 4,
+    "type": "test",
+    "layer": "other"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/audits/audits.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/audits",
+    "loc": 47,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/configuration/configuration.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/configuration",
+    "loc": 53,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/javascript/spec/app/admin/configuration/configuration.component.spec.ts",
+    "folder": "src/test/javascript/spec/app/admin/configuration",
+    "loc": 58,
+    "complexity": 1,
+    "type": "test",
+    "layer": "config"
+  },
+  {
+    "name": "src/test/javascript/spec/app/core/user/user.service.spec.ts",
+    "folder": "src/test/javascript/spec/app/core/user",
+    "loc": 54,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/resources/logback.xml",
+    "folder": "src/test/resources",
+    "loc": 39,
+    "complexity": 1,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/resources/config/application.yml",
+    "folder": "src/test/resources/config",
+    "loc": 104,
+    "complexity": 2,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/resources/templates/mail/testEmail.html",
+    "folder": "src/test/resources/templates/mail",
+    "loc": 1,
+    "complexity": 1,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/AuditResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 105,
+    "complexity": 4,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/UserResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 495,
+    "complexity": 4,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/LogsResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 52,
+    "complexity": 2,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/UserJWTControllerIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 103,
+    "complexity": 2,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/ClienteResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 289,
+    "complexity": 7,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/TipoEventoResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 224,
+    "complexity": 7,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/ProdutoResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 253,
+    "complexity": 7,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 330,
+    "complexity": 7,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/AccountResourceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 676,
+    "complexity": 4,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/TestUtil.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest",
+    "loc": 81,
+    "complexity": 6,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/ExceptionTranslatorIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 125,
+    "complexity": 2,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/errors/ExceptionTranslatorTestController.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/errors",
+    "loc": 67,
+    "complexity": 1,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/util/PaginationUtilUnitTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/web/rest/util",
+    "loc": 137,
+    "complexity": 1,
+    "type": "test",
+    "layer": "web"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/security/SecurityUtilsUnitTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 57,
+    "complexity": 2,
+    "type": "test",
+    "layer": "security"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/security/DomainUserDetailsServiceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/security",
+    "loc": 103,
+    "complexity": 2,
+    "type": "test",
+    "layer": "security"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/security/jwt/JWTFilterTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/security/jwt",
+    "loc": 100,
+    "complexity": 1,
+    "type": "test",
+    "layer": "security"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/security/jwt/TokenProviderTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/security/jwt",
+    "loc": 86,
+    "complexity": 1,
+    "type": "test",
+    "layer": "security"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/service/MailServiceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 166,
+    "complexity": 1,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/service/UserServiceIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/service",
+    "loc": 165,
+    "complexity": 4,
+    "type": "test",
+    "layer": "service"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/CustomAuditEventRepositoryIntTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository",
+    "loc": 139,
+    "complexity": 3,
+    "type": "test",
+    "layer": "repository"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search/LocacaoProdutoSearchRepositoryMockConfiguration.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 8,
+    "complexity": 1,
+    "type": "test",
+    "layer": "repository"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search/ClienteSearchRepositoryMockConfiguration.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 8,
+    "complexity": 1,
+    "type": "test",
+    "layer": "repository"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search/TipoEventoSearchRepositoryMockConfiguration.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 8,
+    "complexity": 1,
+    "type": "test",
+    "layer": "repository"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search/ProdutoSearchRepositoryMockConfiguration.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 8,
+    "complexity": 1,
+    "type": "test",
+    "layer": "repository"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search/LocacaoSearchRepositoryMockConfiguration.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 8,
+    "complexity": 1,
+    "type": "test",
+    "layer": "repository"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search/UserSearchRepositoryMockConfiguration.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/repository/search",
+    "loc": 8,
+    "complexity": 1,
+    "type": "test",
+    "layer": "repository"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/config/WebConfigurerTestController.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 12,
+    "complexity": 1,
+    "type": "test",
+    "layer": "config"
+  },
+  {
+    "name": "src/test/java/tech/jefersonms/ducarmolocacoes/config/WebConfigurerTest.java",
+    "folder": "src/test/java/tech/jefersonms/ducarmolocacoes/config",
+    "loc": 163,
+    "complexity": 3,
+    "type": "test",
+    "layer": "config"
+  }
+]

@@ -1,0 +1,426 @@
+{
+  "generated_at": "2026-11-14T19:14:00Z",
+  "modules": [
+    {
+      "name": "auth",
+      "path": "src/main/java/tech/jefersonms/ducarmolocacoes/security",
+      "purpose": "Autenticação e autorização de operadores via JWT, controle de sessão stateless e gerenciamento de contas",
+      "primary_files": [
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/UserJWTController.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/TokenProvider.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/JWTFilter.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/UserService.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/User.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Authority.java"
+      ],
+      "functions": [
+        {
+          "name": "authorize",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/UserJWTController.java",
+          "params": ["loginVM: LoginVM"],
+          "returns": "ResponseEntity<JWTToken>",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "createToken",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/TokenProvider.java",
+          "params": ["authentication: Authentication", "rememberMe: boolean"],
+          "returns": "String",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "validateToken",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/TokenProvider.java",
+          "params": ["authToken: String"],
+          "returns": "boolean",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "User",
+          "fields": [
+            { "name": "id", "type": "Long", "required": true },
+            { "name": "login", "type": "String", "required": true },
+            { "name": "password", "type": "String", "required": true },
+            { "name": "email", "type": "String", "required": false },
+            { "name": "activated", "type": "boolean", "required": true },
+            { "name": "authorities", "type": "Set<Authority>", "required": true }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "Authority",
+          "fields": [
+            { "name": "name", "type": "String", "required": true }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Tokens normais expiram em 24h (86400s); tokens com rememberMe expiram em 30 dias (2592000s)",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/security/jwt/TokenProvider.java:56-61",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Senhas são criptografadas em BCrypt com tamanho de hash de 60 caracteres",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/User.java:44-46",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": ["admin"],
+      "algorithms": ["Assinatura HMAC-SHA512 de tokens JWT"],
+      "complexity": "medium"
+    },
+    {
+      "name": "cliente",
+      "path": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Cliente.java",
+      "purpose": "Cadastro, consulta, atualização e pesquisa textual de locatários e responsáveis contratuais",
+      "primary_files": [
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Cliente.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/repository/ClienteRepository.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/ClienteSearchRepository.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ClienteServiceImpl.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ClienteResource.java"
+      ],
+      "functions": [
+        {
+          "name": "save",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ClienteServiceImpl.java",
+          "params": ["clienteDTO: ClienteDTO"],
+          "returns": "ClienteDTO",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "search",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ClienteServiceImpl.java",
+          "params": ["query: String", "pageable: Pageable"],
+          "returns": "Page<ClienteDTO>",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Cliente",
+          "fields": [
+            { "name": "id", "type": "Long", "required": true },
+            { "name": "nome", "type": "String", "required": false },
+            { "name": "nascimento", "type": "LocalDate", "required": false },
+            { "name": "cpf", "type": "String", "required": false },
+            { "name": "rg", "type": "String", "required": false },
+            { "name": "telefoneResidencial", "type": "String", "required": false },
+            { "name": "telefoneCelular", "type": "String", "required": false },
+            { "name": "telefoneRecado", "type": "String", "required": false },
+            { "name": "endereco", "type": "String", "required": false }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Clientes criados ou atualizados são imediatamente espelhados no índice textual do Elasticsearch",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ClienteServiceImpl.java:49",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": ["Busca aproximada com Elasticsearch queryStringQuery"],
+      "complexity": "low"
+    },
+    {
+      "name": "produto",
+      "path": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Produto.java",
+      "purpose": "Manutenção do inventário de trajes e materiais disponíveis para aluguel, preços de venda e compra",
+      "primary_files": [
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Produto.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/repository/ProdutoRepository.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/ProdutoSearchRepository.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ProdutoServiceImpl.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ProdutoResource.java"
+      ],
+      "functions": [
+        {
+          "name": "save",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ProdutoServiceImpl.java",
+          "params": ["produtoDTO: ProdutoDTO"],
+          "returns": "ProdutoDTO",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "findAll",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ProdutoServiceImpl.java",
+          "params": ["pageable: Pageable"],
+          "returns": "Page<ProdutoDTO>",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Produto",
+          "fields": [
+            { "name": "id", "type": "Long", "required": true },
+            { "name": "descricao", "type": "String", "required": false },
+            { "name": "precoVenda", "type": "BigDecimal", "required": false },
+            { "name": "precoCompra", "type": "BigDecimal", "required": false },
+            { "name": "ativo", "type": "Boolean", "required": false }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Preço de venda é a base do aluguel; preço de compra é a base para eventual reposição ou indenização",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Produto.java:38-42",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [],
+      "complexity": "low"
+    },
+    {
+      "name": "tipo-evento",
+      "path": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/TipoEvento.java",
+      "purpose": "Classificação dos eventos das locações (casamento, 15 anos, formatura, festa infantil)",
+      "primary_files": [
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/TipoEvento.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/repository/TipoEventoRepository.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/TipoEventoServiceImpl.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/TipoEventoResource.java"
+      ],
+      "functions": [
+        {
+          "name": "save",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/TipoEventoServiceImpl.java",
+          "params": ["tipoEventoDTO: TipoEventoDTO"],
+          "returns": "TipoEventoDTO",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "TipoEvento",
+          "fields": [
+            { "name": "id", "type": "Long", "required": true },
+            { "name": "descricao", "type": "String", "required": false }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Cada locação está associada obrigatoriamente a um tipo de evento para emissão de contrato e relatórios",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Locacao.java:74-76",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [],
+      "complexity": "low"
+    },
+    {
+      "name": "locacao",
+      "path": "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Locacao.java",
+      "purpose": "Gestão completa do ciclo de vida das locações de trajes, itens locados, máquina de estados, datas de retirada e devolução e detecção de conflitos de agenda",
+      "primary_files": [
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/Locacao.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/LocacaoProduto.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/EnumSituacaoLocacao.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResource.java"
+      ],
+      "functions": [
+        {
+          "name": "save",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java",
+          "params": ["locacaoDTO: LocacaoDTO"],
+          "returns": "LocacaoDTO",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "listLocacoesProdutoByDataEvento",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java",
+          "params": ["produto: ProdutoDTO", "dataEvento: LocalDate"],
+          "returns": "List<LocacaoDTO>",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "patch",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java",
+          "params": ["id: Long", "fields: Map<String, String>"],
+          "returns": "LocacaoDTO",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "Locacao",
+          "fields": [
+            { "name": "id", "type": "Long", "required": true },
+            { "name": "valorTotal", "type": "BigDecimal", "required": false },
+            { "name": "valorSinal", "type": "BigDecimal", "required": false },
+            { "name": "valorAdiantado", "type": "BigDecimal", "required": false },
+            { "name": "valorSaldo", "type": "BigDecimal", "required": false },
+            { "name": "dataContratacao", "type": "ZonedDateTime", "required": false },
+            { "name": "dataEvento", "type": "LocalDate", "required": false },
+            { "name": "dataDevPrev", "type": "LocalDate", "required": false },
+            { "name": "dataDevReal", "type": "ZonedDateTime", "required": false },
+            { "name": "dataEntrPrev", "type": "LocalDate", "required": false },
+            { "name": "dataEntrReal", "type": "ZonedDateTime", "required": false },
+            { "name": "situacao", "type": "Integer", "required": false },
+            { "name": "htmlContrato", "type": "String", "required": false },
+            { "name": "cliente", "type": "Cliente", "required": false },
+            { "name": "tipoEvento", "type": "TipoEvento", "required": false },
+            { "name": "produtos", "type": "Set<LocacaoProduto>", "required": false }
+          ],
+          "confidence": "confirmed"
+        },
+        {
+          "name": "LocacaoProduto",
+          "fields": [
+            { "name": "id", "type": "Long", "required": true },
+            { "name": "quantidade", "type": "Integer", "required": false },
+            { "name": "valorUnitario", "type": "BigDecimal", "required": false },
+            { "name": "valorTotal", "type": "BigDecimal", "required": false },
+            { "name": "locacao", "type": "Locacao", "required": false },
+            { "name": "produto", "type": "Produto", "required": false },
+            { "name": "cliente", "type": "Cliente", "required": false }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Ao emitir contrato (situacao=1), o HTML do contrato é gerado automaticamente pelo TagProcessor",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java:94-96",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Ao marcar retirada (situacao=2), dataEntrReal é preenchida com timestamp atual",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java:96-98",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Ao marcar devolução (situacao=3), dataDevReal é preenchida com timestamp atual",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java:98-100",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Janela de verificação de disponibilidade do traje considera intervalo de 3 dias antes a 4 dias após a data do evento",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java:178-186",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": ["cliente", "produto", "tipo-evento", "contrato"],
+      "algorithms": [
+        "Verificação de disponibilidade de traje por janela temporal (-3 dias a +4 dias)",
+        "Transição e validação da máquina de estados EnumSituacaoLocacao"
+      ],
+      "complexity": "high"
+    },
+    {
+      "name": "contrato",
+      "path": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato",
+      "purpose": "Motor de templates, processamento de tags dinâmicas e exportação de contratos em PDF/HTML",
+      "primary_files": [
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagProcessor.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/Tag.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/EnumModeloContratoTag.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoItemEmTabela.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResource.java"
+      ],
+      "functions": [
+        {
+          "name": "processarTags",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagProcessor.java",
+          "params": ["texto: String", "locacao: Locacao"],
+          "returns": "String",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "getContrato",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResource.java",
+          "params": ["id: Long"],
+          "returns": "ResponseEntity<InputStreamResource>",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Itens da locação são dispostos em grade de 2 colunas HTML; se a lista for ímpar, adiciona item vazio para manter alinhamento",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/util/contrato/TagLocacaoItemEmTabela.java:20-26",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Cláusula contratual estabelece multa de 4 vezes o valor do aluguel em caso de dano irreversível ao traje",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java:56",
+          "confidence": "confirmed"
+        },
+        {
+          "description": "Multa por atraso na devolução é fixada em 20% do valor da locação por dia de atraso",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java:56",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": ["locacao", "cliente", "produto"],
+      "algorithms": [
+        "Padrão Chain of Responsibility para encadeamento e resolução de tags",
+        "Conversão de HTML com tabelas para PDF via iText e XMLWorkerHelper"
+      ],
+      "complexity": "medium"
+    },
+    {
+      "name": "admin",
+      "path": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit",
+      "purpose": "Auditoria de operações, monitoramento de métricas operacionais, gerenciamento de logs em tempo real e documentação Swagger",
+      "primary_files": [
+        "src/main/java/tech/jefersonms/ducarmolocacoes/domain/PersistentAuditEvent.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/repository/PersistenceAuditEventRepository.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/service/AuditEventService.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/AuditResource.java",
+        "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LogsResource.java"
+      ],
+      "functions": [
+        {
+          "name": "getAll",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/AuditResource.java",
+          "params": ["pageable: Pageable"],
+          "returns": "ResponseEntity<List<AuditEvent>>",
+          "confidence": "confirmed"
+        },
+        {
+          "name": "changeLevel",
+          "file": "src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LogsResource.java",
+          "params": ["jsonLogger: LoggerVM"],
+          "returns": "void",
+          "confidence": "confirmed"
+        }
+      ],
+      "entities": [
+        {
+          "name": "PersistentAuditEvent",
+          "fields": [
+            { "name": "id", "type": "Long", "required": true },
+            { "name": "principal", "type": "String", "required": true },
+            { "name": "auditEventDate", "type": "Instant", "required": false },
+            { "name": "auditEventType", "type": "String", "required": false },
+            { "name": "data", "type": "Map<String, String>", "required": false }
+          ],
+          "confidence": "confirmed"
+        }
+      ],
+      "business_rules": [
+        {
+          "description": "Eventos de autenticação bem-sucedida e falhas são auditados e persistidos no banco relacional de forma assíncrona",
+          "location": "src/main/java/tech/jefersonms/ducarmolocacoes/config/audit/AuditEventConverter.java",
+          "confidence": "confirmed"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [],
+      "complexity": "low"
+    }
+  ]
+}

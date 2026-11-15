@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="feature">
+  <meta name="reversa-producer-agent" content="reversa-docs-storyteller">
+  <meta name="reversa-template" content="feature">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Gestão de Clientes & Locatários — ducarmolocacoes</title>
+  <link rel="stylesheet" href="../assets/css/docs.css">
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <style>
+    .feature-page-viewport {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      padding: 2rem;
+      background: #0a0f1d;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .breadcrumbs {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: var(--accent-blue);
+    }
+    .section-card {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .rf-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .rf-table th, .rf-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .rf-table th {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      background: rgba(0,0,0,0.15);
+    }
+    .rf-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+    pre.code-block {
+      background: #0f172a;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.825rem;
+      color: #cbd5e1;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="../index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+  <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+</svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Cadastro</span>
+    </a>
+    <nav class="reversa-doc-nav">
+            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="../modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="../topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="../metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="../glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="../deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div class="feature-page-viewport">
+      <div class="breadcrumbs">
+        <a href="../index.html">Visão Geral</a> <span>/</span>
+        <a href="../index.html#features">Features</a> <span>/</span>
+        <span style="color: var(--accent-blue);">Gestão de Clientes & Locatários</span>
+      </div>
+
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Gestão de Clientes & Locatários</h1>
+          <span class="badge badge-web">Cadastro</span>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+          Gerencia o cadastro, consulta, atualização e exclusão de locatários e responsáveis legais por contratos de locação de vestimentas, com pesquisa full-text desacoplada via Elasticsearch.
+        </p>
+      </div>
+
+      <!-- Requisitos Funcionais -->
+      <div class="section-card">
+        <div class="section-title">
+          <span>Requisitos Funcionais Especificados</span>
+          <span class="badge">6 Requisitos</span>
+        </div>
+        <table class="rf-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Requisito</th>
+              <th>Prioridade</th>
+              <th>Critério de Aceite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--accent-blue);">RF-CLI-01</strong></td>
+              <td style="color: #fff; font-weight: 500;">Criar novo cliente</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">POST `/api/clientes` retorna 201 Created com o ID gerado; rejeita se ID já vier preenchido.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-CLI-02</strong></td>
+              <td style="color: #fff; font-weight: 500;">Atualizar cliente existente</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">PUT `/api/clientes` atualiza campos cadastrais; rejeita se ID vier nulo.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-CLI-03</strong></td>
+              <td style="color: #fff; font-weight: 500;">Listagem paginada</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">GET `/api/clientes` retorna página de clientes com cabeçalhos `X-Total-Count` e `Link`.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-CLI-04</strong></td>
+              <td style="color: #fff; font-weight: 500;">Busca full-text</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">GET `/api/_search/clientes?query={termo}` retorna resultados indexados pelo Elasticsearch.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-CLI-05</strong></td>
+              <td style="color: #fff; font-weight: 500;">Exclusão de cliente</td>
+              <td><span class="badge">Should</span></td>
+              <td style="color: var(--text-secondary);">DELETE `/api/clientes/{id}` remove do MySQL e do Elasticsearch.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-CLI-06</strong></td>
+              <td style="color: #fff; font-weight: 500;">Ficha de medidas corporais (Evolução)</td>
+              <td><span class="badge">Should</span></td>
+              <td style="color: var(--text-secondary);">Suporte a atributos antropométricos (busto, cintura, quadril, altura/comprimento) para alfaiataria. 🟡 [Validado para roadmap futuro]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Regras de Negócio -->
+      <div class="section-card">
+        <div class="section-title">Regras de Negócio & Invariantes</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+          <li style="margin-bottom: 0.4rem;">Cada cliente é identificado unicamente por seu ID gerado automaticamente. 🟢</li><li style="margin-bottom: 0.4rem;">O CPF e o RG são campos textuais que aceitam formatação brasileira padrão (`###.###.###-##` e `##.###.###-#`). 🟢</li><li style="margin-bottom: 0.4rem;">O cliente possui múltiplos canais de contato: telefone residencial, celular e telefone para recado. 🟢</li><li style="margin-bottom: 0.4rem;">Toda alteração (inclusão, alteração, remoção) no banco relacional deve ser refletida de imediato no índice do Elasticsearch. 🟢</li>
+        </ul>
+      </div>
+
+      <!-- Endpoints REST -->
+      
+
+      <!-- Gherkin -->
+      <div class="section-card">
+        <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
+        <pre class="code-block">Cenário: Cadastro de novo cliente
+  Dado que o operador preencheu os dados do cliente com nome "Mariana Souza" e CPF "123.456.789-00"
+  Quando enviar uma requisição POST /api/clientes com os dados informados
+  Então a resposta deve ter status 201 Created
+  E o corpo da resposta deve conter o ID gerado
+  E o cliente deve ser indexado no Elasticsearch
+
+Cenário: Busca rápida de cliente por nome
+  Dado que existe o cliente "Mariana Souza" cadastrado
+  Quando enviar uma requisição GET /api/_search/clientes?query=Mariana
+  Então a resposta deve retornar status 200 OK
+  E a lista retornada deve incluir o cadastro de "Mariana Souza"</pre>
+      </div>
+
+      <!-- Rastreabilidade de Código -->
+      <div class="section-card">
+        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
+          <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">Cliente</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/domain/Cliente.java</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">ClienteRepository</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/repository/ClienteRepository.java</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">ClienteSearchRepository</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/ClienteSearchRepository.java</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">ClienteServiceImpl</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ClienteServiceImpl.java</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">ClienteDTO</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/ClienteDTO.java</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">ClienteResource</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ClienteResource.java</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="feature">
+  <meta name="reversa-producer-agent" content="reversa-docs-storyteller">
+  <meta name="reversa-template" content="feature">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Autenticação & Segurança JWT — ducarmolocacoes</title>
+  <link rel="stylesheet" href="../assets/css/docs.css">
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/nav.js"></script>
+  <style>
+    .feature-page-viewport {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      padding: 2rem;
+      background: #0a0f1d;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .breadcrumbs {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .breadcrumbs a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      color: var(--accent-blue);
+    }
+    .section-card {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .rf-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .rf-table th, .rf-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .rf-table th {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      background: rgba(0,0,0,0.15);
+    }
+    .rf-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+    pre.code-block {
+      background: #0f172a;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.825rem;
+      color: #cbd5e1;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="../index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+  <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+</svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Segurança</span>
+    </a>
+    <nav class="reversa-doc-nav">
+            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="../modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="../topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="../metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="../glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="../deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div class="feature-page-viewport">
+      <div class="breadcrumbs">
+        <a href="../index.html">Visão Geral</a> <span>/</span>
+        <a href="../index.html#features">Features</a> <span>/</span>
+        <span style="color: var(--accent-blue);">Autenticação & Segurança JWT</span>
+      </div>
+
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Autenticação & Segurança JWT</h1>
+          <span class="badge badge-web">Segurança</span>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+          Gerencia o controle de acesso, identificação e autorização de operadores e administradores do sistema via JSON Web Tokens (JWT) stateless, além de cadastro e ativação de contas.
+        </p>
+      </div>
+
+      <!-- Requisitos Funcionais -->
+      <div class="section-card">
+        <div class="section-title">
+          <span>Requisitos Funcionais Especificados</span>
+          <span class="badge">4 Requisitos</span>
+        </div>
+        <table class="rf-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Requisito</th>
+              <th>Prioridade</th>
+              <th>Critério de Aceite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--accent-blue);">RF-AUTH-01</strong></td>
+              <td style="color: #fff; font-weight: 500;">Autenticação por usuário e senha com emissão de JWT</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">Retorna 200 OK com token assinado no body (`id_token`) e no header `Authorization: Bearer <token>`.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-AUTH-02</strong></td>
+              <td style="color: #fff; font-weight: 500;">Validação de token em requisições protegidas</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">Requisições com token válido recebem autorização compatível com suas roles (`ROLE_USER`/`ROLE_ADMIN`).</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-AUTH-03</strong></td>
+              <td style="color: #fff; font-weight: 500;">Registro e ativação de conta</td>
+              <td><span class="badge">Should</span></td>
+              <td style="color: var(--text-secondary);">Envia e-mail com chave de ativação; rota `/api/activate?key=...` ativa o usuário.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-AUTH-04</strong></td>
+              <td style="color: #fff; font-weight: 500;">Redefinição de senha</td>
+              <td><span class="badge">Should</span></td>
+              <td style="color: var(--text-secondary);">Endpoint `/api/account/reset-password/init` gera token temporário com validade registrada.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Regras de Negócio -->
+      <div class="section-card">
+        <div class="section-title">Regras de Negócio & Invariantes</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+          <li style="margin-bottom: 0.4rem;">Senhas devem ser armazenadas exclusivamente com hash BCrypt (60 caracteres). 🟢</li><li style="margin-bottom: 0.4rem;">O token JWT padrão tem validade de 24 horas (86.400s). Se `rememberMe = true`, a validade é estendida para 30 dias (2.592.000s). 🟢</li><li style="margin-bottom: 0.4rem;">Contas cadastradas via `/api/register` iniciam com `activated = false` até confirmação de token de ativação. 🟢</li><li style="margin-bottom: 0.4rem;">Usuários inativos (`activated = false`) têm o login bloqueado com `UserNotActivatedException`. 🟢</li>
+        </ul>
+      </div>
+
+      <!-- Endpoints REST -->
+      
+
+      <!-- Gherkin -->
+      <div class="section-card">
+        <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
+        <pre class="code-block">Cenário: Autenticação bem-sucedida de operador
+  Dado que existe um usuário "atendente" ativo no banco de dados com senha "senha123"
+  Quando enviar uma requisição POST /api/authenticate com { "username": "atendente", "password": "senha123" }
+  Então a resposta deve ter status 200 OK
+  E o corpo deve conter a propriedade "id_token" preenchida
+  E o cabeçalho Authorization deve conter "Bearer <token>"
+
+Cenário: Tentativa de login com senha incorreta
+  Dado que existe um usuário "atendente" ativo no sistema
+  Quando enviar uma requisição POST /api/authenticate com { "username": "atendente", "password": "senhaErrada" }
+  Então a resposta deve ter status 401 Unauthorized
+  E nenhum token JWT deve ser emitido
+
+Cenário: Tentativa de login de usuário não ativado
+  Dado que existe um usuário "novo_usuario" com activated = false
+  Quando enviar uma requisição POST /api/authenticate com as credenciais corretas
+  Então a resposta deve ter status 401 Unauthorized
+  E a mensagem de erro deve indicar que a conta não foi ativada</pre>
+      </div>
+
+      <!-- Rastreabilidade de Código -->
+      <div class="section-card">
+        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
