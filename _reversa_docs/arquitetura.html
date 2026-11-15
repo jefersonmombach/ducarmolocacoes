@@ -7,12 +7,73 @@
   <meta name="reversa-producer-agent" content="reversa-docs-mapper">
   <meta name="reversa-template" content="arquitetura">
   <meta name="reversa-visual-style" content="sober">
-  <title>Arquitetura 3D (Code City) — ducarmolocacoes</title>
+  <title>Arquitetura 3D (Code City) | ducarmolocacoes</title>
   <link rel="stylesheet" href="assets/css/docs.css">
   <script src="assets/vendor/three.min.js"></script>
   <script src="assets/vendor/OrbitControls.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/nav.js"></script>
+  <style>
+    .canvas-container {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      background: radial-gradient(circle at center, #111827 0%, #0a0f1d 100%);
+      overflow: hidden;
+    }
+    #scene-container canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .webgl-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #94a3b8;
+      text-align: center;
+      padding: 2rem;
+    }
+    .webgl-fallback h3 {
+      color: #f8fafc;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .webgl-fallback p {
+      max-width: 520px;
+      line-height: 1.6;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .scene-legend {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+  </style>
 </head>
 <body>
   <header class="reversa-header">
@@ -28,8 +89,8 @@
       <span class="brand-badge">Code City 3D</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="index.html" data-page-id="index">Visão geral</a>
-      <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="index.html" data-page-id="index">Visão geral</a>
+      <a href="arquitetura.html" data-page-id="arquitetura" class="active">Arquitetura 3D</a>
       <a href="modulos.html" data-page-id="modulos">Módulos</a>
       <a href="topologia.html" data-page-id="topologia">Topologia</a>
       <a href="metricas.html" data-page-id="metricas">Métricas</a>
@@ -41,6 +102,15 @@
   <div class="main-viewport">
     <div id="scene-container" class="canvas-container">
       <div id="tooltip" class="tooltip-floating"></div>
+      
+      <!-- Legenda visual fixa na tela 3D -->
+      <div class="scene-legend">
+        <div class="legend-item"><span class="legend-dot" style="background: #38bdf8;"></span> Interface (Gio UI)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #10b981;"></span> Domínio Core (Go)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Persistência (SQLite)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #a855f7;"></span> Comandos CLI</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #64748b;"></span> Testes Unitários</div>
+      </div>
     </div>
 
     <aside class="sidebar-panel">
@@ -48,19 +118,19 @@
         <h3 class="panel-title">Estatísticas do Sistema</h3>
         <div class="stats-summary">
           <div class="stat-item">
-            <span class="stat-num" id="stat-total-modules">0</span>
+            <span class="stat-num" id="stat-total-modules">27</span>
             <span class="stat-label">Módulos</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num" id="stat-total-loc">0</span>
+            <span class="stat-num" id="stat-total-loc" style="color: var(--accent-blue);">3.531</span>
             <span class="stat-label">Linhas (LOC)</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num" id="stat-districts">0</span>
+            <span class="stat-num" id="stat-districts">11</span>
             <span class="stat-label">Distritos/Pastas</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num" id="stat-avg-complexity">0</span>
+            <span class="stat-num" id="stat-avg-complexity" style="color: var(--accent-amber);">11.7</span>
             <span class="stat-label">Complexidade Média</span>
           </div>
         </div>
@@ -116,8 +186,228 @@
     </aside>
   </div>
 
+  <!-- Dados embutidos diretamente para garantir resiliência total mesmo offline -->
+  <script id="data" type="application/json">[
+  {
+    "name": "cmd/migrator/main.go",
+    "folder": "cmd/migrator",
+    "loc": 75,
+    "complexity": 6,
+    "type": "source",
+    "layer": "cli"
+  },
+  {
+    "name": "cmd/ducarmolocacoes/main.go",
+    "folder": "cmd/ducarmolocacoes",
+    "loc": 38,
+    "complexity": 4,
+    "type": "source",
+    "layer": "cli"
+  },
+  {
+    "name": "internal/ui/app.go",
+    "folder": "internal/ui",
+    "loc": 139,
+    "complexity": 16,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/theme/theme.go",
+    "folder": "internal/ui/theme",
+    "loc": 37,
+    "complexity": 1,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/produto_page.go",
+    "folder": "internal/ui/page",
+    "loc": 210,
+    "complexity": 9,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/locacao_list.go",
+    "folder": "internal/ui/page",
+    "loc": 380,
+    "complexity": 43,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/util.go",
+    "folder": "internal/ui/page",
+    "loc": 27,
+    "complexity": 2,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/cliente_page.go",
+    "folder": "internal/ui/page",
+    "loc": 242,
+    "complexity": 9,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/locacao_form.go",
+    "folder": "internal/ui/page",
+    "loc": 480,
+    "complexity": 33,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/widget/nav.go",
+    "folder": "internal/ui/widget",
+    "loc": 139,
+    "complexity": 8,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/widget/card.go",
+    "folder": "internal/ui/widget",
+    "loc": 39,
+    "complexity": 1,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/widget/modal.go",
+    "folder": "internal/ui/widget",
+    "loc": 92,
+    "complexity": 5,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/storage/sqlite/tipoevento_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 28,
+    "complexity": 4,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/produto_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 113,
+    "complexity": 13,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/schema.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 96,
+    "complexity": 1,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/sqlite_test.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 94,
+    "complexity": 14,
+    "type": "test",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/db.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 43,
+    "complexity": 9,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/locacao_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 357,
+    "complexity": 35,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/cliente_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 115,
+    "complexity": 9,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/core/locacao/service_test.go",
+    "folder": "internal/core/locacao",
+    "loc": 120,
+    "complexity": 17,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/locacao/service.go",
+    "folder": "internal/core/locacao",
+    "loc": 107,
+    "complexity": 16,
+    "type": "source",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/contrato/generator.go",
+    "folder": "internal/core/contrato",
+    "loc": 161,
+    "complexity": 14,
+    "type": "source",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/contrato/generator_test.go",
+    "folder": "internal/core/contrato",
+    "loc": 74,
+    "complexity": 5,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/agenda/checker_test.go",
+    "folder": "internal/core/agenda",
+    "loc": 64,
+    "complexity": 5,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/agenda/checker.go",
+    "folder": "internal/core/agenda",
+    "loc": 42,
+    "complexity": 4,
+    "type": "source",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/domain/domain_test.go",
+    "folder": "internal/core/domain",
+    "loc": 64,
+    "complexity": 11,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/domain/domain.go",
+    "folder": "internal/core/domain",
+    "loc": 155,
+    "complexity": 23,
+    "type": "source",
+    "layer": "domain"
+  }
+]</script>
+
   <script>
-    // Inicialização do Code City 3D
+    // Paleta oficial de cores por camada do projeto Go
     const LAYER_COLORS = {
       presentation: 0x38bdf8, // Cyan / Blue - Interface Gráfica Gio UI
       domain: 0x10b981,       // Emerald - Regras de Domínio e Core Go
@@ -127,359 +417,469 @@
       other: 0x475569
     };
 
-    let modulesData = [];
-    if (window.RV_DATA && window.RV_DATA.modules && Array.isArray(window.RV_DATA.modules)) {
-      modulesData = window.RV_DATA.modules;
-    } else {
-      // Fallback gracioso durante inicialização
-      modulesData = [];
-    }
-
     const container = document.getElementById("scene-container");
     const tooltip = document.getElementById("tooltip");
-    let width = container.clientWidth;
-    let height = container.clientHeight;
 
-    // Cena & Fog
+    // Resgate robusto dos dados de módulos (RV_DATA ou elemento inline #data)
+    function getModulesData() {
+      if (window.RV_DATA && Array.isArray(window.RV_DATA.modules) && window.RV_DATA.modules.length > 0) {
+        return window.RV_DATA.modules;
+      }
+      const dataScript = document.getElementById("data");
+      if (dataScript && dataScript.textContent.trim()) {
+        try {
+          const parsed = JSON.parse(dataScript.textContent);
+          if (Array.isArray(parsed)) return parsed;
+          if (parsed.modules && Array.isArray(parsed.modules)) return parsed.modules;
+        } catch (e) {
+          console.warn("Falha no parse do script #data:", e);
+        }
+      }
+      return [];
+    }
+
+    const modulesData = getModulesData();
+
+    // Dimensões seguras com fallback
+    function getContainerSize() {
+      const w = container.clientWidth || (window.innerWidth - 320) || 800;
+      const h = container.clientHeight || (window.innerHeight - 64) || 600;
+      return { width: Math.max(w, 320), height: Math.max(h, 240) };
+    }
+
+    let { width, height } = getContainerSize();
+
+    // 1. Cena
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0a0f1d);
-    scene.fog = new THREE.FogExp2(0x0a0f1d, 0.0018);
+    scene.fog = new THREE.Fog(0x0a0f1d, 350, 1100);
 
-    // Câmera
+    // 2. Câmera
     const camera = new THREE.PerspectiveCamera(45, width / height, 1, 3000);
-    camera.position.set(220, 260, 340);
+    camera.position.set(120, 150, 180);
 
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(width, height);
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    container.appendChild(renderer.domElement);
-
-    // Controles de Câmera
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.maxPolarAngle = Math.PI / 2 - 0.05; // Evita atravessar o chão
-    controls.target.set(0, 0, 0);
-
-    // Iluminação
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.85);
-    dirLight.position.set(150, 300, 200);
-    dirLight.castShadow = true;
-    dirLight.shadow.mapSize.width = 2048;
-    dirLight.shadow.mapSize.height = 2048;
-    scene.add(dirLight);
-
-    const hemiLight = new THREE.HemisphereLight(0x38bdf8, 0x0f172a, 0.4);
-    hemiLight.position.set(0, 200, 0);
-    scene.add(hemiLight);
-
-    // Grid Floor
-    const gridHelper = new THREE.GridHelper(1000, 50, 0x1e293b, 0x111827);
-    gridHelper.position.y = -0.1;
-    scene.add(gridHelper);
-
-    // Armazenamento dos prédios
-    let buildings = [];
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2(-999, -999);
-    let hoveredMesh = null;
-    let selectedMesh = null;
-
-    function buildCity(data) {
-      // Limpa prédios antigos
-      buildings.forEach(b => scene.remove(b.mesh));
-      buildings = [];
-
-      if (!data || data.length === 0) return;
-
-      // Agrupa por pasta (distritos)
-      const districts = {};
-      let totalLoc = 0;
-      let totalComp = 0;
-
-      data.forEach(m => {
-        totalLoc += m.loc || 0;
-        totalComp += m.complexity || 1;
-        const folder = m.folder || "root";
-        if (!districts[folder]) districts[folder] = [];
-        districts[folder].push(m);
-      });
-
-      // Atualiza stats
-      document.getElementById("stat-total-modules").textContent = data.length;
-      document.getElementById("stat-total-loc").textContent = totalLoc.toLocaleString("pt-BR");
-      document.getElementById("stat-districts").textContent = Object.keys(districts).length;
-      document.getElementById("stat-avg-complexity").textContent = (totalComp / data.length).toFixed(1);
-
-      // Posicionamento de Distritos em grade 2D
-      const folderList = Object.keys(districts);
-      const cols = Math.ceil(Math.sqrt(folderList.length));
-      const districtSpacing = 65;
-
-      let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
-
-      folderList.forEach((folder, dIndex) => {
-        const dRow = Math.floor(dIndex / cols);
-        const dCol = dIndex % cols;
-        const districtCenterX = (dCol - cols / 2) * districtSpacing;
-        const districtCenterZ = (dRow - cols / 2) * districtSpacing;
-
-        const modsInDistrict = districts[folder];
-        const subCols = Math.ceil(Math.sqrt(modsInDistrict.length));
-        const itemSpacing = 12;
-
-        // Base do Distrito (plataforma)
-        const dWidth = Math.max(25, subCols * itemSpacing + 8);
-        const dHeight = Math.max(25, Math.ceil(modsInDistrict.length / subCols) * itemSpacing + 8);
-        const platformGeo = new THREE.BoxGeometry(dWidth, 1, dHeight);
-        const platformMat = new THREE.MeshStandardMaterial({
-          color: 0x161e2e,
-          roughness: 0.9,
-          metalness: 0.1
-        });
-        const platform = new THREE.Mesh(platformGeo, platformMat);
-        platform.position.set(districtCenterX, 0, districtCenterZ);
-        platform.receiveShadow = true;
-        scene.add(platform);
-        buildings.push({ mesh: platform, isPlatform: true });
-
-        // Prédios
-        modsInDistrict.forEach((m, mIndex) => {
-          const mRow = Math.floor(mIndex / subCols);
-          const mCol = mIndex % subCols;
-          const px = districtCenterX - dWidth / 2 + (mCol + 0.5) * itemSpacing;
-          const pz = districtCenterZ - dHeight / 2 + (mRow + 0.5) * itemSpacing;
-
-          const baseLoc = Math.max(4, m.loc * 0.15);
-          const baseSize = Math.max(3, Math.min(10, Math.sqrt(m.complexity || 1) * 2.2));
-          const colorHex = LAYER_COLORS[m.layer] || LAYER_COLORS.other;
-
-          const geo = new THREE.BoxGeometry(baseSize, baseLoc, baseSize);
-          // Eleva para a base ficar no chão da plataforma
-          geo.translate(0, baseLoc / 2, 0);
-
-          const mat = new THREE.MeshStandardMaterial({
-            color: colorHex,
-            roughness: 0.4,
-            metalness: 0.2,
-            wireframe: false
-          });
-
-          const building = new THREE.Mesh(geo, mat);
-          building.position.set(px, 0.5, pz);
-          building.castShadow = true;
-          building.receiveShadow = true;
-
-          building.userData = {
-            ...m,
-            originalColor: colorHex,
-            baseHeight: baseLoc,
-            baseSize: baseSize
-          };
-
-          scene.add(building);
-          buildings.push({ mesh: building, data: m });
-
-          minX = Math.min(minX, px);
-          maxX = Math.max(maxX, px);
-          minZ = Math.min(minZ, pz);
-          maxZ = Math.max(maxZ, pz);
-        });
-      });
-
-      // Centraliza controles no meio da cidade
-      const midX = (minX + maxX) / 2 || 0;
-      const midZ = (minZ + maxZ) / 2 || 0;
-      controls.target.set(midX, 20, midZ);
-      camera.position.set(midX + 220, 260, midZ + 320);
-      controls.update();
-    }
-
-    // Se RV_DATA já estiver disponível
-    if (modulesData.length > 0) {
-      buildCity(modulesData);
-    } else {
-      // Tenta aguardar evento ou ler script data
-      window.addEventListener("DOMContentLoaded", () => {
-        if (window.RV_DATA && window.RV_DATA.modules) {
-          buildCity(window.RV_DATA.modules);
-        }
-      });
-    }
-
-    // Interações de Controles
-    const scaleHeightInput = document.getElementById("scale-height");
-    const scaleVal = document.getElementById("scale-val");
-    scaleHeightInput.addEventListener("input", (e) => {
-      const val = parseFloat(e.target.value);
-      scaleVal.textContent = val.toFixed(1) + "x";
-      buildings.forEach(b => {
-        if (!b.isPlatform && b.mesh) {
-          b.mesh.scale.y = val;
-        }
-      });
-    });
-
-    const lightIntensityInput = document.getElementById("light-intensity");
-    const lightVal = document.getElementById("light-val");
-    lightIntensityInput.addEventListener("input", (e) => {
-      const val = parseFloat(e.target.value);
-      lightVal.textContent = val.toFixed(1) + "x";
-      dirLight.intensity = 0.85 * val;
-      ambientLight.intensity = 0.5 * val;
-    });
-
-    const layerFilter = document.getElementById("layer-filter");
-    layerFilter.addEventListener("change", (e) => {
-      const layer = e.target.value;
-      buildings.forEach(b => {
-        if (!b.isPlatform && b.mesh) {
-          if (layer === "ALL" || b.data.layer === layer) {
-            b.mesh.visible = true;
-          } else {
-            b.mesh.visible = false;
-          }
-        }
-      });
-    });
-
-    const searchBox = document.getElementById("search-box");
-    searchBox.addEventListener("input", (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      buildings.forEach(b => {
-        if (!b.isPlatform && b.mesh) {
-          if (!q || b.data.name.toLowerCase().includes(q)) {
-            b.mesh.visible = true;
-            if (q && b.data.name.toLowerCase().includes(q)) {
-              b.mesh.material.emissive.setHex(0x38bdf8);
-            } else {
-              b.mesh.material.emissive.setHex(0x000000);
-            }
-          } else {
-            b.mesh.visible = false;
-          }
-        }
-      });
-    });
-
-    document.getElementById("btn-reset").addEventListener("click", () => {
-      controls.target.set(0, 20, 0);
-      camera.position.set(220, 260, 340);
-      controls.update();
-    });
-
-    document.getElementById("btn-export").addEventListener("click", () => {
-      renderer.render(scene, camera);
-      const dataURL = renderer.domElement.toDataURL("image/png");
-      const a = document.createElement("a");
-      a.download = "ducarmolocacoes-code-city-3d.png";
-      a.href = dataURL;
-      a.click();
-    });
-
-    // Raycasting & Hover / Click
-    window.addEventListener("mousemove", (e) => {
-      const rect = renderer.domElement.getBoundingClientRect();
-      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
-      if (e.clientX >= rect.left && e.clientX <= rect.right &&
-          e.clientY >= rect.top && e.clientY <= rect.bottom) {
-        tooltip.style.left = (e.clientX + 14) + "px";
-        tooltip.style.top = (e.clientY + 14) + "px";
-      } else {
-        tooltip.style.display = "none";
-      }
-    });
-
-    window.addEventListener("click", (e) => {
-      const rect = renderer.domElement.getBoundingClientRect();
-      if (e.clientX >= rect.left && e.clientX <= rect.right &&
-          e.clientY >= rect.top && e.clientY <= rect.bottom) {
-        if (hoveredMesh && !hoveredMesh.userData.isPlatform) {
-          selectBuilding(hoveredMesh);
-        }
-      }
-    });
-
-    function selectBuilding(mesh) {
-      if (selectedMesh && selectedMesh !== mesh) {
-        selectedMesh.material.emissive.setHex(0x000000);
-      }
-      selectedMesh = mesh;
-      selectedMesh.material.emissive.setHex(0xffffff);
-
-      const d = mesh.userData;
-      const infoBox = document.getElementById("selected-info");
-      infoBox.innerHTML = `
-        <div class="info-card-header">${d.name}</div>
-        <div class="badge-row">
-          <span class="badge badge-${d.layer}">${d.layer.toUpperCase()}</span>
-          <span class="badge">${d.type}</span>
-        </div>
-        <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
-          <div><strong>Pasta:</strong> <span style="color: var(--text-secondary); word-break: break-all;">${d.folder}</span></div>
-          <div><strong>Linhas de Código (LOC):</strong> <span style="color: var(--accent-blue);">${d.loc}</span></div>
-          <div><strong>Complexidade Ciclomática:</strong> <span style="color: var(--accent-amber);">${d.complexity}</span></div>
+    // 3. Renderer com tratamento gracioso de falha WebGL
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: "high-performance" });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(width, height, false);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      container.appendChild(renderer.domElement);
+    } catch (e) {
+      console.error("Erro ao inicializar WebGL:", e);
+      container.innerHTML = `
+        <div class="webgl-fallback">
+          <h3>Aceleração Gráfica 3D Não Inicializada</h3>
+          <p>O navegador não conseguiu alocar o contexto WebGL. Isso pode ocorrer em navegadores com aceleração de hardware desativada.</p>
+          <p>Você pode navegar pelo mapa 2D em <a href="modulos.html" style="color: #38bdf8; text-decoration: underline;">Módulos</a> ou conferir os gráficos no <a href="metricas.html" style="color: #38bdf8; text-decoration: underline;">Dashboard de Métricas</a>.</p>
         </div>
       `;
+      // Atualiza estatísticas mesmo sem WebGL
+      updateStats(modulesData);
     }
 
-    // Render loop
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
+    // Se WebGL inicializou corretamente
+    if (renderer) {
+      // 4. Controles de Câmera (OrbitControls)
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.06;
+      controls.maxPolarAngle = Math.PI / 2 - 0.05; // Não atravessa o piso
+      controls.minDistance = 20;
+      controls.maxDistance = 800;
 
-      // Raycast
-      raycaster.setFromCamera(mouse, camera);
-      const meshesToTest = buildings.filter(b => !b.isPlatform && b.mesh.visible).map(b => b.mesh);
-      const intersects = raycaster.intersectObjects(meshesToTest);
+      // 5. Iluminação Otimizada
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+      scene.add(ambientLight);
 
-      if (intersects.length > 0) {
-        const topMesh = intersects[0].object;
-        if (hoveredMesh !== topMesh) {
+      const hemiLight = new THREE.HemisphereLight(0x38bdf8, 0x0f172a, 0.5);
+      hemiLight.position.set(0, 200, 0);
+      scene.add(hemiLight);
+
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
+      dirLight.position.set(100, 220, 120);
+      dirLight.castShadow = true;
+      dirLight.shadow.mapSize.width = 1024;
+      dirLight.shadow.mapSize.height = 1024;
+      dirLight.shadow.camera.near = 10;
+      dirLight.shadow.camera.far = 600;
+      const d = 160;
+      dirLight.shadow.camera.left = -d;
+      dirLight.shadow.camera.right = d;
+      dirLight.shadow.camera.top = d;
+      dirLight.shadow.camera.bottom = -d;
+      scene.add(dirLight);
+
+      // Grid Floor
+      const gridHelper = new THREE.GridHelper(800, 40, 0x1e293b, 0x111827);
+      gridHelper.position.y = -0.1;
+      scene.add(gridHelper);
+
+      let buildings = [];
+      let defaultCamPos = new THREE.Vector3(120, 150, 180);
+      let defaultTarget = new THREE.Vector3(0, 10, 0);
+
+      // Criação de Sprites de Texto 2D para identificar distritos
+      function createDistrictLabel(text) {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = 384;
+        canvas.height = 80;
+        
+        ctx.fillStyle = "rgba(15, 23, 42, 0.85)";
+        ctx.strokeStyle = "rgba(56, 189, 248, 0.5)";
+        ctx.lineWidth = 3;
+        
+        // Retângulo arredondado
+        ctx.beginPath();
+        const r = 8, x = 4, y = 4, w = 376, h = 72;
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = "#38bdf8";
+        ctx.font = "bold 20px -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, 192, 40);
+
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        const spriteMat = new THREE.SpriteMaterial({ map: texture, transparent: true, depthTest: false });
+        const sprite = new THREE.Sprite(spriteMat);
+        sprite.scale.set(30, 6.25, 1);
+        return sprite;
+      }
+
+      function buildCity(data) {
+        // Remove elementos anteriores
+        buildings.forEach(b => scene.remove(b.mesh));
+        buildings = [];
+
+        if (!data || data.length === 0) return;
+
+        // Agrupamento por pasta (distrito)
+        const districts = {};
+        let totalLoc = 0;
+        let totalComp = 0;
+
+        data.forEach(m => {
+          totalLoc += m.loc || 0;
+          totalComp += m.complexity || 1;
+          const folder = m.folder || "raiz";
+          if (!districts[folder]) districts[folder] = [];
+          districts[folder].push(m);
+        });
+
+        updateStats(data);
+
+        const folderList = Object.keys(districts);
+        const cols = Math.ceil(Math.sqrt(folderList.length));
+        const districtSpacing = 65;
+
+        let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+
+        folderList.forEach((folder, dIndex) => {
+          const dRow = Math.floor(dIndex / cols);
+          const dCol = dIndex % cols;
+          const districtCenterX = (dCol - cols / 2) * districtSpacing;
+          const districtCenterZ = (dRow - cols / 2) * districtSpacing;
+
+          const modsInDistrict = districts[folder];
+          const subCols = Math.ceil(Math.sqrt(modsInDistrict.length));
+          const itemSpacing = 12;
+
+          const dWidth = Math.max(28, subCols * itemSpacing + 8);
+          const dHeight = Math.max(28, Math.ceil(modsInDistrict.length / subCols) * itemSpacing + 8);
+          
+          // Plataforma do Distrito
+          const platformGeo = new THREE.BoxGeometry(dWidth, 1, dHeight);
+          const platformMat = new THREE.MeshStandardMaterial({
+            color: 0x161e2e,
+            roughness: 0.85,
+            metalness: 0.15
+          });
+          const platform = new THREE.Mesh(platformGeo, platformMat);
+          platform.position.set(districtCenterX, 0, districtCenterZ);
+          platform.receiveShadow = true;
+          scene.add(platform);
+          buildings.push({ mesh: platform, isPlatform: true });
+
+          // Label flutuante do distrito
+          const labelSprite = createDistrictLabel(folder);
+          labelSprite.position.set(districtCenterX, 18, districtCenterZ - dHeight / 2 - 4);
+          scene.add(labelSprite);
+          buildings.push({ mesh: labelSprite, isPlatform: true });
+
+          // Prédios dentro do distrito
+          modsInDistrict.forEach((m, mIndex) => {
+            const mRow = Math.floor(mIndex / subCols);
+            const mCol = mIndex % subCols;
+            const px = districtCenterX - dWidth / 2 + (mCol + 0.5) * itemSpacing;
+            const pz = districtCenterZ - dHeight / 2 + (mRow + 0.5) * itemSpacing;
+
+            const baseLoc = Math.max(5, m.loc * 0.18);
+            const baseSize = Math.max(3.5, Math.min(10, Math.sqrt(m.complexity || 1) * 2.2));
+            const colorHex = LAYER_COLORS[m.layer] || LAYER_COLORS.other;
+
+            const geo = new THREE.BoxGeometry(baseSize, baseLoc, baseSize);
+            geo.translate(0, baseLoc / 2, 0); // Base alinhada no piso
+
+            const mat = new THREE.MeshStandardMaterial({
+              color: colorHex,
+              roughness: 0.35,
+              metalness: 0.25
+            });
+
+            const building = new THREE.Mesh(geo, mat);
+            building.position.set(px, 0.5, pz);
+            building.castShadow = true;
+            building.receiveShadow = true;
+
+            building.userData = {
+              ...m,
+              originalColor: colorHex,
+              baseHeight: baseLoc,
+              baseSize: baseSize
+            };
+
+            scene.add(building);
+            buildings.push({ mesh: building, data: m, isPlatform: false });
+
+            minX = Math.min(minX, px);
+            maxX = Math.max(maxX, px);
+            minZ = Math.min(minZ, pz);
+            maxZ = Math.max(maxZ, pz);
+          });
+        });
+
+        // Enquadramento perfeito da câmera
+        const midX = (minX + maxX) / 2 || 0;
+        const midZ = (minZ + maxZ) / 2 || 0;
+        defaultTarget = new THREE.Vector3(midX, 12, midZ);
+        defaultCamPos = new THREE.Vector3(midX + 90, 115, midZ + 130);
+
+        controls.target.copy(defaultTarget);
+        camera.position.copy(defaultCamPos);
+        controls.update();
+      }
+
+      function updateStats(data) {
+        if (!data) return;
+        const totalLoc = data.reduce((acc, cur) => acc + (cur.loc || 0), 0);
+        const totalComp = data.reduce((acc, cur) => acc + (cur.complexity || 1), 0);
+        const folders = new Set(data.map(m => m.folder || "raiz"));
+
+        const elModules = document.getElementById("stat-total-modules");
+        if (elModules) elModules.textContent = data.length;
+        const elLoc = document.getElementById("stat-total-loc");
+        if (elLoc) elLoc.textContent = totalLoc.toLocaleString("pt-BR");
+        const elDistricts = document.getElementById("stat-districts");
+        if (elDistricts) elDistricts.textContent = folders.size;
+        const elComp = document.getElementById("stat-avg-complexity");
+        if (elComp) elComp.textContent = (totalComp / (data.length || 1)).toFixed(1);
+      }
+
+      // Constrói a cidade imediatamente com os dados resgatados
+      buildCity(modulesData);
+
+      // Verificação de redimensionamento contínuo
+      function checkResize() {
+        const currW = container.clientWidth;
+        const currH = container.clientHeight;
+        if (currW > 0 && currH > 0 && (currW !== width || currH !== height)) {
+          width = currW;
+          height = currH;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height, false);
+        }
+      }
+
+      // Observer moderno para redimensionamento de container
+      if (typeof window !== "undefined" && typeof window.ResizeObserver !== "undefined") {
+        try {
+          const ro = new window.ResizeObserver(() => checkResize());
+          ro.observe(container);
+        } catch (e) {
+          console.warn("ResizeObserver indisponível:", e);
+        }
+      }
+      window.addEventListener("resize", checkResize);
+
+      // Controles interativos da sidebar
+      const scaleHeightInput = document.getElementById("scale-height");
+      const scaleVal = document.getElementById("scale-val");
+      scaleHeightInput.addEventListener("input", (e) => {
+        const val = parseFloat(e.target.value);
+        scaleVal.textContent = val.toFixed(1) + "x";
+        buildings.forEach(b => {
+          if (!b.isPlatform && b.mesh) {
+            b.mesh.scale.y = val;
+          }
+        });
+      });
+
+      const lightIntensityInput = document.getElementById("light-intensity");
+      const lightVal = document.getElementById("light-val");
+      lightIntensityInput.addEventListener("input", (e) => {
+        const val = parseFloat(e.target.value);
+        lightVal.textContent = val.toFixed(1) + "x";
+        dirLight.intensity = 0.9 * val;
+        ambientLight.intensity = 0.55 * val;
+      });
+
+      const layerFilter = document.getElementById("layer-filter");
+      layerFilter.addEventListener("change", (e) => {
+        const layer = e.target.value;
+        buildings.forEach(b => {
+          if (!b.isPlatform && b.mesh) {
+            b.mesh.visible = (layer === "ALL" || b.data.layer === layer);
+          }
+        });
+      });
+
+      const searchBox = document.getElementById("search-box");
+      searchBox.addEventListener("input", (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        buildings.forEach(b => {
+          if (!b.isPlatform && b.mesh) {
+            if (!q || b.data.name.toLowerCase().includes(q)) {
+              b.mesh.visible = true;
+              if (q && b.data.name.toLowerCase().includes(q)) {
+                b.mesh.material.emissive.setHex(0x38bdf8);
+              } else {
+                b.mesh.material.emissive.setHex(0x000000);
+              }
+            } else {
+              b.mesh.visible = false;
+            }
+          }
+        });
+      });
+
+      document.getElementById("btn-reset").addEventListener("click", () => {
+        controls.target.copy(defaultTarget);
+        camera.position.copy(defaultCamPos);
+        controls.update();
+      });
+
+      document.getElementById("btn-export").addEventListener("click", () => {
+        renderer.render(scene, camera);
+        const dataURL = renderer.domElement.toDataURL("image/png");
+        const a = document.createElement("a");
+        a.download = "ducarmolocacoes-code-city-3d.png";
+        a.href = dataURL;
+        a.click();
+      });
+
+      // Raycasting para Hover e Seleção
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2(-999, -999);
+      let hoveredMesh = null;
+      let selectedMesh = null;
+
+      window.addEventListener("mousemove", (e) => {
+        const rect = renderer.domElement.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+        if (e.clientX >= rect.left && e.clientX <= rect.right &&
+            e.clientY >= rect.top && e.clientY <= rect.bottom) {
+          tooltip.style.left = (e.clientX + 14) + "px";
+          tooltip.style.top = (e.clientY + 14) + "px";
+        } else {
+          tooltip.style.display = "none";
+        }
+      });
+
+      window.addEventListener("click", (e) => {
+        const rect = renderer.domElement.getBoundingClientRect();
+        if (e.clientX >= rect.left && e.clientX <= rect.right &&
+            e.clientY >= rect.top && e.clientY <= rect.bottom) {
+          if (hoveredMesh && !hoveredMesh.userData.isPlatform) {
+            selectBuilding(hoveredMesh);
+          }
+        }
+      });
+
+      function selectBuilding(mesh) {
+        if (selectedMesh && selectedMesh !== mesh) {
+          selectedMesh.material.emissive.setHex(0x000000);
+        }
+        selectedMesh = mesh;
+        selectedMesh.material.emissive.setHex(0xffffff);
+
+        const d = mesh.userData;
+        const infoBox = document.getElementById("selected-info");
+        infoBox.innerHTML = `
+          <div class="info-card-header" style="color: var(--accent-blue);">${d.name}</div>
+          <div class="badge-row">
+            <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">${(d.layer || "").toUpperCase()}</span>
+            <span class="badge">${d.type}</span>
+          </div>
+          <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+            <div><strong>Pasta:</strong> <span style="color: var(--text-secondary); word-break: break-all;">${d.folder}</span></div>
+            <div><strong>Linhas de Código (LOC):</strong> <span style="color: var(--accent-blue);">${d.loc}</span></div>
+            <div><strong>Complexidade Ciclomática:</strong> <span style="color: var(--accent-amber);">${d.complexity}</span></div>
+          </div>
+        `;
+      }
+
+      // Loop de animação
+      function animate() {
+        requestAnimationFrame(animate);
+        checkResize();
+        controls.update();
+
+        raycaster.setFromCamera(mouse, camera);
+        const meshesToTest = buildings.filter(b => !b.isPlatform && b.mesh && b.mesh.visible).map(b => b.mesh);
+        const intersects = raycaster.intersectObjects(meshesToTest);
+
+        if (intersects.length > 0) {
+          const topMesh = intersects[0].object;
+          if (hoveredMesh !== topMesh) {
+            if (hoveredMesh && hoveredMesh !== selectedMesh) {
+              hoveredMesh.material.emissive.setHex(0x000000);
+            }
+            hoveredMesh = topMesh;
+            if (hoveredMesh !== selectedMesh) {
+              hoveredMesh.material.emissive.setHex(0x38bdf8);
+            }
+          }
+          const d = hoveredMesh.userData;
+          tooltip.style.display = "block";
+          tooltip.innerHTML = `
+            <strong>${d.name.split("/").pop()}</strong><br>
+            <span style="color: #94a3b8;">${d.folder}</span><br>
+            <span style="color: #38bdf8;">LOC: ${d.loc}</span> | 
+            <span style="color: #f59e0b;">Complexidade: ${d.complexity}</span>
+          `;
+        } else {
           if (hoveredMesh && hoveredMesh !== selectedMesh) {
             hoveredMesh.material.emissive.setHex(0x000000);
           }
-          hoveredMesh = topMesh;
-          if (hoveredMesh !== selectedMesh) {
-            hoveredMesh.material.emissive.setHex(0x38bdf8);
-          }
+          hoveredMesh = null;
+          tooltip.style.display = "none";
         }
-        const d = hoveredMesh.userData;
-        tooltip.style.display = "block";
-        tooltip.innerHTML = `
-          <strong>${d.name.split("/").pop()}</strong><br>
-          <span style="color: #94a3b8;">${d.folder}</span><br>
-          <span style="color: #38bdf8;">LOC: ${d.loc}</span> | 
-          <span style="color: #f59e0b;">Complexidade: ${d.complexity}</span>
-        `;
-      } else {
-        if (hoveredMesh && hoveredMesh !== selectedMesh) {
-          hoveredMesh.material.emissive.setHex(0x000000);
-        }
-        hoveredMesh = null;
-        tooltip.style.display = "none";
+
+        renderer.render(scene, camera);
       }
 
-      renderer.render(scene, camera);
+      // Dispara render loop
+      animate();
     }
-    animate();
-
-    // Redimensionamento
-    window.addEventListener("resize", () => {
-      width = container.clientWidth;
-      height = container.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    });
   </script>
 </body>
 </html>

@@ -10,86 +10,86 @@
     "arquitetura.html": {
       "status": "created",
       "agent": "reversa-docs-mapper",
-      "hash": "sha256:2c9b28c0ca9f1b6edbb400ad1436d8409df9c86f341bc56135b19c74b5a52dc7",
-      "createdAt": "2026-11-15T00:43:26.458557+00:00"
+      "hash": "sha256:726cc11c0a13b138ae8a0e36d4a749869009a077562a100f1beb9655f0480024",
+      "createdAt": "2026-11-15T00:56:29.798013+00:00"
     },
     "deck.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:c15400699c977b4a85f59fa91a7b4f71e55e6c0f014eb6f79a1420a1b60e887c",
-      "createdAt": "2026-11-15T00:43:26.458754+00:00"
+      "hash": "sha256:04fa7c08321bbcd102fb6d758725b00d5dd8b2c1f6849f6d6f225ad773dc8bc7",
+      "createdAt": "2026-11-15T00:56:29.798171+00:00"
     },
     "glossario.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:e4e7763aca2ce459861635dd0ef349570629df874e15e2e0f0ac3ab5ab1be414",
-      "createdAt": "2026-11-15T00:43:26.458878+00:00"
+      "hash": "sha256:0d44632044000ec056e9ea00e5d36a7e213f23fdacb660349c06f2ce4a5c8417",
+      "createdAt": "2026-11-15T00:56:29.798286+00:00"
     },
     "index.html": {
       "status": "created",
       "agent": "reversa-docs-publisher",
-      "hash": "sha256:21abce98565cba6c3e8a788d4190ef2d98fdcc2244b17ea45cdcad28ea3314e4",
-      "createdAt": "2026-11-15T00:43:26.459002+00:00"
+      "hash": "sha256:23313d73aed38cf012db3b54e0a3cd153fc740f76ade0d2a053cdbab12ed9d16",
+      "createdAt": "2026-11-15T00:56:29.798407+00:00"
     },
     "metricas.html": {
       "status": "created",
       "agent": "reversa-docs-analyst",
-      "hash": "sha256:1fbf85cd4ef7ae30608a36bcf4115955d568b4f61bfb68c96103e8a7e671f9ca",
-      "createdAt": "2026-11-15T00:43:26.459183+00:00"
+      "hash": "sha256:cac92460f114d8eef39e7ab73896e1a93f395027c3965ebdebb86e93bff5802d",
+      "createdAt": "2026-11-15T00:56:29.798520+00:00"
     },
     "modulos.html": {
       "status": "created",
       "agent": "reversa-docs-mapper",
-      "hash": "sha256:a01b9fb43ea83e7e4d91c503a8fe975e31ae2951134f4e0442a4b71096c8dd54",
-      "createdAt": "2026-11-15T00:43:26.459369+00:00"
+      "hash": "sha256:3fa8f49bf030fc1a3bb2be8ce34451b1aa67aef379061c363db126b3395588b3",
+      "createdAt": "2026-11-15T00:56:29.798662+00:00"
     },
     "topologia.html": {
       "status": "created",
       "agent": "reversa-docs-mapper",
-      "hash": "sha256:67acdde4636ba7334319cf97e912432f19d17cb63707ce964d33a3771c7839f9",
-      "createdAt": "2026-11-15T00:43:26.459574+00:00"
+      "hash": "sha256:8a447f25cc99a44c28ae9173b44a424de5dd5e19599fa4aab6bd9a7277f8e91d",
+      "createdAt": "2026-11-15T00:56:29.798807+00:00"
     },
     "features/administracao.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:8984a7af82e31cb133bcc704ecdfcb21b7853b64a4bdc81b57b17cd525ef92e1",
-      "createdAt": "2026-11-15T00:43:26.459738+00:00"
+      "hash": "sha256:19dd614df22e0d65e0fc901a06c57191c4b08f432190d0329d7e87f1ec361b77",
+      "createdAt": "2026-11-15T00:56:29.798960+00:00"
     },
     "features/autenticacao.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:e2b5867b24cacac16d7138fc068b9be3a6645bf2bfb5e07eb0fdb949fe39ae3c",
-      "createdAt": "2026-11-15T00:43:26.459894+00:00"
+      "hash": "sha256:12f7ded229dd76521c28119abb36f8d111b2d90455bc894fcd83cb97170c9ea0",
+      "createdAt": "2026-11-15T00:56:29.799084+00:00"
     },
     "features/clientes.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:81ad5907b20be06a15841fc976fb254352490f5a96f412f88ac8825c78c58144",
-      "createdAt": "2026-11-15T00:43:26.460099+00:00"
+      "hash": "sha256:d433343a508707a0f8aca303ff611ca3d39903f6c94ab418dec94e5be0e4b7e2",
+      "createdAt": "2026-11-15T00:56:29.799202+00:00"
     },
     "features/contrato.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:f48681eeaadf2c0ebbc6de9f7bd0896b9204b4aa85c911e7d99b7bf97d5ca739",
-      "createdAt": "2026-11-15T00:43:26.460261+00:00"
+      "hash": "sha256:9d0c146f07570c058f8e813d07349fa2ce4a0f559d3f14a49dc0b6444533d258",
+      "createdAt": "2026-11-15T00:56:29.799321+00:00"
     },
     "features/locacoes.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:1c87e6da56b368ac821e11a1ea7141b016798512fde5e369913a1e97a5b66039",
-      "createdAt": "2026-11-15T00:43:26.460387+00:00"
+      "hash": "sha256:a6de129bc8c4bc3741eb0bd01bad702c41cc41b292c7a082efb1be18c0c2cf75",
+      "createdAt": "2026-11-15T00:56:29.799437+00:00"
     },
     "features/produtos.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:862fec0eae15c85e9ec5bb5772bc97614f26c8a08edf52dbc80f2cb90ceb7cda",
-      "createdAt": "2026-11-15T00:43:26.460500+00:00"
+      "hash": "sha256:16930cbe41095c36b0fe4dccc873b7ed341c9347323648db3a253f82ccc7c7dc",
+      "createdAt": "2026-11-15T00:56:29.799543+00:00"
     },
     "features/tipo-eventos.html": {
       "status": "created",
       "agent": "reversa-docs-storyteller",
-      "hash": "sha256:5dc968802c917245ea80f8718a241ab3b4ce84df2264a5ecdc85ebedc21e4ed4",
-      "createdAt": "2026-11-15T00:43:26.460608+00:00"
+      "hash": "sha256:91e5cf436ec2dce0f4ee4fef225ccc9e3df2da6da5c3f2f73bd698b195b27a7c",
+      "createdAt": "2026-11-15T00:56:29.799645+00:00"
     }
   },
   "pagesGenerated": [
@@ -111,10 +111,10 @@
   "pagesOmitted": [
     {
       "page": "timeline.html",
-      "reason": "Arquivo .reversa/chronicle.md não foi encontrado no projeto"
+      "reason": "Arquivo .reversa/chronicle.md n\u00e3o foi encontrado no projeto"
     }
   ],
-  "lastCheckpoint": "2026-11-15T00:43:26.460613+00:00",
+  "lastCheckpoint": "2026-11-15T00:56:29.799650+00:00",
   "smokeTestFailed": false,
   "smokeTestErrors": [],
   "auxiliaryHtmlsDiscovered": 0,
