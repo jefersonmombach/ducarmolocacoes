@@ -1,6 +1,14 @@
 ######################
-# Project Specific
+# Project Specific (Go Desktop)
 ######################
+*.exe
+ducarmolocacoes_linux64
+migrator_linux
+migrator
+*.db-journal
+*.db-wal
+*.db-shm
+contrato_locacao_*.pdf
 /target/www/**
 /src/test/javascript/coverage/
 

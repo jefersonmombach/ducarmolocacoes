@@ -2,6 +2,6 @@
   "version": 1,
   "allowLegacyEdits": true,
   "allowedPaths": [
-        "app-desktop/**"
+        "**"
     ]
 }
