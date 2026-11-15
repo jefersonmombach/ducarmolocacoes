@@ -98,10 +98,10 @@
 </svg>
       </div>
       <span class="brand-title">ducarmolocacoes</span>
-      <span class="brand-badge">Operação Core</span>
+      <span class="brand-badge">Operação Core Desktop</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../index.html" data-page-id="index">Visão geral</a>
       <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="../modulos.html" data-page-id="modulos">Módulos</a>
       <a href="../topologia.html" data-page-id="topologia">Topologia</a>
@@ -122,10 +122,10 @@
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
           <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Ciclo de Vida das Locações</h1>
-          <span class="badge badge-web">Operação Core</span>
+          <span class="badge badge-web">Operação Core Desktop</span>
         </div>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          Orquestra o ciclo completo de locação de trajes para eventos comemorativos: seleção de cliente, produtos locados, datas de contratação, evento, entrega e devolução, controle financeiro (total, sinal de 20%, adiantamento, saldo) e máquina de estados (`EnumSituacaoLocacao`).
+          Orquestra o ciclo completo de locação de trajes para eventos comemorativos em interface gráfica Gio UI: seleção de cliente, adição de itens de vestuário, cálculo financeiro em centavos inteiros (sinal de 20%, adiantamento e saldo mandatório), bloqueio impeditivo de agenda de 7 dias [evento-3, evento+4] e máquina de estados.
         </p>
       </div>
 
@@ -133,7 +133,7 @@
       <div class="section-card">
         <div class="section-title">
           <span>Requisitos Funcionais Especificados</span>
-          <span class="badge">5 Requisitos</span>
+          <span class="badge">7 Requisitos</span>
         </div>
         <table class="rf-table">
           <thead>
@@ -147,29 +147,39 @@
           <tbody>
             <tr>
               <td><strong style="color: var(--accent-blue);">RF-LOC-01</strong></td>
-              <td style="color: #fff; font-weight: 500;">Criar locação com itens</td>
+              <td style="color: #fff; font-weight: 500;">Criação de Reserva em Gio UI</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">POST `/api/locacaos` persiste a locação e a lista de `LocacaoProduto` associados.</td>
+              <td style="color: var(--text-secondary);">Formulário desktop (LocacaoFormPage) valida dados, itens e persiste no SQLite em transação ACID local.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-LOC-02</strong></td>
-              <td style="color: #fff; font-weight: 500;">Emissão automática de contrato</td>
+              <td style="color: #fff; font-weight: 500;">Validação de Sinal Mínimo (20%)</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">Ao atualizar com `situacao = 1`, o backend gera `htmlContrato` preenchido.</td>
+              <td style="color: var(--text-secondary);">O sistema bloqueia a reserva caso o valor do sinal informado seja inferior a 20% do valor total da locação.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-LOC-03</strong></td>
-              <td style="color: #fff; font-weight: 500;">Registro de entrega e devolução</td>
+              <td style="color: #fff; font-weight: 500;">Cálculo Mandatório do Saldo</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">Ao mudar para situação 2 ou 3, preenche `dataEntrReal` ou `dataDevReal` automaticamente.</td>
+              <td style="color: var(--text-secondary);">Recálculo determinístico em inteiros: valor_saldo = valor_total - valor_sinal - valor_adiantado (tipo Dinheiro int64).</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-LOC-04</strong></td>
-              <td style="color: #fff; font-weight: 500;">Verificação de conflito de agenda</td>
+              <td style="color: #fff; font-weight: 500;">Proteção de Agenda de 7 Dias</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">`listLocacoesProdutoByDataEvento` retorna locações conflitantes no intervalo `[dataEvento-3, dataEvento+4]`.</td>
+              <td style="color: var(--text-secondary);">Consulta SQL no SQLite bloqueia reservas simultâneas do mesmo traje no intervalo [dataEvento - 3, dataEvento + 4].</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-LOC-05</strong></td>
-              <td style="color: #fff; font-weight: 500;">Atualização parcial (Patch)</td>
+              <td style="color: #fff; font-weight: 500;">Quitação Obrigatória na Retirada</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">A transição para a situação 2 (Trajes Entregues) é estritamente bloqueada se houver saldo devedor pendente (> 0).</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-LOC-06</strong></td>
+              <td style="color: #fff; font-weight: 500;">Emissão Automática de Contrato PDF</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">Ao avançar para situação 1 (Contrato Emitido), compilação direta do PDF oficial pronto para assinatura.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-LOC-07</strong></td>
+              <td style="color: #fff; font-weight: 500;">Filtro Rápido por Abas</td>
               <td><span class="badge">Should</span></td>
-              <td style="color: var(--text-secondary);">Endpoint de patch permite atualizar campos específicos via reflexão.</td>
+              <td style="color: var(--text-secondary);">Tela LocacaoListPage oferece abas: Todas, Novas (0), Emitidas (1), Entregues (2) e Devolvidas (3) com atalhos F2/F5.</td>
             </tr>
           </tbody>
         </table>
@@ -179,47 +189,50 @@
       <div class="section-card">
         <div class="section-title">Regras de Negócio & Invariantes</div>
         <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-          <li style="margin-bottom: 0.4rem;">Sinal Obrigatório (RN-01):** O valor do sinal (`valorSinal`) deve corresponder contratualmente a no mínimo 20% do valor total da locação para efetivar a reserva. 🟢</li><li style="margin-bottom: 0.4rem;">Saldo Devedor na Retirada (RN-04):** O locatário deve quitar o saldo devedor (`valorSaldo = valorTotal - valorSinal - valorAdiantado`) até a data prevista de entrega dos trajes (`dataEntrPrev`, liberado após as 16h). 🟢</li><li style="margin-bottom: 0.4rem;">Recálculo Mandatório do Saldo no Backend (RN-09):** O backend recalcula e sobrescreve forçosamente `valorSaldo = valorTotal.subtract(valorSinal).subtract(valorAdiantado)` no método `save()`, blindando a persistência contra adulterações ou arredondamentos incorretos do cliente. 🟢 [Validado com o usuário]</li><li style="margin-bottom: 0.4rem;">Preenchimento de Timestamp Real:** A transição para situação 2 preenche `dataEntrReal = now()`; a transição para situação 3 preenche `dataDevReal = now()`. 🟢</li><li style="margin-bottom: 0.4rem;">Janela de Proteção de Trajes com Bloqueio Impeditivo (RN-08):** Para evitar dupla locação, o traje não pode estar reservado em outra locação entre 3 dias antes e 4 dias depois da data do evento. Caso haja colisão, o backend aborta o salvamento lançando erro 400 (Bad Request). 🟢 [Validado com o usuário]</li>
+          <li style="margin-bottom: 0.4rem;">Sinal Mínimo Obrigatório (20%): valor_sinal >= 0.20 * valor_total para efetivar a reserva. Exibição de aviso imediato em modal de bloqueio.</li><li style="margin-bottom: 0.4rem;">Integridade Financeira em Centavos: Valores monetários manipulados via tipo Dinheiro (int64) para prevenir imprecisões de ponto flutuante.</li><li style="margin-bottom: 0.4rem;">Bloqueio de Agenda de 7 Dias: Nenhum traje pode ser alugado se a data do evento colidir no raio [dataEvento - 3, dataEvento + 4]. Retorna ErrConflitoAgenda.</li><li style="margin-bottom: 0.4rem;">Quitação Prévia na Entrega: O cliente só pode retirar os trajes após as 16h da data prevista e com saldo devedor integralmente zerado.</li><li style="margin-bottom: 0.4rem;">Máquina de Estados Finita: 0 (Novo) ➔ 1 (Contrato Emitido) ➔ 2 (Trajes Entregues) ➔ 3 (Trajes Devolvidos) ou 9 (Cancelado).</li>
         </ul>
       </div>
-
-      <!-- Endpoints REST -->
-      
 
       <!-- Gherkin -->
       <div class="section-card">
         <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
-        <pre class="code-block">Cenário: Emissão do contrato de locação
-  Dado que uma locação está no estado 0 (NOVO)
-  Quando o operador altera o status para 1 (CONTRATO_EMITIDO)
-  Então o sistema deve invocar o TagProcessor
-  E o campo htmlContrato deve conter a minuta HTML com nome, CPF, datas e trajes preenchidos
+        <pre class="code-block">Cenário: Bloqueio de locação com sinal inferior a 20%
+  Dado que o operador preenche uma locação com valor total de R$ 500,00 (50000 centavos)
+  Quando o operador informa um sinal de R$ 80,00 (16%)
+  Então a aplicação Gio UI bloqueia o avanço e exibe mensagem de alerta
+  E nenhuma transação é gravada no banco SQLite
 
-Cenário: Retirada dos trajes pelo cliente
-  Dado que a locação está no estado 1 (CONTRATO_EMITIDO) com saldo devedor quitado
-  Quando o operador altera o status para 2 (TRAJES_ENTREGUES)
-  Então o sistema deve preencher automaticamente dataEntrReal com a data e hora atuais</pre>
+Cenário: Proteção de agenda de 7 dias para o mesmo traje
+  Dado que o traje "Smoking Slim Preto nº 48" está locado para evento em 15/10/2026
+  Quando o operador tenta agendar o mesmo traje para um evento em 17/10/2026
+  Então o serviço AgendaChecker acusa colisão dentro da janela [12/10 a 19/10]
+  E a inclusão do item na locação é rejeitada com ErrConflitoAgenda</pre>
       </div>
 
-      <!-- Rastreabilidade de Código -->
+      <!-- Rastreabilidade de Código Go -->
       <div class="section-card">
-        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div class="section-title">Rastreabilidade no Código Go Implementado</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
           <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">Locacao</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/domain/Locacao.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">locacao_form.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/ui/page/locacao_form.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Formulário split de locação em Gio UI, seleção de cliente e cálculo de valores em tempo real</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">LocacaoProduto</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/domain/LocacaoProduto.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">locacao_list.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/ui/page/locacao_list.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Listagem com abas de status, busca rápida e atalhos F2/F5</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">EnumSituacaoLocacao</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/domain/EnumSituacaoLocacao.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">service.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/core/locacao/service.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Regras de negócio de locação, validação de sinal de 20% e máquina de estados</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">LocacaoServiceImpl</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/LocacaoServiceImpl.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">checker.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/core/agenda/checker.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Verificação algorítmica de conflito de agenda na janela de 7 dias</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">LocacaoResource</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/LocacaoResource.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">locacao_repo.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/storage/sqlite/locacao_repo.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Persistência relacional ACID no SQLite (modernc.org/sqlite, sem CGO)</div>
           </div>
         </div>
       </div>

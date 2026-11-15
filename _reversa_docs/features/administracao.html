@@ -7,7 +7,7 @@
   <meta name="reversa-producer-agent" content="reversa-docs-storyteller">
   <meta name="reversa-template" content="feature">
   <meta name="reversa-visual-style" content="sober">
-  <title>Administração & Operações — ducarmolocacoes</title>
+  <title>Operações Locais e Governança — ducarmolocacoes</title>
   <link rel="stylesheet" href="../assets/css/docs.css">
   <script src="../assets/js/data.js"></script>
   <script src="../assets/js/nav.js"></script>
@@ -98,10 +98,10 @@
 </svg>
       </div>
       <span class="brand-title">ducarmolocacoes</span>
-      <span class="brand-badge">Governança</span>
+      <span class="brand-badge">Desktop & Banco Local</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../index.html" data-page-id="index">Visão geral</a>
       <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="../modulos.html" data-page-id="modulos">Módulos</a>
       <a href="../topologia.html" data-page-id="topologia">Topologia</a>
@@ -116,16 +116,16 @@
       <div class="breadcrumbs">
         <a href="../index.html">Visão Geral</a> <span>/</span>
         <a href="../index.html#features">Features</a> <span>/</span>
-        <span style="color: var(--accent-blue);">Administração & Operações</span>
+        <span style="color: var(--accent-blue);">Operações Locais e Governança</span>
       </div>
 
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Administração & Operações</h1>
-          <span class="badge badge-web">Governança</span>
+          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Operações Locais e Governança</h1>
+          <span class="badge badge-web">Desktop & Banco Local</span>
         </div>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          Fornece recursos de governança, auditoria de segurança persistente, monitoramento de métricas operacionais da JVM e alteração dinâmica de níveis de log em tempo de execução para administradores do sistema.
+          Gerenciamento da operação do sistema desktop no balcão da loja, rotinas de backup do arquivo SQLite ducarmolocacoes.db, integridade transacional e configurações da loja física.
         </p>
       </div>
 
@@ -147,24 +147,24 @@
           <tbody>
             <tr>
               <td><strong style="color: var(--accent-blue);">RF-ADM-01</strong></td>
-              <td style="color: #fff; font-weight: 500;">Consultar eventos de auditoria</td>
-              <td><span class="badge">Should</span></td>
-              <td style="color: var(--text-secondary);">GET `/management/audits` retorna lista paginada de eventos registrados.</td>
+              <td style="color: #fff; font-weight: 500;">Integridade do Banco SQLite</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">Execução automática de PRAGMA foreign_keys = ON e modo WAL na inicialização.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-ADM-02</strong></td>
-              <td style="color: #fff; font-weight: 500;">Alterar nível de log em runtime</td>
-              <td><span class="badge">Should</span></td>
-              <td style="color: var(--text-secondary);">PUT `/management/logs` altera o nível do logger especificado dinamicamente.</td>
+              <td style="color: #fff; font-weight: 500;">Backup com Cópia Simples</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">Capacidade de cópia direta do arquivo ducarmolocacoes.db para pendrive ou armazenamento seguro.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-ADM-03</strong></td>
-              <td style="color: #fff; font-weight: 500;">Health Check operacional</td>
+              <td style="color: #fff; font-weight: 500;">CLI Migrator Auxiliar</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">GET `/management/health` retorna status `UP` ou `DOWN` avaliando banco e disco.</td>
+              <td style="color: var(--text-secondary);">Ferramenta CLI cmd/migrator para inicialização de schema, migração de dados e testes em lote.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-ADM-04</strong></td>
-              <td style="color: #fff; font-weight: 500;">Gestão de contas de operadores</td>
-              <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">CRUD completo sob `/api/users` restrito a `ROLE_ADMIN`.</td>
+              <td style="color: #fff; font-weight: 500;">Registro de Logs Locais</td>
+              <td><span class="badge">Should</span></td>
+              <td style="color: var(--text-secondary);">Gravação de logs operacionais em arquivo local sem expor endpoints web vulneráveis.</td>
             </tr>
           </tbody>
         </table>
@@ -174,21 +174,41 @@
       <div class="section-card">
         <div class="section-title">Regras de Negócio & Invariantes</div>
         <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-          <li style="margin-bottom: 0.4rem;">Todos os endpoints administrativos sob `/management/**` exigem autoridade `ROLE_ADMIN`, exceto `/management/health` e `/management/info` que são públicos para sondas de orquestradores e monitoramento. 🟢</li><li style="margin-bottom: 0.4rem;">O gerenciamento de contas (`/api/users/**`) é restrito exclusivamente a `ROLE_ADMIN`. 🟢</li>
+          <li style="margin-bottom: 0.4rem;">Operação 100% Offline: Nenhum dado de clientes ou contratos é transmitido para a internet.</li><li style="margin-bottom: 0.4rem;">Zero Configuração de Servidor: O aplicativo não requer instalação de MySQL, Java Runtime, Docker ou Node.js.</li>
         </ul>
       </div>
 
-      <!-- Endpoints REST -->
-      
-
       <!-- Gherkin -->
-      
-
-      <!-- Rastreabilidade de Código -->
       <div class="section-card">
-        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
+        <pre class="code-block">Cenário: Inicialização do banco com integridade referencial ativa
+  Dado que a aplicação Desktop ducarmolocacoes é iniciada
+  Quando a conexão SQLite é aberta pelo pacote internal/storage/sqlite
+  Então o PRAGMA foreign_keys deve ser ativado com sucesso
+  E o arquivo ducarmolocacoes.db opera em modo WAL</pre>
+      </div>
+
+      <!-- Rastreabilidade de Código Go -->
+      <div class="section-card">
+        <div class="section-title">Rastreabilidade no Código Go Implementado</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
-          
+          <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">main.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">cmd/ducarmolocacoes/main.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Entrypoint principal da aplicação desktop Gio UI</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">main.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">cmd/migrator/main.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Ferramenta CLI de migração e verificação de integridade</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">db.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/storage/sqlite/db.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Configuração de conexão, modo WAL e pragmas do SQLite</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">schema.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/storage/sqlite/schema.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Definição do schema DDL do SQLite e FTS5</div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,661 @@
+{
+  "nodes": [
+    {
+      "id": "cmd/migrator/main.go",
+      "group": "cli",
+      "loc": 75
+    },
+    {
+      "id": "cmd/ducarmolocacoes/main.go",
+      "group": "cli",
+      "loc": 38
+    },
+    {
+      "id": "internal/ui/app.go",
+      "group": "presentation",
+      "loc": 139
+    },
+    {
+      "id": "internal/ui/theme/theme.go",
+      "group": "presentation",
+      "loc": 37
+    },
+    {
+      "id": "internal/ui/page/produto_page.go",
+      "group": "presentation",
+      "loc": 210
+    },
+    {
+      "id": "internal/ui/page/locacao_list.go",
+      "group": "presentation",
+      "loc": 380
+    },
+    {
+      "id": "internal/ui/page/util.go",
+      "group": "presentation",
+      "loc": 27
+    },
+    {
+      "id": "internal/ui/page/cliente_page.go",
+      "group": "presentation",
+      "loc": 242
+    },
+    {
+      "id": "internal/ui/page/locacao_form.go",
+      "group": "presentation",
+      "loc": 480
+    },
+    {
+      "id": "internal/ui/widget/nav.go",
+      "group": "presentation",
+      "loc": 139
+    },
+    {
+      "id": "internal/ui/widget/card.go",
+      "group": "presentation",
+      "loc": 39
+    },
+    {
+      "id": "internal/ui/widget/modal.go",
+      "group": "presentation",
+      "loc": 92
+    },
+    {
+      "id": "internal/storage/sqlite/tipoevento_repo.go",
+      "group": "storage",
+      "loc": 28
+    },
+    {
+      "id": "internal/storage/sqlite/produto_repo.go",
+      "group": "storage",
+      "loc": 113
+    },
+    {
+      "id": "internal/storage/sqlite/schema.go",
+      "group": "storage",
+      "loc": 96
+    },
+    {
+      "id": "internal/storage/sqlite/sqlite_test.go",
+      "group": "storage",
+      "loc": 94
+    },
+    {
+      "id": "internal/storage/sqlite/db.go",
+      "group": "storage",
+      "loc": 43
+    },
+    {
+      "id": "internal/storage/sqlite/locacao_repo.go",
+      "group": "storage",
+      "loc": 357
+    },
+    {
+      "id": "internal/storage/sqlite/cliente_repo.go",
+      "group": "storage",
+      "loc": 115
+    },
+    {
+      "id": "internal/core/locacao/service_test.go",
+      "group": "domain",
+      "loc": 120
+    },
+    {
+      "id": "internal/core/locacao/service.go",
+      "group": "domain",
+      "loc": 107
+    },
+    {
+      "id": "internal/core/contrato/generator.go",
+      "group": "domain",
+      "loc": 161
+    },
+    {
+      "id": "internal/core/contrato/generator_test.go",
+      "group": "domain",
+      "loc": 74
+    },
+    {
+      "id": "internal/core/agenda/checker_test.go",
+      "group": "domain",
+      "loc": 64
+    },
+    {
+      "id": "internal/core/agenda/checker.go",
+      "group": "domain",
+      "loc": 42
+    },
+    {
+      "id": "internal/core/domain/domain_test.go",
+      "group": "domain",
+      "loc": 64
+    },
+    {
+      "id": "internal/core/domain/domain.go",
+      "group": "domain",
+      "loc": 155
+    }
+  ],
+  "links": [
+    {
+      "source": "cmd/migrator/main.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/migrator/main.go",
+      "target": "internal/storage/sqlite/schema.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/migrator/main.go",
+      "target": "internal/storage/sqlite/produto_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/migrator/main.go",
+      "target": "internal/storage/sqlite/db.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/migrator/main.go",
+      "target": "internal/storage/sqlite/cliente_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/migrator/main.go",
+      "target": "internal/storage/sqlite/tipoevento_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/migrator/main.go",
+      "target": "internal/storage/sqlite/locacao_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/core/agenda/checker.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/core/locacao/service.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/storage/sqlite/schema.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/storage/sqlite/produto_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/storage/sqlite/db.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/storage/sqlite/cliente_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/storage/sqlite/tipoevento_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/storage/sqlite/locacao_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/widget/card.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/widget/modal.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/page/cliente_page.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/page/produto_page.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/page/locacao_form.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/widget/nav.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/page/locacao_list.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/app.go",
+      "type": "internal"
+    },
+    {
+      "source": "cmd/ducarmolocacoes/main.go",
+      "target": "internal/ui/page/util.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/core/locacao/service.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/storage/sqlite/schema.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/storage/sqlite/produto_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/storage/sqlite/db.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/storage/sqlite/cliente_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/storage/sqlite/tipoevento_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/storage/sqlite/locacao_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/page/cliente_page.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/page/produto_page.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/page/locacao_form.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/page/locacao_list.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/page/util.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/widget/card.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/widget/modal.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/app.go",
+      "target": "internal/ui/widget/nav.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/storage/sqlite/schema.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/storage/sqlite/produto_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/storage/sqlite/db.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/storage/sqlite/cliente_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/storage/sqlite/tipoevento_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/storage/sqlite/locacao_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/ui/widget/card.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/ui/widget/modal.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/produto_page.go",
+      "target": "internal/ui/widget/nav.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_list.go",
+      "target": "internal/core/contrato/generator.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_list.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_list.go",
+      "target": "internal/core/locacao/service.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_list.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_list.go",
+      "target": "internal/ui/widget/card.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_list.go",
+      "target": "internal/ui/widget/modal.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_list.go",
+      "target": "internal/ui/widget/nav.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/util.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/storage/sqlite/schema.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/storage/sqlite/produto_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/storage/sqlite/db.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/storage/sqlite/cliente_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/storage/sqlite/tipoevento_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/storage/sqlite/locacao_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/ui/widget/card.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/ui/widget/modal.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/cliente_page.go",
+      "target": "internal/ui/widget/nav.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/core/contrato/generator.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/core/locacao/service.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/storage/sqlite/schema.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/storage/sqlite/produto_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/storage/sqlite/db.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/storage/sqlite/cliente_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/storage/sqlite/tipoevento_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/storage/sqlite/locacao_repo.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/ui/widget/card.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/ui/widget/modal.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/page/locacao_form.go",
+      "target": "internal/ui/widget/nav.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/widget/nav.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/widget/card.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/ui/widget/modal.go",
+      "target": "internal/ui/theme/theme.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/storage/sqlite/tipoevento_repo.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/storage/sqlite/produto_repo.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/storage/sqlite/sqlite_test.go",
+      "target": "internal/core/agenda/checker.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/storage/sqlite/sqlite_test.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/storage/sqlite/sqlite_test.go",
+      "target": "internal/core/locacao/service.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/storage/sqlite/locacao_repo.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/storage/sqlite/cliente_repo.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/locacao/service_test.go",
+      "target": "internal/core/agenda/checker.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/locacao/service_test.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/locacao/service.go",
+      "target": "internal/core/agenda/checker.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/locacao/service.go",
+      "target": "internal/core/contrato/generator.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/locacao/service.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/contrato/generator.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/contrato/generator_test.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/agenda/checker_test.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    },
+    {
+      "source": "internal/core/agenda/checker.go",
+      "target": "internal/core/domain/domain.go",
+      "type": "internal"
+    }
+  ]
+}

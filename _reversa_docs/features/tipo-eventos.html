@@ -101,7 +101,7 @@
       <span class="brand-badge">Configuração</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../index.html" data-page-id="index">Visão geral</a>
       <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="../modulos.html" data-page-id="modulos">Módulos</a>
       <a href="../topologia.html" data-page-id="topologia">Topologia</a>
@@ -125,7 +125,7 @@
           <span class="badge badge-web">Configuração</span>
         </div>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          Gerencia os tipos e categorias de eventos festivos comemorados pelos locatários (ex: Casamentos, Formaturas, Aniversários de 15 Anos, Festas Infantis), integrando-se aos contratos de locação.
+          Classificação e parametrização dos tipos de ocasiões festivas atendidas pela empresa (Casamento, Formatura, 15 Anos, Bodas), garantindo contexto aos relatórios operacionais e contratos.
         </p>
       </div>
 
@@ -146,20 +146,20 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong style="color: var(--accent-blue);">RF-TE-01</strong></td>
-              <td style="color: #fff; font-weight: 500;">Cadastrar tipo de evento</td>
+              <td><strong style="color: var(--accent-blue);">RF-EVT-01</strong></td>
+              <td style="color: #fff; font-weight: 500;">Cadastro de Tipos de Eventos</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">POST `/api/tipo-eventos` retorna 201 Created com ID gerado.</td>
+              <td style="color: var(--text-secondary);">Manutenção de denominações e descrições das celebrações atendidas.</td>
             </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-TE-02</strong></td>
-              <td style="color: #fff; font-weight: 500;">Atualizar tipo de evento</td>
+              <td><strong style="color: var(--accent-blue);">RF-EVT-02</strong></td>
+              <td style="color: #fff; font-weight: 500;">Vínculo Obrigatório na Locação</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">PUT `/api/tipo-eventos` atualiza descrição.</td>
+              <td style="color: var(--text-secondary);">Cada reserva deve obrigatoriamente associar um tipo de evento para agendamento.</td>
             </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-TE-03</strong></td>
-              <td style="color: #fff; font-weight: 500;">Listagem geral</td>
+              <td><strong style="color: var(--accent-blue);">RF-EVT-03</strong></td>
+              <td style="color: #fff; font-weight: 500;">Listagem Rápida no Formulário</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">GET `/api/tipo-eventos` retorna todos os tipos cadastrados para preenchimento de combobox na UI.</td>
+              <td style="color: var(--text-secondary);">Combo-box otimizado no LocacaoFormPage para seleção ágil da ocasião.</td>
             </tr>
           </tbody>
         </table>
@@ -169,21 +169,32 @@
       <div class="section-card">
         <div class="section-title">Regras de Negócio & Invariantes</div>
         <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-          <li style="margin-bottom: 0.4rem;">A descrição é campo obrigatório e descritivo do evento. 🟢</li><li style="margin-bottom: 0.4rem;">O tipo de evento é associado a múltiplas locações através de chave estrangeira (`locacao.tipo_evento_id`). 🟢</li>
+          <li style="margin-bottom: 0.4rem;">Integridade Referencial: Um tipo de evento com locações ativas não pode ser excluído do sistema.</li>
         </ul>
       </div>
 
-      <!-- Endpoints REST -->
-      
-
       <!-- Gherkin -->
-      
-
-      <!-- Rastreabilidade de Código -->
       <div class="section-card">
-        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
+        <pre class="code-block">Cenário: Associação de tipo de evento à locação
+  Dado que existem os tipos "Casamento" e "Formatura" cadastrados
+  Quando o operador inicia uma nova locação
+  Então a seleção de tipo de evento é obrigatória antes de salvar a reserva</pre>
+      </div>
+
+      <!-- Rastreabilidade de Código Go -->
+      <div class="section-card">
+        <div class="section-title">Rastreabilidade no Código Go Implementado</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
-          
+          <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">tipoevento_repo.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/storage/sqlite/tipoevento_repo.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Repositório SQLite de tipos de eventos</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">domain.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/core/domain/domain.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Struct TipoEvento no domínio puro</div>
+          </div>
         </div>
       </div>
     </div>

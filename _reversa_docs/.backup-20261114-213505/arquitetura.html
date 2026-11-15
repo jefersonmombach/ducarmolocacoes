@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="diagram">
+  <meta name="reversa-producer-agent" content="reversa-docs-mapper">
+  <meta name="reversa-template" content="arquitetura">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Arquitetura 3D (Code City) — ducarmolocacoes</title>
+  <link rel="stylesheet" href="assets/css/docs.css">
+  <script src="assets/vendor/three.min.js"></script>
+  <script src="assets/vendor/OrbitControls.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/nav.js"></script>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+  <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+</svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Code City 3D</span>
+    </a>
+    <nav class="reversa-doc-nav">
+            <a href="index.html" data-page-id="index">Visão geral</a>
+      <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div id="scene-container" class="canvas-container">
+      <div id="tooltip" class="tooltip-floating"></div>
+    </div>
+
+    <aside class="sidebar-panel">
+      <div class="panel-section">
+        <h3 class="panel-title">Estatísticas do Sistema</h3>
+        <div class="stats-summary">
+          <div class="stat-item">
+            <span class="stat-num" id="stat-total-modules">0</span>
+            <span class="stat-label">Módulos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-total-loc">0</span>
+            <span class="stat-label">Linhas (LOC)</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-districts">0</span>
+            <span class="stat-label">Distritos/Pastas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-avg-complexity">0</span>
+            <span class="stat-label">Complexidade Média</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Controles da Visualização</h3>
+        
+        <div class="control-group">
+          <label class="control-label" for="scale-height">
+            <span>Escala de Altura (LOC)</span>
+            <span id="scale-val" class="control-value">1.0x</span>
+          </label>
+          <input type="range" id="scale-height" min="0.2" max="3.0" step="0.1" value="1.0">
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="light-intensity">
+            <span>Intensidade da Luz</span>
+            <span id="light-val" class="control-value">1.0x</span>
+          </label>
+          <input type="range" id="light-intensity" min="0.3" max="2.0" step="0.1" value="1.0">
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="layer-filter">Filtrar Camada</label>
+          <select id="layer-filter">
+            <option value="ALL">Todas as Camadas</option>
+            <option value="web">Web & REST Controllers</option>
+            <option value="service">Services & Regras de Negócio</option>
+            <option value="repository">Repositories (MySQL/ES)</option>
+            <option value="domain">Domínio & Entidades</option>
+            <option value="frontend">Frontend Angular 6</option>
+            <option value="security">Segurança & JWT</option>
+            <option value="config">Configuração & Liquibase</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="search-box">Buscar Arquivo</label>
+          <input type="text" id="search-box" placeholder="Ex: Locacao, Cliente, JWT...">
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+          <button id="btn-reset" class="btn" style="flex: 1;">Resetar Câmera</button>
+          <button id="btn-export" class="btn btn-primary" style="flex: 1;">Exportar PNG</button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Elemento Selecionado</h3>
+        <div id="selected-info" class="info-card">
+          <div class="info-card-header">Clique em um prédio na cidade para inspecionar detalhes do código.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Inicialização do Code City 3D
+    const LAYER_COLORS = {
+      web: 0x38bdf8,        // Cyan / Blue
+      service: 0x10b981,    // Emerald
+      repository: 0xf59e0b, // Amber
+      domain: 0xa855f7,     // Purple
+      frontend: 0xf43f5e,   // Rose
+      security: 0x6366f1,   // Indigo
+      config: 0x64748b,     // Slate
+      other: 0x475569
+    };
+
+    let modulesData = [];
+    if (window.RV_DATA && window.RV_DATA.modules && Array.isArray(window.RV_DATA.modules)) {
+      modulesData = window.RV_DATA.modules;
+    } else {
+      // Fallback gracioso durante inicialização
+      modulesData = [];
+    }
+
+    const container = document.getElementById("scene-container");
+    const tooltip = document.getElementById("tooltip");
+    let width = container.clientWidth;
+    let height = container.clientHeight;
+
+    // Cena & Fog
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0a0f1d);
+    scene.fog = new THREE.FogExp2(0x0a0f1d, 0.0018);
+
+    // Câmera
+    const camera = new THREE.PerspectiveCamera(45, width / height, 1, 3000);
+    camera.position.set(220, 260, 340);
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(width, height);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    container.appendChild(renderer.domElement);
+
+    // Controles de Câmera
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.maxPolarAngle = Math.PI / 2 - 0.05; // Evita atravessar o chão
+    controls.target.set(0, 0, 0);
+
+    // Iluminação
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.85);
+    dirLight.position.set(150, 300, 200);
+    dirLight.castShadow = true;
+    dirLight.shadow.mapSize.width = 2048;
+    dirLight.shadow.mapSize.height = 2048;
+    scene.add(dirLight);
+
+    const hemiLight = new THREE.HemisphereLight(0x38bdf8, 0x0f172a, 0.4);
+    hemiLight.position.set(0, 200, 0);
+    scene.add(hemiLight);
+
+    // Grid Floor
+    const gridHelper = new THREE.GridHelper(1000, 50, 0x1e293b, 0x111827);
+    gridHelper.position.y = -0.1;
+    scene.add(gridHelper);
+
+    // Armazenamento dos prédios
+    let buildings = [];
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2(-999, -999);
+    let hoveredMesh = null;
+    let selectedMesh = null;
+
+    function buildCity(data) {
+      // Limpa prédios antigos
+      buildings.forEach(b => scene.remove(b.mesh));
+      buildings = [];
+
+      if (!data || data.length === 0) return;
+
+      // Agrupa por pasta (distritos)
+      const districts = {};
+      let totalLoc = 0;
+      let totalComp = 0;
+
+      data.forEach(m => {
+        totalLoc += m.loc || 0;
+        totalComp += m.complexity || 1;
+        const folder = m.folder || "root";
+        if (!districts[folder]) districts[folder] = [];
+        districts[folder].push(m);
+      });
+
+      // Atualiza stats
+      document.getElementById("stat-total-modules").textContent = data.length;
+      document.getElementById("stat-total-loc").textContent = totalLoc.toLocaleString("pt-BR");
+      document.getElementById("stat-districts").textContent = Object.keys(districts).length;
+      document.getElementById("stat-avg-complexity").textContent = (totalComp / data.length).toFixed(1);
+
+      // Posicionamento de Distritos em grade 2D
+      const folderList = Object.keys(districts);
+      const cols = Math.ceil(Math.sqrt(folderList.length));
+      const districtSpacing = 65;
+
+      let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+
+      folderList.forEach((folder, dIndex) => {
+        const dRow = Math.floor(dIndex / cols);
+        const dCol = dIndex % cols;
+        const districtCenterX = (dCol - cols / 2) * districtSpacing;
+        const districtCenterZ = (dRow - cols / 2) * districtSpacing;
+
+        const modsInDistrict = districts[folder];
+        const subCols = Math.ceil(Math.sqrt(modsInDistrict.length));
+        const itemSpacing = 12;
+
+        // Base do Distrito (plataforma)
+        const dWidth = Math.max(25, subCols * itemSpacing + 8);
+        const dHeight = Math.max(25, Math.ceil(modsInDistrict.length / subCols) * itemSpacing + 8);
+        const platformGeo = new THREE.BoxGeometry(dWidth, 1, dHeight);
+        const platformMat = new THREE.MeshStandardMaterial({
+          color: 0x161e2e,
+          roughness: 0.9,
+          metalness: 0.1
+        });
+        const platform = new THREE.Mesh(platformGeo, platformMat);
+        platform.position.set(districtCenterX, 0, districtCenterZ);
+        platform.receiveShadow = true;
+        scene.add(platform);
+        buildings.push({ mesh: platform, isPlatform: true });
+
+        // Prédios
+        modsInDistrict.forEach((m, mIndex) => {
+          const mRow = Math.floor(mIndex / subCols);
+          const mCol = mIndex % subCols;
+          const px = districtCenterX - dWidth / 2 + (mCol + 0.5) * itemSpacing;
+          const pz = districtCenterZ - dHeight / 2 + (mRow + 0.5) * itemSpacing;
+
+          const baseLoc = Math.max(4, m.loc * 0.15);
+          const baseSize = Math.max(3, Math.min(10, Math.sqrt(m.complexity || 1) * 2.2));
+          const colorHex = LAYER_COLORS[m.layer] || LAYER_COLORS.other;
+
+          const geo = new THREE.BoxGeometry(baseSize, baseLoc, baseSize);
+          // Eleva para a base ficar no chão da plataforma
+          geo.translate(0, baseLoc / 2, 0);
+
+          const mat = new THREE.MeshStandardMaterial({
+            color: colorHex,
+            roughness: 0.4,
+            metalness: 0.2,
+            wireframe: false
+          });
+
+          const building = new THREE.Mesh(geo, mat);
+          building.position.set(px, 0.5, pz);
+          building.castShadow = true;
+          building.receiveShadow = true;
+
+          building.userData = {
+            ...m,
+            originalColor: colorHex,
+            baseHeight: baseLoc,
+            baseSize: baseSize
+          };
+
+          scene.add(building);
+          buildings.push({ mesh: building, data: m });
+
+          minX = Math.min(minX, px);
+          maxX = Math.max(maxX, px);
+          minZ = Math.min(minZ, pz);
+          maxZ = Math.max(maxZ, pz);
+        });
+      });
+
+      // Centraliza controles no meio da cidade
+      const midX = (minX + maxX) / 2 || 0;
+      const midZ = (minZ + maxZ) / 2 || 0;
+      controls.target.set(midX, 20, midZ);
+      camera.position.set(midX + 220, 260, midZ + 320);
+      controls.update();
+    }
+
+    // Se RV_DATA já estiver disponível
+    if (modulesData.length > 0) {
+      buildCity(modulesData);
+    } else {
+      // Tenta aguardar evento ou ler script data
+      window.addEventListener("DOMContentLoaded", () => {
+        if (window.RV_DATA && window.RV_DATA.modules) {
+          buildCity(window.RV_DATA.modules);
+        }
+      });
+    }
+
+    // Interações de Controles
+    const scaleHeightInput = document.getElementById("scale-height");
+    const scaleVal = document.getElementById("scale-val");
+    scaleHeightInput.addEventListener("input", (e) => {
+      const val = parseFloat(e.target.value);
+      scaleVal.textContent = val.toFixed(1) + "x";
+      buildings.forEach(b => {
+        if (!b.isPlatform && b.mesh) {
+          b.mesh.scale.y = val;
+        }
+      });
+    });
+
+    const lightIntensityInput = document.getElementById("light-intensity");
+    const lightVal = document.getElementById("light-val");
+    lightIntensityInput.addEventListener("input", (e) => {
+      const val = parseFloat(e.target.value);
+      lightVal.textContent = val.toFixed(1) + "x";
+      dirLight.intensity = 0.85 * val;
+      ambientLight.intensity = 0.5 * val;
+    });
+
+    const layerFilter = document.getElementById("layer-filter");
+    layerFilter.addEventListener("change", (e) => {
+      const layer = e.target.value;
+      buildings.forEach(b => {
+        if (!b.isPlatform && b.mesh) {
+          if (layer === "ALL" || b.data.layer === layer) {
+            b.mesh.visible = true;
+          } else {
+            b.mesh.visible = false;
+          }
+        }
+      });
+    });
+
+    const searchBox = document.getElementById("search-box");
+    searchBox.addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      buildings.forEach(b => {
+        if (!b.isPlatform && b.mesh) {
+          if (!q || b.data.name.toLowerCase().includes(q)) {
+            b.mesh.visible = true;
+            if (q && b.data.name.toLowerCase().includes(q)) {
+              b.mesh.material.emissive.setHex(0x38bdf8);
+            } else {
+              b.mesh.material.emissive.setHex(0x000000);
+            }
+          } else {
+            b.mesh.visible = false;
+          }
+        }
+      });
+    });
+
+    document.getElementById("btn-reset").addEventListener("click", () => {
+      controls.target.set(0, 20, 0);
+      camera.position.set(220, 260, 340);
+      controls.update();
+    });
+
+    document.getElementById("btn-export").addEventListener("click", () => {
+      renderer.render(scene, camera);
+      const dataURL = renderer.domElement.toDataURL("image/png");
+      const a = document.createElement("a");
+      a.download = "ducarmolocacoes-code-city-3d.png";
+      a.href = dataURL;
+      a.click();
+    });
+
+    // Raycasting & Hover / Click
+    window.addEventListener("mousemove", (e) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+      if (e.clientX >= rect.left && e.clientX <= rect.right &&
+          e.clientY >= rect.top && e.clientY <= rect.bottom) {
+        tooltip.style.left = (e.clientX + 14) + "px";
+        tooltip.style.top = (e.clientY + 14) + "px";
+      } else {
+        tooltip.style.display = "none";
+      }
+    });
+
+    window.addEventListener("click", (e) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      if (e.clientX >= rect.left && e.clientX <= rect.right &&
+          e.clientY >= rect.top && e.clientY <= rect.bottom) {
+        if (hoveredMesh && !hoveredMesh.userData.isPlatform) {
+          selectBuilding(hoveredMesh);
+        }
+      }
+    });
+
+    function selectBuilding(mesh) {
+      if (selectedMesh && selectedMesh !== mesh) {
+        selectedMesh.material.emissive.setHex(0x000000);
+      }
+      selectedMesh = mesh;
+      selectedMesh.material.emissive.setHex(0xffffff);
+
+      const d = mesh.userData;
+      const infoBox = document.getElementById("selected-info");
+      infoBox.innerHTML = `
+        <div class="info-card-header">${d.name}</div>
+        <div class="badge-row">
+          <span class="badge badge-${d.layer}">${d.layer.toUpperCase()}</span>
+          <span class="badge">${d.type}</span>
+        </div>
+        <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+          <div><strong>Pasta:</strong> <span style="color: var(--text-secondary); word-break: break-all;">${d.folder}</span></div>
+          <div><strong>Linhas de Código (LOC):</strong> <span style="color: var(--accent-blue);">${d.loc}</span></div>
+          <div><strong>Complexidade Ciclomática:</strong> <span style="color: var(--accent-amber);">${d.complexity}</span></div>
+        </div>
+      `;
+    }
+
+    // Render loop
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+
+      // Raycast
+      raycaster.setFromCamera(mouse, camera);
+      const meshesToTest = buildings.filter(b => !b.isPlatform && b.mesh.visible).map(b => b.mesh);
+      const intersects = raycaster.intersectObjects(meshesToTest);
+
+      if (intersects.length > 0) {
+        const topMesh = intersects[0].object;
+        if (hoveredMesh !== topMesh) {
+          if (hoveredMesh && hoveredMesh !== selectedMesh) {
+            hoveredMesh.material.emissive.setHex(0x000000);
+          }
+          hoveredMesh = topMesh;
+          if (hoveredMesh !== selectedMesh) {
+            hoveredMesh.material.emissive.setHex(0x38bdf8);
+          }
+        }
+        const d = hoveredMesh.userData;
+        tooltip.style.display = "block";
+        tooltip.innerHTML = `
+          <strong>${d.name.split("/").pop()}</strong><br>
+          <span style="color: #94a3b8;">${d.folder}</span><br>
+          <span style="color: #38bdf8;">LOC: ${d.loc}</span> | 
+          <span style="color: #f59e0b;">Complexidade: ${d.complexity}</span>
+        `;
+      } else {
+        if (hoveredMesh && hoveredMesh !== selectedMesh) {
+          hoveredMesh.material.emissive.setHex(0x000000);
+        }
+        hoveredMesh = null;
+        tooltip.style.display = "none";
+      }
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Redimensionamento
+    window.addEventListener("resize", () => {
+      width = container.clientWidth;
+      height = container.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    });
+  </script>
+</body>
+</html>

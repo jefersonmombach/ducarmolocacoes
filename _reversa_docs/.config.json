@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-14T19:49:00Z",
+  "generatedAt": "2026-11-15T00:43:33.441134+00:00",
   "reversa": {
     "version": "1.3.6"
   },
@@ -16,17 +16,17 @@
     "explicitOverride": null
   },
   "knowledgeSources": {
-    "soul": false,
+    "soul": true,
     "chronicle": false,
     "topology": true,
     "sddSpecs": [
-      "autenticacao",
+      "locacoes",
       "clientes",
       "produtos",
-      "tipo-eventos",
-      "locacoes",
       "contrato",
-      "administracao"
+      "tipo-eventos",
+      "administracao",
+      "autenticacao"
     ],
     "sourceCode": true
   },
@@ -37,13 +37,13 @@
     "metricas.html",
     "glossario.html",
     "deck.html",
-    "features/autenticacao.html",
+    "features/locacoes.html",
     "features/clientes.html",
     "features/produtos.html",
-    "features/tipo-eventos.html",
-    "features/locacoes.html",
     "features/contrato.html",
+    "features/tipo-eventos.html",
     "features/administracao.html",
+    "features/autenticacao.html",
     "index.html"
   ],
   "pagesOmitted": [

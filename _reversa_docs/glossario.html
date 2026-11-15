@@ -128,21 +128,23 @@
       {"term": "Locatário", "category": "Papel & Ator", "definition": "Cliente cadastrado no sistema que celebra o contrato de aluguel e assume responsabilidade cível e financeira pela conservação e devolução das peças."},
       {"term": "Traje / Produto", "category": "Entidade Central", "definition": "Vestimenta festiva (terno, vestido de gala, fraque, smoking, vestido de 15 anos) ou acessório disponibilizado para locação com controle de valor unitário e agenda."},
       {"term": "Tipo de Evento", "category": "Entidade Central", "definition": "Natureza social ou cerimonial da ocasião em que os trajes serão utilizados (Casamento, Formatura, 15 Anos, Bodas)."},
-      {"term": "Locação", "category": "Entidade Central", "definition": "Contrato de prestação de serviços de locação de trajes, contendo valores, datas de cronograma de entrega e devolução e itens vinculados."},
+      {"term": "Locação", "category": "Entidade Central", "definition": "Contrato de prestação de serviços de locação de trajes, contendo valores em centavos, datas de cronograma de entrega e devolução e itens vinculados."},
       {"term": "Item de Locação", "category": "Entidade Central", "definition": "Associação individual de um traje a uma locação, com quantidade, preço unitário e total da linha."},
-      {"term": "Sinal (20%)", "category": "Financeiro & Regra", "definition": "Pagamento inicial antecipado obrigatório correspondente a 20% do valor total da locação para efetivar e bloquear a reserva do traje."},
+      {"term": "Sinal Obrigatório (20%)", "category": "Financeiro & Regra", "definition": "Pagamento inicial antecipado obrigatório correspondente a no mínimo 20% do valor total da locação para efetivar e bloquear a reserva do traje."},
       {"term": "Valor Adiantado", "category": "Financeiro & Regra", "definition": "Amortização intermediária realizada pelo locatário entre a reserva e a data de retirada das roupas."},
-      {"term": "Saldo Devedor", "category": "Financeiro & Regra", "definition": "Valor remanescente (valorTotal - valorSinal - valorAdiantado) que deve obrigatoriamente ser quitado no momento da retirada física do traje na loja (após as 16h)."},
-      {"term": "Data da Retirada Prevista", "category": "Cronograma", "definition": "Data estipulada em contrato para o locatário retirar as vestimentas na loja. Liberada a partir das 16:00h."},
+      {"term": "Saldo Devedor Mandatório", "category": "Financeiro & Regra", "definition": "Valor remanescente calculado forçadamente no backend (valorTotal - valorSinal - valorAdiantado) que deve ser quitado integralmente na retirada das peças (após as 16h)."},
+      {"term": "Data da Retirada Prevista", "category": "Cronograma", "definition": "Data estipulada em contrato para o locatário retirar as vestimentas na loja. Liberada a partir das 16:00h mediante quitação de saldo."},
       {"term": "Data da Devolução Prevista", "category": "Cronograma", "definition": "Data estipulada em contrato para o locatário devolver todas as peças à loja em perfeito estado de conservação."},
-      {"term": "Janela de Proteção Temporal", "category": "Regra de Agenda", "definition": "Bloqueio de locações concomitantes de um mesmo produto em um raio de 3 dias antes e 4 dias depois da data do evento ([dataEvento - 3, dataEvento + 4])."},
-      {"term": "Multa por Atraso", "category": "Financeiro & Regra", "definition": "Cobrança de multa diária de 20% do valor total da locação por dia corrido de atraso na devolução dos trajes."},
-      {"term": "Indenização por Avaria", "category": "Financeiro & Regra", "definition": "Obrigação legal do locatário indenizar a locadora no valor de 4 (quatro) vezes o valor do aluguel em caso de avaria irreparável ou perda das peças."},
-      {"term": "Motor de Minutas / Tags", "category": "Mecanismo Técnico", "definition": "Padrão Chain of Responsibility que processa o texto base do contrato substituindo tags dinâmicas como [LOCATARIO], [TRAJES] e valores calculados."}
+      {"term": "Janela de Proteção Temporal (7 Dias)", "category": "Regra de Agenda", "definition": "Bloqueio impeditivo de locações concomitantes de um mesmo produto no intervalo de 3 dias antes e 4 dias depois da data do evento ([dataEvento - 3, dataEvento + 4])."},
+      {"term": "Dinheiro em Centavos (Dinheiro)", "category": "Financeiro & Regra", "definition": "Tipo inteiro Go (type Dinheiro int64) para todos os cálculos monetários, eliminando riscos de arredondamento de ponto flutuante."},
+      {"term": "Motor de Contratos em PDF", "category": "Mecanismo Técnico", "definition": "Substituição determinística de tags em minuta contratual e compilação nativa em PDF autônomo sem runtime Java."},
+      {"term": "Busca Instantânea Local (FTS5)", "category": "Mecanismo Técnico", "definition": "Mecanismo de busca full-text local em SQLite FTS5 para localização de clientes e trajes com latência inferior a 5ms, sem cluster externo."}
     ];
 
     let conceptsList = DEFAULT_CONCEPTS;
-    if (window.RV_DATA && window.RV_DATA.glossary && Array.isArray(window.RV_DATA.glossary.concepts)) {
+    if (window.RV_DATA && window.RV_DATA.soul && Array.isArray(window.RV_DATA.soul.concepts)) {
+      conceptsList = window.RV_DATA.soul.concepts;
+    } else if (window.RV_DATA && window.RV_DATA.glossary && Array.isArray(window.RV_DATA.glossary.concepts)) {
       conceptsList = window.RV_DATA.glossary.concepts;
     }
 

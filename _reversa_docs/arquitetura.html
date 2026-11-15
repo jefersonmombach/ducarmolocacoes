@@ -89,19 +89,16 @@
           <label class="control-label" for="layer-filter">Filtrar Camada</label>
           <select id="layer-filter">
             <option value="ALL">Todas as Camadas</option>
-            <option value="web">Web & REST Controllers</option>
-            <option value="service">Services & Regras de Negócio</option>
-            <option value="repository">Repositories (MySQL/ES)</option>
-            <option value="domain">Domínio & Entidades</option>
-            <option value="frontend">Frontend Angular 6</option>
-            <option value="security">Segurança & JWT</option>
-            <option value="config">Configuração & Liquibase</option>
+            <option value="presentation">Interface Gráfica Desktop (Gio UI)</option>
+            <option value="domain">Domínio Puro & Regras (internal/core)</option>
+            <option value="storage">Armazenamento SQLite (internal/storage/sqlite)</option>
+            <option value="cli">Comandos & Entrypoints (cmd/)</option>
           </select>
         </div>
 
         <div class="control-group">
           <label class="control-label" for="search-box">Buscar Arquivo</label>
-          <input type="text" id="search-box" placeholder="Ex: Locacao, Cliente, JWT...">
+          <input type="text" id="search-box" placeholder="Ex: locacao_form, db, service...">
         </div>
 
         <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
@@ -122,13 +119,11 @@
   <script>
     // Inicialização do Code City 3D
     const LAYER_COLORS = {
-      web: 0x38bdf8,        // Cyan / Blue
-      service: 0x10b981,    // Emerald
-      repository: 0xf59e0b, // Amber
-      domain: 0xa855f7,     // Purple
-      frontend: 0xf43f5e,   // Rose
-      security: 0x6366f1,   // Indigo
-      config: 0x64748b,     // Slate
+      presentation: 0x38bdf8, // Cyan / Blue - Interface Gráfica Gio UI
+      domain: 0x10b981,       // Emerald - Regras de Domínio e Core Go
+      storage: 0xf59e0b,      // Amber - Persistência SQLite
+      cli: 0xa855f7,          // Purple - Comandos e Entrypoints
+      test: 0x64748b,         // Slate - Testes Unitários
       other: 0x475569
     };
 

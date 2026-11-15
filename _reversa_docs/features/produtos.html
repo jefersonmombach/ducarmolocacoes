@@ -98,10 +98,10 @@
 </svg>
       </div>
       <span class="brand-title">ducarmolocacoes</span>
-      <span class="brand-badge">Estoque & Catálogo</span>
+      <span class="brand-badge">Estoque & Agenda</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../index.html" data-page-id="index">Visão geral</a>
       <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="../modulos.html" data-page-id="modulos">Módulos</a>
       <a href="../topologia.html" data-page-id="topologia">Topologia</a>
@@ -122,10 +122,10 @@
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
           <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Catálogo de Trajes & Vestuário</h1>
-          <span class="badge badge-web">Estoque & Catálogo</span>
+          <span class="badge badge-web">Estoque & Agenda</span>
         </div>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          Gerencia o acervo de trajes, vestimentas sociais e acessórios disponíveis para locação, mantendo preços de locação e custos de reposição.
+          Catálogo completo de vestimentas finas (ternos, fraques, smokings, vestidos de debutante e acessórios), com controle de grade de tamanhos, valor unitário de locação e rastreamento de disponibilidade física.
         </p>
       </div>
 
@@ -147,24 +147,24 @@
           <tbody>
             <tr>
               <td><strong style="color: var(--accent-blue);">RF-PROD-01</strong></td>
-              <td style="color: #fff; font-weight: 500;">Cadastrar traje/produto</td>
+              <td style="color: #fff; font-weight: 500;">Gestão do Catálogo de Trajes</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">POST `/api/produtos` persiste dados e indexa no Elasticsearch.</td>
+              <td style="color: var(--text-secondary);">Cadastro de produtos com código de referência, descrição detalhada, tamanho e preço base.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-PROD-02</strong></td>
-              <td style="color: #fff; font-weight: 500;">Atualizar dados do traje</td>
+              <td style="color: #fff; font-weight: 500;">Busca Rápida de Estoque</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">PUT `/api/produtos` atualiza preço ou descrição.</td>
+              <td style="color: var(--text-secondary);">Localização instantânea de peças por descrição ou código através do índice FTS5.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-PROD-03</strong></td>
-              <td style="color: #fff; font-weight: 500;">Pesquisa textual</td>
+              <td style="color: #fff; font-weight: 500;">Verificação de Disponibilidade</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">GET `/api/_search/produtos?query={termo}` retorna itens correspondentes.</td>
+              <td style="color: var(--text-secondary);">Consulta de ocupação de cada traje vinculada às datas de evento de locações ativas.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-PROD-04</strong></td>
-              <td style="color: #fff; font-weight: 500;">Listagem paginada</td>
+              <td style="color: #fff; font-weight: 500;">Indenização por Avaria Fixada</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">GET `/api/produtos` retorna página de produtos com `X-Total-Count`.</td>
+              <td style="color: var(--text-secondary);">Associação da cláusula contratual de avaria estipulada em 4x o valor do aluguel.</td>
             </tr>
           </tbody>
         </table>
@@ -174,51 +174,35 @@
       <div class="section-card">
         <div class="section-title">Regras de Negócio & Invariantes</div>
         <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-          <li style="margin-bottom: 0.4rem;">`precoVenda`: Valor base monetário cobrado pela locação da peça. 🟢</li><li style="margin-bottom: 0.4rem;">`precoCompra`: Custo patrimonial de aquisição, utilizado para base de reposição em caso de danificação severa. 🟢</li><li style="margin-bottom: 0.4rem;">`ativo`: Booleano que define se o traje pode ser selecionado em novas locações. Trajes danificados ou aposentados devem ter `ativo = false`. 🟢</li>
+          <li style="margin-bottom: 0.4rem;">Preço em Centavos: Valor unitário armazenado como tipo Dinheiro int64.</li><li style="margin-bottom: 0.4rem;">Grade de Tamanhos: Suporte a numeração clássica de alfaiataria (ex: 46 a 60, P/M/G/GG).</li><li style="margin-bottom: 0.4rem;">Proteção Contra Dupla Locação: O produto não pode ter status de entrega confirmado sem desocupação prévia.</li>
         </ul>
       </div>
-
-      <!-- Endpoints REST -->
-      
 
       <!-- Gherkin -->
       <div class="section-card">
         <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
-        <pre class="code-block">Cenário: Cadastro de novo traje de gala
-  Dado que o operador informa a descrição "Smoking Tradicional Preto", preço de venda R$ 250,00 e compra R$ 800,00
-  Quando enviar uma requisição POST /api/produtos
-  Então a resposta deve retornar 201 Created com o ID gerado
-  E o produto deve constar como ativo no catálogo
-
-Cenário: Desativação de traje danificado
-  Dado que o produto ID 10 sofreu avaria permanente
-  Quando enviar uma requisição PUT /api/produtos com ativo = false
-  Então o produto deve ser atualizado com sucesso
-  E o produto não deve ser oferecido para novas locações</pre>
+        <pre class="code-block">Cenário: Consulta de disponibilidade de traje para evento
+  Dado que o traje "Vestido 15 Anos Rubi Tam 38" possui reserva ativa para 20/11/2026
+  Quando o operador consulta a peça para a data 22/11/2026
+  Então o sistema acusa indisponibilidade devido à janela de proteção temporal [17/11 a 24/11]</pre>
       </div>
 
-      <!-- Rastreabilidade de Código -->
+      <!-- Rastreabilidade de Código Go -->
       <div class="section-card">
-        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div class="section-title">Rastreabilidade no Código Go Implementado</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
           <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">Produto</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/domain/Produto.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">produto_page.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/ui/page/produto_page.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Tela de catálogo e consulta de vestuário em Gio UI</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ProdutoRepository</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/repository/ProdutoRepository.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">produto_repo.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/storage/sqlite/produto_repo.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Repositório SQLite de produtos e trajes</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ProdutoSearchRepository</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/ProdutoSearchRepository.java</div>
-          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ProdutoServiceImpl</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ProdutoServiceImpl.java</div>
-          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ProdutoDTO</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/ProdutoDTO.java</div>
-          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ProdutoResource</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ProdutoResource.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">domain.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/core/domain/domain.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Entidade Produto e métodos de cálculo</div>
           </div>
         </div>
       </div>

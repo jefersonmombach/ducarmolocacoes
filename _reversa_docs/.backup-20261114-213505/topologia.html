@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="diagram">
+  <meta name="reversa-producer-agent" content="reversa-docs-mapper">
+  <meta name="reversa-template" content="topologia">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Topologia de Containers & Infraestrutura — ducarmolocacoes</title>
+  <link rel="stylesheet" href="assets/css/docs.css">
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <style>
+    .topology-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+      padding: 1.5rem;
+      gap: 1.5rem;
+      background: #0a0f1d;
+    }
+    .view-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #111827;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      width: fit-content;
+    }
+    .switch-btn {
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .switch-btn.active {
+      background: var(--bg-card);
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .diagram-board {
+      flex: 1;
+      min-height: 480px;
+      background: radial-gradient(circle at center, #131b2e 0%, #0a0f1d 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container-box {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .container-box:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-blue);
+    }
+    .container-box.active-box {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+    .conn-arrow {
+      stroke: var(--accent-blue);
+      stroke-width: 2;
+      stroke-dasharray: 4, 3;
+      animation: dashMove 1.5s linear infinite;
+    }
+    @keyframes dashMove {
+      to { stroke-dashoffset: -14; }
+    }
+  </style>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+  <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+</svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Topologia & Containers</span>
+    </a>
+    <nav class="reversa-doc-nav">
+            <a href="index.html" data-page-id="index">Visão geral</a>
+      <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div class="topology-container">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h2 style="font-size: 1.4rem; font-weight: 700; color: #fff;">Topologia de Infraestrutura</h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">Mapeamento físico de containers, portas de rede e protocolos de comunicação.</p>
+        </div>
+        <div class="view-switcher">
+          <button id="btn-view-legacy" class="switch-btn active">Topologia Atual (Monólito JHipster)</button>
+          <button id="btn-view-target" class="switch-btn">Topologia Alvo (Moderna / Cloud Native)</button>
+        </div>
+      </div>
+
+      <div class="diagram-board" id="topology-diagram">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+    </div>
+
+    <aside class="sidebar-panel">
+      <div class="panel-section">
+        <h3 class="panel-title">Componente Inspecionado</h3>
+        <div id="component-details" class="info-card">
+          <div class="info-card-header">Clique em um container ou serviço no diagrama para inspecionar parâmetros técnicos.</div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Comunicação e Protocolos</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8rem;">
+          <div style="background: #1e293b; padding: 0.6rem; border-radius: 6px;">
+            <strong style="color: var(--accent-blue);">REST / JSON (JWT):</strong> Browser ➔ Spring Boot (:8080)
+          </div>
+          <div style="background: #1e293b; padding: 0.6rem; border-radius: 6px;">
+            <strong style="color: var(--accent-amber);">JDBC (HikariCP):</strong> Spring Data JPA ➔ MySQL 5.7 (:3306)
+          </div>
+          <div style="background: #1e293b; padding: 0.6rem; border-radius: 6px;">
+            <strong style="color: var(--accent-emerald);">HTTP / Jest Client:</strong> Spring Data ES ➔ Elasticsearch 5.6 (:9200)
+          </div>
+          <div style="background: #1e293b; padding: 0.6rem; border-radius: 6px;">
+            <strong style="color: var(--accent-purple);">SMTP (TLS):</strong> Spring Mail ➔ Mail Server (:587)
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Riscos de Topologia Detectados</h3>
+        <div style="font-size: 0.775rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem;">
+          <div style="border-left: 3px solid #f59e0b; padding-left: 0.5rem;">
+            <strong style="color: #f59e0b;">Dual-Write não-atômico:</strong> O backend sincroniza MySQL e ES na mesma transação síncrona.
+          </div>
+          <div style="border-left: 3px solid #ef4444; padding-left: 0.5rem;">
+            <strong style="color: #ef4444;">Elasticsearch 5.6 EOL:</strong> Motor de busca em versão legada sem suporte de segurança.
+          </div>
+          <div style="border-left: 3px solid #38bdf8; padding-left: 0.5rem;">
+            <strong style="color: #38bdf8;">Monólito Front + Back:</strong> SPA servida no mesmo processo executável JAR Spring Boot.
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const TOPOLOGY_LEGACY = {
+      title: "Topologia Atual: Monólito JHipster 5.5",
+      boxes: [
+        {
+          id: "client",
+          name: "Cliente Web (Navegador)",
+          tech: "Chrome / Firefox / Edge",
+          port: "N/A",
+          role: "Interação com o usuário final via SPA e execução de renderização cliente.",
+          status: "healthy",
+          color: "#38bdf8"
+        },
+        {
+          id: "monolith",
+          name: "ducarmolocacoes App (Monólito)",
+          tech: "Java 8 + Spring Boot 2.0.5 + Angular 6.1",
+          port: "8080 (HTTP / HTTPS)",
+          role: "Hospeda a API REST com autenticação JWT e serve os bundles estáticos do Angular 6.",
+          status: "warning",
+          warning: "Java 8 e Spring Boot 2.0 em End-Of-Life",
+          color: "#10b981"
+        },
+        {
+          id: "mysql",
+          name: "MySQL 5.7 Database",
+          tech: "MySQL 5.7 (InnoDB)",
+          port: "3306 (JDBC)",
+          role: "Fonte da verdade transacional (ACID). Versionado com Liquibase.",
+          status: "healthy",
+          color: "#f59e0b"
+        },
+        {
+          id: "es",
+          name: "Elasticsearch 5.6 Cluster",
+          tech: "Elasticsearch 5.6.11 (Jest HTTP)",
+          port: "9200 (HTTP REST)",
+          role: "Espelhamento e busca full-text de clientes, trajes e contratos.",
+          status: "danger",
+          warning: "Versão 5.6 descontinuada / Sem suporte oficial",
+          color: "#ef4444"
+        },
+        {
+          id: "smtp",
+          name: "Servidor SMTP / E-mail",
+          tech: "Spring Mail / SMTP Externo",
+          port: "587 / 465 (SMTP)",
+          role: "Disparo de e-mails de confirmação e reset de senha via Thymeleaf templates.",
+          status: "healthy",
+          color: "#a855f7"
+        }
+      ]
+    };
+
+    const TOPOLOGY_TARGET = {
+      title: "Topologia Alvo Implementada: Desktop Go Autônomo (Gio UI + SQLite)",
+      boxes: [
+        {
+          id: "gui_desktop",
+          name: "Interface Gráfica Desktop (Gio UI)",
+          tech: "Go 1.22 + Gio UI (Cryptopower Pattern)",
+          port: "Nativa (Win32 / Direct3D / X11 / Wayland)",
+          role: "GUI nativa acelerada por GPU, sem Chromium/Electron, consumo < 100MB RAM.",
+          status: "healthy",
+          color: "#38bdf8"
+        },
+        {
+          id: "backend_core",
+          name: "Motor de Domínio & Regras (internal/core)",
+          tech: "Go Idiomático (locacao, agenda, contrato)",
+          port: "Memória Interna (In-Process)",
+          role: "Invariante de 20% sinal, cálculo forçado de saldo, colisão de 7 dias e emissão PDF.",
+          status: "healthy",
+          color: "#10b981"
+        },
+        {
+          id: "sqlite_db",
+          name: "Banco Relacional Local (ducarmolocacoes.db)",
+          tech: "SQLite 3 (modernc.org/sqlite - Zero CGO)",
+          port: "Arquivo Local (WAL Mode)",
+          role: "Transações ACID locais com suporte nativo a compilação cruzada para 32 bits e 64 bits.",
+          status: "healthy",
+          color: "#f59e0b"
+        },
+        {
+          id: "fts5",
+          name: "Índice FTS5 Full-Text",
+          tech: "SQLite FTS5 Virtual Table",
+          port: "Memória / WAL Index",
+          role: "Busca textual instantânea de clientes e trajes (< 5ms), substituindo Elasticsearch.",
+          status: "healthy",
+          color: "#06b6d4"
+        },
+        {
+          id: "pdf_writer",
+          name: "Compilador de Contratos PDF",
+          tech: "GoFPDF (Zero JVM)",
+          port: "Saída de Impressão Direta",
+          role: "Geração de minutas jurídicas completas prontas para impressão e assinatura.",
+          status: "healthy",
+          color: "#a855f7"
+        }
+      ]
+    };
+
+    const board = document.getElementById("topology-diagram");
+    const btnLegacy = document.getElementById("btn-view-legacy");
+    const btnTarget = document.getElementById("btn-view-target");
+    let currentMode = "legacy";
+
+    function renderTopology(mode) {
+      currentMode = mode;
+      const data = mode === "legacy" ? TOPOLOGY_LEGACY : TOPOLOGY_TARGET;
+
+      let html = `
+        <div style="width: 100%; max-width: 860px; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+          <!-- Top: Client -->
+          <div class="container-box" onclick="selectBox('${data.boxes[0].id}')" id="box-${data.boxes[0].id}" style="width: 320px; border-left: 4px solid ${data.boxes[0].color};">
+            <div style="font-weight: 700; color: #fff;">${data.boxes[0].name}</div>
+            <div style="font-size: 0.75rem; color: ${data.boxes[0].color};">${data.boxes[0].tech}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Porta: ${data.boxes[0].port}</div>
+          </div>
+
+          <!-- Seta 1 -->
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <svg width="24" height="40">
+              <line x1="12" y1="0" x2="12" y2="40" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,3" class="conn-arrow"/>
+              <polygon points="6,34 18,34 12,40" fill="#38bdf8" />
+            </svg>
+            <span style="font-size: 0.7rem; color: #94a3b8; font-family: monospace;">HTTPS / REST / JWT</span>
+          </div>
+
+          <!-- Middle: Monolith or Core Backend -->
+          <div class="container-box" onclick="selectBox('${data.boxes[1].id}')" id="box-${data.boxes[1].id}" style="width: 440px; border-left: 4px solid ${data.boxes[1].color};">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div style="font-weight: 700; color: #fff;">${data.boxes[1].name}</div>
+              ${data.boxes[1].warning ? `<span class="badge badge-cycle">ALERTA EOL</span>` : ''}
+            </div>
+            <div style="font-size: 0.75rem; color: ${data.boxes[1].color};">${data.boxes[1].tech}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Porta: ${data.boxes[1].port}</div>
+          </div>
+
+          <!-- Seta 2: Conexões de dados -->
+          <div style="display: flex; width: 100%; justify-content: space-around; max-width: 650px;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <svg width="24" height="40">
+                <line x1="12" y1="0" x2="12" y2="40" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3" class="conn-arrow"/>
+                <polygon points="6,34 18,34 12,40" fill="#f59e0b" />
+              </svg>
+              <span style="font-size: 0.7rem; color: #f59e0b; font-family: monospace;">JDBC / SQL</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <svg width="24" height="40">
+                <line x1="12" y1="0" x2="12" y2="40" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,3" class="conn-arrow"/>
+                <polygon points="6,34 18,34 12,40" fill="#ef4444" />
+              </svg>
+              <span style="font-size: 0.7rem; color: #ef4444; font-family: monospace;">HTTP / Index</span>
+            </div>
+          </div>
+
+          <!-- Bottom: Databases -->
+          <div style="display: flex; gap: 1.5rem; width: 100%; max-width: 650px; justify-content: space-between;">
+            <div class="container-box" onclick="selectBox('${data.boxes[2].id}')" id="box-${data.boxes[2].id}" style="flex: 1; border-left: 4px solid ${data.boxes[2].color};">
+              <div style="font-weight: 700; color: #fff;">${data.boxes[2].name}</div>
+              <div style="font-size: 0.75rem; color: ${data.boxes[2].color};">${data.boxes[2].tech}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Porta: ${data.boxes[2].port}</div>
+            </div>
+
+            <div class="container-box" onclick="selectBox('${data.boxes[3].id}')" id="box-${data.boxes[3].id}" style="flex: 1; border-left: 4px solid ${data.boxes[3].color};">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-weight: 700; color: #fff;">${data.boxes[3].name}</div>
+                ${data.boxes[3].warning ? `<span class="badge badge-cycle">EOL</span>` : ''}
+              </div>
+              <div style="font-size: 0.75rem; color: ${data.boxes[3].color};">${data.boxes[3].tech}</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Porta: ${data.boxes[3].port}</div>
+            </div>
+          </div>
+        </div>
+      `;
+      board.innerHTML = html;
+      selectBox(data.boxes[1].id);
+    }
+
+    function selectBox(boxId) {
+      document.querySelectorAll(".container-box").forEach(el => el.classList.remove("active-box"));
+      const selectedEl = document.getElementById("box-" + boxId);
+      if (selectedEl) selectedEl.classList.add("active-box");
+
+      const data = currentMode === "legacy" ? TOPOLOGY_LEGACY : TOPOLOGY_TARGET;
+      const box = data.boxes.find(b => b.id === boxId);
+      if (!box) return;
+
+      const infoBox = document.getElementById("component-details");
+      infoBox.innerHTML = `
+        <div class="info-card-header" style="color: ${box.color}; font-size: 0.95rem;">${box.name}</div>
+        <div class="badge-row">
+          <span class="badge">${box.tech}</span>
+          <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Porta ${box.port}</span>
+          ${box.warning ? `<span class="badge badge-cycle">${box.warning}</span>` : ''}
+        </div>
+        <div style="margin-top: 0.75rem; line-height: 1.4; color: var(--text-secondary); font-size: 0.8rem;">
+          <strong>Responsabilidade:</strong><br>${box.role}
+        </div>
+      `;
+    }
+
+    btnLegacy.addEventListener("click", () => {
+      btnLegacy.classList.add("active");
+      btnTarget.classList.remove("active");
+      renderTopology("legacy");
+    });
+
+    btnTarget.addEventListener("click", () => {
+      btnTarget.classList.add("active");
+      btnLegacy.classList.remove("active");
+      renderTopology("target");
+    });
+
+    renderTopology("legacy");
+  </script>
+</body>
+</html>

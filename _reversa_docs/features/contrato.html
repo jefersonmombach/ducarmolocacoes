@@ -98,10 +98,10 @@
 </svg>
       </div>
       <span class="brand-title">ducarmolocacoes</span>
-      <span class="brand-badge">Jurídico & Documentos</span>
+      <span class="brand-badge">Motor Nativo Go</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../index.html" data-page-id="index">Visão geral</a>
       <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="../modulos.html" data-page-id="modulos">Módulos</a>
       <a href="../topologia.html" data-page-id="topologia">Topologia</a>
@@ -122,10 +122,10 @@
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
           <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Emissão de Contratos & PDF</h1>
-          <span class="badge badge-web">Jurídico & Documentos</span>
+          <span class="badge badge-web">Motor Nativo Go</span>
         </div>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          Mecanismo customizado de processamento e formatação de minutas jurídicas de locação de trajes, substituindo marcadores de dados dinâmicos (`TAG_*`) por valores formatados em moeda e data brasileira, além de gerar arquivos PDF para impressão física.
+          Motor autônomo em Go para substituição de tags em minutas contratuais e geração direta de arquivos PDF oficiais prontos para impressão física, sem runtime Java, sem dependência do iText e com compilação para 32 e 64 bits.
         </p>
       </div>
 
@@ -133,7 +133,7 @@
       <div class="section-card">
         <div class="section-title">
           <span>Requisitos Funcionais Especificados</span>
-          <span class="badge">3 Requisitos</span>
+          <span class="badge">4 Requisitos</span>
         </div>
         <table class="rf-table">
           <thead>
@@ -146,39 +146,61 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong style="color: var(--accent-blue);">RF-CT-01</strong></td>
-              <td style="color: #fff; font-weight: 500;">Processar todas as tags do contrato</td>
+              <td><strong style="color: var(--accent-blue);">RF-CONT-01</strong></td>
+              <td style="color: #fff; font-weight: 500;">Substituição Dinâmica de Tags</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">Todas as ocorrências de `TAG_*` na minuta são substituídas pelos dados reais da locação.</td>
+              <td style="color: var(--text-secondary);">Processador de tags substitui marcadores [LOCATARIO], [CPF], [TRAJES], [TOTAL], [SINAL], [SALDO] e datas.</td>
             </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-CT-02</strong></td>
-              <td style="color: #fff; font-weight: 500;">Formatação de itens em tabela</td>
+              <td><strong style="color: var(--accent-blue);">RF-CONT-02</strong></td>
+              <td style="color: #fff; font-weight: 500;">Compilação Nativa em PDF</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">Gera tabela HTML com as descrições dos trajes locados.</td>
+              <td style="color: var(--text-secondary);">Geração de arquivo PDF formatado com tipografia formal, cabeçalho da loja e linhas de assinatura.</td>
             </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-CT-03</strong></td>
-              <td style="color: #fff; font-weight: 500;">Download do contrato em PDF</td>
+              <td><strong style="color: var(--accent-blue);">RF-CONT-03</strong></td>
+              <td style="color: #fff; font-weight: 500;">Inclusão de Cláusulas Obrigatórias</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">GET `/api/locacaos/{id}/contrato` retorna status 200 OK com `Content-Type: application/pdf`.</td>
+              <td style="color: var(--text-secondary);">Inserção automática de cláusulas de multa de 20% ao dia por atraso e indenização de 4x por avaria.</td>
+            </tr><tr>
+              <td><strong style="color: var(--accent-blue);">RF-CONT-04</strong></td>
+              <td style="color: #fff; font-weight: 500;">Impressão Direta</td>
+              <td><span class="badge">Should</span></td>
+              <td style="color: var(--text-secondary);">Possibilidade de disparo de impressão no sistema operacional local do balcão.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- Regras de Negócio -->
-      
-
-      <!-- Endpoints REST -->
-      
+      <div class="section-card">
+        <div class="section-title">Regras de Negócio & Invariantes</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
+          <li style="margin-bottom: 0.4rem;">Fidelidade Jurídica: O PDF emitido mantém rigorosamente a redação oficial homologada da proprietária Maria do Carmo Poli.</li><li style="margin-bottom: 0.4rem;">Valores por Extenso: O valor total, sinal e saldo devedor são impressos em algarismos e por extenso.</li><li style="margin-bottom: 0.4rem;">Zero Dependência JVM: Utiliza biblioteca Go nativa compatível com x86 (32 bits) e x64.</li>
+        </ul>
+      </div>
 
       <!-- Gherkin -->
-      
-
-      <!-- Rastreabilidade de Código -->
       <div class="section-card">
-        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
+        <pre class="code-block">Cenário: Emissão do PDF de contrato de locação
+  Dado que a locação nº 00001 possui sinal de 20% confirmado
+  Quando o operador comanda a emissão do contrato
+  Então o gerador produz o arquivo "contrato_locacao_00001.pdf"
+  E o documento contém os dados do locatário, lista de trajes e campos de assinatura</pre>
+      </div>
+
+      <!-- Rastreabilidade de Código Go -->
+      <div class="section-card">
+        <div class="section-title">Rastreabilidade no Código Go Implementado</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
-          
+          <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">generator.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/core/contrato/generator.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Motor Go de substituição de tags e geração de PDF</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">generator_test.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/core/contrato/generator_test.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Testes automatizados de formatação e emissão de contrato</div>
+          </div>
         </div>
       </div>
     </div>

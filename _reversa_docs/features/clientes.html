@@ -7,7 +7,7 @@
   <meta name="reversa-producer-agent" content="reversa-docs-storyteller">
   <meta name="reversa-template" content="feature">
   <meta name="reversa-visual-style" content="sober">
-  <title>Gestão de Clientes & Locatários — ducarmolocacoes</title>
+  <title>Gestão de Clientes e Locatários — ducarmolocacoes</title>
   <link rel="stylesheet" href="../assets/css/docs.css">
   <script src="../assets/js/data.js"></script>
   <script src="../assets/js/nav.js"></script>
@@ -98,10 +98,10 @@
 </svg>
       </div>
       <span class="brand-title">ducarmolocacoes</span>
-      <span class="brand-badge">Cadastro</span>
+      <span class="brand-badge">Cadastro & Busca FTS5</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../index.html" data-page-id="index">Visão geral</a>
       <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="../modulos.html" data-page-id="modulos">Módulos</a>
       <a href="../topologia.html" data-page-id="topologia">Topologia</a>
@@ -116,16 +116,16 @@
       <div class="breadcrumbs">
         <a href="../index.html">Visão Geral</a> <span>/</span>
         <a href="../index.html#features">Features</a> <span>/</span>
-        <span style="color: var(--accent-blue);">Gestão de Clientes & Locatários</span>
+        <span style="color: var(--accent-blue);">Gestão de Clientes e Locatários</span>
       </div>
 
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Gestão de Clientes & Locatários</h1>
-          <span class="badge badge-web">Cadastro</span>
+          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Gestão de Clientes e Locatários</h1>
+          <span class="badge badge-web">Cadastro & Busca FTS5</span>
         </div>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          Gerencia o cadastro, consulta, atualização e exclusão de locatários e responsáveis legais por contratos de locação de vestimentas, com pesquisa full-text desacoplada via Elasticsearch.
+          Gerencia o cadastro completo de locatários e responsáveis contratuais com validação estrita de CPF, múltiplos telefones de contato e pesquisa full-text instantânea em SQLite FTS5 integrada à interface desktop Gio UI.
         </p>
       </div>
 
@@ -133,7 +133,7 @@
       <div class="section-card">
         <div class="section-title">
           <span>Requisitos Funcionais Especificados</span>
-          <span class="badge">6 Requisitos</span>
+          <span class="badge">5 Requisitos</span>
         </div>
         <table class="rf-table">
           <thead>
@@ -147,34 +147,29 @@
           <tbody>
             <tr>
               <td><strong style="color: var(--accent-blue);">RF-CLI-01</strong></td>
-              <td style="color: #fff; font-weight: 500;">Criar novo cliente</td>
+              <td style="color: #fff; font-weight: 500;">Cadastro com Validação de CPF</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">POST `/api/clientes` retorna 201 Created com o ID gerado; rejeita se ID já vier preenchido.</td>
+              <td style="color: var(--text-secondary);">Formulário desktop valida algoritmo de dígitos verificadores de CPF e formatação brasileira padrão.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-CLI-02</strong></td>
-              <td style="color: #fff; font-weight: 500;">Atualizar cliente existente</td>
+              <td style="color: #fff; font-weight: 500;">Busca Instantânea Local (FTS5)</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">PUT `/api/clientes` atualiza campos cadastrais; rejeita se ID vier nulo.</td>
+              <td style="color: var(--text-secondary);">Tabela virtual SQLite FTS5 permite busca em tempo real por nome, CPF ou telefone com latência < 5ms.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-CLI-03</strong></td>
-              <td style="color: #fff; font-weight: 500;">Listagem paginada</td>
+              <td style="color: #fff; font-weight: 500;">Múltiplos Canais de Contato</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">GET `/api/clientes` retorna página de clientes com cabeçalhos `X-Total-Count` e `Link`.</td>
+              <td style="color: var(--text-secondary);">Armazenamento de telefone residencial, celular e telefone para recados na mesma entidade.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-CLI-04</strong></td>
-              <td style="color: #fff; font-weight: 500;">Busca full-text</td>
-              <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">GET `/api/_search/clientes?query={termo}` retorna resultados indexados pelo Elasticsearch.</td>
+              <td style="color: #fff; font-weight: 500;">Histórico Consolidado de Locações</td>
+              <td><span class="badge">Should</span></td>
+              <td style="color: var(--text-secondary);">Visualização do histórico de aluguéis celebrados pelo cliente diretamente na tela.</td>
             </tr><tr>
               <td><strong style="color: var(--accent-blue);">RF-CLI-05</strong></td>
-              <td style="color: #fff; font-weight: 500;">Exclusão de cliente</td>
+              <td style="color: #fff; font-weight: 500;">Controle de Inadimplência</td>
               <td><span class="badge">Should</span></td>
-              <td style="color: var(--text-secondary);">DELETE `/api/clientes/{id}` remove do MySQL e do Elasticsearch.</td>
-            </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-CLI-06</strong></td>
-              <td style="color: #fff; font-weight: 500;">Ficha de medidas corporais (Evolução)</td>
-              <td><span class="badge">Should</span></td>
-              <td style="color: var(--text-secondary);">Suporte a atributos antropométricos (busto, cintura, quadril, altura/comprimento) para alfaiataria. 🟡 [Validado para roadmap futuro]</td>
+              <td style="color: var(--text-secondary);">Sinalização visual imediata caso o cliente possua pendências em contratos anteriores.</td>
             </tr>
           </tbody>
         </table>
@@ -184,52 +179,36 @@
       <div class="section-card">
         <div class="section-title">Regras de Negócio & Invariantes</div>
         <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-          <li style="margin-bottom: 0.4rem;">Cada cliente é identificado unicamente por seu ID gerado automaticamente. 🟢</li><li style="margin-bottom: 0.4rem;">O CPF e o RG são campos textuais que aceitam formatação brasileira padrão (`###.###.###-##` e `##.###.###-#`). 🟢</li><li style="margin-bottom: 0.4rem;">O cliente possui múltiplos canais de contato: telefone residencial, celular e telefone para recado. 🟢</li><li style="margin-bottom: 0.4rem;">Toda alteração (inclusão, alteração, remoção) no banco relacional deve ser refletida de imediato no índice do Elasticsearch. 🟢</li>
+          <li style="margin-bottom: 0.4rem;">Unicidade de Identificação: Cada cliente possui ID primário autoincrementado e chave de CPF validada.</li><li style="margin-bottom: 0.4rem;">Espelhamento FTS5 Transacional: O índice de busca textual local é atualizado deterministicamente na mesma transação SQLite, sem dual-write frágil.</li><li style="margin-bottom: 0.4rem;">Sanitização de Documentos: Máscaras de formatação são aplicadas visualmente mantendo os dados normalizados no banco.</li>
         </ul>
       </div>
-
-      <!-- Endpoints REST -->
-      
 
       <!-- Gherkin -->
       <div class="section-card">
         <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
-        <pre class="code-block">Cenário: Cadastro de novo cliente
-  Dado que o operador preencheu os dados do cliente com nome "Mariana Souza" e CPF "123.456.789-00"
-  Quando enviar uma requisição POST /api/clientes com os dados informados
-  Então a resposta deve ter status 201 Created
-  E o corpo da resposta deve conter o ID gerado
-  E o cliente deve ser indexado no Elasticsearch
-
-Cenário: Busca rápida de cliente por nome
-  Dado que existe o cliente "Mariana Souza" cadastrado
-  Quando enviar uma requisição GET /api/_search/clientes?query=Mariana
-  Então a resposta deve retornar status 200 OK
-  E a lista retornada deve incluir o cadastro de "Mariana Souza"</pre>
+        <pre class="code-block">Cenário: Busca instantânea de cliente por fragmento de CPF
+  Dado que o cliente "Carlos Drummond" possui CPF "123.456.789-00" cadastrado
+  Quando o operador digita "45678" na barra de busca do ClientePage
+  Então o índice SQLite FTS5 retorna o registro correspondente em menos de 5ms
+  E os dados de contato do cliente são preenchidos no painel lateral</pre>
       </div>
 
-      <!-- Rastreabilidade de Código -->
+      <!-- Rastreabilidade de Código Go -->
       <div class="section-card">
-        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div class="section-title">Rastreabilidade no Código Go Implementado</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
           <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">Cliente</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/domain/Cliente.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">cliente_page.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/ui/page/cliente_page.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Tela de cadastro e listagem de clientes em Gio UI</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ClienteRepository</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/repository/ClienteRepository.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">cliente_repo.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/storage/sqlite/cliente_repo.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Consultas SQL e rotinas de busca FTS5 no SQLite</div>
           </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ClienteSearchRepository</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/repository/search/ClienteSearchRepository.java</div>
-          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ClienteServiceImpl</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/service/impl/ClienteServiceImpl.java</div>
-          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ClienteDTO</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/service/dto/ClienteDTO.java</div>
-          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
-            <div style="font-weight: 600; color: var(--accent-blue);">ClienteResource</div>
-            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">src/main/java/tech/jefersonms/ducarmolocacoes/web/rest/ClienteResource.java</div>
+            <div style="font-weight: 600; color: var(--accent-blue);">domain.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/core/domain/domain.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Definição da struct Cliente e validações de dados</div>
           </div>
         </div>
       </div>

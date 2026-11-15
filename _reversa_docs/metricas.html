@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="reversa-category" content="diagram">
+  <meta name="reversa-category" content="metric">
   <meta name="reversa-producer-agent" content="reversa-docs-analyst">
   <meta name="reversa-template" content="metricas">
   <meta name="reversa-visual-style" content="sober">
-  <title>Dashboard de Métricas & Qualidade — ducarmolocacoes</title>
+  <title>Métricas de Engenharia de Software — ducarmolocacoes</title>
   <link rel="stylesheet" href="assets/css/docs.css">
   <script src="assets/vendor/highcharts.js"></script>
-  <script src="assets/vendor/highcharts-accessibility.js"></script>
-  <script src="assets/vendor/highcharts-exporting.js"></script>
   <script src="assets/vendor/highcharts-treemap.js"></script>
-  <script src="assets/vendor/highcharts-sankey.js"></script>
+  <script src="assets/vendor/highcharts-accessibility.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/nav.js"></script>
   <style>
@@ -21,69 +19,40 @@
       flex: 1;
       height: 100%;
       overflow-y: auto;
-      padding: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: #0a0f1d;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      background: #0a0f1d;
     }
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-    }
-    .kpi-card {
-      background: #1e293b;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-    .kpi-val {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .kpi-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .charts-grid {
+    .metrics-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
     }
-    @media (max-width: 1024px) {
-      .charts-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    .chart-box {
+    .chart-panel {
       background: #1e293b;
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 1rem;
-      min-height: 380px;
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
+      gap: 0.75rem;
     }
-    .chart-box-header {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.75rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .chart-panel.full-width {
+      grid-column: span 2;
     }
     .chart-container {
-      flex: 1;
       width: 100%;
-      height: 320px;
+      height: 280px;
+    }
+    @media (max-width: 1024px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+      .chart-panel.full-width {
+        grid-column: span 1;
+      }
     }
   </style>
 </head>
@@ -98,10 +67,10 @@
 </svg>
       </div>
       <span class="brand-title">ducarmolocacoes</span>
-      <span class="brand-badge">Dashboard de Métricas</span>
+      <span class="brand-badge">Métricas</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="index.html" data-page-id="index">Visão geral</a>
+      <a href="index.html" data-page-id="index">Visão geral</a>
       <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="modulos.html" data-page-id="modulos">Módulos</a>
       <a href="topologia.html" data-page-id="topologia">Topologia</a>
@@ -114,99 +83,85 @@
   <div class="main-viewport">
     <div class="metrics-dashboard">
       <div>
-        <h2 style="font-size: 1.4rem; font-weight: 700; color: #fff;">Visão Quantitativa do Código</h2>
-        <p style="font-size: 0.85rem; color: var(--text-secondary);">Análise estatística de volume, complexidade ciclomática, acoplamento entre camadas e linguagens.</p>
+        <h2 style="font-size: 1.4rem; font-weight: 700; color: #fff;">Métricas de Código e Complexidade</h2>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">Análise quantitativa estática do código-fonte Go, camadas de software e testes automatizados.</p>
       </div>
 
-      <!-- KPI Cards -->
-      <div class="kpi-row">
-        <div class="kpi-card" style="border-left: 4px solid #38bdf8;">
-          <span class="kpi-label">Total de Módulos</span>
-          <span class="kpi-val" id="kpi-modules">0</span>
+      <!-- Sumário Rápido -->
+      <div class="stats-summary" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="stat-item">
+          <span class="stat-num" id="stat-modules">27</span>
+          <span class="stat-label">Arquivos Go</span>
         </div>
-        <div class="kpi-card" style="border-left: 4px solid #10b981;">
-          <span class="kpi-label">Linhas de Código (LOC)</span>
-          <span class="kpi-val" id="kpi-loc">0</span>
+        <div class="stat-item">
+          <span class="stat-num" id="stat-loc" style="color: var(--accent-blue);">3.531</span>
+          <span class="stat-label">Linhas de Código (LOC)</span>
         </div>
-        <div class="kpi-card" style="border-left: 4px solid #f59e0b;">
-          <span class="kpi-label">Complexidade Média</span>
-          <span class="kpi-val" id="kpi-avg-comp">0</span>
+        <div class="stat-item">
+          <span class="stat-num" id="stat-complexity" style="color: var(--accent-amber);">11.7</span>
+          <span class="stat-label">Complexidade Média</span>
         </div>
-        <div class="kpi-card" style="border-left: 4px solid #ef4444;">
-          <span class="kpi-label">Complexidade Máxima</span>
-          <span class="kpi-val" id="kpi-max-comp">0</span>
-        </div>
-        <div class="kpi-card" style="border-left: 4px solid #a855f7;">
-          <span class="kpi-label">Arestas de Acoplamento</span>
-          <span class="kpi-val" id="kpi-deps">0</span>
+        <div class="stat-item">
+          <span class="stat-num" id="stat-cycles" style="color: #10b981;">0</span>
+          <span class="stat-label">Ciclos (Zero Acoplamento)</span>
         </div>
       </div>
 
-      <!-- Charts 2x2 Grid -->
-      <div class="charts-grid">
-        <!-- Chart 1: Treemap -->
-        <div class="chart-box">
-          <div class="chart-box-header">
-            <span>Distribuição de LOC por Diretório</span>
-            <span class="badge badge-web">Treemap</span>
+      <div class="metrics-grid">
+        <!-- 1. Treemap: LOC por Diretório -->
+        <div class="chart-panel full-width">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="panel-title">Volume de Código por Pacote / Pasta (Treemap)</h3>
+            <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">LOC Relativo</span>
           </div>
-          <div id="chart-treemap" class="chart-container"></div>
+          <div id="chart-treemap" class="chart-container" style="height: 300px;"></div>
         </div>
 
-        <!-- Chart 2: Top Complexidade -->
-        <div class="chart-box">
-          <div class="chart-box-header">
-            <span>Top 15 Classes com Maior Complexidade</span>
-            <span class="badge badge-repository">Complexidade Ciclomática</span>
+        <!-- 2. Barras: Top 10 Módulos Complexos -->
+        <div class="chart-panel">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="panel-title">Top 10 Módulos por Complexidade Ciclomática</h3>
+            <span class="badge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">Decisões / Branching</span>
           </div>
           <div id="chart-complexity" class="chart-container"></div>
         </div>
 
-        <!-- Chart 3: Histograma LOC -->
-        <div class="chart-box">
-          <div class="chart-box-header">
-            <span>Histograma de Tamanho de Arquivos</span>
-            <span class="badge badge-service">Distribuição LOC</span>
+        <!-- 3. Pizza: Distribuição por Camadas -->
+        <div class="chart-panel">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="panel-title">Distribuição de Código por Camada</h3>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Arquitetura</span>
           </div>
-          <div id="chart-histogram" class="chart-container"></div>
+          <div id="chart-layers" class="chart-container"></div>
         </div>
 
-        <!-- Chart 4: Sankey Camadas -->
-        <div class="chart-box">
-          <div class="chart-box-header">
-            <span>Fluxo de Dependências entre Camadas</span>
-            <span class="badge badge-frontend">Sankey Fluxo</span>
+        <!-- 4. Donut: Código de Produção vs Testes -->
+        <div class="chart-panel full-width">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 class="panel-title">Proporção: Código de Produção vs Testes Unitários Go</h3>
+            <span class="badge">Cobertura de Regras</span>
           </div>
-          <div id="chart-sankey" class="chart-container"></div>
+          <div id="chart-tests" class="chart-container" style="height: 240px;"></div>
         </div>
-      </div>
-
-      <!-- Chart 5: Linguagens -->
-      <div class="chart-box" style="min-height: 280px;">
-        <div class="chart-box-header">
-          <span>Composição Tecnológica do Repositório</span>
-          <span class="badge">Linguagens & Config</span>
-        </div>
-        <div id="chart-languages" class="chart-container" style="height: 240px;"></div>
       </div>
     </div>
 
-    <!-- Sidebar Lateral de Hotspots -->
+    <!-- Sidebar Lateral de Hotspots e Diagnóstico -->
     <aside class="sidebar-panel">
       <div class="panel-section">
         <h3 class="panel-title">Diagnóstico do Analista</h3>
         <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45; display: flex; flex-direction: column; gap: 0.75rem;">
-          <div style="background: #1e293b; border-left: 3px solid #ef4444; padding: 0.6rem; border-radius: 4px;">
-            <strong style="color: #ef4444;">Hotspot Crítico:</strong><br>
-            A classe <code>LocacaoServiceImpl.java</code> concentra o maior índice de complexidade ciclomática do sistema, combinando validação de regras de reserva, cálculo de saldo, minutas HTML de contrato e dual-write com Elasticsearch.
+          <div style="background: #1e293b; border-left: 3px solid #38bdf8; padding: 0.6rem; border-radius: 4px;">
+            <strong style="color: #38bdf8;">Hotspots de Interface (Gio UI):</strong><br>
+            Os arquivos <code>locacao_form.go</code> (480 LOC) e <code>locacao_list.go</code> (380 LOC) concentram a lógica visual de modo imediato, controlando o cálculo dinâmico de 20% de sinal, saldo forçado e filtros de abas.
+          </div>
+          <div style="background: #1e293b; border-left: 3px solid #10b981; padding: 0.6rem; border-radius: 4px;">
+            <strong style="color: #10b981;">Zero Acoplamento Cíclico:</strong><br>
+            A base Go é 100% idiomática, com zero dependências circulares. A camada de regras (<code>internal/core</code>) é pura e não depende da interface nem da persistência.
           </div>
           <div style="background: #1e293b; border-left: 3px solid #f59e0b; padding: 0.6rem; border-radius: 4px;">
-            <strong style="color: #f59e0b;">Acoplamento Vertical Estrito:</strong><br>
-            O fluxo de dependências segue o padrão Controller ➔ Service ➔ Repository, mas apresenta 7 ciclos pontuais de referência circular entre mappers e DTOs.
-          </div>
-          <div style="background: #1e293b; border-left: 3px solid #38bdf8; padding: 0.6rem; border-radius: 4px;">
-            <strong style="color: #38bdf8;">Distribuição de Esforço:</strong><br>
-            Mais de 65% do LOC reside no backend Java (Spring Boot), enquanto o frontend Angular 6 concentra componentes de listagem e formulários de cadastro.
+            <strong style="color: #f59e0b;">Persistência SQLite Pura:</strong><br>
+            A camada <code>internal/storage/sqlite</code> (846 LOC) gerencia transações ACID locais e o índice FTS5 sem nenhuma dependência de CGO.
           </div>
         </div>
       </div>
@@ -215,12 +170,20 @@
         <h3 class="panel-title">Métricas de Coesão</h3>
         <div class="stats-summary">
           <div class="stat-item">
-            <span class="stat-num" style="color: #10b981;">89.4%</span>
-            <span class="stat-label">Camadas Bem Isoladas</span>
+            <span class="stat-num" style="color: #10b981;">100%</span>
+            <span class="stat-label">Go Puro (Zero CGO)</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num" style="color: #f59e0b;">7</span>
-            <span class="stat-label">Ciclos Bidirecionais</span>
+            <span class="stat-num" style="color: #38bdf8;">0</span>
+            <span class="stat-label">Ciclos no Grafo</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" style="color: #f59e0b;">5</span>
+            <span class="stat-label">Suítes de Testes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" style="color: #a855f7;">&lt; 100MB</span>
+            <span class="stat-label">RAM em Operação</span>
           </div>
         </div>
       </div>
@@ -238,147 +201,122 @@
       },
       title: { text: null },
       credits: { enabled: false },
-      legend: {
-        itemStyle: { color: '#94a3b8' },
-        itemHoverStyle: { color: '#f8fafc' }
-      },
       tooltip: {
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-        borderColor: '#38bdf8',
-        style: { color: '#f8fafc' },
-        borderRadius: 6
-      },
-      xAxis: {
-        gridLineColor: '#334155',
-        labels: { style: { color: '#94a3b8' } },
-        lineColor: '#334155',
-        tickColor: '#334155'
-      },
-      yAxis: {
-        gridLineColor: '#334155',
-        labels: { style: { color: '#94a3b8' } },
-        lineColor: '#334155',
-        title: { style: { color: '#94a3b8' } }
+        backgroundColor: '#0f172a',
+        borderColor: '#334155',
+        style: { color: '#f8fafc', fontSize: '12px' }
       }
     });
 
-    let metricsData = null;
-    if (window.RV_DATA && window.RV_DATA.metrics) {
-      metricsData = window.RV_DATA.metrics;
-    }
+    const metrics = (window.RV_DATA && window.RV_DATA.metrics) ? window.RV_DATA.metrics : {};
 
-    function renderDashboard(data) {
-      if (!data) return;
+    // 1. Treemap: LOC por Diretório
+    const treemapData = (metrics.treemap_loc_by_folder || []).map((item, idx) => {
+      const colors = ['#38bdf8', '#10b981', '#f59e0b', '#a855f7', '#06b6d4', '#6366f1', '#64748b', '#ec4899', '#8b5cf6', '#14b8a6', '#f43f5e'];
+      return {
+        name: item.name,
+        value: item.value,
+        color: colors[idx % colors.length]
+      };
+    });
 
-      const sum = data.summary || {};
-      document.getElementById("kpi-modules").textContent = sum.totalModules || 0;
-      document.getElementById("kpi-loc").textContent = (sum.totalLoc || 0).toLocaleString("pt-BR");
-      document.getElementById("kpi-avg-comp").textContent = sum.avgComplexity || 0;
-      document.getElementById("kpi-max-comp").textContent = sum.maxComplexity || 0;
-      document.getElementById("kpi-deps").textContent = sum.totalDependencies || 0;
-
-      // 1. Treemap Chart
-      const treemapSeries = (data.treemap_loc_by_folder || []).slice(0, 15).map(f => ({
-        name: f.name,
-        value: f.value,
-        colorValue: f.value
-      }));
-
-      Highcharts.chart('chart-treemap', {
-        colorAxis: {
-          minColor: '#1e3a8a',
-          maxColor: '#38bdf8'
-        },
-        series: [{
-          type: 'treemap',
-          layoutAlgorithm: 'squarified',
-          data: treemapSeries
-        }]
-      });
-
-      // 2. Top Complexidade (Bar Horizontal)
-      const topComp = (data.top_complexity || []).slice(0, 15);
-      Highcharts.chart('chart-complexity', {
-        chart: { type: 'bar' },
-        xAxis: {
-          categories: topComp.map(c => c.name.replace(".java", "").replace(".ts", "")),
-          labels: { style: { fontSize: '10px' } }
-        },
-        yAxis: {
-          title: { text: 'Complexidade Ciclomática' }
-        },
-        legend: { enabled: false },
-        series: [{
-          name: 'Complexidade',
-          data: topComp.map(c => ({
-            y: c.complexity,
-            color: c.complexity > 25 ? '#ef4444' : (c.complexity > 15 ? '#f59e0b' : '#38bdf8')
-          }))
-        }]
-      });
-
-      // 3. Histograma LOC
-      const hist = data.loc_histogram || { bins: [], counts: [] };
-      Highcharts.chart('chart-histogram', {
-        chart: { type: 'column' },
-        xAxis: {
-          categories: hist.bins,
-          title: { text: 'Faixa de Linhas de Código (LOC)' }
-        },
-        yAxis: {
-          title: { text: 'Número de Módulos' }
-        },
-        legend: { enabled: false },
-        series: [{
-          name: 'Quantidade de Módulos',
-          data: hist.counts,
-          color: '#10b981'
-        }]
-      });
-
-      // 4. Sankey Camadas
-      const sankey = data.dependency_sankey || { nodes: [], links: [] };
-      Highcharts.chart('chart-sankey', {
-        series: [{
-          type: 'sankey',
-          name: 'Dependências',
-          data: sankey.links.map(l => [l.from, l.to, l.weight])
-        }]
-      });
-
-      // 5. Distribuição de Linguagens (Pie / Donut)
-      const langs = data.language_distribution || [];
-      Highcharts.chart('chart-languages', {
-        chart: { type: 'pie' },
-        plotOptions: {
-          pie: {
-            innerSize: '55%',
-            dataLabels: {
-              enabled: true,
-              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-              style: { color: '#cbd5e1' }
-            }
-          }
-        },
-        series: [{
-          name: 'LOC',
-          data: langs.map(l => ({
-            name: l.language,
-            y: l.loc
-          }))
-        }]
-      });
-    }
-
-    if (metricsData) {
-      renderDashboard(metricsData);
-    } else {
-      window.addEventListener("DOMContentLoaded", () => {
-        if (window.RV_DATA && window.RV_DATA.metrics) {
-          renderDashboard(window.RV_DATA.metrics);
+    Highcharts.chart('chart-treemap', {
+      series: [{
+        type: 'treemap',
+        layoutAlgorithm: 'squarified',
+        data: treemapData,
+        dataLabels: {
+          enabled: true,
+          style: { textOutline: 'none', color: '#ffffff', fontSize: '11px', fontWeight: 'bold' }
         }
-      });
-    }
+      }]
+    });
+
+    // 2. Barras: Top Módulos por Complexidade
+    const topComplex = (metrics.top_complex_modules || []).slice(0, 8);
+    Highcharts.chart('chart-complexity', {
+      chart: { type: 'bar' },
+      xAxis: {
+        categories: topComplex.map(m => m.name.split('/').pop()),
+        labels: { style: { color: '#94a3b8', fontSize: '11px' } },
+        lineColor: '#334155'
+      },
+      yAxis: {
+        title: { text: 'Complexidade Ciclomática', style: { color: '#64748b' } },
+        gridLineColor: '#1e293b',
+        labels: { style: { color: '#94a3b8' } }
+      },
+      legend: { enabled: false },
+      series: [{
+        name: 'Complexidade',
+        data: topComplex.map(m => m.complexity),
+        color: '#f59e0b',
+        borderRadius: 4
+      }]
+    });
+
+    // 3. Pizza: Distribuição por Camada
+    const layerData = (metrics.distribution_by_layer || []).map(l => {
+      const names = {
+        presentation: 'Interface Gio UI',
+        storage: 'Persistência SQLite',
+        domain: 'Domínio Core Go',
+        cli: 'Comandos CLI'
+      };
+      const colors = {
+        presentation: '#38bdf8',
+        storage: '#f59e0b',
+        domain: '#10b981',
+        cli: '#a855f7'
+      };
+      return {
+        name: names[l.layer] || l.layer,
+        y: l.loc,
+        color: colors[l.layer] || '#64748b'
+      };
+    });
+
+    Highcharts.chart('chart-layers', {
+      chart: { type: 'pie' },
+      plotOptions: {
+        pie: {
+          innerSize: '50%',
+          borderWidth: 0,
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.percentage:.1f}%',
+            style: { color: '#94a3b8', fontSize: '11px' }
+          }
+        }
+      },
+      series: [{
+        name: 'Linhas (LOC)',
+        data: layerData
+      }]
+    });
+
+    // 4. Donut: Código de Produção vs Testes Unitários
+    Highcharts.chart('chart-tests', {
+      chart: { type: 'pie' },
+      plotOptions: {
+        pie: {
+          innerSize: '65%',
+          borderWidth: 0,
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.name}</b>: {point.y} LOC ({point.percentage:.1f}%)',
+            style: { color: '#94a3b8', fontSize: '11px' }
+          }
+        }
+      },
+      series: [{
+        name: 'Linhas (LOC)',
+        data: [
+          { name: 'Código de Produção (22 arquivos)', y: 2879, color: '#38bdf8' },
+          { name: 'Testes Unitários Go (5 arquivos)', y: 652, color: '#10b981' }
+        ]
+      }]
+    });
   </script>
 </body>
 </html>

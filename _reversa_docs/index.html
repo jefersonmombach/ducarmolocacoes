@@ -274,7 +274,7 @@
                 <span class="badge badge-cycle">Highcharts</span>
               </div>
               <p class="hub-card-desc">
-                Dashboards estatísticos com Treemap de LOC, Top 15 complexidade (LocacaoServiceImpl), Histograma de arquivos e Sankey de fluxo entre camadas.
+                Dashboards estatísticos com Treemap de LOC por pacote, Top 10 complexidade (locacao_list.go, locacao_repo.go), proporção de testes unitários e distribuição por camadas.
               </p>
             </div>
             <div class="hub-card-footer">Ver análises quantitativas ➔</div>
@@ -288,7 +288,7 @@
                 <span class="badge badge-domain">Domínio</span>
               </div>
               <p class="hub-card-desc">
-                15 conceitos formais do domínio de locação de trajes, regras de cálculo contábil de sinal (20%) e saldo, política de desistência e avarias.
+                15 conceitos formais do domínio de locação de trajes, regras contábeis em centavos (sinal de 20%, saldo mandatório), proteção de agenda de 7 dias e motor de PDF.
               </p>
             </div>
             <div class="hub-card-footer">Consultar dicionário ➔</div>
@@ -302,7 +302,7 @@
                 <span class="badge">Apresentação</span>
               </div>
               <p class="hub-card-desc">
-                Apresentação navegável em 8 slides executivos com suporte a setas do teclado e modo tela cheia para onboarding rápido de novos desenvolvedores.
+                Apresentação navegável em 8 slides executivos com suporte a setas do teclado e modo tela cheia para onboarding rápido na nova aplicação Desktop Go.
               </p>
             </div>
             <div class="hub-card-footer">Iniciar apresentação ➔</div>
@@ -320,7 +320,7 @@
             <span class="badge badge-cycle" style="width: fit-content;">Operação Core</span>
             <strong style="color: #fff;">Ciclo de Locações</strong>
             <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
-              Reserva de trajes, máquina de estados (0 a 3), regra de 20% de sinal e bloqueio de agenda de 7 dias.
+              Reserva de trajes em Gio UI, máquina de estados, regra de 20% de sinal e bloqueio de agenda de 7 dias.
             </p>
           </a>
 
@@ -328,7 +328,7 @@
             <span class="badge badge-repository" style="width: fit-content;">Jurídico & PDF</span>
             <strong style="color: #fff;">Contratos & Minutas</strong>
             <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
-              Motor Chain of Responsibility (TagProcessor) e geração direta de contratos PDF com iText.
+              Substituição dinâmica de tags em Go e geração direta de contratos PDF oficiais prontos para impressão.
             </p>
           </a>
 
@@ -336,7 +336,7 @@
             <span class="badge badge-web" style="width: fit-content;">Cadastro</span>
             <strong style="color: #fff;">Clientes & Locatários</strong>
             <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
-              Gestão cadastral (CPF, RG, telefones), busca full-text em Elasticsearch e histórico de aluguéis.
+              Gestão cadastral (CPF, RG, telefones), busca instantânea local via SQLite FTS5 e histórico de locações.
             </p>
           </a>
 
@@ -344,7 +344,7 @@
             <span class="badge badge-service" style="width: fit-content;">Estoque</span>
             <strong style="color: #fff;">Catálogo de Trajes</strong>
             <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
-              Vestimentas festivas, vestidos de gala, fraques, valor unitário e agenda de disponibilidade.
+              Vestimentas festivas, vestidos de gala, smokings, valor unitário, grade de tamanhos e agenda de disponibilidade.
             </p>
           </a>
 
@@ -358,17 +358,17 @@
 
           <a href="features/autenticacao.html" class="feature-card">
             <span class="badge badge-domain" style="width: fit-content;">Segurança</span>
-            <strong style="color: #fff;">Autenticação JWT</strong>
+            <strong style="color: #fff;">Operadores Locais</strong>
             <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
-              Tokens stateless HMAC-SHA512, perfis ROLE_USER/ROLE_ADMIN e renovação de credenciais.
+              Controle de acesso desktop simplificado para operadores no balcão da loja física, sem complexidade de JWT.
             </p>
           </a>
 
           <a href="features/administracao.html" class="feature-card">
             <span class="badge" style="width: fit-content;">Governança</span>
-            <strong style="color: #fff;">Administração & Logs</strong>
+            <strong style="color: #fff;">Administração & Banco</strong>
             <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
-              Métricas Actuator da JVM, níveis de log, healthcheck e auditoria operacional.
+              Rotinas de backup simples do arquivo SQLite, modo WAL, integridade referencial e CLI migrator.
             </p>
           </a>
         </div>

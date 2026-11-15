@@ -149,17 +149,16 @@
           <label class="control-label" for="layer-filter">Filtrar por Camada</label>
           <select id="layer-filter">
             <option value="ALL">Todas as Camadas</option>
-            <option value="web">Web / REST Resources</option>
-            <option value="service">Services / Negócio</option>
-            <option value="repository">Repositories JPA/ES</option>
-            <option value="domain">Domínio / Entidades</option>
-            <option value="frontend">Frontend Angular</option>
+            <option value="presentation">Interface Gráfica Desktop (Gio UI)</option>
+            <option value="domain">Domínio Puro & Regras (internal/core)</option>
+            <option value="storage">Armazenamento SQLite (internal/storage/sqlite)</option>
+            <option value="cli">Comandos & Entrypoints (cmd/)</option>
           </select>
         </div>
 
         <div class="control-group">
           <label class="control-label" for="search-input">Buscar Módulo</label>
-          <input type="text" id="search-input" placeholder="Ex: LocacaoService, Cliente...">
+          <input type="text" id="search-input" placeholder="Ex: locacao_form, db, service...">
         </div>
 
         <div class="control-group" style="flex-direction: row; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
@@ -191,13 +190,11 @@
 
   <script>
     const LAYER_COLORS = {
-      web: "#38bdf8",
-      service: "#10b981",
-      repository: "#f59e0b",
-      domain: "#a855f7",
-      frontend: "#f43f5e",
-      security: "#6366f1",
-      config: "#64748b",
+      presentation: "#38bdf8", // Cyan / Blue - Interface Gráfica Gio UI
+      domain: "#10b981",       // Emerald - Regras de Domínio e Core Go
+      storage: "#f59e0b",      // Amber - Persistência SQLite
+      cli: "#a855f7",          // Purple - Comandos e Entrypoints
+      test: "#64748b",         // Slate - Testes Unitários
       other: "#475569"
     };
 

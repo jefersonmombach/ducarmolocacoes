@@ -7,7 +7,7 @@
   <meta name="reversa-producer-agent" content="reversa-docs-storyteller">
   <meta name="reversa-template" content="feature">
   <meta name="reversa-visual-style" content="sober">
-  <title>Autenticação & Segurança JWT — ducarmolocacoes</title>
+  <title>Acesso e Operadores Locais — ducarmolocacoes</title>
   <link rel="stylesheet" href="../assets/css/docs.css">
   <script src="../assets/js/data.js"></script>
   <script src="../assets/js/nav.js"></script>
@@ -98,10 +98,10 @@
 </svg>
       </div>
       <span class="brand-title">ducarmolocacoes</span>
-      <span class="brand-badge">Segurança</span>
+      <span class="brand-badge">Segurança Simplificada</span>
     </a>
     <nav class="reversa-doc-nav">
-            <a href="../index.html" data-page-id="index">Visão geral</a>
+      <a href="../index.html" data-page-id="index">Visão geral</a>
       <a href="../arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
       <a href="../modulos.html" data-page-id="modulos">Módulos</a>
       <a href="../topologia.html" data-page-id="topologia">Topologia</a>
@@ -116,16 +116,16 @@
       <div class="breadcrumbs">
         <a href="../index.html">Visão Geral</a> <span>/</span>
         <a href="../index.html#features">Features</a> <span>/</span>
-        <span style="color: var(--accent-blue);">Autenticação & Segurança JWT</span>
+        <span style="color: var(--accent-blue);">Acesso e Operadores Locais</span>
       </div>
 
       <div>
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Autenticação & Segurança JWT</h1>
-          <span class="badge badge-web">Segurança</span>
+          <h1 style="font-size: 1.8rem; font-weight: 800; color: #fff;">Acesso e Operadores Locais</h1>
+          <span class="badge badge-web">Segurança Simplificada</span>
         </div>
         <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
-          Gerencia o controle de acesso, identificação e autorização de operadores e administradores do sistema via JSON Web Tokens (JWT) stateless, além de cadastro e ativação de contas.
+          Modelo de segurança desktop local simplificado: substituição do complexo mecanismo stateless de tokens JWT REST por controle de operadores locais diretamente no aplicativo de balcão da loja.
         </p>
       </div>
 
@@ -133,7 +133,7 @@
       <div class="section-card">
         <div class="section-title">
           <span>Requisitos Funcionais Especificados</span>
-          <span class="badge">4 Requisitos</span>
+          <span class="badge">3 Requisitos</span>
         </div>
         <table class="rf-table">
           <thead>
@@ -146,25 +146,20 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong style="color: var(--accent-blue);">RF-AUTH-01</strong></td>
-              <td style="color: #fff; font-weight: 500;">Autenticação por usuário e senha com emissão de JWT</td>
+              <td><strong style="color: var(--accent-blue);">RF-AUT-01</strong></td>
+              <td style="color: #fff; font-weight: 500;">Identificação do Operador</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">Retorna 200 OK com token assinado no body (`id_token`) e no header `Authorization: Bearer <token>`.</td>
+              <td style="color: var(--text-secondary);">O sistema registra o operador logado em cada contrato e alteração de locação.</td>
             </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-AUTH-02</strong></td>
-              <td style="color: #fff; font-weight: 500;">Validação de token em requisições protegidas</td>
+              <td><strong style="color: var(--accent-blue);">RF-AUT-02</strong></td>
+              <td style="color: #fff; font-weight: 500;">Eliminação de Tokens Expiráveis</td>
               <td><span class="badge">Must</span></td>
-              <td style="color: var(--text-secondary);">Requisições com token válido recebem autorização compatível com suas roles (`ROLE_USER`/`ROLE_ADMIN`).</td>
+              <td style="color: var(--text-secondary);">Operação contínua no balcão sem desconexões involuntárias ou expiração de token JWT.</td>
             </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-AUTH-03</strong></td>
-              <td style="color: #fff; font-weight: 500;">Registro e ativação de conta</td>
-              <td><span class="badge">Should</span></td>
-              <td style="color: var(--text-secondary);">Envia e-mail com chave de ativação; rota `/api/activate?key=...` ativa o usuário.</td>
-            </tr><tr>
-              <td><strong style="color: var(--accent-blue);">RF-AUTH-04</strong></td>
-              <td style="color: #fff; font-weight: 500;">Redefinição de senha</td>
-              <td><span class="badge">Should</span></td>
-              <td style="color: var(--text-secondary);">Endpoint `/api/account/reset-password/init` gera token temporário com validade registrada.</td>
+              <td><strong style="color: var(--accent-blue);">RF-AUT-03</strong></td>
+              <td style="color: #fff; font-weight: 500;">Sessão Local Segura</td>
+              <td><span class="badge">Must</span></td>
+              <td style="color: var(--text-secondary);">Manutenção de credenciais protegidas na base local com permissões administrativas.</td>
             </tr>
           </tbody>
         </table>
@@ -174,41 +169,32 @@
       <div class="section-card">
         <div class="section-title">Regras de Negócio & Invariantes</div>
         <ul style="padding-left: 1.25rem; font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-          <li style="margin-bottom: 0.4rem;">Senhas devem ser armazenadas exclusivamente com hash BCrypt (60 caracteres). 🟢</li><li style="margin-bottom: 0.4rem;">O token JWT padrão tem validade de 24 horas (86.400s). Se `rememberMe = true`, a validade é estendida para 30 dias (2.592.000s). 🟢</li><li style="margin-bottom: 0.4rem;">Contas cadastradas via `/api/register` iniciam com `activated = false` até confirmação de token de ativação. 🟢</li><li style="margin-bottom: 0.4rem;">Usuários inativos (`activated = false`) têm o login bloqueado com `UserNotActivatedException`. 🟢</li>
+          <li style="margin-bottom: 0.4rem;">Segurança por Design: Descarte de endpoints HTTP públicos, eliminando vetores de ataque remoto contra a loja física.</li>
         </ul>
       </div>
-
-      <!-- Endpoints REST -->
-      
 
       <!-- Gherkin -->
       <div class="section-card">
         <div class="section-title">Critérios de Aceitação Formal (Gherkin)</div>
-        <pre class="code-block">Cenário: Autenticação bem-sucedida de operador
-  Dado que existe um usuário "atendente" ativo no banco de dados com senha "senha123"
-  Quando enviar uma requisição POST /api/authenticate com { "username": "atendente", "password": "senha123" }
-  Então a resposta deve ter status 200 OK
-  E o corpo deve conter a propriedade "id_token" preenchida
-  E o cabeçalho Authorization deve conter "Bearer <token>"
-
-Cenário: Tentativa de login com senha incorreta
-  Dado que existe um usuário "atendente" ativo no sistema
-  Quando enviar uma requisição POST /api/authenticate com { "username": "atendente", "password": "senhaErrada" }
-  Então a resposta deve ter status 401 Unauthorized
-  E nenhum token JWT deve ser emitido
-
-Cenário: Tentativa de login de usuário não ativado
-  Dado que existe um usuário "novo_usuario" com activated = false
-  Quando enviar uma requisição POST /api/authenticate com as credenciais corretas
-  Então a resposta deve ter status 401 Unauthorized
-  E a mensagem de erro deve indicar que a conta não foi ativada</pre>
+        <pre class="code-block">Cenário: Abertura da aplicação desktop pelo operador
+  Dado que o operador inicia o executável nativo ducarmolocacoes
+  Quando o sistema carrega a janela principal
+  Então a sessão local do operador é ativada imediatamente sem dependência de rede</pre>
       </div>
 
-      <!-- Rastreabilidade de Código -->
+      <!-- Rastreabilidade de Código Go -->
       <div class="section-card">
-        <div class="section-title">Rastreabilidade no Código Legado</div>
+        <div class="section-title">Rastreabilidade no Código Go Implementado</div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0.75rem;">
-          
+          <div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">main.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">cmd/ducarmolocacoes/main.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Inicialização da sessão de operador no app desktop</div>
+          </div><div style="background: #0f172a; padding: 0.75rem; border-radius: 6px; border: 1px solid var(--border-subtle); font-size: 0.8rem;">
+            <div style="font-weight: 600; color: var(--accent-blue);">app.go</div>
+            <div style="color: var(--text-muted); font-family: monospace; font-size: 0.75rem; margin-top: 2px; word-break: break-all;">internal/ui/app.go</div>
+            <div style="color: var(--text-secondary); font-size: 0.75rem; margin-top: 4px;">Gerenciamento da janela e controle de acesso Gio UI</div>
+          </div>
         </div>
       </div>
     </div>

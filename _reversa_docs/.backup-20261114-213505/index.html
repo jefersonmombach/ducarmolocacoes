@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="overview">
+  <meta name="reversa-producer-agent" content="reversa-docs-publisher">
+  <meta name="reversa-template" content="index">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Visão Geral da Documentação — ducarmolocacoes</title>
+  <link rel="stylesheet" href="assets/css/docs.css">
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <style>
+    .index-viewport {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+      background: #0a0f1d;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    .hero-section {
+      max-width: 1140px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: center;
+      background: radial-gradient(circle at 70% 30%, #161e2e 0%, #0f172a 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    @media (max-width: 900px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem;
+      }
+      .hero-seal {
+        margin: 0 auto;
+      }
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 1.25rem 0 1.75rem 0;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-seal img, .hero-seal svg {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+    }
+    .sections-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .section-heading {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .hub-card {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .hub-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+    }
+    .hub-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hub-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .hub-card-footer {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .feature-card {
+      background: #161e2e;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s;
+    }
+    .feature-card:hover {
+      border-color: var(--accent-blue);
+      background: #1e293b;
+    }
+    .seed-box {
+      font-family: monospace;
+      font-size: 0.75rem;
+      background: #0f172a;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      color: var(--text-muted);
+      width: fit-content;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+          <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+          <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+          <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+        </svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Mini-Site Interativo</span>
+    </a>
+    <nav class="reversa-doc-nav">
+      <a href="index.html" data-page-id="index" class="active" aria-current="page">Visão geral</a>
+      <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div class="index-viewport">
+      <!-- HERO -->
+      <section class="hero-section">
+        <div>
+          <div class="hero-badges">
+            <span class="badge badge-web">Go 1.22 Desktop</span>
+            <span class="badge badge-service">Gio UI / Cryptopower</span>
+            <span class="badge badge-frontend">SQLite Local (Zero CGO)</span>
+            <span class="badge badge-repository">FTS5 Full-Text</span>
+            <span class="badge badge-cycle">32-bit & 64-bit Nativo</span>
+          </div>
+          <h1 class="hero-title">Documentação Interativa do Sistema</h1>
+          <p class="hero-desc">
+            Portal visual e técnico gerado pelo <strong>Framework Reversa</strong> a partir da engenharia reversa e migração completa do repositório <code>ducarmolocacoes</code>. Explore a topologia, modelos 3D, métricas, regras de negócio e especificações SDD da nova aplicação Desktop em Go.
+          </p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="arquitetura.html" class="btn btn-primary">Abrir Code City 3D ➔</a>
+            <a href="deck.html" class="btn">Assistir Apresentação (Deck)</a>
+          </div>
+          <div class="seed-box">
+            PROVENÂNCIA SEED: 37c7dbb187d4cecb60dc9c03819bb81be463fcab5c7e445d78c5130965fb490d
+          </div>
+        </div>
+        <div class="hero-seal">
+          <img src="assets/img/seal.svg" alt="Selo Arquitetural Generativo">
+        </div>
+      </section>
+
+      <!-- VISUALIZADORES CENTRAIS -->
+      <section class="sections-container">
+        <h2 class="section-heading">
+          <span>Módulos de Exploração Arquitetural</span>
+        </h2>
+        <div class="hub-grid">
+          <!-- Card 1 -->
+          <a href="arquitetura.html" class="hub-card">
+            <div>
+              <div class="hub-card-title">
+                <span>Arquitetura 3D</span>
+                <span class="badge badge-web">Three.js</span>
+              </div>
+              <p class="hub-card-desc">
+                Metáfora urbana Code City com 27 prédios mapeando linhas de código (altura) e complexidade ciclomática (área), divididos por camadas core, storage, ui e cmd.
+              </p>
+            </div>
+            <div class="hub-card-footer">Navegar na cena 3D ➔</div>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="modulos.html" class="hub-card">
+            <div>
+              <div class="hub-card-title">
+                <span>Módulos & Dependências</span>
+                <span class="badge badge-repository">D3.js Force</span>
+              </div>
+              <p class="hub-card-desc">
+                Grafo de dependências com 104 arestas direcionadas, repulsão de física em tempo real e verificação de zero ciclos acíclicos nos pacotes Go.
+              </p>
+            </div>
+            <div class="hub-card-footer">Inspecionar grafo 2D ➔</div>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="topologia.html" class="hub-card">
+            <div>
+              <div class="hub-card-title">
+                <span>Topologia & Infraestrutura</span>
+                <span class="badge badge-service">Side-by-Side</span>
+              </div>
+              <p class="hub-card-desc">
+                Mapeamento comparativo side-by-side: monólito legado JHipster (MySQL/Elasticsearch) vs aplicação Desktop Go pura (Gio UI, Cryptopower e SQLite).
+              </p>
+            </div>
+            <div class="hub-card-footer">Comparar topologias ➔</div>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="metricas.html" class="hub-card">
+            <div>
+              <div class="hub-card-title">
+                <span>Dashboard de Métricas</span>
+                <span class="badge badge-cycle">Highcharts</span>
+              </div>
+              <p class="hub-card-desc">
+                Dashboards estatísticos com Treemap de LOC, Top 15 complexidade (LocacaoServiceImpl), Histograma de arquivos e Sankey de fluxo entre camadas.
+              </p>
+            </div>
+            <div class="hub-card-footer">Ver análises quantitativas ➔</div>
+          </a>
+
+          <!-- Card 5 -->
+          <a href="glossario.html" class="hub-card">
+            <div>
+              <div class="hub-card-title">
+                <span>Glossário Ubíquo</span>
+                <span class="badge badge-domain">Domínio</span>
+              </div>
+              <p class="hub-card-desc">
+                15 conceitos formais do domínio de locação de trajes, regras de cálculo contábil de sinal (20%) e saldo, política de desistência e avarias.
+              </p>
+            </div>
+            <div class="hub-card-footer">Consultar dicionário ➔</div>
+          </a>
+
+          <!-- Card 6 -->
+          <a href="deck.html" class="hub-card">
+            <div>
+              <div class="hub-card-title">
+                <span>Slide Deck Técnico</span>
+                <span class="badge">Apresentação</span>
+              </div>
+              <p class="hub-card-desc">
+                Apresentação navegável em 8 slides executivos com suporte a setas do teclado e modo tela cheia para onboarding rápido de novos desenvolvedores.
+              </p>
+            </div>
+            <div class="hub-card-footer">Iniciar apresentação ➔</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- FEATURES SDD -->
+      <section class="sections-container" id="features">
+        <h2 class="section-heading">
+          <span>Especificações das Features do Sistema (7 Units SDD)</span>
+        </h2>
+        <div class="features-grid">
+          <a href="features/locacoes.html" class="feature-card">
+            <span class="badge badge-cycle" style="width: fit-content;">Operação Core</span>
+            <strong style="color: #fff;">Ciclo de Locações</strong>
+            <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
+              Reserva de trajes, máquina de estados (0 a 3), regra de 20% de sinal e bloqueio de agenda de 7 dias.
+            </p>
+          </a>
+
+          <a href="features/contrato.html" class="feature-card">
+            <span class="badge badge-repository" style="width: fit-content;">Jurídico & PDF</span>
+            <strong style="color: #fff;">Contratos & Minutas</strong>
+            <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
+              Motor Chain of Responsibility (TagProcessor) e geração direta de contratos PDF com iText.
+            </p>
+          </a>
+
+          <a href="features/clientes.html" class="feature-card">
+            <span class="badge badge-web" style="width: fit-content;">Cadastro</span>
+            <strong style="color: #fff;">Clientes & Locatários</strong>
+            <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
+              Gestão cadastral (CPF, RG, telefones), busca full-text em Elasticsearch e histórico de aluguéis.
+            </p>
+          </a>
+
+          <a href="features/produtos.html" class="feature-card">
+            <span class="badge badge-service" style="width: fit-content;">Estoque</span>
+            <strong style="color: #fff;">Catálogo de Trajes</strong>
+            <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
+              Vestimentas festivas, vestidos de gala, fraques, valor unitário e agenda de disponibilidade.
+            </p>
+          </a>
+
+          <a href="features/tipo-eventos.html" class="feature-card">
+            <span class="badge" style="width: fit-content;">Configuração</span>
+            <strong style="color: #fff;">Tipos de Eventos</strong>
+            <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
+              Classificação das celebrações (Casamento, 15 Anos, Formatura) e contextualização contratual.
+            </p>
+          </a>
+
+          <a href="features/autenticacao.html" class="feature-card">
+            <span class="badge badge-domain" style="width: fit-content;">Segurança</span>
+            <strong style="color: #fff;">Autenticação JWT</strong>
+            <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
+              Tokens stateless HMAC-SHA512, perfis ROLE_USER/ROLE_ADMIN e renovação de credenciais.
+            </p>
+          </a>
+
+          <a href="features/administracao.html" class="feature-card">
+            <span class="badge" style="width: fit-content;">Governança</span>
+            <strong style="color: #fff;">Administração & Logs</strong>
+            <p style="font-size: 0.775rem; color: var(--text-secondary); line-height: 1.4;">
+              Métricas Actuator da JVM, níveis de log, healthcheck e auditoria operacional.
+            </p>
+          </a>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer style="max-width: 1140px; margin: 2rem auto 0 auto; width: 100%; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 1rem;">
+        <div>
+          Gerado pelo <strong>Time Reversa Docs</strong> • Reversa v1.3.6 • 100% Offline via <code>file://</code>
+        </div>
+        <div>
+          Suporte e Engenharia Reversa por <strong>Sandeco & Antigravity</strong>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

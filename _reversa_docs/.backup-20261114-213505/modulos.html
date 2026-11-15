@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="reversa-category" content="diagram">
+  <meta name="reversa-producer-agent" content="reversa-docs-mapper">
+  <meta name="reversa-template" content="modulos">
+  <meta name="reversa-visual-style" content="sober">
+  <title>Mapa de Módulos e Dependências — ducarmolocacoes</title>
+  <link rel="stylesheet" href="assets/css/docs.css">
+  <script src="assets/vendor/d3.v7.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <style>
+    svg.graph-canvas {
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+    svg.graph-canvas:active {
+      cursor: grabbing;
+    }
+    .node-circle {
+      stroke: #0a0f1d;
+      stroke-width: 1.5px;
+      transition: r 0.2s, stroke 0.2s;
+    }
+    .node-circle:hover {
+      stroke: #fff;
+      stroke-width: 2.5px;
+      cursor: pointer;
+    }
+    .node-circle.in-cycle {
+      stroke: #ef4444;
+      stroke-width: 3px;
+      stroke-dasharray: 3, 2;
+      animation: pulseCycle 2s infinite ease-in-out;
+    }
+    @keyframes pulseCycle {
+      0%, 100% { stroke-width: 2.5px; }
+      50% { stroke-width: 4.5px; }
+    }
+    .edge-line {
+      stroke: rgba(148, 163, 184, 0.25);
+      stroke-width: 1.2px;
+      fill: none;
+    }
+    .edge-line.highlight {
+      stroke: #38bdf8;
+      stroke-width: 2.5px;
+      stroke-opacity: 0.9;
+    }
+    .edge-line.cycle-edge {
+      stroke: #ef4444;
+      stroke-width: 2.5px;
+      stroke-opacity: 0.85;
+    }
+    .node-label {
+      font-size: 9px;
+      font-family: var(--font-family);
+      fill: #cbd5e1;
+      pointer-events: none;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .cycle-item-card {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 6px;
+      padding: 0.5rem;
+      font-size: 0.775rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="reversa-header">
+    <a href="index.html" class="brand-section">
+      <div class="seal-mini-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" class="seal-mini">
+  <circle cx="32" cy="32" r="30" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="32,14 47,23 47,41 32,50 17,41 17,23" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="#38bdf8"/>
+</svg>
+      </div>
+      <span class="brand-title">ducarmolocacoes</span>
+      <span class="brand-badge">Grafo de Dependências 2D</span>
+    </a>
+    <nav class="reversa-doc-nav">
+            <a href="index.html" data-page-id="index">Visão geral</a>
+      <a href="arquitetura.html" data-page-id="arquitetura">Arquitetura 3D</a>
+      <a href="modulos.html" data-page-id="modulos">Módulos</a>
+      <a href="topologia.html" data-page-id="topologia">Topologia</a>
+      <a href="metricas.html" data-page-id="metricas">Métricas</a>
+      <a href="glossario.html" data-page-id="glossario">Glossário</a>
+      <a href="deck.html" data-page-id="deck">Deck</a>
+    </nav>
+  </header>
+
+  <div class="main-viewport">
+    <div id="graph-container" class="canvas-container">
+      <svg id="d3-svg" class="graph-canvas"></svg>
+      <div id="tooltip" class="tooltip-floating"></div>
+    </div>
+
+    <aside class="sidebar-panel">
+      <div class="panel-section">
+        <h3 class="panel-title">Métricas de Conectividade</h3>
+        <div class="stats-summary">
+          <div class="stat-item">
+            <span class="stat-num" id="stat-nodes">0</span>
+            <span class="stat-label">Nós (Módulos)</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-edges">0</span>
+            <span class="stat-label">Arestas (Deps)</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-cycles" style="color: #ef4444;">0</span>
+            <span class="stat-label">Ciclos Detectados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="stat-density">0</span>
+            <span class="stat-label">Densidade do Grafo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Filtros & Física do Grafo</h3>
+        
+        <div class="control-group">
+          <label class="control-label" for="charge-force">
+            <span>Repulsão de Nós</span>
+            <span id="charge-val" class="control-value">-120</span>
+          </label>
+          <input type="range" id="charge-force" min="-400" max="-30" step="10" value="-120">
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="link-distance">
+            <span>Distância das Ligações</span>
+            <span id="distance-val" class="control-value">60px</span>
+          </label>
+          <input type="range" id="link-distance" min="20" max="180" step="5" value="60">
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="layer-filter">Filtrar por Camada</label>
+          <select id="layer-filter">
+            <option value="ALL">Todas as Camadas</option>
+            <option value="web">Web / REST Resources</option>
+            <option value="service">Services / Negócio</option>
+            <option value="repository">Repositories JPA/ES</option>
+            <option value="domain">Domínio / Entidades</option>
+            <option value="frontend">Frontend Angular</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="search-input">Buscar Módulo</label>
+          <input type="text" id="search-input" placeholder="Ex: LocacaoService, Cliente...">
+        </div>
+
+        <div class="control-group" style="flex-direction: row; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+          <input type="checkbox" id="check-connected-only" style="width: auto; cursor: pointer;">
+          <label for="check-connected-only" style="font-size: 0.8rem; cursor: pointer; color: var(--text-secondary);">Ocultar módulos isolados (0 deps)</label>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+          <button id="btn-reset-view" class="btn" style="flex: 1;">Resetar Zoom</button>
+          <button id="btn-reheat" class="btn btn-primary" style="flex: 1;">Reordenar Física</button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Módulo Inspecionado</h3>
+        <div id="node-details" class="info-card">
+          <div class="info-card-header">Selecione ou clique em um nó no grafo para inspecionar dependências.</div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3 class="panel-title">Ciclos de Dependência Detectados (<span id="cycle-count-badge">0</span>)</h3>
+        <div id="cycles-list" style="max-height: 180px; overflow-y: auto;">
+          <!-- Lista de ciclos -->
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const LAYER_COLORS = {
+      web: "#38bdf8",
+      service: "#10b981",
+      repository: "#f59e0b",
+      domain: "#a855f7",
+      frontend: "#f43f5e",
+      security: "#6366f1",
+      config: "#64748b",
+      other: "#475569"
+    };
+
+    let depsData = { nodes: [], edges: [], cycles: [] };
+    if (window.RV_DATA && window.RV_DATA.deps) {
+      depsData = window.RV_DATA.deps;
+    }
+
+    const svg = d3.select("#d3-svg");
+    const container = document.getElementById("graph-container");
+    const tooltip = document.getElementById("tooltip");
+
+    let width = container.clientWidth;
+    let height = container.clientHeight;
+
+    const g = svg.append("g");
+
+    // Definição de marcadores de seta (arrow markers)
+    const defs = svg.append("defs");
+    defs.append("marker")
+      .attr("id", "arrow-default")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 18)
+      .attr("refY", 0)
+      .attr("markerWidth", 5)
+      .attr("markerHeight", 5)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5")
+      .attr("fill", "rgba(148, 163, 184, 0.4)");
+
+    defs.append("marker")
+      .attr("id", "arrow-cycle")
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 18)
+      .attr("refY", 0)
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 6)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5")
+      .attr("fill", "#ef4444");
+
+    // Zoom behavior
+    const zoom = d3.zoom()
+      .scaleExtent([0.1, 4])
+      .on("zoom", (event) => {
+        g.attr("transform", event.transform);
+      });
+
+    svg.call(zoom);
+
+    let simulation, linkGroup, nodeGroup, labelGroup;
+    let allNodes = [], allLinks = [], cycleNodeSet = new Set();
+
+    function initGraph(data) {
+      if (!data || !data.nodes || data.nodes.length === 0) return;
+
+      allNodes = JSON.parse(JSON.stringify(data.nodes));
+      allLinks = JSON.parse(JSON.stringify(data.edges));
+      const cycles = data.cycles || [];
+
+      // Mapeia nós em ciclos
+      cycleNodeSet = new Set();
+      cycles.forEach(c => c.forEach(id => cycleNodeSet.add(id)));
+
+      // Contagem de conexões por nó (degree)
+      const degreeMap = {};
+      allLinks.forEach(l => {
+        const u = typeof l.from === "object" ? l.from.id : l.from;
+        const v = typeof l.to === "object" ? l.to.id : l.to;
+        degreeMap[u] = (degreeMap[u] || 0) + 1;
+        degreeMap[v] = (degreeMap[v] || 0) + 1;
+      });
+
+      allNodes.forEach(n => {
+        n.degree = degreeMap[n.id] || 0;
+        n.inCycle = cycleNodeSet.has(n.id);
+      });
+
+      // Atualiza métricas na sidebar
+      document.getElementById("stat-nodes").textContent = allNodes.length;
+      document.getElementById("stat-edges").textContent = allLinks.length;
+      document.getElementById("stat-cycles").textContent = cycles.length;
+      document.getElementById("cycle-count-badge").textContent = cycles.length;
+      const density = (2 * allLinks.length / (allNodes.length * (allNodes.length - 1) || 1)).toFixed(4);
+      document.getElementById("stat-density").textContent = density;
+
+      // Renderiza lista de ciclos
+      const cyclesListEl = document.getElementById("cycles-list");
+      cyclesListEl.innerHTML = "";
+      if (cycles.length === 0) {
+        cyclesListEl.innerHTML = "<div style='color: #10b981; font-size: 0.8rem;'>Nenhum ciclo arquitetural detectado.</div>";
+      } else {
+        cycles.forEach((c, i) => {
+          const div = document.createElement("div");
+          div.className = "cycle-item-card";
+          const names = c.map(id => id.split("/").pop().replace(".java", "").replace(".ts", ""));
+          div.innerHTML = `<strong>Ciclo #${i + 1} (${c.length - 1} nós):</strong><br>${names.join(" ➔ ")}`;
+          div.style.cursor = "pointer";
+          div.addEventListener("click", () => highlightCycle(c));
+          cyclesListEl.appendChild(div);
+        });
+      }
+
+      // Prepara links para D3 Force (substitui IDs por referências se necessário)
+      const nodeById = new Map(allNodes.map(d => [d.id, d]));
+      const validLinks = allLinks
+        .map(l => ({
+          source: nodeById.get(typeof l.from === "object" ? l.from.id : l.from),
+          target: nodeById.get(typeof l.to === "object" ? l.to.id : l.to),
+          weight: l.weight || 1
+        }))
+        .filter(l => l.source && l.target);
+
+      g.selectAll("*").remove();
+      linkGroup = g.append("g").attr("class", "links");
+      nodeGroup = g.append("g").attr("class", "nodes");
+      labelGroup = g.append("g").attr("class", "labels");
+
+      // Força de Simulação
+      simulation = d3.forceSimulation(allNodes)
+        .force("link", d3.forceLink(validLinks).id(d => d.id).distance(60))
+        .force("charge", d3.forceManyBody().strength(-120).distanceMax(500))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collision", d3.forceCollide().radius(d => Math.sqrt(d.loc || 10) * 0.5 + 8))
+        .alphaDecay(0.028);
+
+      // Links
+      const link = linkGroup.selectAll("line")
+        .data(validLinks)
+        .join("line")
+        .attr("class", "edge-line")
+        .attr("marker-end", "url(#arrow-default)");
+
+      // Nós
+      const node = nodeGroup.selectAll("circle")
+        .data(allNodes)
+        .join("circle")
+        .attr("class", d => `node-circle ${d.inCycle ? "in-cycle" : ""}`)
+        .attr("r", d => Math.max(4, Math.min(18, Math.sqrt(d.loc || 10) * 0.7)))
+        .attr("fill", d => LAYER_COLORS[d.layer] || LAYER_COLORS.other)
+        .call(drag(simulation));
+
+      // Labels para nós mais relevantes (degree >= 3 ou inCycle)
+      const label = labelGroup.selectAll("text")
+        .data(allNodes.filter(d => d.degree >= 3 || d.inCycle))
+        .join("text")
+        .attr("class", "node-label")
+        .attr("text-anchor", "middle")
+        .attr("dy", d => -Math.max(4, Math.min(18, Math.sqrt(d.loc || 10) * 0.7)) - 3)
+        .text(d => d.name.replace(".java", "").replace(".ts", ""));
+
+      // Interações Hover & Click
+      node
+        .on("mouseover", (event, d) => {
+          tooltip.style.display = "block";
+          tooltip.style.left = (event.pageX + 12) + "px";
+          tooltip.style.top = (event.pageY + 12) + "px";
+          tooltip.innerHTML = `
+            <strong>${d.name}</strong><br>
+            <span style="color: #94a3b8;">${d.folder}</span><br>
+            <span style="color: ${LAYER_COLORS[d.layer] || '#fff'};">Camada: ${d.layer.toUpperCase()}</span><br>
+            <span>LOC: ${d.loc} | Deps: ${d.degree}</span>
+            ${d.inCycle ? "<br><span style='color: #ef4444; font-weight: bold;'>⚠️ Participa de Ciclo</span>" : ""}
+          `;
+          highlightConnected(d, validLinks);
+        })
+        .on("mousemove", (event) => {
+          tooltip.style.left = (event.pageX + 12) + "px";
+          tooltip.style.top = (event.pageY + 12) + "px";
+        })
+        .on("mouseout", () => {
+          tooltip.style.display = "none";
+          resetHighlights();
+        })
+        .on("click", (event, d) => {
+          inspectNode(d, validLinks);
+        });
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+
+        label
+          .attr("x", d => d.x)
+          .attr("y", d => d.y);
+      });
+    }
+
+    function drag(sim) {
+      function dragstarted(event, d) {
+        if (!event.active) sim.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+      function dragended(event, d) {
+        if (!event.active) sim.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
+      return d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
+    }
+
+    function highlightConnected(targetNode, links) {
+      const connectedNodeIds = new Set([targetNode.id]);
+      linkGroup.selectAll("line")
+        .classed("highlight", l => {
+          const match = (l.source.id === targetNode.id || l.target.id === targetNode.id);
+          if (match) {
+            connectedNodeIds.add(l.source.id);
+            connectedNodeIds.add(l.target.id);
+          }
+          return match;
+        })
+        .style("opacity", l => (l.source.id === targetNode.id || l.target.id === targetNode.id) ? 1 : 0.1);
+
+      nodeGroup.selectAll("circle")
+        .style("opacity", n => connectedNodeIds.has(n.id) ? 1 : 0.2);
+    }
+
+    function resetHighlights() {
+      linkGroup.selectAll("line")
+        .classed("highlight", false)
+        .classed("cycle-edge", false)
+        .style("opacity", 1);
+
+      nodeGroup.selectAll("circle")
+        .style("opacity", 1);
+    }
+
+    function highlightCycle(cycleNodes) {
+      const cycleSet = new Set(cycleNodes);
+      nodeGroup.selectAll("circle")
+        .style("opacity", n => cycleSet.has(n.id) ? 1 : 0.15);
+
+      linkGroup.selectAll("line")
+        .classed("cycle-edge", l => cycleSet.has(l.source.id) && cycleSet.has(l.target.id))
+        .style("opacity", l => (cycleSet.has(l.source.id) && cycleSet.has(l.target.id)) ? 1 : 0.05);
+
+      // Foca câmera no primeiro nó do ciclo
+      const first = allNodes.find(n => n.id === cycleNodes[0]);
+      if (first && first.x && first.y) {
+        svg.transition().duration(750).call(
+          zoom.transform,
+          d3.zoomIdentity.translate(width / 2, height / 2).scale(1.3).translate(-first.x, -first.y)
+        );
+      }
+    }
+
+    function inspectNode(node, links) {
+      const outgoing = links.filter(l => l.source.id === node.id).map(l => l.target.name);
+      const incoming = links.filter(l => l.target.id === node.id).map(l => l.source.name);
+
+      const infoBox = document.getElementById("node-details");
+      infoBox.innerHTML = `
+        <div class="info-card-header">${node.name}</div>
+        <div class="badge-row">
+          <span class="badge badge-${node.layer}">${node.layer.toUpperCase()}</span>
+          <span class="badge">LOC: ${node.loc}</span>
+          ${node.inCycle ? '<span class="badge badge-cycle">EM CICLO</span>' : ''}
+        </div>
+        <div style="margin-top: 0.5rem; font-size: 0.775rem;">
+          <div style="margin-bottom: 0.35rem;"><strong>Dependências de Saída (${outgoing.length}):</strong><br>
+            <span style="color: var(--accent-blue);">${outgoing.slice(0, 5).join(", ") || "Nenhuma"}</span>
+            ${outgoing.length > 5 ? ` e mais ${outgoing.length - 5}...` : ''}
+          </div>
+          <div><strong>Dependências de Entrada (${incoming.length}):</strong><br>
+            <span style="color: var(--accent-emerald);">${incoming.slice(0, 5).join(", ") || "Nenhuma"}</span>
+            ${incoming.length > 5 ? ` e mais ${incoming.length - 5}...` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // Inicialização
+    if (depsData.nodes && depsData.nodes.length > 0) {
+      initGraph(depsData);
+    } else {
+      window.addEventListener("DOMContentLoaded", () => {
+        if (window.RV_DATA && window.RV_DATA.deps) {
+          initGraph(window.RV_DATA.deps);
+        }
+      });
+    }
+
+    // Controles Sidebar
+    document.getElementById("charge-force").addEventListener("input", (e) => {
+      const val = parseInt(e.target.value);
+      document.getElementById("charge-val").textContent = val;
+      if (simulation) {
+        simulation.force("charge").strength(val);
+        simulation.alpha(0.3).restart();
+      }
+    });
+
+    document.getElementById("link-distance").addEventListener("input", (e) => {
+      const val = parseInt(e.target.value);
+      document.getElementById("distance-val").textContent = val + "px";
+      if (simulation) {
+        simulation.force("link").distance(val);
+        simulation.alpha(0.3).restart();
+      }
+    });
+
+    document.getElementById("layer-filter").addEventListener("change", (e) => {
+      const layer = e.target.value;
+      nodeGroup.selectAll("circle")
+        .style("display", d => (layer === "ALL" || d.layer === layer) ? "inline" : "none");
+      labelGroup.selectAll("text")
+        .style("display", d => (layer === "ALL" || d.layer === layer) ? "inline" : "none");
+    });
+
+    document.getElementById("check-connected-only").addEventListener("change", (e) => {
+      const connectedOnly = e.target.checked;
+      nodeGroup.selectAll("circle")
+        .style("display", d => (connectedOnly && d.degree === 0) ? "none" : "inline");
+      labelGroup.selectAll("text")
+        .style("display", d => (connectedOnly && d.degree === 0) ? "none" : "inline");
+    });
+
+    document.getElementById("search-input").addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) {
+        resetHighlights();
+        return;
+      }
+      nodeGroup.selectAll("circle")
+        .style("opacity", d => d.name.toLowerCase().includes(q) ? 1 : 0.15);
+      const match = allNodes.find(d => d.name.toLowerCase().includes(q));
+      if (match && match.x && match.y) {
+        svg.transition().duration(500).call(
+          zoom.transform,
+          d3.zoomIdentity.translate(width / 2, height / 2).scale(1.5).translate(-match.x, -match.y)
+        );
+      }
+    });
+
+    document.getElementById("btn-reset-view").addEventListener("click", () => {
+      svg.transition().duration(600).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(0, 0).scale(1)
+      );
+      resetHighlights();
+    });
+
+    document.getElementById("btn-reheat").addEventListener("click", () => {
+      if (simulation) {
+        simulation.alpha(0.8).restart();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      width = container.clientWidth;
+      height = container.clientHeight;
+      if (simulation) {
+        simulation.force("center", d3.forceCenter(width / 2, height / 2));
+        simulation.alpha(0.2).restart();
+      }
+    });
+  </script>
+</body>
+</html>

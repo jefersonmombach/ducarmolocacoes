@@ -1,0 +1,218 @@
+[
+  {
+    "name": "cmd/migrator/main.go",
+    "folder": "cmd/migrator",
+    "loc": 75,
+    "complexity": 6,
+    "type": "source",
+    "layer": "cli"
+  },
+  {
+    "name": "cmd/ducarmolocacoes/main.go",
+    "folder": "cmd/ducarmolocacoes",
+    "loc": 38,
+    "complexity": 4,
+    "type": "source",
+    "layer": "cli"
+  },
+  {
+    "name": "internal/ui/app.go",
+    "folder": "internal/ui",
+    "loc": 139,
+    "complexity": 16,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/theme/theme.go",
+    "folder": "internal/ui/theme",
+    "loc": 37,
+    "complexity": 1,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/produto_page.go",
+    "folder": "internal/ui/page",
+    "loc": 210,
+    "complexity": 9,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/locacao_list.go",
+    "folder": "internal/ui/page",
+    "loc": 380,
+    "complexity": 43,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/util.go",
+    "folder": "internal/ui/page",
+    "loc": 27,
+    "complexity": 2,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/cliente_page.go",
+    "folder": "internal/ui/page",
+    "loc": 242,
+    "complexity": 9,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/page/locacao_form.go",
+    "folder": "internal/ui/page",
+    "loc": 480,
+    "complexity": 33,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/widget/nav.go",
+    "folder": "internal/ui/widget",
+    "loc": 139,
+    "complexity": 8,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/widget/card.go",
+    "folder": "internal/ui/widget",
+    "loc": 39,
+    "complexity": 1,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/ui/widget/modal.go",
+    "folder": "internal/ui/widget",
+    "loc": 92,
+    "complexity": 5,
+    "type": "source",
+    "layer": "presentation"
+  },
+  {
+    "name": "internal/storage/sqlite/tipoevento_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 28,
+    "complexity": 4,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/produto_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 113,
+    "complexity": 13,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/schema.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 96,
+    "complexity": 1,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/sqlite_test.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 94,
+    "complexity": 14,
+    "type": "test",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/db.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 43,
+    "complexity": 9,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/locacao_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 357,
+    "complexity": 35,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/storage/sqlite/cliente_repo.go",
+    "folder": "internal/storage/sqlite",
+    "loc": 115,
+    "complexity": 9,
+    "type": "source",
+    "layer": "storage"
+  },
+  {
+    "name": "internal/core/locacao/service_test.go",
+    "folder": "internal/core/locacao",
+    "loc": 120,
+    "complexity": 17,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/locacao/service.go",
+    "folder": "internal/core/locacao",
+    "loc": 107,
+    "complexity": 16,
+    "type": "source",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/contrato/generator.go",
+    "folder": "internal/core/contrato",
+    "loc": 161,
+    "complexity": 14,
+    "type": "source",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/contrato/generator_test.go",
+    "folder": "internal/core/contrato",
+    "loc": 74,
+    "complexity": 5,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/agenda/checker_test.go",
+    "folder": "internal/core/agenda",
+    "loc": 64,
+    "complexity": 5,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/agenda/checker.go",
+    "folder": "internal/core/agenda",
+    "loc": 42,
+    "complexity": 4,
+    "type": "source",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/domain/domain_test.go",
+    "folder": "internal/core/domain",
+    "loc": 64,
+    "complexity": 11,
+    "type": "test",
+    "layer": "domain"
+  },
+  {
+    "name": "internal/core/domain/domain.go",
+    "folder": "internal/core/domain",
+    "loc": 155,
+    "complexity": 23,
+    "type": "source",
+    "layer": "domain"
+  }
+]

@@ -1,0 +1,123 @@
+{
+  "completedAgents": [
+    "mapper",
+    "analyst",
+    "storyteller",
+    "publisher"
+  ],
+  "pendingAgents": [],
+  "pages": {
+    "arquitetura.html": {
+      "status": "created",
+      "agent": "reversa-docs-mapper",
+      "hash": "sha256:0ab748aa97f310c103ff96b1b77e37f9871cb8edadbdc8351a22e7294ceb2d19",
+      "createdAt": "2026-11-15T00:26:13.555777+00:00"
+    },
+    "modulos.html": {
+      "status": "created",
+      "agent": "reversa-docs-mapper",
+      "hash": "sha256:ecd7f27104150c8d1c751d90403738b3a0b248fec87e791c33eeacf93d0b380e",
+      "createdAt": "2026-11-15T00:26:13.556014+00:00"
+    },
+    "topologia.html": {
+      "status": "created",
+      "agent": "reversa-docs-mapper",
+      "hash": "sha256:bd36cd238f06d74c3e2e60b00086ad9400cda723e661609aed4bfc9e685ac3d6",
+      "createdAt": "2026-11-15T00:26:13.556194+00:00"
+    },
+    "metricas.html": {
+      "status": "created",
+      "agent": "reversa-docs-analyst",
+      "hash": "sha256:650ba19852371face9bcb066c557819a71a700b5c44a9d68f9083f16e136f1e9",
+      "createdAt": "2026-11-15T00:26:13.556328+00:00"
+    },
+    "glossario.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:91169675fd1a09d6805ef00a21dddef42d9a7b136aa68c23d96ca13415bc6554",
+      "createdAt": "2026-11-15T00:26:13.556446+00:00"
+    },
+    "deck.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:b69e6cd11473533d2b1d6e82e6ccbade43d6a56e41656488e4b08cd57c9c965b",
+      "createdAt": "2026-11-15T00:26:13.556614+00:00"
+    },
+    "features/autenticacao.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:2a5187582fc800112fe38c2e225cd0437a1bd3ec859f4237661a19222210f3ae",
+      "createdAt": "2026-11-15T00:26:13.556754+00:00"
+    },
+    "features/clientes.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:4a81a4491ab05df7c7fe9688941842914b3d1289d59534f394178d026039d79e",
+      "createdAt": "2026-11-15T00:26:13.556917+00:00"
+    },
+    "features/produtos.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:58d6c054182d70dd473caf3cc274c1b87452249d45f9261c42aab38089d3ff19",
+      "createdAt": "2026-11-15T00:26:13.557095+00:00"
+    },
+    "features/tipo-eventos.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:0e845b0b49fed7d5c2ce932c36cc0545112a0c95687b76cb769a325bae2da8f0",
+      "createdAt": "2026-11-15T00:26:13.557262+00:00"
+    },
+    "features/locacoes.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:a6382c64b55180c489c7a3ee0bc731d014f3e884b0afd360351c967e544ae58e",
+      "createdAt": "2026-11-15T00:26:13.557426+00:00"
+    },
+    "features/contrato.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:27f315caab59c8e48d6b957352f1483a2e8038e0c682118dcec84027edc5ce2f",
+      "createdAt": "2026-11-15T00:26:13.557807+00:00"
+    },
+    "features/administracao.html": {
+      "status": "created",
+      "agent": "reversa-docs-storyteller",
+      "hash": "sha256:2349502c24c95ebd9f8a62297ea5c8d8ce1e15a85fc88e769d4d59f7d957be40",
+      "createdAt": "2026-11-15T00:26:13.557994+00:00"
+    },
+    "index.html": {
+      "status": "created",
+      "agent": "reversa-docs-publisher",
+      "hash": "sha256:1268a762de69eba57fd083c6ca8cff9f983a0fdefcb9f24cddcc7277a8edd4a3",
+      "createdAt": "2026-11-15T00:26:13.558241+00:00"
+    }
+  },
+  "pagesGenerated": [
+    "arquitetura.html",
+    "modulos.html",
+    "topologia.html",
+    "metricas.html",
+    "glossario.html",
+    "deck.html",
+    "features/autenticacao.html",
+    "features/clientes.html",
+    "features/produtos.html",
+    "features/tipo-eventos.html",
+    "features/locacoes.html",
+    "features/contrato.html",
+    "features/administracao.html",
+    "index.html"
+  ],
+  "pagesOmitted": [
+    {
+      "page": "timeline.html",
+      "reason": "Arquivo .reversa/chronicle.md não foi encontrado no projeto"
+    }
+  ],
+  "lastCheckpoint": "2026-11-15T00:26:13.558250+00:00",
+  "smokeTestFailed": false,
+  "smokeTestErrors": [],
+  "auxiliaryHtmlsDiscovered": 0,
+  "cdnFallbackUsed": true,
+  "pipelineCompleted": true
+}

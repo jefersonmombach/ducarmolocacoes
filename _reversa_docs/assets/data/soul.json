@@ -1,98 +1,99 @@
 {
   "projectName": "ducarmolocacoes",
-  "proposito": "Gest\u00e3o integral e segura da loca\u00e7\u00e3o de trajes e vestu\u00e1rio festivo para eventos comemorativos (casamentos, formaturas, 15 anos), automatizando contratos jur\u00eddicos, cronogramas de entrega, disponibilidade temporal de estoque e balan\u00e7o cont\u00e1bil de sinal e saldo.",
+  "proposito": "Gestão integral, segura e autônoma da locação de trajes e vestuário festivo para eventos comemorativos (casamentos, formaturas, 15 anos), automatizando contratos jurídicos, cronogramas de entrega, disponibilidade temporal de estoque e balanço contábil de sinal e saldo em aplicação desktop nativa offline-first.",
   "concepts": [
     {
       "term": "Locadora",
       "category": "Papel & Ator",
-      "definition": "Empresa respons\u00e1vel pela loca\u00e7\u00e3o dos trajes ('Du Carmo Loca\u00e7\u00f5es', propriet\u00e1ria Maria do Carmo Poli, situada em Bocai\u00fava do Sul - PR)."
+      "definition": "Empresa responsável pela locação dos trajes ('Du Carmo Locações', proprietária Maria do Carmo Poli, situada em Bocaiúva do Sul - PR)."
     },
     {
-      "term": "Locat\u00e1rio",
+      "term": "Locatário",
       "category": "Papel & Ator",
-      "definition": "Cliente cadastrado no sistema que celebra o contrato de aluguel e assume responsabilidade c\u00edvel e financeira pela conserva\u00e7\u00e3o e devolu\u00e7\u00e3o das pe\u00e7as."
+      "definition": "Cliente cadastrado no sistema que celebra o contrato de aluguel e assume responsabilidade cível e financeira pela conservação e devolução das peças."
     },
     {
       "term": "Traje / Produto",
       "category": "Entidade Central",
-      "definition": "Vestimenta festiva (terno, vestido de gala, fraque, smoking, vestido de 15 anos) ou acess\u00f3rio disponibilizado para loca\u00e7\u00e3o com controle de valor unit\u00e1rio e agenda."
+      "definition": "Vestimenta festiva (terno, vestido de gala, fraque, smoking, vestido de 15 anos) ou acessório disponibilizado para locação com controle de valor unitário e agenda."
     },
     {
       "term": "Tipo de Evento",
       "category": "Entidade Central",
-      "definition": "Natureza social ou cerimonial da ocasi\u00e3o em que os trajes ser\u00e3o utilizados (Casamento, Formatura, 15 Anos, Bodas)."
+      "definition": "Natureza social ou cerimonial da ocasião em que os trajes serão utilizados (Casamento, Formatura, 15 Anos, Bodas)."
     },
     {
-      "term": "Loca\u00e7\u00e3o",
+      "term": "Locação",
       "category": "Entidade Central",
-      "definition": "Contrato de presta\u00e7\u00e3o de servi\u00e7os de loca\u00e7\u00e3o de trajes, contendo valores, datas de cronograma de entrega e devolu\u00e7\u00e3o e itens vinculados."
+      "definition": "Contrato de prestação de serviços de locação de trajes, contendo valores em centavos, datas de cronograma de entrega e devolução e itens vinculados."
     },
     {
-      "term": "Item de Loca\u00e7\u00e3o",
+      "term": "Item de Locação",
       "category": "Entidade Central",
-      "definition": "Associa\u00e7\u00e3o individual de um traje a uma loca\u00e7\u00e3o, com quantidade, pre\u00e7o unit\u00e1rio e total da linha."
+      "definition": "Associação individual de um traje a uma locação, com quantidade, preço unitário e total da linha."
     },
     {
-      "term": "Sinal (20%)",
+      "term": "Sinal Obrigatório (20%)",
       "category": "Financeiro & Regra",
-      "definition": "Pagamento inicial antecipado obrigat\u00f3rio correspondente a 20% do valor total da loca\u00e7\u00e3o para efetivar e bloquear a reserva do traje."
+      "definition": "Pagamento inicial antecipado obrigatório correspondente a no mínimo 20% do valor total da locação para efetivar e bloquear a reserva do traje."
     },
     {
       "term": "Valor Adiantado",
       "category": "Financeiro & Regra",
-      "definition": "Amortiza\u00e7\u00e3o intermedi\u00e1ria realizada pelo locat\u00e1rio entre a reserva e a data de retirada das roupas."
+      "definition": "Amortização intermediária realizada pelo locatário entre a reserva e a data de retirada das roupas."
     },
     {
-      "term": "Saldo Devedor",
+      "term": "Saldo Devedor Mandatório",
       "category": "Financeiro & Regra",
-      "definition": "Valor remanescente (valorTotal - valorSinal - valorAdiantado) que deve obrigatoriamente ser quitado no momento da retirada f\u00edsica do traje na loja (ap\u00f3s as 16h)."
+      "definition": "Valor remanescente calculado forçadamente no backend (valorTotal - valorSinal - valorAdiantado) que deve ser quitado integralmente na retirada das peças (após as 16h)."
     },
     {
       "term": "Data da Retirada Prevista",
       "category": "Cronograma",
-      "definition": "Data estipulada em contrato para o locat\u00e1rio retirar as vestimentas na loja. Liberada a partir das 16:00h."
+      "definition": "Data estipulada em contrato para o locatário retirar as vestimentas na loja. Liberada a partir das 16:00h mediante quitação de saldo."
     },
     {
-      "term": "Data da Devolu\u00e7\u00e3o Prevista",
+      "term": "Data da Devolução Prevista",
       "category": "Cronograma",
-      "definition": "Data estipulada em contrato para o locat\u00e1rio devolver todas as pe\u00e7as \u00e0 loja em perfeito estado de conserva\u00e7\u00e3o."
+      "definition": "Data estipulada em contrato para o locatário devolver todas as peças à loja em perfeito estado de conservação."
     },
     {
-      "term": "Janela de Prote\u00e7\u00e3o Temporal",
+      "term": "Janela de Proteção Temporal (7 Dias)",
       "category": "Regra de Agenda",
-      "definition": "Bloqueio de loca\u00e7\u00f5es concomitantes de um mesmo produto em um raio de 3 dias antes e 4 dias depois da data do evento ([dataEvento - 3, dataEvento + 4])."
+      "definition": "Bloqueio impeditivo de locações concomitantes de um mesmo produto no intervalo de 3 dias antes e 4 dias depois da data do evento ([dataEvento - 3, dataEvento + 4])."
     },
     {
-      "term": "Multa por Atraso",
-      "category": "Financeiro & Regra",
-      "definition": "Cobran\u00e7a de multa di\u00e1ria de 20% do valor total da loca\u00e7\u00e3o por dia corrido de atraso na devolu\u00e7\u00e3o dos trajes."
+      "term": "Dinheiro em Centavos (Dinheiro)",
+      "category": "Financeiro & Tipagem",
+      "definition": "Tipo inteiro Go (type Dinheiro int64) para todos os cálculos monetários, eliminando riscos de arredondamento de ponto flutuante."
     },
     {
-      "term": "Indeniza\u00e7\u00e3o por Avaria",
-      "category": "Financeiro & Regra",
-      "definition": "Obriga\u00e7\u00e3o legal do locat\u00e1rio indenizar a locadora no valor de 4 (quatro) vezes o valor do aluguel em caso de avaria irrepar\u00e1vel ou perda das pe\u00e7as."
+      "term": "Motor de Contratos em PDF",
+      "category": "Mecanismo Técnico",
+      "definition": "Substituição determinística de tags em minuta contratual e compilação nativa em PDF autônomo sem runtime Java."
     },
     {
-      "term": "Motor de Minutas / Tags",
-      "category": "Mecanismo T\u00e9cnico",
-      "definition": "Padr\u00e3o Chain of Responsibility que processa o texto base do contrato substituindo tags din\u00e2micas como [LOCATARIO], [TRAJES] e valores calculados."
+      "term": "Busca Instantânea Local (FTS5)",
+      "category": "Mecanismo Técnico",
+      "definition": "Mecanismo de busca full-text local em SQLite FTS5 para localização de clientes e trajes com latência inferior a 5ms, sem cluster externo."
     }
   ],
   "sections": {
-    "Proposito": "Prover uma solu\u00e7\u00e3o eficiente para a empresa Du Carmo Loca\u00e7\u00f5es gerenciar o ciclo de vida completo de reservas e aluguel de trajes finos, garantindo a preven\u00e7\u00e3o de conflitos de agenda e a formaliza\u00e7\u00e3o contratual imediata.",
+    "Proposito": "Prover uma solução desktop nativa, rápida e offline-first para a empresa Du Carmo Locações gerenciar o ciclo de vida completo de reservas e aluguel de trajes finos, garantindo a prevenção de conflitos de agenda e a formalização contratual imediata.",
     "EntidadesCentrais": [
       "Locacao",
       "Cliente",
       "Produto",
       "TipoEvento",
       "LocacaoProduto",
-      "User"
+      "UsuarioOperador"
     ],
     "DecisoesFundadoras": [
-      "Arquitetura monol\u00edtica JHipster (Spring Boot 2 + Angular 6) para simplicidade operacional inicial.",
-      "Persist\u00eancia transacional em MySQL com espelhamento full-text em Elasticsearch.",
-      "Gera\u00e7\u00e3o program\u00e1tica de contratos em PDF atrav\u00e9s de substitui\u00e7\u00e3o de tags HTML e iText.",
-      "Autentica\u00e7\u00e3o stateless baseada em token JWT HMAC-SHA512."
+      "Aplicação Desktop nativa em Go (Golang) com framework gráfico Gio UI e arquitetura visual Cryptopower.",
+      "Persistência relacional embutida SQLite (modernc.org/sqlite - Zero CGO) com compatibilidade nativa para compilação 32-bit e 64-bit.",
+      "Índice SQLite FTS5 local para busca full-text instantânea em clientes e vestuário, dispensando cluster Elasticsearch.",
+      "Motor nativo em Go para geração direta de contratos em PDF prontos para impressão física.",
+      "Operação 100% autônoma e offline-first no ponto de atendimento, sem servidores externos nem JVM."
     ]
   }
 }
